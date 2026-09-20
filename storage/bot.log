@@ -1,0 +1,152 @@
+2026-09-20 20:51:53,177 INFO price=80392.02 signal={'action': 'HOLD', 'hold': 1.0} equity=10000.00
+2026-09-20 20:52:53,355 INFO price=80387.22 signal={'action': 'HOLD', 'hold': 1.0} equity=10000.00
+2026-09-20 20:53:53,533 INFO price=80424.01 signal={'action': 'HOLD', 'hold': 1.0} equity=10000.00
+2026-09-20 20:54:53,675 INFO price=80446.01 signal={'action': 'HOLD', 'hold': 1.0} equity=10000.00
+2026-09-20 21:03:30,569 [INFO] [BTC/USDT] Giá: 80545.15 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:04:30,745 [INFO] [BTC/USDT] Giá: 80551.69 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:05:30,920 [INFO] [BTC/USDT] Giá: 80562.96 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:06:31,053 [INFO] [BTC/USDT] Giá: 80586.75 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:07:31,231 [INFO] [BTC/USDT] Giá: 80627.93 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:08:31,365 [INFO] [BTC/USDT] Giá: 80626.01 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:13:40,640 [INFO] [BTC/USDT] Giá: 80560.00 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:14:40,819 [INFO] [BTC/USDT] Giá: 80562.23 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:16:11,486 [INFO] [BTC/USDT] Giá: 80559.98 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:17:11,913 [INFO] [BTC/USDT] Giá: 80514.71 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:18:12,143 [INFO] [BTC/USDT] Giá: 80502.01 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:19:12,333 [INFO] [BTC/USDT] Giá: 80518.01 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:20:12,628 [INFO] [BTC/USDT] Giá: 80523.56 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:21:12,815 [INFO] [BTC/USDT] Giá: 80506.06 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:22:13,041 [INFO] [BTC/USDT] Giá: 80515.47 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:23:13,265 [INFO] [BTC/USDT] Giá: 80528.14 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:24:13,489 [INFO] [BTC/USDT] Giá: 80528.17 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:25:13,744 [INFO] [BTC/USDT] Giá: 80537.05 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:26:13,992 [INFO] [BTC/USDT] Giá: 80564.01 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:27:14,243 [INFO] [BTC/USDT] Giá: 80562.05 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:28:14,489 [INFO] [BTC/USDT] Giá: 80532.01 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:29:14,731 [INFO] [BTC/USDT] Giá: 80516.01 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:30:14,973 [INFO] [BTC/USDT] Giá: 80520.00 | Tín hiệu: HOLD | Vị thế: TRỐNG           | Vốn: 10000.00 USDT
+2026-09-20 21:31:37,408 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-20 21:31:37,584 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-20 21:31:37,683 [INFO] [BTC/USDT] Giá: 80508.01 | ML: HOLD | Operator: HOLD (0.00) | Supervisor: CHẶN (R:1/10) | Vị thế: TRỐNG      | Vốn: 10000.00 USDT
+2026-09-20 21:41:26,063 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:41:26,069 [INFO] [BTC/USDT] Giá: 80468.37 | ML: HOLD | Operator: HOLD (0.55) | Supervisor: DUYỆT (R:1/10) | Vị thế: TRỐNG      | Vốn: 10000.00 USDT
+2026-09-20 21:42:26,841 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:42:26,889 [INFO] [BTC/USDT] Giá: 80468.36 | ML: HOLD | Operator: HOLD (0.55) | Supervisor: DUYỆT (R:1/10) | Vị thế: TRỐNG      | Vốn: 10000.00 USDT
+2026-09-20 21:43:27,645 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:43:27,693 [INFO] [BTC/USDT] Giá: 80524.01 | ML: HOLD | Operator: HOLD (0.45) | Supervisor: DUYỆT (R:1/10) | Vị thế: TRỐNG      | Vốn: 10000.00 USDT
+2026-09-20 21:44:28,607 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:44:28,608 [INFO] [BTC/USDT] Giá: 80531.00 | ML: HOLD | Operator: HOLD (0.45) | Supervisor: DUYỆT (R:1/10) | Vị thế: TRỐNG      | Vốn: 10000.00 USDT
+2026-09-20 21:45:29,459 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:45:29,506 [INFO] [BTC/USDT] Giá: 80584.75 | ML: HOLD | Operator: HOLD (0.45) | Supervisor: DUYỆT (R:1/10) | Vị thế: TRỐNG      | Vốn: 10000.00 USDT
+2026-09-20 21:46:42,108 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:47:42,917 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:48:43,878 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:49:44,721 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:50:45,615 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:50:46,153 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:50:46,201 [INFO] >>> [AI TEAM ĐỒNG THUẬN] MỞ VỊ THẾ MUA: Giá = 80544.00, Giá trị = 1000.00 USDT
+2026-09-20 21:51:47,928 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:51:48,393 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:52:49,552 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:53:50,673 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:54:57,870 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:55:58,704 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:55:59,181 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:57:00,042 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:58:01,118 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 21:59:02,089 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:00:02,923 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:01:03,850 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:02:04,715 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:03:05,557 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:04:06,441 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:05:07,374 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:06:08,205 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:07:08,965 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:08:09,733 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:09:10,632 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:15:57,665 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:15:58,166 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:15:58,214 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 80544.01, Vốn = 1000.00 USDT
+2026-09-20 22:17:10,847 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:17:11,363 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:17:11,364 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 80524.00, Vốn = 10.00 USDT
+2026-09-20 22:18:12,942 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:19:13,709 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:20:14,509 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:21:15,518 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:21:16,022 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:22:16,916 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:22:17,354 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:23:18,190 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:23:18,652 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:24:19,496 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:24:20,001 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:25:20,880 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:25:21,264 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:26:12,546 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:26:13,045 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:26:13,046 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 80546.01, Vốn = 10.00 USDT
+2026-09-20 22:27:14,808 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:27:15,336 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:28:16,135 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:28:16,648 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:29:17,890 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:29:18,334 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:30:19,135 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:30:19,616 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:31:20,452 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:31:20,959 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:32:21,758 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:32:22,244 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:33:28,164 [ERROR] Vòng lặp gặp ngoại lệ nghiêm trọng!
+Traceback (most recent call last):
+  File "C:\Users\havuh\AppData\Roaming\Python\Python314\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\havuh\OneDrive\Desktop\Crypto_AI\main.py", line 238, in main
+    run_once(fetcher, predictor, trader, risk, operator, supervisor)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\havuh\OneDrive\Desktop\Crypto_AI\main.py", line 45, in run_once
+    current_candle_ts = int(candles["timestamp"].iloc[-1])
+                            ~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\havuh\AppData\Roaming\Python\Python314\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\havuh\AppData\Roaming\Python\Python314\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'timestamp'
+2026-09-20 22:33:28,806 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:37:15,645 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:37:16,168 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:37:16,216 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 80617.63, Vốn = 10.00 USDT
+2026-09-20 22:44:18,017 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-20 22:44:18,478 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:45:19,365 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:45:19,847 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 22:45:19,895 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 80633.320000, Vốn = 10.000000 USDT
+2026-09-20 23:00:25,240 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 23:00:25,681 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 23:15:29,328 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 23:15:29,758 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 23:23:24,963 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 23:23:25,439 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 23:23:25,487 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 80782.410000, Vốn = 25.000000 USDT
+2026-09-20 23:45:55,068 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 23:45:55,445 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-20 23:54:48,938 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 00:00:50,484 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 00:15:51,873 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 00:26:33,503 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 00:26:33,994 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 00:26:34,041 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 81114.330000, Vốn = 20.000000 USDT
+2026-09-21 00:30:36,141 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 00:30:36,669 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

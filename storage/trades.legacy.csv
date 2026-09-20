@@ -1,0 +1,2 @@
+timestamp,symbol,side,price,amount,pnl,reason
+2026-09-20T13:50:46.201330+00:00,BTC/USDT,BUY,80544.0,0.012415574096146206,0.0,SIGNAL
