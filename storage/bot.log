@@ -344,3 +344,1168 @@ KeyError: 'timestamp'
 2026-09-21 12:31:55,375 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-21 12:35:56,644 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-21 12:46:18,781 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:00:14,956 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:05:17,627 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:10:19,361 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:15:30,220 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:17:59,014 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:21:01,388 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:25:04,232 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:30:07,189 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:35:09,910 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:40:12,819 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:45:15,465 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:50:18,474 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:55:21,490 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 13:58:32,780 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:00:35,421 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:05:38,308 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:15:42,915 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:20:45,511 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:25:49,304 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:30:51,940 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:43:46,572 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:45:48,828 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:50:05,867 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 14:57:12,418 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:00:14,775 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:00:16,214 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:00:16,333 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 81772.050000, Vốn = 70.000000 USDT
+2026-09-21 15:05:20,239 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:10:23,645 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:15:27,447 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:20:30,004 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:25:32,650 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:30:35,392 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:35:37,805 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:40:40,305 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:40:40,402 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +1.685402 USDT | Vốn: 101.685402 USDT
+2026-09-21 15:45:44,463 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:45:46,660 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:50:49,246 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:50:50,896 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:55:53,710 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 15:55:55,058 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:00:57,706 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:00:59,050 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:06:01,713 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:06:03,045 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:10:05,886 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:10:07,736 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:15:10,378 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:15:11,753 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:20:14,495 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:20:15,838 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:25:19,207 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:25:20,546 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:30:23,253 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:30:24,664 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:35:27,196 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:35:28,541 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:42:45,312 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:42:45,325 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-21 16:42:47,590 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:42:48,998 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:45:51,105 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:45:52,629 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:50:55,359 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:50:56,753 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:55:59,419 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 16:56:00,796 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:00:05,799 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:00:05,810 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-21 17:00:08,735 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:00:10,193 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:00:10,248 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 84653.700000, Vốn = 70.000000 USDT
+2026-09-21 17:05:13,411 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:10:16,019 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:15:18,707 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:20:21,389 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:25:23,952 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:30:26,863 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:35:29,420 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:35:30,810 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:35:31,951 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.332165 USDT | Vốn: 99.667835 USDT
+2026-09-21 17:40:35,349 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:45:38,304 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:50:40,957 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 17:55:43,622 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:00:46,378 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:00:46,380 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-21 18:00:48,654 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:05:51,182 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:10:53,808 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:10:55,269 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:10:55,440 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 84602.010000, Vốn = 69.767484 USDT
+2026-09-21 18:15:59,192 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:21:02,239 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:25:05,198 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:25:06,668 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:25:06,682 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +0.020773 USDT | Vốn: 99.688608 USDT
+2026-09-21 18:30:09,942 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:30:11,385 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:30:11,484 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 84652.210000, Vốn = 69.782026 USDT
+2026-09-21 18:35:15,007 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:40:17,530 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:45:20,133 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:50:22,770 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 18:55:25,759 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:00:28,571 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:00:28,575 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-21 19:00:30,797 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:05:33,332 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:10:36,224 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:15:38,796 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:20:41,483 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:25:44,364 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:30:46,921 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:35:49,557 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:40:52,042 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:45:54,775 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:50:57,369 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 19:55:59,948 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:00:09,857 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:00:09,868 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-21 20:00:12,303 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:05:14,973 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:10:17,538 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:15:20,092 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:20:22,645 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:25:25,341 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:25:26,697 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:25:26,700 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +0.311493 USDT | Vốn: 100.000101 USDT
+2026-09-21 20:30:30,044 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:35:32,604 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:35:34,106 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:35:34,226 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85111.540000, Vốn = 70.000070 USDT
+2026-09-21 20:40:38,554 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:40:39,897 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:40:39,901 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.049512 USDT | Vốn: 99.950589 USDT
+2026-09-21 20:45:44,303 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:50:46,922 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:50:48,334 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 20:50:48,391 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85629.440000, Vốn = 69.965412 USDT
+2026-09-21 20:55:54,472 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:00:57,363 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:00:57,370 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-21 21:01:00,334 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:05:03,453 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:05:04,878 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:05:04,882 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.269626 USDT | Vốn: 99.680963 USDT
+2026-09-21 21:10:13,613 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:10:15,022 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:10:15,081 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85277.180000, Vốn = 69.776674 USDT
+2026-09-21 21:15:18,542 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:15:19,911 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:15:19,924 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.016176 USDT | Vốn: 99.664787 USDT
+2026-09-21 21:20:23,576 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:20:25,021 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:20:25,115 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85435.990000, Vốn = 69.765351 USDT
+2026-09-21 21:25:28,340 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:30:30,777 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:35:33,492 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:40:36,142 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:45:38,797 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:50:41,432 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 21:55:44,065 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:00:47,676 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:00:47,684 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-21 22:00:51,046 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:05:53,581 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:10:56,219 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:15:58,918 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:21:01,724 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:25:04,457 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:25:05,798 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:25:05,803 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +0.353947 USDT | Vốn: 100.018734 USDT
+2026-09-21 22:30:09,172 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:30:10,631 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:30:10,689 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85881.350000, Vốn = 70.013114 USDT
+2026-09-21 22:35:16,542 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:40:19,121 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:40:20,628 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:40:20,632 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +0.085020 USDT | Vốn: 100.103754 USDT
+2026-09-21 22:45:25,341 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:45:26,755 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:45:26,818 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86109.010000, Vốn = 70.072628 USDT
+2026-09-21 22:50:30,215 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 22:55:32,697 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:00:35,871 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:00:35,873 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-21 23:00:38,389 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:00:39,924 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:00:39,934 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.142377 USDT | Vốn: 99.961378 USDT
+2026-09-21 23:05:43,790 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:10:46,951 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:15:49,602 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:20:52,307 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:25:54,793 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:30:57,383 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:30:58,802 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:30:58,876 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85900.220000, Vốn = 69.972964 USDT
+2026-09-21 23:36:02,303 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:36:03,751 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:36:03,765 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.092814 USDT | Vốn: 99.868564 USDT
+2026-09-21 23:40:06,737 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:45:09,485 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:50:12,485 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:55:15,267 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:55:16,711 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-21 23:55:16,784 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86103.730000, Vốn = 69.907995 USDT
+2026-09-22 00:00:20,196 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:00:20,204 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 00:00:22,462 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:00:24,007 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:00:24,012 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.144746 USDT | Vốn: 99.723818 USDT
+2026-09-22 00:05:27,797 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:05:29,223 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:05:29,288 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85949.010000, Vốn = 69.806672 USDT
+2026-09-22 00:10:32,832 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:15:35,693 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:20:38,453 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:25:40,990 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:30:43,782 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:35:46,367 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:40:49,221 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:45:51,770 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:50:54,359 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:50:56,198 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 00:50:56,211 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.106234 USDT | Vốn: 99.617583 USDT
+2026-09-22 00:56:01,858 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:00:08,019 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:00:08,022 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 01:00:10,247 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:05:13,168 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:10:15,844 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:10:17,785 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:10:17,931 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85945.460000, Vốn = 69.732308 USDT
+2026-09-22 01:15:21,499 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:15:22,871 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:15:22,885 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +0.077866 USDT | Vốn: 99.695449 USDT
+2026-09-22 01:20:26,395 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:20:27,911 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:20:27,992 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86058.620000, Vốn = 69.786814 USDT
+2026-09-22 01:25:31,457 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:30:34,172 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:35:36,783 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:40:39,599 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:45:42,108 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:50:44,619 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 01:50:46,034 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 01:55:48,402 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 01:55:49,789 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:00:52,920 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:00:52,927 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 02:00:55,184 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:05:57,655 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:10:59,971 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 02:11:01,096 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 02:15:04,242 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:20:06,727 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:25:09,408 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:30:12,071 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:35:14,929 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:40:17,536 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:45:20,316 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 02:50:22,738 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 02:50:23,868 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 02:55:26,322 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:00:28,795 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 03:00:28,804 [INFO] >>> [STRATEGIST 1H] Chỉ thị: None | Xu hướng: None
+2026-09-22 03:00:31,702 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:05:34,284 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:10:36,935 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:15:39,559 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:20:42,023 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:25:44,875 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:30:47,641 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:35:50,229 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:40:52,808 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:45:55,357 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:50:58,033 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 03:50:59,447 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 03:56:02,159 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:00:06,589 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:00:06,592 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 04:00:08,755 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:05:11,285 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:05:12,651 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:05:12,664 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +0.514173 USDT | Vốn: 100.209622 USDT
+2026-09-22 04:10:15,777 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:15:18,385 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:20:20,585 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 04:20:21,716 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 04:25:24,316 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 04:25:25,700 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:30:28,160 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 04:30:29,303 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 04:35:32,091 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:40:34,423 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 04:40:35,548 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 04:45:38,132 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:50:41,012 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 04:55:43,399 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:00:45,676 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 05:00:45,677 [INFO] >>> [STRATEGIST 1H] Chỉ thị: None | Xu hướng: None
+2026-09-22 05:00:48,241 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:05:50,839 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:10:53,444 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:15:56,120 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:20:58,758 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:26:01,452 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:30:04,577 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:30:05,995 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:30:06,119 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 86418.950000, Vốn = 70.146736 USDT
+2026-09-22 05:35:09,478 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:40:12,216 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:45:14,503 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 05:45:15,882 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:50:18,088 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 05:50:19,494 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 05:55:22,033 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 05:55:23,191 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 06:00:26,149 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:00:26,158 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 06:00:28,230 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 06:00:28,231 [INFO] Retrying request in 4.000000 seconds (retry 1 of 2)
+2026-09-22 06:00:32,789 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:00:33,975 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 06:00:33,979 [INFO] Retrying request in 2.000000 seconds (retry 1 of 2)
+2026-09-22 06:00:36,307 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:00:36,319 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.006883 USDT | Vốn: 100.202739 USDT
+2026-09-22 06:05:39,684 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:10:42,480 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:15:45,073 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:20:47,668 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:25:50,335 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:30:53,128 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:35:55,829 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:40:58,362 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:46:00,698 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 06:46:01,827 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 06:50:04,647 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 06:55:07,296 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:00:10,607 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:00:10,621 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 07:00:13,219 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:05:15,952 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:10:18,660 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:15:21,335 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:20:24,238 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:25:26,804 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:30:29,379 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:35:32,148 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:40:34,676 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:45:37,258 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:50:40,085 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 07:55:42,750 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:00:45,456 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:00:45,460 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 08:00:47,638 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:05:50,096 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:10:52,537 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:15:55,054 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:20:57,622 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:25:59,943 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 08:26:01,338 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:30:04,390 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:35:06,968 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:40:09,701 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:45:12,375 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:50:15,043 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 08:55:17,889 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:00:20,672 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:00:20,680 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 09:00:22,811 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 09:00:24,193 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:05:26,758 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:10:29,408 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:15:32,247 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:20:34,997 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:25:39,260 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:30:41,969 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:35:44,710 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:40:47,309 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:45:50,202 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:50:53,510 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 09:55:56,457 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:00:59,401 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:00:59,409 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 10:01:02,054 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:05:04,798 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:10:07,634 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:15:10,622 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:20:13,313 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:25:15,810 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:30:18,308 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:35:21,064 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:40:23,756 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:45:26,491 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:50:29,232 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 10:55:32,018 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:00:34,924 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:00:34,927 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 11:00:37,218 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:05:40,130 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:10:42,876 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:15:45,576 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:20:48,231 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:25:50,795 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:30:53,599 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:35:56,273 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:40:59,075 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:46:01,792 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:50:04,651 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 11:55:07,159 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:00:10,272 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:00:10,274 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 12:00:13,026 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:05:15,611 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:05:16,993 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:10:19,902 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:10:21,346 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:10:21,439 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 85468.120000, Vốn = 70.141917 USDT
+2026-09-22 12:15:24,591 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:21:10,471 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:25:55,239 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:31:40,072 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 12:31:41,522 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:36:26,219 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:41:11,041 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:45:56,038 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:51:40,959 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:51:42,436 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 12:51:42,616 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.031186 USDT | Vốn: 100.171553 USDT
+2026-09-22 12:56:28,277 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:01:13,434 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:01:13,440 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 13:01:15,720 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:06:36,573 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:11:21,176 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:16:06,144 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:20:51,265 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:26:36,704 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:31:21,831 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 13:31:23,301 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:36:08,519 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:40:53,540 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:40:55,087 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:40:55,273 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85567.970000, Vốn = 70.120087 USDT
+2026-09-22 13:46:41,281 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:51:26,131 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:56:10,919 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:56:12,430 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 13:56:12,434 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.103228 USDT | Vốn: 100.068325 USDT
+2026-09-22 14:00:57,839 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:00:57,848 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 14:01:00,250 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:05:45,266 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:11:30,219 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:11:31,755 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:11:31,853 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85488.130000, Vốn = 70.047828 USDT
+2026-09-22 14:16:17,334 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:21:02,217 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:25:47,194 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:25:48,822 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:25:48,831 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.213147 USDT | Vốn: 99.855178 USDT
+2026-09-22 14:31:34,144 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:36:18,843 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:41:03,642 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:45:48,131 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:45:49,609 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:45:49,791 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 85268.000000, Vốn = 69.898625 USDT
+2026-09-22 14:51:35,196 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 14:56:19,726 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:01:04,554 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:01:04,556 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 15:01:06,997 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:05:51,913 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:05:53,414 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:05:53,427 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = -0.172820 USDT | Vốn: 99.682358 USDT
+2026-09-22 15:11:38,656 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:11:40,137 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:11:40,296 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85486.200000, Vốn = 69.777651 USDT
+2026-09-22 15:16:25,504 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:21:09,979 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:25:54,477 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:31:39,411 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:36:23,892 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:41:08,540 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:45:53,070 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:51:37,887 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 15:56:22,311 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:01:07,219 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:01:07,224 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 16:01:09,551 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:05:54,121 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:05:55,563 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:05:55,571 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +0.195744 USDT | Vốn: 99.878102 USDT
+2026-09-22 16:11:40,959 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:11:42,757 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:11:42,817 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85838.780000, Vốn = 69.914671 USDT
+2026-09-22 16:16:27,931 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:21:12,465 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:25:57,072 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:25:58,572 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:25:58,582 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +0.035952 USDT | Vốn: 99.914053 USDT
+2026-09-22 16:31:44,060 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:31:45,565 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:31:45,631 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85904.010000, Vốn = 69.939837 USDT
+2026-09-22 16:36:30,796 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:41:15,395 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:45:59,804 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:50:44,821 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:50:46,306 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 16:50:46,312 [INFO] >>> [AI TEAM] ĐÓNG VỊ THẾ CHỦ ĐỘNG (CLOSE): PnL = +0.106957 USDT | Vốn: 100.021010 USDT
+2026-09-22 16:56:31,792 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:01:16,749 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:01:16,761 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 17:01:19,057 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:06:03,550 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:10:47,947 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:10:49,399 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:10:49,563 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86099.710000, Vốn = 70.014707 USDT
+2026-09-22 17:16:35,108 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:21:19,194 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 17:21:20,646 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:31:23,262 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:31:23,275 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 17:31:25,821 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:35:53,158 [ERROR] Vòng lặp gặp ngoại lệ nghiêm trọng!
+Traceback (most recent call last):
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 905, in _error_catcher
+    yield
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1022, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1005, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\http\client.py", line 494, in read
+    s = self.fp.read(amt)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\socket.py", line 729, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1267, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1110, in read
+    data = self._raw_read(amt)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1021, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 910, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.") from e  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.binance.com', port=443): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 600, in fetch
+    response = self.session.request(
+        method,
+    ...<6 lines>...
+        files=files
+    )
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 827, in send
+    r.content
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\models.py", line 1042, in content
+    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
+                    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\models.py", line 943, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Read timed out.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 473, in main
+    run_once(
+    ~~~~~~~~^
+        fetcher,
+        ^^^^^^^^
+    ...<6 lines>...
+        reflector,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 199, in run_once
+    candles = fetcher.fetch_ohlcv(
+        settings.symbol, settings.timeframe, settings.candle_limit
+    )
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\data\fetcher.py", line 15, in fetch_ohlcv
+    rows = self.exchange.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 5054, in fetch_ohlcv
+    response = self.publicGetKlines(self.extend(request, params))
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\types.py", line 43, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 12502, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5772, in fetch2
+    raise e
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5755, in fetch2
+    response = self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 654, in fetch
+    raise RequestTimeout(details) from e
+ccxt.base.errors.RequestTimeout: binance GET https://api.binance.com/api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT
+2026-09-22 17:36:45,656 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:37:59,798 [ERROR] Vòng lặp gặp ngoại lệ nghiêm trọng!
+Traceback (most recent call last):
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\socket.py", line 989, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.binance.com', port=443): Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT (Caused by NameResolutionError("HTTPSConnection(host='api.binance.com', port=443): Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 600, in fetch
+    response = self.session.request(
+        method,
+    ...<6 lines>...
+        files=files
+    )
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT (Caused by NameResolutionError("HTTPSConnection(host='api.binance.com', port=443): Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 473, in main
+    run_once(
+    ~~~~~~~~^
+        fetcher,
+        ^^^^^^^^
+    ...<6 lines>...
+        reflector,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 199, in run_once
+    candles = fetcher.fetch_ohlcv(
+        settings.symbol, settings.timeframe, settings.candle_limit
+    )
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\data\fetcher.py", line 15, in fetch_ohlcv
+    rows = self.exchange.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 5054, in fetch_ohlcv
+    response = self.publicGetKlines(self.extend(request, params))
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\types.py", line 43, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 12502, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5772, in fetch2
+    raise e
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5755, in fetch2
+    response = self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 656, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT
+2026-09-22 17:38:43,621 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:40:35,587 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:42:19,927 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:45:26,293 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:50:29,108 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 17:55:31,828 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:00:35,194 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:00:35,202 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 18:00:37,472 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:05:40,194 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:10:42,809 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:15:45,459 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:20:48,032 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:25:50,907 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:30:53,869 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:35:56,694 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:40:59,381 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:41:00,952 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:41:01,059 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86067.980000, Vốn = 70.000000 USDT
+2026-09-22 18:45:04,813 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:50:07,602 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 18:55:10,447 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:00:13,360 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:00:13,372 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 19:00:16,174 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:05:19,080 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:10:21,770 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:15:24,451 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:20:27,264 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:25:30,003 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:30:33,064 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:35:35,665 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:40:38,146 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:45:41,061 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:50:43,717 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 19:55:46,569 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:00:49,378 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:00:49,387 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-22 20:00:51,924 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:05:54,853 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:10:57,576 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:16:00,303 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:20:03,338 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:25:06,110 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:30:08,902 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:30:10,383 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:30:10,397 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = -0.280942 USDT | Vốn: 99.719058 USDT
+2026-09-22 20:35:13,823 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:40:16,533 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:45:19,545 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:50:57,620 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:56:00,159 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:56:01,566 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 20:56:01,612 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86143.980000, Vốn = 69.803341 USDT
+2026-09-22 21:08:03,222 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:08:03,244 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 21:08:06,840 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:08:08,295 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:08:08,364 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86238.000000, Vốn = 70.000000 USDT
+2026-09-22 21:10:11,077 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:15:13,728 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:30:46,476 [INFO] Retrying request in 0.436544 seconds (retry 1 of 2)
+2026-09-22 21:30:49,372 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 21:30:49,714 [INFO] Retrying request in 0.899404 seconds (retry 2 of 2)
+2026-09-22 21:31:03,904 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 21:31:07,087 [INFO] >>> [STRATEGIST 1H] Chỉ thị: None | Xu hướng: None
+2026-09-22 21:31:26,533 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 21:31:26,535 [INFO] Retrying request in 0.489109 seconds (retry 1 of 2)
+2026-09-22 21:32:55,919 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 21:32:55,921 [INFO] Retrying request in 0.428921 seconds (retry 1 of 2)
+2026-09-22 21:32:59,421 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:32:59,443 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-22 21:35:31,116 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 21:35:31,121 [INFO] Retrying request in 0.441513 seconds (retry 1 of 2)
+2026-09-22 21:35:50,648 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 21:35:54,091 [INFO] Retrying request in 0.819335 seconds (retry 2 of 2)
+2026-09-22 21:36:00,449 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 21:36:00,453 [INFO] >>> [STRATEGIST 1H] Chỉ thị: None | Xu hướng: None
+2026-09-22 21:36:04,573 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:36:07,820 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 21:36:07,823 [INFO] Retrying request in 0.397774 seconds (retry 1 of 2)
+2026-09-22 21:36:14,071 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:36:14,087 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 85640.590000, Vốn = 70.000000 USDT
+2026-09-22 21:50:46,730 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 21:50:46,797 [INFO] Retrying request in 0.385100 seconds (retry 1 of 2)
+2026-09-22 21:50:51,588 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:50:51,601 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 21:50:56,896 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 21:56:01,184 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 22:00:05,454 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:00:05,456 [INFO] Retrying request in 0.494401 seconds (retry 1 of 2)
+2026-09-22 22:00:35,973 [INFO] Retrying request in 0.987771 seconds (retry 2 of 2)
+2026-09-22 22:00:40,327 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:00:40,330 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:00:40,341 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:00:40,722 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:00:40,726 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:00:40,734 [INFO] >>> [STRATEGIST 1H] Chỉ thị: None | Xu hướng: None
+2026-09-22 22:00:43,975 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:00:43,977 [INFO] Retrying request in 0.395078 seconds (retry 1 of 2)
+2026-09-22 22:00:45,864 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:00:45,866 [INFO] Retrying request in 0.893467 seconds (retry 2 of 2)
+2026-09-22 22:00:54,194 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:00:54,201 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:00:54,211 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:00:54,459 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:00:54,462 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:00:56,219 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:00:56,225 [INFO] Retrying request in 0.496340 seconds (retry 1 of 2)
+2026-09-22 22:01:00,881 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:01:00,883 [INFO] Retrying request in 0.954467 seconds (retry 2 of 2)
+2026-09-22 22:01:03,275 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:01:03,279 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:01:03,294 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:01:03,575 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:01:03,577 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:05:07,777 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:05:07,779 [INFO] Retrying request in 0.484980 seconds (retry 1 of 2)
+2026-09-22 22:05:09,464 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:05:09,466 [INFO] Retrying request in 0.974690 seconds (retry 2 of 2)
+2026-09-22 22:05:12,047 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:05:12,051 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:05:12,062 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:05:12,352 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:05:12,355 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:05:13,670 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:05:13,672 [INFO] Retrying request in 0.407572 seconds (retry 1 of 2)
+2026-09-22 22:05:19,874 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:05:19,877 [INFO] Retrying request in 0.795969 seconds (retry 2 of 2)
+2026-09-22 22:05:24,550 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:05:24,559 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:05:24,562 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:05:24,786 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:05:24,788 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:10:29,315 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:10:29,317 [INFO] Retrying request in 0.469099 seconds (retry 1 of 2)
+2026-09-22 22:10:35,722 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 22:10:37,842 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:10:37,844 [INFO] Retrying request in 0.430637 seconds (retry 1 of 2)
+2026-09-22 22:10:52,578 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 22:10:52,649 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86206.000000, Vốn = 70.000000 USDT
+2026-09-22 22:15:56,439 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:15:56,444 [INFO] Retrying request in 0.437502 seconds (retry 1 of 2)
+2026-09-22 22:15:57,945 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:15:57,949 [INFO] Retrying request in 0.826668 seconds (retry 2 of 2)
+2026-09-22 22:15:59,879 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:15:59,885 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:15:59,886 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:16:00,312 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:16:00,316 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:16:01,849 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:16:01,853 [INFO] Retrying request in 0.496166 seconds (retry 1 of 2)
+2026-09-22 22:16:05,088 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:16:05,092 [INFO] Retrying request in 0.803520 seconds (retry 2 of 2)
+2026-09-22 22:16:06,799 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:16:06,801 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:16:06,805 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:16:07,009 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:16:07,011 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:20:13,463 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:20:13,465 [INFO] Retrying request in 0.453752 seconds (retry 1 of 2)
+2026-09-22 22:20:18,257 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:20:18,259 [INFO] Retrying request in 0.905913 seconds (retry 2 of 2)
+2026-09-22 22:20:20,258 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:20:20,262 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:20:20,263 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:20:20,519 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:20:20,524 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:20:23,404 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:20:23,407 [INFO] Retrying request in 0.432186 seconds (retry 1 of 2)
+2026-09-22 22:20:26,281 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:20:26,284 [INFO] Retrying request in 0.857842 seconds (retry 2 of 2)
+2026-09-22 22:20:30,143 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:20:30,146 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:20:30,155 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:20:30,408 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:20:30,412 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:25:37,612 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:25:37,614 [INFO] Retrying request in 0.470908 seconds (retry 1 of 2)
+2026-09-22 22:25:42,446 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:25:42,448 [INFO] Retrying request in 0.896817 seconds (retry 2 of 2)
+2026-09-22 22:25:44,589 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:25:44,593 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:25:44,603 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:25:44,940 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:25:44,941 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:25:48,278 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:25:48,283 [INFO] Retrying request in 0.418942 seconds (retry 1 of 2)
+2026-09-22 22:25:51,246 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:25:51,248 [INFO] Retrying request in 0.933081 seconds (retry 2 of 2)
+2026-09-22 22:25:54,640 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:25:54,646 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:25:54,651 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:25:54,883 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:25:54,885 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:30:58,843 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:30:58,845 [INFO] Retrying request in 0.389010 seconds (retry 1 of 2)
+2026-09-22 22:31:00,402 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:31:00,407 [INFO] Retrying request in 0.819880 seconds (retry 2 of 2)
+2026-09-22 22:31:02,396 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:31:02,401 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:31:02,402 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:31:02,765 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:31:02,769 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:31:06,518 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:31:06,522 [INFO] Retrying request in 0.458095 seconds (retry 1 of 2)
+2026-09-22 22:31:09,991 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:31:09,992 [INFO] Retrying request in 0.897151 seconds (retry 2 of 2)
+2026-09-22 22:31:12,078 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:31:12,080 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:31:12,087 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:31:12,368 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:31:12,370 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:35:15,598 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:35:15,602 [INFO] Retrying request in 0.444964 seconds (retry 1 of 2)
+2026-09-22 22:35:17,680 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:35:17,684 [INFO] Retrying request in 0.790137 seconds (retry 2 of 2)
+2026-09-22 22:35:22,387 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:35:22,390 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:35:22,400 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:35:22,645 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:35:22,650 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:35:24,572 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:35:24,576 [INFO] Retrying request in 0.430757 seconds (retry 1 of 2)
+2026-09-22 22:35:26,429 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:35:26,433 [INFO] Retrying request in 0.929414 seconds (retry 2 of 2)
+2026-09-22 22:35:43,888 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:35:43,894 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:35:43,905 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:35:44,163 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:35:44,164 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:40:47,745 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:40:47,750 [INFO] Retrying request in 0.446930 seconds (retry 1 of 2)
+2026-09-22 22:40:49,321 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:40:49,325 [INFO] Retrying request in 0.807839 seconds (retry 2 of 2)
+2026-09-22 22:40:54,025 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:40:54,027 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:40:54,032 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:40:54,354 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:40:54,357 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:40:55,709 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:40:55,712 [INFO] Retrying request in 0.454629 seconds (retry 1 of 2)
+2026-09-22 22:41:24,024 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:41:24,027 [INFO] Retrying request in 0.948427 seconds (retry 2 of 2)
+2026-09-22 22:41:27,680 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:41:27,684 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:41:27,701 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:41:27,940 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:41:27,944 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:45:34,732 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:45:34,734 [INFO] Retrying request in 0.402409 seconds (retry 1 of 2)
+2026-09-22 22:45:39,174 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:45:39,176 [INFO] Retrying request in 0.892845 seconds (retry 2 of 2)
+2026-09-22 22:45:52,938 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 22:50:59,008 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:50:59,011 [INFO] Retrying request in 0.489863 seconds (retry 1 of 2)
+2026-09-22 22:51:06,641 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 22:55:09,039 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:55:09,044 [INFO] Retrying request in 0.424734 seconds (retry 1 of 2)
+2026-09-22 22:55:10,119 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:55:10,122 [INFO] Retrying request in 0.932762 seconds (retry 2 of 2)
+2026-09-22 22:55:12,501 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:55:12,504 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:55:12,510 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:55:12,882 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:55:12,885 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 22:55:16,465 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:55:16,467 [INFO] Retrying request in 0.497107 seconds (retry 1 of 2)
+2026-09-22 22:55:17,802 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:55:17,806 [INFO] Retrying request in 0.871377 seconds (retry 2 of 2)
+2026-09-22 22:55:23,472 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 22:55:23,475 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 22:55:23,484 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 22:55:23,734 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 22:55:23,738 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 23:00:26,222 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:00:26,228 [INFO] Retrying request in 0.426133 seconds (retry 1 of 2)
+2026-09-22 23:00:27,744 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:00:27,746 [INFO] Retrying request in 0.883983 seconds (retry 2 of 2)
+2026-09-22 23:00:29,645 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:00:29,650 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:00:29,652 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 23:00:30,029 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 23:00:30,031 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 23:00:30,040 [INFO] >>> [STRATEGIST 1H] Chỉ thị: None | Xu hướng: None
+2026-09-22 23:00:32,216 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:00:32,221 [INFO] Retrying request in 0.427834 seconds (retry 1 of 2)
+2026-09-22 23:00:33,248 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:00:33,252 [INFO] Retrying request in 0.846502 seconds (retry 2 of 2)
+2026-09-22 23:00:34,758 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:00:34,763 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:00:34,777 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 23:00:34,914 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 23:00:34,917 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 23:00:36,307 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:00:36,310 [INFO] Retrying request in 0.473557 seconds (retry 1 of 2)
+2026-09-22 23:00:37,554 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:00:37,557 [INFO] Retrying request in 0.758076 seconds (retry 2 of 2)
+2026-09-22 23:00:39,432 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:00:39,433 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:00:39,441 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 23:00:39,568 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 23:00:39,569 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 23:05:43,658 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:05:43,660 [INFO] Retrying request in 0.444616 seconds (retry 1 of 2)
+2026-09-22 23:05:45,406 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:05:45,408 [INFO] Retrying request in 0.929388 seconds (retry 2 of 2)
+2026-09-22 23:05:48,919 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:05:48,924 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:05:48,940 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 23:05:49,318 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 23:05:49,320 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 23:05:51,457 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:05:51,460 [INFO] Retrying request in 0.423060 seconds (retry 1 of 2)
+2026-09-22 23:05:56,826 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:05:56,828 [INFO] Retrying request in 0.961362 seconds (retry 2 of 2)
+2026-09-22 23:06:00,273 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:06:00,276 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:06:00,281 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 23:06:00,527 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 23:06:00,530 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 23:10:14,398 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:10:14,403 [INFO] Retrying request in 0.446878 seconds (retry 1 of 2)
+2026-09-22 23:10:18,052 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:10:18,054 [INFO] Retrying request in 0.940235 seconds (retry 2 of 2)
+2026-09-22 23:10:21,837 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:10:21,840 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:10:21,848 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 23:10:22,095 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 23:10:22,098 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 23:10:24,041 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:10:24,044 [INFO] Retrying request in 0.457911 seconds (retry 1 of 2)
+2026-09-22 23:10:27,386 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:10:27,389 [INFO] Retrying request in 0.764355 seconds (retry 2 of 2)
+2026-09-22 23:10:29,248 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:10:29,252 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:10:29,265 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq Llama-3.3-70B...
+2026-09-22 23:10:29,514 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-22 23:10:29,516 [ERROR] Lỗi cả Groq: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-22 23:15:49,042 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:25:47,906 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:25:47,909 [INFO] Retrying request in 0.386217 seconds (retry 1 of 2)
+2026-09-22 23:25:52,806 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:25:52,810 [INFO] Retrying request in 0.906455 seconds (retry 2 of 2)
+2026-09-22 23:25:57,132 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:25:57,135 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:25:57,142 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-22 23:25:57,532 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-09-22 23:25:57,534 [ERROR] Lỗi cả Groq: Error code: 429 - {'error': {'message': "Request too large for model `qwen/qwen3.8-27b` in organization `org_01m2zg192hegftbd2es0pcygr1` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1091. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-09-22 23:25:57,541 [INFO] >>> [STRATEGIST 1H] Chỉ thị: None | Xu hướng: None
+2026-09-22 23:26:00,301 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:26:00,303 [INFO] Retrying request in 0.497827 seconds (retry 1 of 2)
+2026-09-22 23:26:04,127 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:26:04,131 [INFO] Retrying request in 0.875866 seconds (retry 2 of 2)
+2026-09-22 23:26:06,605 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:26:06,608 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:26:06,615 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-22 23:26:07,176 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:26:10,319 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:26:10,391 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86248.020000, Vốn = 70.000000 USDT
+2026-09-22 23:30:18,469 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:30:24,482 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:30:24,658 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = -0.098027 USDT | Vốn: 99.901973 USDT
+2026-09-22 23:35:31,477 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:35:31,479 [INFO] Retrying request in 0.487733 seconds (retry 1 of 2)
+2026-09-22 23:35:33,506 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:35:33,507 [INFO] Retrying request in 0.954768 seconds (retry 2 of 2)
+2026-09-22 23:35:36,207 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:35:36,211 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:35:36,237 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-22 23:35:37,176 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:35:38,596 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:35:38,601 [INFO] Retrying request in 0.456563 seconds (retry 1 of 2)
+2026-09-22 23:35:40,494 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:35:40,498 [INFO] Retrying request in 0.949924 seconds (retry 2 of 2)
+2026-09-22 23:35:45,837 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:35:45,840 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:35:45,855 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-22 23:35:46,383 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:35:46,477 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 86158.000000, Vốn = 69.931381 USDT
+2026-09-22 23:40:22,615 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:40:22,619 [INFO] Retrying request in 0.474486 seconds (retry 1 of 2)
+2026-09-22 23:40:33,341 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:40:33,361 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-22 23:40:45,087 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:40:45,090 [INFO] Retrying request in 0.491401 seconds (retry 1 of 2)
+2026-09-22 23:40:47,356 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:40:47,358 [INFO] Retrying request in 0.984564 seconds (retry 2 of 2)
+2026-09-22 23:41:00,567 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:45:05,976 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:45:05,980 [INFO] Retrying request in 0.378069 seconds (retry 1 of 2)
+2026-09-22 23:45:23,069 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:50:32,516 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:50:32,520 [INFO] Retrying request in 0.428691 seconds (retry 1 of 2)
+2026-09-22 23:50:33,918 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:50:33,921 [INFO] Retrying request in 0.759720 seconds (retry 2 of 2)
+2026-09-22 23:50:38,118 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:50:38,121 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:50:38,127 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-22 23:50:38,789 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:55:41,584 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:55:41,586 [INFO] Retrying request in 0.460469 seconds (retry 1 of 2)
+2026-09-22 23:55:56,200 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:56:26,711 [INFO] Retrying request in 0.376796 seconds (retry 1 of 2)
+2026-09-22 23:56:28,380 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:56:28,382 [INFO] Retrying request in 0.799454 seconds (retry 2 of 2)
+2026-09-22 23:56:37,064 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-22 23:56:37,067 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-22 23:56:37,072 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-22 23:56:37,699 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-22 23:56:37,766 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86535.860000, Vốn = 70.000000 USDT
+2026-09-23 00:00:42,453 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:00:42,458 [INFO] Retrying request in 0.417666 seconds (retry 1 of 2)
+2026-09-23 00:00:44,032 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:00:44,035 [INFO] Retrying request in 0.888457 seconds (retry 2 of 2)
+2026-09-23 00:00:48,400 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:00:48,402 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 00:00:48,407 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 00:00:49,046 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:00:49,052 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 00:00:51,822 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:00:51,824 [INFO] Retrying request in 0.387567 seconds (retry 1 of 2)
+2026-09-23 00:00:56,863 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:00:56,867 [INFO] Retrying request in 0.891902 seconds (retry 2 of 2)
+2026-09-23 00:01:07,352 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:05:26,450 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:05:26,455 [INFO] Retrying request in 0.422248 seconds (retry 1 of 2)
+2026-09-23 00:05:28,057 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:05:28,061 [INFO] Retrying request in 0.913725 seconds (retry 2 of 2)
+2026-09-23 00:05:30,024 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:05:30,027 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 00:05:30,035 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 00:05:30,777 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

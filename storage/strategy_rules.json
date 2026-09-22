@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "last_updated": "2026-09-21T23:00:00",
+  "reason_for_update": "Quy tắc khởi tạo mặc định",
+  "entry_rules": "OPEN_LONG khi EMA9 > EMA21 và RSI > 50 (và không bị cấm bởi Strategist 1H). OPEN_SHORT khi EMA9 < EMA21 và RSI < 50.",
+  "exit_rules": "Giữ lệnh HOLD khi giá chỉ nhúng nhẹ chạm EMA9 trong xu hướng mạnh. CHỈ ĐÓNG (CLOSE) khi nến gãy hẳn qua EMA21 và RSI đảo chiều, hoặc khi lệnh đã lãi trên 1.0% để khóa lợi nhuận."
+}

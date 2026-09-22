@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2026-09-21T23:00:36.315257+00:00",
+    "pnl_pct": -0.009812662616238598,
+    "lesson": "Cần tăng ngưỡng chịu lỗ hoặc điều chỉnh logic thoát sớm của AI để tránh đóng lệnh khi giá chưa đạt mục tiêu."
+  },
+  {
+    "timestamp": "2026-09-22T05:51:42.444048+00:00",
+    "pnl_pct": -0.0444610224256717,
+    "lesson": "Tăng ngưỡng chịu đựng cho AI_EARLY_EXIT để tránh thoát lệnh quá sớm."
+  },
+  {
+    "timestamp": "2026-09-22T06:56:12.433647+00:00",
+    "pnl_pct": -0.1472163006788652,
+    "lesson": "Cần tăng ngưỡng xác nhận xu hướng để tránh thoát lệnh sớm sai lầm."
+  },
+  {
+    "timestamp": "2026-09-22T07:25:48.828890+00:00",
+    "pnl_pct": -0.3042878584430431,
+    "lesson": "Tăng ngưỡng xác nhận tín hiệu AI để tránh thoát lệnh sớm khi biến động thấp."
+  },
+  {
+    "timestamp": "2026-09-22T08:05:53.422649+00:00",
+    "pnl_pct": -0.24724398367500935,
+    "lesson": "Không mở SHORT khi xu hướng tăng còn mạnh, cần xác nhận đảo chiều rõ ràng."
+  },
+  {
+    "timestamp": "2026-09-22T09:05:55.569027+00:00",
+    "pnl_pct": 0.2805248098523477,
+    "lesson": "Tin tưởng tín hiệu thoát sớm của AI để bảo toàn lợi nhuận thay vì chờ giá cao hơn."
+  },
+  {
+    "timestamp": "2026-09-22T09:25:58.580168+00:00",
+    "pnl_pct": 0.051421979669328266,
+    "lesson": "Tăng ngưỡng lợi nhuận tối thiểu để tránh AI đóng lệnh quá sớm."
+  },
+  {
+    "timestamp": "2026-09-22T09:50:46.309968+00:00",
+    "pnl_pct": 0.15292650482790024,
+    "lesson": "Cân nhắc nới lỏng ngưỡng thoát sớm để tối ưu lợi nhuận khi xu hướng vẫn tích cực."
+  },
+  {
+    "timestamp": "2026-09-22T13:30:10.393682+00:00",
+    "pnl_pct": -0.40134554104789383,
+    "lesson": "Cần tăng ngưỡng xác nhận xu hướng để tránh thoát lệnh sớm sai lầm."
+  },
+  {
+    "timestamp": "2026-09-22T16:30:24.491185+00:00",
+    "pnl_pct": -0.14003799739402575,
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh đóng vị thế quá sớm khi xu hướng chưa đảo chiều."
+  }
+]
