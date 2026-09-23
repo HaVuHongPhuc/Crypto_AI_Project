@@ -61,3 +61,28 @@ def create_buy_labels(
 
     labels.iloc[-horizon:] = pd.NA
     return labels
+
+
+class Preprocessor:
+    """Wrapper class phục vụ Controller main.py và kịch bản test luồng."""
+
+    FEATURE_COLUMNS = FEATURE_COLUMNS
+
+    def __init__(self):
+        pass
+
+    def add_indicators(self, candles: pd.DataFrame) -> pd.DataFrame:
+        return add_indicators(candles)
+
+    def create_buy_labels(
+        self,
+        candles: pd.DataFrame,
+        horizon: int = 5,
+        take_profit_pct: float = 0.015,
+        stop_loss_pct: float = 0.01,
+    ) -> pd.Series:
+        return create_buy_labels(candles, horizon, take_profit_pct, stop_loss_pct)
+
+
+# Tương thích ngược nếu code khác gọi tên DataPreprocessor
+DataPreprocessor = Preprocessor

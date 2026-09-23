@@ -2256,3 +2256,36 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines
 2026-09-23 23:45:49,549 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
 2026-09-23 23:45:49,554 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
 2026-09-23 23:45:50,142 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 03:55:02,827 [ERROR] Lỗi Exception ngoài vòng lặp: cannot import name '_ask_llm' from 'agents.agent_team' (C:\Users\havuh\OneDrive\Desktop\Crypto_AI\agents\agent_team.py)
+2026-09-24 03:56:14,881 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 03:56:19,618 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 03:56:19,619 [ERROR] Lỗi gọi Local LLM (qwen2.5:7b): Error code: 404 - {'error': {'message': "model 'qwen2.5:7b' not found", 'type': 'not_found_error', 'param': None, 'code': None}}
+2026-09-24 03:56:19,619 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 5/10 | Lời khuyên: NORMAL | Sự kiện: Local LLM Error
+2026-09-24 03:56:19,927 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 03:56:19,928 [ERROR] Lỗi gọi Local LLM (qwen2.5:7b): Error code: 404 - {'error': {'message': "model 'qwen2.5:7b' not found", 'type': 'not_found_error', 'param': None, 'code': None}}
+2026-09-24 04:01:04,043 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:01:08,069 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 04:01:08,070 [ERROR] Lỗi gọi Local LLM (qwen2.5:7b): Error code: 404 - {'error': {'message': "model 'qwen2.5:7b' not found", 'type': 'not_found_error', 'param': None, 'code': None}}
+2026-09-24 04:01:08,070 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 5/10 | Lời khuyên: NORMAL | Sự kiện: Local LLM Error
+2026-09-24 04:01:08,375 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 04:01:08,375 [ERROR] Lỗi gọi Local LLM (qwen2.5:7b): Error code: 404 - {'error': {'message': "model 'qwen2.5:7b' not found", 'type': 'not_found_error', 'param': None, 'code': None}}
+2026-09-24 04:01:42,235 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:01:49,842 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:01:49,847 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin long liquidations tăng
+2026-09-24 04:01:50,660 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:01:52,696 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:05:18,012 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:10:17,491 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:10:19,512 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:19:21,705 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:19:33,984 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:19:33,993 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin long liquidations tăng cao
+2026-09-24 04:19:34,814 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:19:37,134 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:20:11,100 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:25:18,684 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:29:33,465 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:29:38,217 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:29:38,222 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin long liquidations tăng
+2026-09-24 04:29:39,047 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:30:13,003 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"

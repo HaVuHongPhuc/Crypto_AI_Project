@@ -1,9 +1,9 @@
 {
-  "version": 9,
-  "last_updated": "2026-09-23T14:11:25.302753+00:00",
-  "reason_for_update": "Loại bỏ cơ chế thoát lệnh sớm do AI, chỉ cho phép thoát khi thỏa mãn điều kiện kỹ thuật cứng.",
-  "entry_rules": "OPEN_LONG khi EMA9 > EMA21, RSI > 50 và khung 1H là ONLY_LONG. OPEN_SHORT khi EMA9 < EMA21, RSI < 50 và khung 1H là ONLY_SHORT. Cấm vào lệnh nếu thiếu đồng thuận khung lớn.",
-  "exit_rules": "TUYỆT ĐỐI CẤM thoát lệnh dựa trên tín hiệu AI_EARLY_EXIT_CLOSE. Chỉ đóng lệnh khi nến đóng cửa hoàn toàn phía bên kia EMA21 VÀ RSI xác nhận đảo chiều (Long: RSI < 50, Short: RSI > 50). Giữ lệnh qua mọi biến động ngắn hạn.",
+  "version": 8,
+  "last_updated": "2026-09-23T19:44:03.958362+00:00",
+  "reason_for_update": "Tăng độ lỳ cho lệnh, loại bỏ chốt lời non, chỉ thoát khi EMA21 bị phá vỡ dứt khoát và RSI xác nhận đảo chiều.",
+  "entry_rules": "OPEN_LONG khi EMA9 > EMA21 và RSI > 50. OPEN_SHORT khi EMA9 < EMA21 và RSI < 50. Yêu cầu xu hướng khung 1H đồng thuận.",
+  "exit_rules": "Cấm thoát lệnh dựa trên biến động giá ngắn hạn. Chỉ đóng vị thế khi nến đóng cửa hoàn toàn phía bên kia EMA21. Bắt buộc RSI phải xác nhận đảo chiều (<50 với Long, >50 với Short).",
   "evolution_history": [
     {
       "version": 1,
@@ -39,14 +39,6 @@
       "version": 7,
       "reason": "Chuyển mốc hỗ trợ/kháng cự động chính từ EMA9 sang EMA21.",
       "flaw_identified": "Cần gia tăng thêm độ lỳ trong sóng biến động mạnh."
-    },
-    {
-      "version": 8,
-      "archived_at": "2026-09-23T14:11:25.302611+00:00",
-      "reason": "Tăng độ lỳ cho lệnh, loại bỏ chốt lời non, chỉ thoát khi EMA21 bị phá vỡ dứt khoát và RSI xác nhận đảo chiều.",
-      "flaw_identified": "Cơ chế AI_EARLY_EXIT_CLOSE gây thoát lệnh sai lầm, làm mất lợi nhuận và tạo lỗ không cần thiết.",
-      "exit_rules": "Cấm thoát lệnh dựa trên biến động giá ngắn hạn. Chỉ đóng vị thế khi nến đóng cửa hoàn toàn phía bên kia EMA21. Bắt buộc RSI phải xác nhận đảo chiều (<50 với Long, >50 với Short).",
-      "entry_rules": "OPEN_LONG khi EMA9 > EMA21 và RSI > 50. OPEN_SHORT khi EMA9 < EMA21 và RSI < 50. Yêu cầu xu hướng khung 1H đồng thuận."
     }
   ]
 }

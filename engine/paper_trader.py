@@ -1,123 +1,159 @@
-"""Paper trading engine supporting both LONG and SHORT positions with trailing-stop tracking."""
+﻿"""PaperTrader: Quản lý vị thế giả lập, trừ phí thực tế và khôi phục khi sập nguồn."""
 
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
+import json
+import logging
 from pathlib import Path
-import csv
+from typing import Optional
 
-TRADE_FIELDS = [
-    "symbol",
-    "side",
-    "entry_price",
-    "exit_price",
-    "amount",
-    "pnl",
-    "pnl_pct",
-    "reason",
-    "opened_at",
-    "closed_at",
-    "final_cash",
-]
+BASE_DIR = Path(__file__).resolve().parent.parent
+ACTIVE_POS_FILE = BASE_DIR / "storage" / "active_position.json"
 
 
 @dataclass
-class Position:
-    symbol: str
-    side: str  # "LONG" hoặc "SHORT"
-    entry_price: float
-    amount: float
-    value: float
-    opened_at: str
-    extreme_price: float  # Đỉnh cao nhất (LONG) hoặc đáy thấp nhất (SHORT) kể từ lúc vào lệnh
+class ActivePosition:
+  side: str  # "LONG" hoặc "SHORT"
+  entry_price: float
+  amount: float
+  entry_time: str
+  pnl_pct: float = 0.0
+  pnl_usdt: float = 0.0
+  holding_candles: int = 0
+
+
+# Tương thích ngược nếu code khác gọi tên Position
+Position = ActivePosition
 
 
 class PaperTrader:
-    def __init__(self, initial_cash: float = 10000.0, trades_path: str | Path = "storage/trades.csv") -> None:
-        self.initial_cash = initial_cash
-        self.cash = initial_cash
-        self.position: Position | None = None
-        self.trade_history: list[dict] = []
-        self.trades_path = Path(trades_path)
-        self.trades_path.parent.mkdir(parents=True, exist_ok=True)
-        self._ensure_trade_log_schema()
 
-    def _ensure_trade_log_schema(self) -> None:
-        # Move aside a legacy CSV so the new LONG/SHORT columns don't get misaligned.
-        if not self.trades_path.exists() or self.trades_path.stat().st_size == 0:
-            return
-        with self.trades_path.open("r", encoding="utf-8") as file:
-            header = file.readline().strip().split(",")
-        if header != TRADE_FIELDS:
-            self.trades_path.rename(self.trades_path.with_suffix(".legacy.csv"))
+  def __init__(self, initial_cash: float = 100.0, fee_rate: float = 0.0005):
+    self.cash = initial_cash
+    self.fee_rate = fee_rate  # 0.05% phí sàn mỗi chiều mở/đóng
+    self.position: Optional[ActivePosition] = None
+    self.load_active_position()
 
-    def open_position(self, symbol: str, side: str, price: float, value: float) -> bool:
-        if self.position is not None or value <= 0 or value > self.cash:
-            return False
-
-        amount = value / price
-        self.cash -= value
-        self.position = Position(
-            symbol=symbol,
-            side=side.upper(),
-            entry_price=price,
-            amount=amount,
-            value=value,
-            opened_at=self._now(),
-            extreme_price=price,
+  def load_active_position(self):
+    """Khôi phục vị thế đang chạy khi bot bị khởi động lại hoặc mất điện."""
+    if not ACTIVE_POS_FILE.exists():
+      return
+    try:
+      with open(ACTIVE_POS_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+      if data and data.get("side") in ("LONG", "SHORT"):
+        self.position = ActivePosition(**data)
+        logging.info(
+            ">>> [PHỤC HỒI VỊ THẾ] Đã nạp lại vị thế %s @ %s USDT",
+            self.position.side,
+            self.position.entry_price,
         )
-        return True
+    except Exception as e:
+      logging.warning("Không thể đọc active_position.json: %s", e)
 
-    def close_position(self, current_price: float, reason: str = "MANUAL") -> float:
-        if not self.position:
-            return 0.0
-
-        pos = self.position
-        if pos.side == "LONG":
-            pnl = (current_price - pos.entry_price) * pos.amount
-        else:  # SHORT: giá giảm thì lãi, giá tăng thì lỗ
-            pnl = (pos.entry_price - current_price) * pos.amount
-
-        self.cash += pos.value + pnl
-
-        record = {
-            "symbol": pos.symbol,
-            "side": pos.side,
-            "entry_price": pos.entry_price,
-            "exit_price": current_price,
-            "amount": pos.amount,
-            "pnl": pnl,
-            "pnl_pct": (pnl / pos.value) * 100 if pos.value else 0.0,
-            "reason": reason,
-            "opened_at": pos.opened_at,
-            "closed_at": self._now(),
-            "final_cash": self.cash,
-        }
-        self.trade_history.append(record)
-        self._record(record)
-
-        self.position = None
-        return pnl
-
-    def equity(self, current_price: float | None = None) -> float:
-        if not self.position or current_price is None:
-            return self.cash
-
-        pos = self.position
-        if pos.side == "LONG":
-            unrealized_pnl = (current_price - pos.entry_price) * pos.amount
+  def save_active_position(self):
+    """Lưu trạng thái vị thế ra ổ cứng."""
+    ACTIVE_POS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    try:
+      with open(ACTIVE_POS_FILE, "w", encoding="utf-8") as f:
+        if self.position:
+          json.dump(asdict(self.position), f, ensure_ascii=False, indent=2)
         else:
-            unrealized_pnl = (pos.entry_price - current_price) * pos.amount
+          json.dump({}, f)
+    except Exception as e:
+      logging.error("Lỗi lưu active_position.json: %s", e)
 
-        return self.cash + pos.value + unrealized_pnl
+  def open_position(
+      self, side: str, price: float, cash_amount: float = 70.0
+  ) -> bool:
+    if self.position is not None:
+      logging.warning("Đang có vị thế mở, không thể mở thêm!")
+      return False
 
-    @staticmethod
-    def _now() -> str:
-        return datetime.now(timezone.utc).isoformat()
+    if cash_amount > self.cash:
+      cash_amount = self.cash
 
-    def _record(self, record: dict) -> None:
-        write_header = not self.trades_path.exists() or self.trades_path.stat().st_size == 0
-        with self.trades_path.open("a", newline="", encoding="utf-8") as file:
-            writer = csv.DictWriter(file, fieldnames=TRADE_FIELDS)
-            if write_header:
-                writer.writeheader()
-            writer.writerow(record)
+    fee = cash_amount * self.fee_rate
+    net_cash = cash_amount - fee
+    amount = net_cash / price
+
+    self.cash -= cash_amount
+    self.position = ActivePosition(
+        side=side,
+        entry_price=price,
+        amount=amount,
+        entry_time=datetime.now(timezone.utc).isoformat(),
+        pnl_pct=0.0,
+        pnl_usdt=-fee,
+        holding_candles=0,
+    )
+    self.save_active_position()
+    logging.info(
+        ">>> [PAPER TRADER] Mở %s @ %s | Vốn: %s USDT (Phí: -%s USDT)",
+        side,
+        price,
+        cash_amount,
+        fee,
+    )
+    return True
+
+  def update_position(self, current_price: float):
+    if not self.position:
+      return
+
+    self.position.holding_candles += 1
+    if self.position.side == "LONG":
+      diff = current_price - self.position.entry_price
+      self.position.pnl_pct = (diff / self.position.entry_price) * 100
+      self.position.pnl_usdt = diff * self.position.amount
+    elif self.position.side == "SHORT":
+      diff = self.position.entry_price - current_price
+      self.position.pnl_pct = (diff / self.position.entry_price) * 100
+      self.position.pnl_usdt = diff * self.position.amount
+
+    self.save_active_position()
+
+  def close_position(
+      self, exit_price: float, exit_reason: str = "SIGNAL"
+  ) -> dict:
+    if not self.position:
+      return {}
+
+    gross_value = self.position.amount * exit_price
+    exit_fee = gross_value * self.fee_rate
+
+    if self.position.side == "LONG":
+      pnl_usdt = (
+          exit_price - self.position.entry_price
+      ) * self.position.amount - exit_fee
+    else:
+      pnl_usdt = (
+          self.position.entry_price - exit_price
+      ) * self.position.amount - exit_fee
+
+    pnl_pct = (
+        pnl_usdt / (self.position.amount * self.position.entry_price)
+    ) * 100
+    net_return = gross_value - exit_fee
+    self.cash += net_return
+
+    summary = {
+        "side": self.position.side,
+        "entry_price": self.position.entry_price,
+        "exit_price": exit_price,
+        "pnl_pct": pnl_pct,
+        "pnl_usdt": pnl_usdt,
+        "exit_reason": exit_reason,
+        "holding_candles": self.position.holding_candles,
+    }
+
+    self.position = None
+    self.save_active_position()
+    logging.info(
+        ">>> [PAPER TRADER] Đóng %s @ %s | PnL: %+.2f%% (%+.4f USDT)",
+        summary["side"],
+        exit_price,
+        pnl_pct,
+        pnl_usdt,
+    )
+    return summary
