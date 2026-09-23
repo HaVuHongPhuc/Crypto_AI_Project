@@ -1509,3 +1509,750 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines
 2026-09-23 00:05:30,027 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
 2026-09-23 00:05:30,035 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
 2026-09-23 00:05:30,777 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:10:46,984 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:15:52,878 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:15:52,881 [INFO] Retrying request in 0.426810 seconds (retry 1 of 2)
+2026-09-23 00:15:56,687 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:15:56,689 [INFO] Retrying request in 0.851953 seconds (retry 2 of 2)
+2026-09-23 00:16:02,878 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:16:02,882 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 00:16:02,899 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 00:16:03,590 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:20:15,314 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:25:25,196 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:30:31,447 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:35:40,540 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:40:44,039 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:40:44,041 [INFO] Retrying request in 0.428788 seconds (retry 1 of 2)
+2026-09-23 00:40:55,704 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:40:55,710 [INFO] Retrying request in 0.859573 seconds (retry 2 of 2)
+2026-09-23 00:40:58,966 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 00:40:58,970 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 00:40:58,986 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 00:40:59,772 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:49:01,091 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:52:56,433 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 00:58:58,489 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:04:14,219 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:04:14,223 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 01:04:21,742 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:08:13,078 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:13:11,262 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 01:13:11,266 [INFO] Retrying request in 0.488266 seconds (retry 1 of 2)
+2026-09-23 01:13:13,670 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 01:13:13,675 [INFO] Retrying request in 0.928549 seconds (retry 2 of 2)
+2026-09-23 01:13:16,531 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 01:13:16,534 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 01:13:16,539 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 01:13:47,258 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:18:39,509 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 01:18:39,519 [INFO] Retrying request in 0.439496 seconds (retry 1 of 2)
+2026-09-23 01:18:51,105 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 01:18:51,108 [INFO] Retrying request in 0.897548 seconds (retry 2 of 2)
+2026-09-23 01:19:12,767 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:23:04,069 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:27:58,144 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:33:54,765 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:33:59,938 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:33:59,956 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = -0.219911 USDT | Vốn: 99.780089 USDT
+2026-09-23 01:37:56,705 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:43:49,573 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:48:46,083 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:53:42,606 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:58:38,670 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:58:43,059 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 01:58:43,182 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86579.390000, Vốn = 69.846062 USDT
+2026-09-23 02:03:40,409 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:03:40,414 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 02:03:58,643 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:08:52,100 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:13:48,721 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:18:42,215 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:23:35,207 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:28:28,065 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:33:39,154 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:38:34,073 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:43:28,595 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:48:20,067 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:48:22,752 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:48:22,760 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = -0.160200 USDT | Vốn: 99.619889 USDT
+2026-09-23 02:48:26,710 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:48:26,731 [INFO] >>> [REFLECTOR TỰ NÂNG CẤP LUẬT] Phiên bản mới: v2 | Lý do: Tăng độ lỳ cho lệnh, chỉ thoát khi nến đóng cửa dưới EMA21 để tránh cắt lỗ sớm do nhiễu giá ngắn hạn.
+2026-09-23 02:48:26,732 [INFO] >>> [AI TỰ NÂNG CẤP CHIẾN THUẬT] Đã tiến hóa lên phiên bản v2
+2026-09-23 02:53:31,702 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 02:58:25,969 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:03:19,767 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:03:19,787 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 03:03:24,405 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:08:16,659 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:13:16,558 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:18:13,097 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:23:06,634 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:27:59,917 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:33:52,617 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:38:45,358 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:43:39,219 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:48:31,022 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:53:23,463 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 03:58:15,804 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:03:10,422 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:03:10,425 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 04:03:15,756 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:08:07,653 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:13:00,599 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:17:56,056 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:23:49,897 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:28:44,193 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:33:39,435 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:38:33,066 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:43:26,067 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:48:18,034 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:53:11,310 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 04:58:04,082 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:03:03,750 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:03:03,756 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-23 05:03:08,129 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:03:11,230 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:03:11,330 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 86184.000000, Vốn = 69.733922 USDT
+2026-09-23 05:08:04,065 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:13:10,251 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:18:03,180 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:22:55,793 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:28:48,579 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:33:43,867 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:38:37,033 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:43:30,311 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:48:23,589 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:53:16,690 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 05:58:09,792 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:03:12,989 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:03:13,004 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 06:03:17,013 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:08:10,172 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:13:03,414 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:13:07,085 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:13:07,122 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = -0.241679 USDT | Vốn: 99.378210 USDT
+2026-09-23 06:13:12,914 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:13:12,935 [INFO] >>> [REFLECTOR TỰ NÂNG CẤP LUẬT] Phiên bản mới: v3 | Lý do: Tăng độ lỳ cho lệnh bằng cách yêu cầu xác nhận nến đóng cửa vượt EMA21 và nới rộng biên độ thoát lệnh.
+2026-09-23 06:13:12,939 [INFO] >>> [AI TỰ NÂNG CẤP CHIẾN THUẬT] Đã tiến hóa lên phiên bản v3
+2026-09-23 06:18:06,835 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:18:09,678 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:18:09,749 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86383.940000, Vốn = 69.564747 USDT
+2026-09-23 06:23:02,415 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:27:56,802 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:33:49,733 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:38:44,442 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:43:39,827 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:43:42,725 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:43:42,734 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = -0.210932 USDT | Vốn: 99.167279 USDT
+2026-09-23 06:43:46,937 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:43:46,944 [INFO] >>> [REFLECTOR TỰ NÂNG CẤP LUẬT] Phiên bản mới: v4 | Lý do: Tăng độ lỳ cho chiến lược bằng cách loại bỏ thoát lệnh sớm, chỉ đóng vị thế khi xu hướng EMA21 thực sự đảo chiều.
+2026-09-23 06:43:46,948 [INFO] >>> [AI TỰ NÂNG CẤP CHIẾN THUẬT] Đã tiến hóa lên phiên bản v4
+2026-09-23 06:48:41,118 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:48:51,281 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:48:51,376 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 86200.010000, Vốn = 69.417095 USDT
+2026-09-23 06:53:44,983 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 06:58:37,602 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:03:30,396 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:03:30,407 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 07:03:33,755 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:03:38,666 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:03:38,683 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = +0.022218 USDT | Vốn: 99.189497 USDT
+2026-09-23 07:03:42,759 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:03:42,764 [INFO] >>> [REFLECTOR TỰ NÂNG CẤP LUẬT] Phiên bản mới: v5 | Lý do: Tăng độ lỳ cho lệnh, loại bỏ AI_EARLY_EXIT, chỉ thoát khi nến đóng cửa vượt EMA21 và RSI xác nhận đảo chiều xu hướng.
+2026-09-23 07:03:42,768 [INFO] >>> [AI TỰ NÂNG CẤP CHIẾN THUẬT] Đã tiến hóa lên phiên bản v5
+2026-09-23 07:08:35,951 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:13:29,219 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:18:20,993 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:23:12,990 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:23:15,925 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:23:16,008 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86475.600000, Vốn = 69.432648 USDT
+2026-09-23 07:28:09,882 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:33:01,040 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:37:54,381 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:43:48,292 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:48:41,658 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:53:34,633 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 07:58:26,283 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:03:22,089 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:03:22,094 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 08:03:25,301 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:08:17,254 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:13:09,687 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:18:01,668 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:22:55,609 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:28:47,368 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:33:39,199 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:38:33,848 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:43:27,417 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:48:20,191 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:53:12,129 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:53:20,427 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:53:20,435 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = -0.203611 USDT | Vốn: 98.985885 USDT
+2026-09-23 08:53:26,350 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 08:53:26,354 [INFO] >>> [REFLECTOR TỰ NÂNG CẤP LUẬT] Phiên bản mới: v6 | Lý do: Tăng độ lỳ cho lệnh, loại bỏ thoát lệnh sớm, chỉ đóng vị thế khi nến đóng cửa vượt EMA21 và RSI xác nhận đảo chiều.
+2026-09-23 08:53:26,357 [INFO] >>> [AI TỰ NÂNG CẤP CHIẾN THUẬT] Đã tiến hóa lên phiên bản v6
+2026-09-23 08:58:19,042 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:03:12,892 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:03:12,908 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 09:03:17,040 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:08:10,166 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:13:02,972 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:17:56,274 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:23:49,313 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:28:40,661 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:33:33,457 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:38:25,988 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:43:18,794 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:48:11,580 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:48:15,950 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:48:16,140 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 86490.000000, Vốn = 69.290120 USDT
+2026-09-23 09:53:11,232 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 09:58:04,454 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:03:00,505 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:03:00,514 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 10:03:04,739 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:07:57,851 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:13:50,237 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:18:43,396 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:23:35,786 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:28:28,360 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:33:22,215 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:38:14,934 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:43:07,618 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:47:59,563 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:53:52,866 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 10:58:44,678 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:03:39,913 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:03:39,918 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 11:03:44,962 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:08:37,558 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:13:30,867 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:18:23,784 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:23:16,280 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:28:09,263 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:33:01,853 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:37:55,447 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:43:48,679 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:48:41,040 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:53:35,085 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 11:58:27,271 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:03:21,467 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:03:21,470 [INFO] >>> [STRATEGIST 1H] Chỉ thị: ONLY_LONG | Xu hướng: BULLISH
+2026-09-23 12:03:26,055 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:08:17,962 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:13:10,202 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:16:19,162 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:20:23,386 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:25:28,879 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:30:34,164 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:30:37,552 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:30:37,557 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = +0.219126 USDT | Vốn: 99.205012 USDT
+2026-09-23 12:30:45,852 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:30:45,857 [INFO] >>> [REFLECTOR TỰ NÂNG CẤP LUẬT] Phiên bản mới: v7 | Lý do: Tăng độ lỳ cho lệnh, loại bỏ thoát lệnh sớm do biến động nhiễu, chỉ đóng vị thế khi EMA21 bị phá vỡ dứt khoát.
+2026-09-23 12:30:45,863 [INFO] >>> [AI TỰ NÂNG CẤP CHIẾN THUẬT] Đã tiến hóa lên phiên bản v7
+2026-09-23 12:35:53,711 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:40:57,752 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:46:02,788 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:50:06,945 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 12:55:11,864 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:00:17,389 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:00:17,400 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
+2026-09-23 13:00:21,608 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:00:25,446 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:05:30,268 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:05:34,618 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:10:39,107 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:10:41,946 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:15:47,048 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:15:50,385 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:20:55,629 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:20:58,547 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:26:03,445 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:26:07,959 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:30:11,845 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:30:15,592 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:35:20,959 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:35:28,202 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:40:32,188 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:40:36,148 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:40:36,227 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 86524.000000, Vốn = 69.443508 USDT
+2026-09-23 13:45:42,143 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:50:48,121 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 13:55:52,231 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:00:57,010 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:00:57,023 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 14:01:01,743 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:05:08,246 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:10:13,380 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:15:18,522 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:20:23,753 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:25:30,050 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:30:35,105 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:35:40,765 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:40:47,586 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:45:52,351 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:50:56,910 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 14:56:02,469 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:00:10,437 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:00:10,439 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 15:00:26,857 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:05:32,290 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:10:39,470 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:15:43,571 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:20:50,270 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:25:55,083 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:30:59,646 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:36:05,540 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:40:09,461 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:45:14,539 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:50:18,880 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 15:55:23,408 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:00:27,626 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:00:27,636 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 16:00:32,436 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:05:37,653 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:10:44,079 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:15:49,108 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:20:57,049 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:26:02,487 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:30:07,988 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:35:15,329 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:40:20,632 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:45:27,249 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:50:31,948 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:55:36,607 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:55:39,669 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:55:39,673 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = +0.557112 USDT | Vốn: 99.762123 USDT
+2026-09-23 16:55:43,708 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 16:55:43,712 [INFO] >>> [REFLECTOR TỰ NÂNG CẤP LUẬT] Phiên bản mới: v8 | Lý do: Tăng độ lỳ cho lệnh, loại bỏ chốt lời non, chỉ thoát khi EMA21 bị phá vỡ dứt khoát và RSI xác nhận đảo chiều.
+2026-09-23 16:55:43,716 [INFO] >>> [AI TỰ NÂNG CẤP CHIẾN THUẬT] Đã tiến hóa lên phiên bản v8
+2026-09-23 17:00:51,528 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:00:51,534 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 17:00:59,508 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:06:05,668 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:06:09,004 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:06:09,160 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 85874.350000, Vốn = 69.833486 USDT
+2026-09-23 17:10:14,115 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:15:23,006 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:20:27,946 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:44:23,881 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:44:23,902 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 17:44:29,139 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:45:34,176 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:50:40,468 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 17:55:46,036 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:00:52,765 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:00:52,769 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 18:00:57,486 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:06:02,124 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:10:20,991 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:10:26,543 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:10:26,634 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 85848.860000, Vốn = 70.000000 USDT
+2026-09-23 18:15:33,597 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:20:38,584 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:25:45,639 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:30:50,922 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:35:56,067 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:41:01,447 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:45:06,852 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:50:14,668 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 18:55:22,353 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:00:28,148 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 19:00:28,152 [INFO] Retrying request in 0.436956 seconds (retry 1 of 2)
+2026-09-23 19:00:30,715 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:00:30,720 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 19:00:34,678 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:05:40,701 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:10:47,832 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:15:51,044 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:20:57,089 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:26:01,442 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:30:08,236 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:35:12,564 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:40:25,985 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:45:33,075 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 19:45:33,080 [INFO] Retrying request in 0.406808 seconds (retry 1 of 2)
+2026-09-23 19:45:37,935 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:50:42,144 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 19:55:45,955 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:00:51,971 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:00:51,973 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 20:00:58,629 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:06:02,838 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:06:02,843 [INFO] Retrying request in 0.475799 seconds (retry 1 of 2)
+2026-09-23 20:06:11,869 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:10:17,632 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:15:26,517 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:20:48,265 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:20:48,269 [INFO] Retrying request in 0.406858 seconds (retry 1 of 2)
+2026-09-23 20:20:51,588 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:20:51,590 [INFO] Retrying request in 0.773658 seconds (retry 2 of 2)
+2026-09-23 20:20:58,596 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:20:58,600 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 20:20:58,614 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 20:20:59,373 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:26:06,354 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:26:17,375 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:26:17,381 [INFO] Retrying request in 0.432883 seconds (retry 1 of 2)
+2026-09-23 20:26:33,096 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:26:33,114 [INFO] >>> [TRÍ NHỚ TÍCH LŨY] Đã lưu bài học #11 vào kho dữ liệu vĩnh cửu.
+2026-09-23 20:26:33,129 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = +0.287717 USDT | Vốn: 100.287717 USDT
+2026-09-23 20:30:45,747 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:35:49,936 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:35:49,942 [INFO] Retrying request in 0.472783 seconds (retry 1 of 2)
+2026-09-23 20:35:57,646 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:35:57,651 [INFO] Retrying request in 0.931339 seconds (retry 2 of 2)
+2026-09-23 20:36:01,984 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:36:01,990 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 20:36:02,021 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 20:36:02,678 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:40:05,703 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:40:05,706 [INFO] Retrying request in 0.476959 seconds (retry 1 of 2)
+2026-09-23 20:40:10,009 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:40:12,850 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:40:12,998 [INFO] >>> [AI TEAM] MỞ VỊ THẾ LONG: Giá = 85741.880000, Vốn = 70.201402 USDT
+2026-09-23 20:45:18,201 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:45:18,217 [INFO] Retrying request in 0.406294 seconds (retry 1 of 2)
+2026-09-23 20:45:22,314 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:50:28,114 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:50:28,123 [INFO] Retrying request in 0.452185 seconds (retry 1 of 2)
+2026-09-23 20:50:33,932 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:50:33,937 [INFO] Retrying request in 0.889996 seconds (retry 2 of 2)
+2026-09-23 20:50:41,583 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 20:55:46,681 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:55:46,690 [INFO] Retrying request in 0.449665 seconds (retry 1 of 2)
+2026-09-23 20:55:48,926 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:55:48,930 [INFO] Retrying request in 0.802977 seconds (retry 2 of 2)
+2026-09-23 20:56:03,500 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 20:56:03,502 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 20:56:03,507 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 20:56:04,142 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:00:08,864 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:00:08,872 [INFO] Retrying request in 0.489052 seconds (retry 1 of 2)
+2026-09-23 21:00:10,817 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:00:10,823 [INFO] Retrying request in 0.753274 seconds (retry 2 of 2)
+2026-09-23 21:00:15,411 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:00:15,413 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:00:15,418 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:00:16,197 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:00:16,206 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: SIDEWAY
+2026-09-23 21:00:20,522 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:00:20,528 [INFO] Retrying request in 0.478387 seconds (retry 1 of 2)
+2026-09-23 21:00:22,132 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:00:22,137 [INFO] Retrying request in 0.856331 seconds (retry 2 of 2)
+2026-09-23 21:00:24,197 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:00:25,172 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:00:25,181 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:00:26,144 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:05:31,994 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:05:32,000 [INFO] Retrying request in 0.426383 seconds (retry 1 of 2)
+2026-09-23 21:05:34,331 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:05:34,335 [INFO] Retrying request in 0.992553 seconds (retry 2 of 2)
+2026-09-23 21:05:43,940 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:10:50,619 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:10:50,626 [INFO] Retrying request in 0.445969 seconds (retry 1 of 2)
+2026-09-23 21:10:52,885 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:10:52,890 [INFO] Retrying request in 0.963009 seconds (retry 2 of 2)
+2026-09-23 21:10:56,342 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:10:56,348 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:10:56,368 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:10:57,027 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:11:02,439 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:11:02,444 [INFO] Retrying request in 0.429976 seconds (retry 1 of 2)
+2026-09-23 21:11:05,148 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:11:05,150 [INFO] Retrying request in 0.955872 seconds (retry 2 of 2)
+2026-09-23 21:11:07,554 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:11:07,560 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:11:07,583 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:11:08,142 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:11:08,147 [INFO] >>> [TRÍ NHỚ TÍCH LŨY] Đã lưu bài học #12 vào kho dữ liệu vĩnh cửu.
+2026-09-23 21:11:08,151 [INFO] >>> ĐÓNG VỊ THẾ (AI_EARLY_EXIT_CLOSE): PnL = -0.477210 USDT | Vốn: 99.810507 USDT
+2026-09-23 21:11:15,223 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:11:15,225 [INFO] Retrying request in 0.398297 seconds (retry 1 of 2)
+2026-09-23 21:11:20,617 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:11:20,623 [INFO] Retrying request in 0.944685 seconds (retry 2 of 2)
+2026-09-23 21:11:24,496 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:11:24,498 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:11:24,505 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:11:25,296 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:11:25,309 [INFO] >>> [TRÍ NHỚ TIẾN HÓA] Đã nâng cấp lên v9 kế thừa từ 8 phiên bản trước! Lý do: Loại bỏ cơ chế thoát lệnh sớm do AI, chỉ cho phép thoát khi thỏa mãn điều kiện kỹ thuật cứng.
+2026-09-23 21:11:25,326 [INFO] >>> [AI TỰ NÂNG CẤP CHIẾN THUẬT] Đã tiến hóa lên phiên bản v9
+2026-09-23 21:15:33,457 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:15:33,461 [INFO] Retrying request in 0.382839 seconds (retry 1 of 2)
+2026-09-23 21:15:34,826 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:15:34,830 [INFO] Retrying request in 0.978866 seconds (retry 2 of 2)
+2026-09-23 21:15:37,613 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:15:37,620 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:15:37,642 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:15:38,239 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:15:40,058 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:15:40,064 [INFO] Retrying request in 0.445570 seconds (retry 1 of 2)
+2026-09-23 21:15:42,557 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:15:42,563 [INFO] Retrying request in 0.786499 seconds (retry 2 of 2)
+2026-09-23 21:15:46,475 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:15:46,480 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:15:46,501 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:15:47,154 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:15:47,318 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 84834.090000, Vốn = 69.867355 USDT
+2026-09-23 21:20:52,863 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:20:52,872 [INFO] Retrying request in 0.467919 seconds (retry 1 of 2)
+2026-09-23 21:20:56,379 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:20:56,383 [INFO] Retrying request in 0.837676 seconds (retry 2 of 2)
+2026-09-23 21:20:59,693 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:20:59,699 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:20:59,720 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:21:00,405 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:25:04,794 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:25:04,802 [INFO] Retrying request in 0.483583 seconds (retry 1 of 2)
+2026-09-23 21:25:08,363 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:25:08,368 [INFO] Retrying request in 0.794607 seconds (retry 2 of 2)
+2026-09-23 21:25:13,577 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:25:13,583 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:25:13,607 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:25:14,434 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:30:18,156 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:30:18,163 [INFO] Retrying request in 0.487402 seconds (retry 1 of 2)
+2026-09-23 21:30:20,557 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:30:20,559 [INFO] Retrying request in 0.801785 seconds (retry 2 of 2)
+2026-09-23 21:30:23,653 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:30:23,659 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:30:23,661 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:30:25,763 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:35:30,983 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:35:30,985 [INFO] Retrying request in 0.444018 seconds (retry 1 of 2)
+2026-09-23 21:35:34,341 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:40:37,074 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:40:37,079 [INFO] Retrying request in 0.496748 seconds (retry 1 of 2)
+2026-09-23 21:40:39,760 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:40:39,763 [INFO] Retrying request in 0.855273 seconds (retry 2 of 2)
+2026-09-23 21:40:41,631 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:40:41,638 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:40:41,658 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:40:42,336 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:45:47,803 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:45:47,816 [INFO] Retrying request in 0.462174 seconds (retry 1 of 2)
+2026-09-23 21:45:53,216 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:45:53,219 [INFO] Retrying request in 0.801401 seconds (retry 2 of 2)
+2026-09-23 21:45:58,539 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:45:58,546 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:45:58,577 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:45:59,285 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:51:02,469 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:51:02,472 [INFO] Retrying request in 0.476624 seconds (retry 1 of 2)
+2026-09-23 21:51:05,945 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:51:05,951 [INFO] Retrying request in 0.788022 seconds (retry 2 of 2)
+2026-09-23 21:51:08,499 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:51:08,504 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:51:08,532 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:51:09,162 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 21:55:12,257 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:55:12,260 [INFO] Retrying request in 0.494038 seconds (retry 1 of 2)
+2026-09-23 21:55:14,157 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:55:14,159 [INFO] Retrying request in 0.872464 seconds (retry 2 of 2)
+2026-09-23 21:55:16,843 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 21:55:16,845 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 21:55:16,850 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 21:55:17,485 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:00:22,748 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:00:22,753 [INFO] Retrying request in 0.469781 seconds (retry 1 of 2)
+2026-09-23 22:00:24,575 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:00:24,580 [INFO] Retrying request in 0.829727 seconds (retry 2 of 2)
+2026-09-23 22:00:31,741 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:00:31,743 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:00:31,747 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:00:32,549 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:00:32,552 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BEARISH
+2026-09-23 22:00:36,487 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:00:36,489 [INFO] Retrying request in 0.469432 seconds (retry 1 of 2)
+2026-09-23 22:00:38,414 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:00:38,416 [INFO] Retrying request in 0.832157 seconds (retry 2 of 2)
+2026-09-23 22:00:40,558 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:00:40,561 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:00:40,569 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:00:41,165 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:05:44,505 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:05:44,512 [INFO] Retrying request in 0.449719 seconds (retry 1 of 2)
+2026-09-23 22:05:45,691 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:05:45,696 [INFO] Retrying request in 0.893015 seconds (retry 2 of 2)
+2026-09-23 22:05:47,419 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:05:47,425 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:05:47,447 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:05:48,061 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:10:51,393 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:10:51,396 [INFO] Retrying request in 0.472826 seconds (retry 1 of 2)
+2026-09-23 22:10:53,488 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:10:53,493 [INFO] Retrying request in 0.883423 seconds (retry 2 of 2)
+2026-09-23 22:10:55,565 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:10:55,569 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:10:55,583 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:10:56,217 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:16:01,407 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:16:01,414 [INFO] Retrying request in 0.417989 seconds (retry 1 of 2)
+2026-09-23 22:16:02,546 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:16:02,550 [INFO] Retrying request in 0.763403 seconds (retry 2 of 2)
+2026-09-23 22:16:04,827 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:16:04,832 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:16:04,842 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:16:05,509 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:20:08,735 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:20:08,741 [INFO] Retrying request in 0.490826 seconds (retry 1 of 2)
+2026-09-23 22:20:10,435 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:20:10,441 [INFO] Retrying request in 0.848231 seconds (retry 2 of 2)
+2026-09-23 22:20:13,178 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:20:13,179 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:20:13,186 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:20:13,784 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:25:17,106 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:25:17,110 [INFO] Retrying request in 0.378713 seconds (retry 1 of 2)
+2026-09-23 22:25:18,715 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:25:18,717 [INFO] Retrying request in 0.964467 seconds (retry 2 of 2)
+2026-09-23 22:25:22,129 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:25:22,136 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:25:22,138 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:25:23,105 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:30:26,637 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:30:26,642 [INFO] Retrying request in 0.386184 seconds (retry 1 of 2)
+2026-09-23 22:30:28,854 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:30:28,856 [INFO] Retrying request in 0.834693 seconds (retry 2 of 2)
+2026-09-23 22:30:30,946 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:30:30,948 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:30:30,956 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:30:32,070 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-23 22:30:32,072 [ERROR] Lỗi cả Groq: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}
+2026-09-23 22:30:33,289 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:30:33,292 [INFO] Retrying request in 0.401427 seconds (retry 1 of 2)
+2026-09-23 22:30:34,741 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:30:34,746 [INFO] Retrying request in 0.912716 seconds (retry 2 of 2)
+2026-09-23 22:30:36,396 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:30:36,398 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:30:36,407 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:30:37,452 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:35:55,764 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:35:55,772 [INFO] Retrying request in 0.430925 seconds (retry 1 of 2)
+2026-09-23 22:35:57,280 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:35:57,282 [INFO] Retrying request in 0.941422 seconds (retry 2 of 2)
+2026-09-23 22:35:59,542 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:35:59,544 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:35:59,549 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:36:00,201 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:40:03,615 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:40:03,618 [INFO] Retrying request in 0.484144 seconds (retry 1 of 2)
+2026-09-23 22:40:08,547 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:40:08,550 [INFO] Retrying request in 0.841657 seconds (retry 2 of 2)
+2026-09-23 22:40:11,471 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:40:11,475 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:40:11,478 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:40:12,027 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:45:16,528 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:45:16,535 [INFO] Retrying request in 0.489516 seconds (retry 1 of 2)
+2026-09-23 22:45:18,550 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:45:18,551 [INFO] Retrying request in 0.944116 seconds (retry 2 of 2)
+2026-09-23 22:45:21,582 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:45:21,585 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:45:21,589 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:45:22,526 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:50:25,624 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:50:25,628 [INFO] Retrying request in 0.422647 seconds (retry 1 of 2)
+2026-09-23 22:50:26,736 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:50:26,738 [INFO] Retrying request in 0.821610 seconds (retry 2 of 2)
+2026-09-23 22:50:28,738 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:50:28,744 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:50:28,771 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:50:29,726 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 22:55:33,157 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:55:33,159 [INFO] Retrying request in 0.475774 seconds (retry 1 of 2)
+2026-09-23 22:55:35,090 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:55:35,091 [INFO] Retrying request in 0.976141 seconds (retry 2 of 2)
+2026-09-23 22:55:37,579 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 22:55:37,584 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 22:55:37,597 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 22:55:38,225 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:00:41,265 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:00:41,269 [INFO] Retrying request in 0.419993 seconds (retry 1 of 2)
+2026-09-23 23:00:43,072 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:00:43,075 [INFO] Retrying request in 0.969225 seconds (retry 2 of 2)
+2026-09-23 23:00:44,816 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:00:44,818 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:00:44,824 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:00:45,623 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:00:45,627 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BEARISH
+2026-09-23 23:00:48,818 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:00:48,824 [INFO] Retrying request in 0.449029 seconds (retry 1 of 2)
+2026-09-23 23:00:51,084 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:00:51,089 [INFO] Retrying request in 0.851153 seconds (retry 2 of 2)
+2026-09-23 23:00:52,964 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:00:52,966 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:00:52,971 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:00:53,566 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:05:56,683 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:05:56,684 [INFO] Retrying request in 0.445069 seconds (retry 1 of 2)
+2026-09-23 23:05:57,807 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:05:57,813 [INFO] Retrying request in 0.861827 seconds (retry 2 of 2)
+2026-09-23 23:06:00,040 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:06:00,047 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:06:00,070 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:06:00,780 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:10:05,037 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:10:05,039 [INFO] Retrying request in 0.422794 seconds (retry 1 of 2)
+2026-09-23 23:10:06,194 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:10:06,195 [INFO] Retrying request in 0.936489 seconds (retry 2 of 2)
+2026-09-23 23:10:08,013 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:10:08,019 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:10:08,039 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:10:08,920 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:15:12,671 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:15:12,675 [INFO] Retrying request in 0.406049 seconds (retry 1 of 2)
+2026-09-23 23:15:15,325 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:15:15,913 [INFO] Retrying request in 0.799037 seconds (retry 2 of 2)
+2026-09-23 23:15:18,230 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:15:18,233 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:15:18,237 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:15:19,167 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:20:22,506 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:20:22,514 [INFO] Retrying request in 0.418160 seconds (retry 1 of 2)
+2026-09-23 23:20:24,387 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:20:24,394 [INFO] Retrying request in 0.999560 seconds (retry 2 of 2)
+2026-09-23 23:20:26,838 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:20:26,841 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:20:26,847 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:20:27,784 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:25:33,183 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:25:33,190 [INFO] Retrying request in 0.469829 seconds (retry 1 of 2)
+2026-09-23 23:25:36,006 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:25:36,008 [INFO] Retrying request in 0.938981 seconds (retry 2 of 2)
+2026-09-23 23:25:38,419 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:25:38,426 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:25:38,445 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:25:39,102 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:30:42,216 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:30:42,219 [INFO] Retrying request in 0.404701 seconds (retry 1 of 2)
+2026-09-23 23:30:43,366 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:30:43,368 [INFO] Retrying request in 0.876445 seconds (retry 2 of 2)
+2026-09-23 23:30:52,710 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:30:52,717 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:30:52,738 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:30:53,452 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:35:57,694 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:35:57,699 [INFO] Retrying request in 0.406310 seconds (retry 1 of 2)
+2026-09-23 23:36:00,653 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:36:00,655 [INFO] Retrying request in 0.926567 seconds (retry 2 of 2)
+2026-09-23 23:36:02,247 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:36:02,254 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:36:02,273 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:36:02,860 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:40:05,580 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:40:05,586 [INFO] Retrying request in 0.408692 seconds (retry 1 of 2)
+2026-09-23 23:40:08,459 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:40:08,464 [INFO] Retrying request in 0.805182 seconds (retry 2 of 2)
+2026-09-23 23:40:10,933 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:40:10,939 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:40:10,958 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:40:11,624 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-23 23:45:43,831 [INFO] Retrying request in 0.456350 seconds (retry 1 of 2)
+2026-09-23 23:45:45,304 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:45:45,306 [INFO] Retrying request in 0.883462 seconds (retry 2 of 2)
+2026-09-23 23:45:49,547 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-23 23:45:49,549 [WARNING] ⚠️ Google Gemini gặp sự cố (503/Timeout): Error code: 503 - [{'error': {'code': 503, 'message': 'This model is c
+2026-09-23 23:45:49,554 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-09-23 23:45:50,142 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

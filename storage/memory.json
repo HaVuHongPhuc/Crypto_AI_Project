@@ -1,45 +1,5 @@
 [
   {
-    "timestamp": "2026-09-21T23:00:36.315257+00:00",
-    "pnl_pct": -0.009812662616238598,
-    "lesson": "Cần tăng ngưỡng chịu lỗ hoặc điều chỉnh logic thoát sớm của AI để tránh đóng lệnh khi giá chưa đạt mục tiêu."
-  },
-  {
-    "timestamp": "2026-09-22T05:51:42.444048+00:00",
-    "pnl_pct": -0.0444610224256717,
-    "lesson": "Tăng ngưỡng chịu đựng cho AI_EARLY_EXIT để tránh thoát lệnh quá sớm."
-  },
-  {
-    "timestamp": "2026-09-22T06:56:12.433647+00:00",
-    "pnl_pct": -0.1472163006788652,
-    "lesson": "Cần tăng ngưỡng xác nhận xu hướng để tránh thoát lệnh sớm sai lầm."
-  },
-  {
-    "timestamp": "2026-09-22T07:25:48.828890+00:00",
-    "pnl_pct": -0.3042878584430431,
-    "lesson": "Tăng ngưỡng xác nhận tín hiệu AI để tránh thoát lệnh sớm khi biến động thấp."
-  },
-  {
-    "timestamp": "2026-09-22T08:05:53.422649+00:00",
-    "pnl_pct": -0.24724398367500935,
-    "lesson": "Không mở SHORT khi xu hướng tăng còn mạnh, cần xác nhận đảo chiều rõ ràng."
-  },
-  {
-    "timestamp": "2026-09-22T09:05:55.569027+00:00",
-    "pnl_pct": 0.2805248098523477,
-    "lesson": "Tin tưởng tín hiệu thoát sớm của AI để bảo toàn lợi nhuận thay vì chờ giá cao hơn."
-  },
-  {
-    "timestamp": "2026-09-22T09:25:58.580168+00:00",
-    "pnl_pct": 0.051421979669328266,
-    "lesson": "Tăng ngưỡng lợi nhuận tối thiểu để tránh AI đóng lệnh quá sớm."
-  },
-  {
-    "timestamp": "2026-09-22T09:50:46.309968+00:00",
-    "pnl_pct": 0.15292650482790024,
-    "lesson": "Cân nhắc nới lỏng ngưỡng thoát sớm để tối ưu lợi nhuận khi xu hướng vẫn tích cực."
-  },
-  {
     "timestamp": "2026-09-22T13:30:10.393682+00:00",
     "pnl_pct": -0.40134554104789383,
     "lesson": "Cần tăng ngưỡng xác nhận xu hướng để tránh thoát lệnh sớm sai lầm."
@@ -48,5 +8,61 @@
     "timestamp": "2026-09-22T16:30:24.491185+00:00",
     "pnl_pct": -0.14003799739402575,
     "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh đóng vị thế quá sớm khi xu hướng chưa đảo chiều."
+  },
+  {
+    "timestamp": "2026-09-22T18:33:59.951425+00:00",
+    "pnl_pct": -0.3141587776443206,
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ quá sớm khi xu hướng chưa đảo chiều."
+  },
+  {
+    "timestamp": "2026-09-22T19:48:22.757901+00:00",
+    "pnl_pct": -0.2293617453299241,
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ sớm khi xu hướng vẫn còn tiềm năng."
+  },
+  {
+    "timestamp": "2026-09-22T23:13:07.121131+00:00",
+    "pnl_pct": -0.3465724496426278,
+    "lesson": "Cần kiên nhẫn chờ xác nhận xu hướng thay vì thoát lệnh quá sớm khi gặp biến động nhỏ."
+  },
+  {
+    "timestamp": "2026-09-22T23:43:42.732257+00:00",
+    "pnl_pct": -0.30321608391560695,
+    "lesson": "Cần tối ưu hóa thuật toán thoát lệnh để tránh đóng vị thế quá sớm khi chưa vi phạm xu hướng."
+  },
+  {
+    "timestamp": "2026-09-23T00:03:38.679676+00:00",
+    "pnl_pct": 0.03200695684373646,
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn."
+  },
+  {
+    "timestamp": "2026-09-23T01:53:20.433457+00:00",
+    "pnl_pct": -0.29325035038786784,
+    "lesson": "Cần kiên nhẫn chờ đợi xác nhận xu hướng thay vì thoát lệnh sớm khi giá biến động nhẹ."
+  },
+  {
+    "timestamp": "2026-09-23T05:30:37.556086+00:00",
+    "pnl_pct": 0.3162446525609945,
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn."
+  },
+  {
+    "timestamp": "2026-09-23T09:55:39.672322+00:00",
+    "pnl_pct": 0.8022513984559191,
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh chốt lời quá sớm khi xu hướng vẫn mạnh."
+  },
+  {
+    "id": 11,
+    "timestamp": "2026-09-23T13:26:33.110657+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.41102467755541616,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Tuân thủ tín hiệu thoát lệnh sớm của AI để bảo toàn lợi nhuận và tránh rủi ro đảo chiều."
+  },
+  {
+    "id": 12,
+    "timestamp": "2026-09-23T14:11:08.146352+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.6797728251351682,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tăng ngưỡng xác nhận tín hiệu AI để tránh thoát lệnh sớm sai lầm."
   }
 ]

@@ -2,7 +2,7 @@
 1. StrategistAgent - Định hướng xu hướng lớn khung 1H (Nhạc trưởng)
 2. OperatorAgent   - Thực thi Scalping nến 5m theo Bộ luật Động (Chân ga)
 3. SupervisorAgent - Quản trị rủi ro & Duyệt lệnh (Chân phanh)
-4. ReflectorAgent  - Đúc rút bài học & TỰ ĐỘNG NÂNG CẤP BỘ LUẬT (Tự học)
+4. ReflectorAgent  - Đúc rút bài học & TIẾN HÓA TRÍ NHỚ VĨNH CỬU (Tự học)
 5. AuditorAgent    - SRE trực ban bắt lỗi Exception hệ thống
 """
 
@@ -61,6 +61,7 @@ DEFAULT_RULES = {
         " EMA9 trong xu hướng mạnh. CHỈ ĐÓNG (CLOSE) khi nến đóng gãy hẳn qua"
         " EMA21 hoặc khi lợi nhuận đạt >= 0.8% để khóa lãi an toàn."
     ),
+    "evolution_history": [],
 }
 
 
@@ -68,7 +69,7 @@ def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
   """Gọi Gemini; nếu Google quá tải 503, tự động chuyển ngay sang Groq cứu hộ."""
   time.sleep(0.5)
 
-  # 1. Thử gọi Google Gemini
+  # 1. Thử gọi Google Gemini (khóa trần max_tokens=300)
   try:
     response = client.chat.completions.create(
         model=MODEL,
@@ -78,6 +79,7 @@ def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
             {"role": "user", "content": user_prompt},
         ],
         temperature=0.2,
+        max_tokens=300,
     )
     return json.loads(response.choices[0].message.content)
   except Exception as e:
@@ -98,6 +100,7 @@ def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
               {"role": "user", "content": user_prompt},
           ],
           temperature=0.2,
+          max_tokens=300,  # Ngăn chặn hoàn toàn lỗi OTPM Limit 1000 của Groq
       )
       return json.loads(response.choices[0].message.content)
     except Exception as groq_err:
@@ -193,6 +196,7 @@ class OperatorAgent:
 
     rules = ReflectorAgent.load_rules()
 
+    # Python tính toán trước logic so sánh chống AI nhầm dấu
     rsi_val = float(indicators.get("rsi_14", 50))
     ema9_val = float(indicators.get("ema_9", current_price))
     ema21_val = float(indicators.get("ema_21", current_price))
@@ -298,6 +302,9 @@ class SupervisorAgent:
     if not past_lessons:
       past_lessons = ["Chưa có bài học rủi ro đặc biệt."]
 
+    # Nạp toàn bộ danh sách bài học đã được chọn lọc tối ưu
+    lessons_formatted = "\n".join([f"- {l}" for l in past_lessons])
+
     user_prompt = f"""
 Đề xuất từ Operator: {json.dumps(proposal, ensure_ascii=False)}
 Chỉ thị 1H từ Strategist: [{macro_directive}]
@@ -305,8 +312,8 @@ Vị thế hiện tại: {json.dumps(position_info, ensure_ascii=False)}
 Chỉ số thị trường 5m: {json.dumps(indicators, ensure_ascii=False)}
 Vốn khả dụng: {cash} USDT
 
-BÀI HỌC KINH NGHIỆM TỪ CÁC LỆNH TRƯỚC:
-{chr(10).join(['- ' + l for l in past_lessons[-3:]])}
+BÀI HỌC KINH NGHIỆM ĐƯỢC CHỌN LỌC TỪ TOÀN BỘ LỊCH SỬ GIAO DỊCH:
+{lessons_formatted}
 
 Hãy thẩm định đề xuất này và trả về JSON.
 """
@@ -314,7 +321,7 @@ Hãy thẩm định đề xuất này và trả về JSON.
 
 
 # -------------------------------------------------------------
-# 4. REFLECTOR AGENT: Đúc rút kinh nghiệm & TỰ TIẾN HÓA LUẬT
+# 4. REFLECTOR AGENT: Đúc rút kinh nghiệm & TIẾN HÓA TRÍ NHỚ VĨNH CỬU
 # -------------------------------------------------------------
 class ReflectorAgent:
 
@@ -330,19 +337,23 @@ class ReflectorAgent:
     """
 
   SYSTEM_EVOLVE_PROMPT = """
-    You are an AI Quantitative Strategy Optimizer.
-    Your task is to analyze recent trade results (especially trades with early exits, premature stop-outs, or small profits) and REWRITE the strategy rules to improve profitability.
-    Focus on fine-tuning 'exit_rules' (e.g., giving trades room to breathe, requiring clear EMA21 break before closing, minimum profit targets).
+    You are an AI Quantitative Strategy Optimizer managing a lifelong evolutionary strategy tree.
+    Your task is to analyze recent trade results alongside the FULL HISTORICAL EVOLUTION TREE (v1 -> vN).
 
-    CRITICAL: Output ONLY valid JSON in this exact structure:
+    CRITICAL RULES FOR UPGRADING:
+    1. NEVER repeat or regress into flaws that were already fixed in earlier versions (e.g., panic-closing on EMA9 touches, ignoring 1H directives, or missing RSI confirmation).
+    2. Ensure the new version directly addresses the latest issues while preserving accumulated wisdom from past versions.
+    3. Output ONLY valid raw JSON in this exact structure:
     {
-      "reason_for_update": "Lý do cập nhật luật bằng tiếng Việt ngắn gọn (dưới 25 từ)",
-      "entry_rules": "Refined entry rules in Vietnamese or English",
-      "exit_rules": "Refined exit rules in Vietnamese or English"
+      "reason_for_update": "Lý do nâng cấp bộ luật ngắn gọn bằng tiếng Việt (dưới 25 từ)",
+      "flaw_identified": "Điểm yếu cốt lõi của phiên bản cũ vừa phát hiện (dưới 20 từ)",
+      "entry_rules": "Bộ quy tắc vào lệnh hoàn chỉnh kế thừa tinh hoa các bản trước",
+      "exit_rules": "Bộ quy tắc thoát lệnh hoàn chỉnh tối ưu độ lỳ và bảo toàn lãi"
     }
     """
 
   def reflect(self, trade_summary: dict) -> str:
+    """Rút ra bài học từ 1 lệnh vừa đóng và lưu vết vào memory.json."""
     user_prompt = f"""
 DỮ LIỆU LỆNH VỪA ĐÓNG HOÀN TẤT:
 - Vị thế: {trade_summary.get('side')}
@@ -362,43 +373,111 @@ Hãy đúc rút 1 câu bài học quan trọng nhất cho hệ thống.
     return lesson
 
   def auto_evolve_rules(self, recent_trades: list) -> dict:
-    current_rules = self.load_rules()
+    """Tự động phân tích lịch sử tiến hóa từ v1 đến vN và viết tiếp phiên bản mới."""
+    current_data = self.load_full_registry()
+    current_ver = current_data.get("version", 1)
+    history = current_data.get("evolution_history", [])
+
+    # Tóm tắt cây phả hệ tiến hóa từ trước tới nay
+    history_summary = []
+    for item in history:
+      v = item.get("version", "?")
+      r = item.get("reason", "N/A")
+      f = item.get("flaw_identified", "Không rõ")
+      history_summary.append(f"- Phiên bản v{v}: {r} | Lỗ hổng đã sửa: {f}")
+
+    history_str = (
+        "\n".join(history_summary)
+        if history_summary
+        else "Chưa có lịch sử phả hệ."
+    )
 
     user_prompt = f"""
-LỊCH SỬ CÁC LỆNH GẦN ĐÂY:
+=== LỊCH SỬ TIẾN HÓA CÁC BỘ LUẬT TỪ V1 ĐẾN V{current_ver} ===
+{history_str}
+
+=== BỘ QUY TẮC ĐANG ÁP DỤNG HIỆN TẠI (v{current_ver}) ===
+- Lý do cập nhật: {current_data.get('reason_for_update')}
+- Entry Rules: {current_data.get('entry_rules')}
+- Exit Rules: {current_data.get('exit_rules')}
+
+=== KẾT QUẢ CÁC LỆNH GIAO DỊCH GẦN NHẤT ===
 {json.dumps(recent_trades[-5:], ensure_ascii=False, indent=2)}
 
-BỘ QUY TẮC HIỆN TẠI (v{current_rules.get('version', 1)}):
-- Entry Rules: {current_rules.get('entry_rules')}
-- Exit Rules: {current_rules.get('exit_rules')}
-
-Nhiệm vụ: Nếu thấy bot đóng lệnh quá sớm (ăn non +0.03%, cắt lỗ oan khi giá chỉ hồi nhẹ chạm EMA9), hãy viết lại 'exit_rules' để bot có độ lỳ hơn, cho phép nến chạy trong sóng mạnh.
+Nhiệm vụ: Phân tích xem v{current_ver} còn điểm yếu gì cần tinh chỉnh để đạt tỷ lệ thắng và lợi nhuận cao hơn.
+Tuyệt đối KHÔNG đảo ngược các bài học đã sửa từ v1 đến v{current_ver}. Hãy ban hành phiên bản v{current_ver + 1}.
 """
     evolved = _ask_llm(self.SYSTEM_EVOLVE_PROMPT, user_prompt)
 
     if (
-        "exit_rules" in evolved
+        isinstance(evolved, dict)
+        and "exit_rules" in evolved
         and "entry_rules" in evolved
         and "reason_for_update" in evolved
     ):
+      new_version = current_ver + 1
+
+      # Đóng gói phiên bản cũ đưa vào danh sách lịch sử phả hệ
+      history.append({
+          "version": current_ver,
+          "archived_at": datetime.now(timezone.utc).isoformat(),
+          "reason": current_data.get("reason_for_update", "N/A"),
+          "flaw_identified": evolved.get(
+              "flaw_identified", "Cần tối ưu thêm hiệu suất"
+          ),
+          "exit_rules": current_data.get("exit_rules"),
+          "entry_rules": current_data.get("entry_rules"),
+      })
+
       new_rules = {
-          "version": current_rules.get("version", 1) + 1,
+          "version": new_version,
           "last_updated": datetime.now(timezone.utc).isoformat(),
           "reason_for_update": evolved.get("reason_for_update"),
           "entry_rules": evolved.get("entry_rules"),
           "exit_rules": evolved.get("exit_rules"),
+          "evolution_history": history,  # Lưu trữ phả hệ toàn vẹn
       }
+
       self._save_rules(new_rules)
       logging.info(
-          ">>> [REFLECTOR TỰ NÂNG CẤP LUẬT] Phiên bản mới: v%d | Lý do: %s",
-          new_rules["version"],
+          ">>> [TRÍ NHỚ TIẾN HÓA] Đã nâng cấp lên v%d kế thừa từ %d phiên bản"
+          " trước! Lý do: %s",
+          new_version,
+          len(history),
           new_rules["reason_for_update"],
       )
       return new_rules
 
-    return current_rules
+    return current_data
+
+  @classmethod
+  def load_full_registry(cls) -> dict:
+    """Đọc toàn bộ file bao gồm cả lịch sử phả hệ."""
+    if not RULES_FILE.exists():
+      cls._save_rules(DEFAULT_RULES)
+      return DEFAULT_RULES
+    try:
+      with open(RULES_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        if "evolution_history" not in data:
+          data["evolution_history"] = []
+        return data
+    except Exception:
+      return DEFAULT_RULES
+
+  @classmethod
+  def load_rules(cls) -> dict:
+    """Trả về luật hiện hành để Operator và main.py sử dụng."""
+    return cls.load_full_registry()
+
+  @staticmethod
+  def _save_rules(rules: dict):
+    RULES_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(RULES_FILE, "w", encoding="utf-8") as f:
+      json.dump(rules, f, ensure_ascii=False, indent=2)
 
   def _save_to_memory(self, lesson: str, trade_summary: dict):
+    """Lưu vĩnh viễn 100% TẤT CẢ các bài học vào memory.json (KHÔNG cắt slice xóa bài cũ)."""
     MEMORY_FILE.parent.mkdir(parents=True, exist_ok=True)
     history = []
     if MEMORY_FILE.exists():
@@ -408,42 +487,75 @@ Nhiệm vụ: Nếu thấy bot đóng lệnh quá sớm (ăn non +0.03%, cắt l
       except Exception:
         history = []
 
-    history.append({
+    new_entry = {
+        "id": len(history) + 1,
         "timestamp": datetime.now(timezone.utc).isoformat(),
+        "side": trade_summary.get("side", "NONE"),
         "pnl_pct": trade_summary.get("pnl_pct", 0.0),
+        "exit_reason": trade_summary.get("exit_reason", "MANUAL"),
         "lesson": lesson,
-    })
+    }
+    history.append(new_entry)
 
+    # Ghi lại toàn bộ lịch sử không giới hạn
     with open(MEMORY_FILE, "w", encoding="utf-8") as f:
-      json.dump(history[-10:], f, ensure_ascii=False, indent=2)
+      json.dump(history, f, ensure_ascii=False, indent=2)
+
+    logging.info(
+        ">>> [TRÍ NHỚ TÍCH LŨY] Đã lưu bài học #%d vào kho dữ liệu vĩnh cửu.",
+        new_entry["id"],
+    )
 
   @staticmethod
-  def load_lessons() -> list:
+  def load_lessons(side: str = None) -> list:
+    """Đọc bài học từ kho lưu trữ.
+
+    Ưu tiên các bài học có rủi ro cao và các bài học gần nhất.
+    """
     if not MEMORY_FILE.exists():
       return []
     try:
       with open(MEMORY_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
-        return [item.get("lesson", "") for item in data if "lesson" in item]
+
+      if not data:
+        return []
+
+      # Nếu tổng số bài học còn ít (dưới 20 bài), nạp toàn bộ 100%
+      if len(data) <= 20:
+        return [
+            f"[#{item.get('id', i+1)}] {item.get('lesson', '')}"
+            for i, item in enumerate(data)
+            if "lesson" in item
+        ]
+
+      # KHI KHO BÀI HỌC LÊN HÀNG TRĂM BÀI:
+      # 1. Trích xuất top 80 bài học từ các lệnh LỖ NẶNG NHẤT (cảnh báo rủi ro cao nhất)
+      loss_trades = sorted(
+          [d for d in data if d.get("pnl_pct", 0) < 0],
+          key=lambda x: x.get("pnl_pct", 0),
+      )
+      critical_lessons = [
+          f"[CẢNH BÁO LỖ #{d.get('id')} ({d.get('pnl_pct'):.2f}%)]"
+          f" {d.get('lesson')}"
+          for d in loss_trades[:80]
+      ]
+
+      # 2. Trích xuất 10 bài học gần nhất có cùng hướng vị thế (LONG/SHORT)
+      relevant_recent = [
+          d
+          for d in data
+          if side is None or d.get("side") == side or d.get("side") == "NONE"
+      ][-10:]
+      recent_lessons = [
+          f"[GẦN ĐÂY #{d.get('id')}] {d.get('lesson')}" for d in relevant_recent
+      ]
+
+      # Hợp nhất danh sách và loại bỏ trùng lặp
+      combined = list(dict.fromkeys(critical_lessons + recent_lessons))
+      return combined
     except Exception:
       return []
-
-  @staticmethod
-  def load_rules() -> dict:
-    if not RULES_FILE.exists():
-      ReflectorAgent._save_rules(DEFAULT_RULES)
-      return DEFAULT_RULES
-    try:
-      with open(RULES_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
-    except Exception:
-      return DEFAULT_RULES
-
-  @staticmethod
-  def _save_rules(rules: dict):
-    RULES_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(RULES_FILE, "w", encoding="utf-8") as f:
-      json.dump(rules, f, ensure_ascii=False, indent=2)
 
 
 # -------------------------------------------------------------
