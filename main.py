@@ -1,552 +1,274 @@
-"""CLI entry point for the 24/7 paper-trading loop with 5-Agent Architecture:
-(Strategist - Operator - Supervisor - Reflector - Auditor)
-Tích hợp cơ chế tự học và tự động cập nhật bộ luật chiến thuật (Self-Improving).
-"""
+"""Vòng lặp điều hành chính 6-Agent Crypto Scalping (BTC/USDT 5m)."""
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
+import json
 import logging
-import sys
+import os
+from pathlib import Path
 import time
-import traceback
-
-from agents.agent_team import (
-    AuditorAgent,
-    OperatorAgent,
-    ReflectorAgent,
-    StrategistAgent,
-    SupervisorAgent,
-)
-from config.settings import settings
-from data.fetcher import MarketDataFetcher
-from data.preprocessor import add_indicators
+from agents.agent_team import AgentTeam, ReflectorAgent
+from config.settings import Settings
 from engine.paper_trader import PaperTrader
-from engine.risk_manager import RiskManager
-from models.predictor import Predictor
-from notifiers.discord import send_message
+from notifiers.discord import DiscordNotifier
+import requests
 
-# Cấu hình logging: Ghi đồng thời ra cả file bot.log và màn hình console
+# Thiết lập ghi log
+LOG_FILE = Path("storage/bot.log")
+LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("storage/bot.log", encoding="utf-8"),
-        logging.StreamHandler(sys.stdout),
+        logging.FileHandler(LOG_FILE, mode="a", encoding="utf-8"),
+        logging.StreamHandler(),
     ],
 )
 
-# Biến toàn cục theo dõi nến 5m, chu kỳ nến 1H, số nến gồng và lịch sử lệnh trong phiên
-LAST_PROCESSED_CANDLE_TS = None
-LAST_STRATEGIST_HOUR = None
-HOLDING_CANDLES_COUNT = 0
-CURRENT_MACRO = {
-    "directive": "FLEXIBLE",
-    "macro_bias": "SIDEWAY",
-    "reasoning": "Khởi tạo hệ thống",
-}
-RECENT_TRADES_HISTORY = []
 
+class Main:
 
-def update_macro_strategy(
-    fetcher: MarketDataFetcher, strategist: StrategistAgent, current_price: float
-) -> None:
-  """Cập nhật xu hướng khung 1H một lần mỗi giờ từ StrategistAgent."""
-  global LAST_STRATEGIST_HOUR, CURRENT_MACRO
-  current_hour = datetime.now(timezone.utc).hour
+  def __init__(self, config_path: str = None):
+    # 1. Khởi tạo cấu hình và bộ nạp
+    self.config = Settings()
 
-  if LAST_STRATEGIST_HOUR != current_hour:
+    # 2. Khởi tạo PaperTrader và nạp vị thế cũ (nếu có)
+    self.paper_trader = PaperTrader(initial_cash=100.0)
+
+    # 3. Khởi tạo hệ thống 6 Tác tử
+    self.agent_team = AgentTeam(self.config)
+
+    # 4. Kênh thông báo Discord
+    self.notifier = DiscordNotifier(self.config.discord_webhook_url)
+
+    # 5. Các biến quản lý trạng thái
+    self.symbol = "BTCUSDT"
+    self.last_candle_time = None
+    self.recent_closed_trades = []
+
+  def load_active_position(self):
+    """Khôi phục vị thế khi bot khởi động lại."""
+    self.paper_trader.load_active_position()
+
+  def save_active_position(self):
+    """Lưu vị thế hiện tại ra ổ cứng chống sập nguồn."""
+    self.paper_trader.save_active_position()
+
+  def fetch_market_data(self) -> dict:
+    """Lấy dữ liệu nến thực tế từ Binance Public API và tính toán chỉ báo kỹ thuật."""
+    url = f"https://api.binance.com/api/v3/klines?symbol={self.symbol}&interval=5m&limit=50"
     try:
-      candles_1h = fetcher.fetch_ohlcv(settings.symbol, "1h", 250)
-      if candles_1h is not None and not candles_1h.empty:
-        df_1h = add_indicators(candles_1h)
+      res = requests.get(url, timeout=10)
+      if res.status_code != 200:
+        return {}
+      klines = res.json()
+      if not klines or len(klines) < 30:
+        return {}
 
-        if "ema_50" in df_1h.columns:
-          ema_50 = float(df_1h["ema_50"].iloc[-1])
+      closes = [float(k[4]) for k in klines]
+      latest_candle = klines[-1]
+
+      # Tính EMA
+      def calc_ema(data, period):
+        k = 2.0 / (period + 1)
+        ema = [data[0]]
+        for price in data[1:]:
+          ema.append(price * k + ema[-1] * (1 - k))
+        return ema[-1]
+
+      ema9 = calc_ema(closes, 9)
+      ema21 = calc_ema(closes, 21)
+
+      # Tính RSI(14)
+      gains, losses = [], []
+      for i in range(1, 15):
+        diff = closes[-i] - closes[-i - 1]
+        if diff >= 0:
+          gains.append(diff)
+          losses.append(0.0)
         else:
-          ema_50 = float(
-              df_1h["close"].ewm(span=50, adjust=False).mean().iloc[-1]
-          )
+          gains.append(0.0)
+          losses.append(abs(diff))
+      avg_gain = sum(gains) / 14.0
+      avg_loss = sum(losses) / 14.0
+      rsi14 = (
+          100.0
+          if avg_loss == 0
+          else (100.0 - (100.0 / (1.0 + (avg_gain / avg_loss))))
+      )
 
-        if "ema_200" in df_1h.columns:
-          ema_200 = float(df_1h["ema_200"].iloc[-1])
-        else:
-          ema_200 = float(
-              df_1h["close"].ewm(span=200, adjust=False).mean().iloc[-1]
-          )
+      # Cập nhật PnL nếu đang giữ lệnh
+      current_price = float(latest_candle[4])
+      if self.paper_trader.position:
+        self.paper_trader.update_position(current_price)
 
-        last_h1 = df_1h.iloc[-1]
-        h1_ind = {
-            "rsi_14": round(float(last_h1.get("rsi_14", 50)), 2),
-            "macd": round(float(last_h1.get("macd", 0)), 4),
-            "ema_50": round(ema_50, 2),
-            "ema_200": round(ema_200, 2),
-        }
-
-        macro_res = strategist.analyze_macro(
-            settings.symbol, current_price, h1_ind
-        )
-
-        # CHỈ CẬP NHẬT KHI AI PHÂN TÍCH HỢP LỆ (Không gán None khi API gặp lỗi)
-        if isinstance(macro_res, dict) and macro_res.get("directive"):
-          CURRENT_MACRO = macro_res
-          LAST_STRATEGIST_HOUR = current_hour
-
-          logging.info(
-              ">>> [STRATEGIST 1H] Chỉ thị: %s | Xu hướng: %s",
-              CURRENT_MACRO.get("directive"),
-              CURRENT_MACRO.get("macro_bias"),
-          )
-          if settings.discord_webhook_url:
-            send_message(
-                settings.discord_webhook_url,
-                f"🧭 [STRATEGIST 1H] Chỉ Thị Vĩ Mô: {CURRENT_MACRO.get('directive')}",
-                f"**Xu hướng 1H:** {CURRENT_MACRO.get('macro_bias')}\n"
-                f"**Chiến lược:** {CURRENT_MACRO.get('reasoning')}",
-                0x3498DB,
-            )
-        else:
-          logging.warning(
-              "Strategist 1H chưa có phản hồi hợp lệ (%s). Giữ chỉ thị: [%s] và"
-              " sẽ thử lại ở nến tới.",
-              macro_res,
-              CURRENT_MACRO.get("directive", "FLEXIBLE"),
-          )
+      return {
+          "open_time": latest_candle[0],
+          "price": current_price,
+          "rsi_14": round(rsi14, 2),
+          "ema_9": round(ema9, 2),
+          "ema_21": round(ema21, 2),
+          "macd": round(ema9 - ema21, 4),
+          "capital": round(self.paper_trader.cash, 2),
+      }
     except Exception as e:
-      logging.warning("Lỗi cập nhật Strategist 1H: %s", str(e))
+      logging.warning("Lỗi fetch market data: %s", e)
+      return {}
 
-
-def handle_trade_closing_and_evolution(
-    trader: PaperTrader,
-    reflector: ReflectorAgent,
-    closed_side: str,
-    entry_price: float,
-    exit_price: float,
-    position_value: float,
-    exit_reason: str,
-    color: int,
-) -> None:
-  """Xử lý đóng lệnh, rút kinh nghiệm và kích hoạt Reflector tự nâng cấp bộ luật."""
-  global RECENT_TRADES_HISTORY, HOLDING_CANDLES_COUNT
-
-  pnl = trader.close_position(exit_price, exit_reason)
-  trade_pnl_pct = (pnl / position_value) * 100 if position_value > 0 else 0.0
-
-  total_pnl = trader.cash - settings.initial_cash
-  roi_pct = (total_pnl / settings.initial_cash) * 100
-  sign = "+" if total_pnl >= 0 else ""
-
-  HOLDING_CANDLES_COUNT = 0  # Đặt lại số nến gồng về 0 khi đóng lệnh
-
-  # 1. Đóng gói dữ liệu lệnh vừa kết thúc
-  trade_summary = {
-      "side": closed_side,
-      "entry_price": entry_price,
-      "exit_price": exit_price,
-      "pnl_usdt": pnl,
-      "pnl_pct": trade_pnl_pct,
-      "exit_reason": exit_reason,
-  }
-
-  # 2. Reflector rút bài học ngắn hạn lưu vào memory.json
-  lesson = reflector.reflect(trade_summary)
-  trade_summary["lesson"] = lesson
-  RECENT_TRADES_HISTORY.append(trade_summary)
-
-  logging.info(
-      ">>> ĐÓNG VỊ THẾ (%s): PnL = %+.6f USDT | Vốn: %.6f USDT",
-      exit_reason,
-      pnl,
-      trader.cash,
-  )
-
-  # 3. Gửi thông báo kết quả giao dịch về Discord
-  if settings.discord_webhook_url:
-    send_message(
-        settings.discord_webhook_url,
-        f"🔔 [KẾT QUẢ GIAO DỊCH] {exit_reason}",
-        f"**Cặp:** {settings.symbol} | **Vị thế:** {closed_side}\n"
-        f"**Giá vào:** {entry_price:,.6f} ➔ **Giá đóng:** {exit_price:,.6f}\n"
-        "────────────────────────\n"
-        f"💵 **Lãi/Lỗ lệnh này:** `{pnl:+.6f} USDT` ({trade_pnl_pct:+.2f}%)\n"
-        f"💰 **TỔNG VỐN HIỆN TẠI:** `{trader.cash:,.6f} USDT`\n"
-        f"📈 **TỔNG LÃI/LỖ TÍCH LŨY:** `{sign}{total_pnl:.6f} USDT`"
-        f" ({sign}{roi_pct:.2f}%)\n"
-        f"🧠 **Bài học Reflector:** `{lesson}`",
-        color,
+  def print_dashboard(self, market_data: dict, sentiment: dict, rules: dict):
+    """In bảng điều khiển trực quan theo từng nến."""
+    pos = self.paper_trader.position
+    pos_str = (
+        f"{pos.side} @ {pos.entry_price:.2f} (PnL: {pos.pnl_pct:+.2f}%)"
+        if pos
+        else "TRỐNG"
     )
 
-  # 4. KÍCH HOẠT TỰ TIẾN HÓA: Cứ sau mỗi 2 lệnh đóng, Reflector tự đánh giá và viết lại bộ luật
-  if len(RECENT_TRADES_HISTORY) >= 2:
-    old_rules = ReflectorAgent.load_rules()
-    old_ver = old_rules.get("version", 1)
-
-    new_rules = reflector.auto_evolve_rules(RECENT_TRADES_HISTORY)
-
-    if new_rules.get("version", 1) > old_ver:
-      logging.info(
-          ">>> [AI TỰ NÂNG CẤP CHIẾN THUẬT] Đã tiến hóa lên phiên bản v%d",
-          new_rules.get("version"),
-      )
-      if settings.discord_webhook_url:
-        send_message(
-            settings.discord_webhook_url,
-            f"🧬 [AI TỰ TIẾN HÓA BỘ LUẬT] Đã Cập Nhật v{new_rules.get('version')}",
-            f"**Lý do cải tiến:** {new_rules.get('reason_for_update')}\n"
-            f"**Quy tắc thoát lệnh mới:** `{new_rules.get('exit_rules')}`",
-            0x9B59B6,
-        )
-
-
-def run_once(
-    fetcher: MarketDataFetcher,
-    predictor: Predictor,
-    trader: PaperTrader,
-    risk: RiskManager,
-    operator: OperatorAgent,
-    supervisor: SupervisorAgent,
-    strategist: StrategistAgent,
-    reflector: ReflectorAgent,
-) -> None:
-  global LAST_PROCESSED_CANDLE_TS, HOLDING_CANDLES_COUNT
-
-  # 1. Thu thập dữ liệu nến 5m mới nhất
-  candles = fetcher.fetch_ohlcv(
-      settings.symbol, settings.timeframe, settings.candle_limit
-  )
-  if candles is None or candles.empty:
-    logging.warning("Dữ liệu nến từ sàn rỗng, bỏ qua chu kỳ này.")
-    return
-
-  price = float(candles["close"].iloc[-1])
-  current_candle_ts = int(
-      candles["timestamp"].iloc[-1]
-      if "timestamp" in candles.columns
-      else candles.index[-1]
-  )
-
-  equity = trader.equity(price)
-  pos = trader.position
-
-  # Cập nhật định hướng vĩ mô 1H
-  update_macro_strategy(fetcher, strategist, price)
-
-  # 2. Hiển thị trạng thái vị thế thời gian thực
-  if pos:
-    live_pnl_pct = (
-        ((price - pos.entry_price) / pos.entry_price) * 100
-        if pos.side == "LONG"
-        else ((pos.entry_price - price) / pos.entry_price) * 100
-    )
-    live_pnl_usdt = (
-        (price - pos.entry_price) * pos.amount
-        if pos.side == "LONG"
-        else (pos.entry_price - price) * pos.amount
-    )
-    icon = "🟢" if live_pnl_pct >= 0 else "🔴"
-    sign = "+" if live_pnl_pct >= 0 else ""
-    pos_status = (
-        f"{pos.side} @ {pos.entry_price:,.6f} | {icon}"
-        f" {sign}{live_pnl_pct:.2f}% ({sign}{live_pnl_usdt:.6f} USDT)"
-    )
-    position_info = {
-        "side": pos.side,
-        "entry_price": pos.entry_price,
-        "pnl_pct": live_pnl_pct,
-        "pnl_usdt": live_pnl_usdt,
-        "amount": pos.amount,
-        "holding_candles": HOLDING_CANDLES_COUNT,
-    }
-  else:
-    HOLDING_CANDLES_COUNT = 0
-    pos_status = "TRỐNG"
-    position_info = {
-        "side": "NONE",
-        "entry_price": 0.0,
-        "pnl_pct": 0.0,
-        "pnl_usdt": 0.0,
-        "amount": 0.0,
-        "holding_candles": 0,
-    }
-
-  # =========================================================================
-  # TẦNG 1: QUẢN TRỊ RỦI RO CỤC BỘ (Stop Loss / Trailing Stop)
-  # =========================================================================
-  exit_reason = risk.should_exit(trader.position, price) if trader.position else None
-  if exit_reason and trader.position:
-    closed_side = trader.position.side
-    entry_price = trader.position.entry_price
-    position_value = trader.position.value
-    color = 0x2ECC71 if (price >= entry_price if closed_side == "LONG" else price <= entry_price) else 0xE74C3C
-
-    handle_trade_closing_and_evolution(
-        trader,
-        reflector,
-        closed_side,
-        entry_price,
-        price,
-        position_value,
-        exit_reason,
-        color,
-    )
-    return
-
-  # =========================================================================
-  # TẦNG 2: KIỂM TRA ĐÓNG NẾN 5M
-  # =========================================================================
-  current_rules = ReflectorAgent.load_rules()
-  rule_ver = current_rules.get("version", 1)
-
-  if LAST_PROCESSED_CANDLE_TS == current_candle_ts:
-    now_str = datetime.now().strftime("%H:%M:%S")
+    print("\n" + "═" * 75)
     print(
-        f"[{now_str}] ⏳ Nến {settings.timeframe} | Giá: {price:,.6f} USDT |"
-        f" 1H: [{CURRENT_MACRO.get('directive', 'FLEXIBLE')}] [Luật: v{rule_ver}] |"
-        f" {pos_status}",
-        end="\r",
+        f"📊 [{time.strftime('%H:%M:%S')}] BTC/USDT: {market_data.get('price', 0):,.2f}"
+        f" USDT | Vốn: {market_data.get('capital', 100):.2f} USDT"
     )
-    return
+    print(
+        f"   Tin tức: [{sentiment.get('sentiment', 'NEUTRAL')} (Panic:"
+        f" {sentiment.get('panic_score', 5)}/10)] | Bộ luật:"
+        f" [v{rules.get('version', 1)}]"
+    )
+    print(f"   Vị thế: {pos_str}")
+    print(
+        f"   Chỉ báo 5m: RSI(14)={market_data.get('rsi_14')} |"
+        f" EMA9={market_data.get('ema_9')} | EMA21={market_data.get('ema_21')}"
+    )
+    print("─" * 75)
 
-  LAST_PROCESSED_CANDLE_TS = current_candle_ts
-  if pos:
-    HOLDING_CANDLES_COUNT += 1
-    position_info["holding_candles"] = HOLDING_CANDLES_COUNT
+  def run(self):
+    """Vòng lặp điều hành 24/7."""
+    mode = self.config.llm_mode
+    print("=" * 75)
+    print(
+        "   CRYPTO AI 6-AGENT SYSTEM (STRATEGIST - OPERATOR - SUPERVISOR -"
+        " REFLECTOR - AUDITOR - SENTIMENT)"
+    )
+    print(f"   Cặp: BTC/USDT | Khung: 5m | Chế độ LLM: [{mode}]")
+    print("=" * 75)
 
-  candle_time_str = datetime.fromtimestamp(
-      current_candle_ts / 1000, tz=timezone.utc
-  ).strftime("%H:%M UTC")
-  print(
-      f"\n\n🔔 [{datetime.now().strftime('%H:%M:%S')}] PHÁT HIỆN NẾN"
-      f" {settings.timeframe.upper()} MỚI ({candle_time_str}) ➔ KÍCH HOẠT AI"
-      " TEAM..."
-  )
-
-  # Trích xuất chỉ số kỹ thuật nến 5m
-  features = add_indicators(candles)
-  ml_signal = predictor.predict(features)
-  last_row = features.iloc[-1]
-  indicators = {
-      "rsi_14": round(float(last_row.get("rsi_14", 50)), 2),
-      "macd": round(float(last_row.get("macd", 0)), 4),
-      "macd_signal": round(float(last_row.get("macd_signal", 0)), 4),
-      "ema_9": round(float(last_row.get("ema_9", price)), 2),
-      "ema_21": round(float(last_row.get("ema_21", price)), 2),
-      "volume_change": round(float(last_row.get("volume_change", 0)), 2),
-      "ml_signal": ml_signal.get("action", "HOLD"),
-  }
-
-  past_lessons = ReflectorAgent.load_lessons()
-
-  # 3. AI OPERATOR: Phân tích theo bộ luật động hiện hành
-  proposal = operator.analyze(
-      settings.symbol,
-      price,
-      indicators,
-      position_info=position_info,
-      macro_directive=CURRENT_MACRO.get("directive", "FLEXIBLE"),
-  )
-  action = proposal.get("action", "HOLD")
-  confidence = proposal.get("confidence", 0.0)
-
-  # 4. AI SUPERVISOR: Thẩm định rủi ro
-  review = supervisor.review(
-      proposal,
-      indicators,
-      trader.cash,
-      position_info=position_info,
-      macro_directive=CURRENT_MACRO.get("directive", "FLEXIBLE"),
-      past_lessons=past_lessons,
-  )
-  is_approved = review.get("approved", False)
-  risk_score = review.get("risk_score", 1)
-
-  # In nhật ký quyết định trên Console
-  print("\n" + "═" * 75)
-  print(
-      f"📊 [{datetime.now().strftime('%H:%M:%S')}] {settings.symbol} | Giá:"
-      f" {price:,.6f} USDT | Vốn: {equity:,.6f} USDT"
-  )
-  print(
-      f"   Chỉ thị 1H: [{CURRENT_MACRO.get('directive', 'FLEXIBLE')}] | Bộ luật"
-      f" đang chạy: [v{rule_ver}]"
-  )
-  print(f"   Vị thế: {pos_status}")
-  print(
-      f"   Chỉ báo: RSI(14)={indicators['rsi_14']} | MACD={indicators['macd']}"
-      f" | EMA9={indicators['ema_9']}"
-  )
-  print("─" * 75)
-  print(
-      f"🤖 [OPERATOR]   : Đề xuất -> {action} (Độ tin cậy:"
-      f" {confidence * 100:.0f}%)"
-  )
-  print(f"   Lập luận     : {proposal.get('reason', 'N/A')}")
-  print(
-      "🛡️  [SUPERVISOR] : Quyết định ->"
-      f" {'✅ DUYỆT' if is_approved else '❌ TỪ CHỐI'} (Mức rủi ro:"
-      f" {risk_score}/10)"
-  )
-  print(f"   Phản biện    : {review.get('feedback', 'N/A')}")
-  print("═" * 75 + "\n")
-
-  # 5. Mở vị thế mới khi vị thế đang TRỐNG
-  if not trader.position and is_approved and action in ("OPEN_LONG", "OPEN_SHORT"):
-    side = "LONG" if action == "OPEN_LONG" else "SHORT"
-    value = risk.position_value(trader.cash)
-    if trader.open_position(settings.symbol, side, price, value):
-      HOLDING_CANDLES_COUNT = 1
-      logging.info(
-          ">>> [AI TEAM] MỞ VỊ THẾ %s: Giá = %.6f, Vốn = %.6f USDT",
-          side,
-          price,
-          value,
-      )
-      if settings.discord_webhook_url:
-        send_message(
-            settings.discord_webhook_url,
-            f"🟢 [AI TEAM] Paper Trade Mở: {side}",
-            f"**Cặp:** {settings.symbol} @ {price:,.6f}\n"
-            f"**Vị thế:** {side} | **Khối lượng:** {value:,.6f} USDT\n"
-            f"**Chỉ thị 1H:** {CURRENT_MACRO.get('directive', 'FLEXIBLE')} |"
-            f" **Bộ luật:** v{rule_ver}\n"
-            f"**Operator:** {proposal.get('reason', 'N/A')}\n"
-            f"**Supervisor:** {review.get('feedback', 'Đã duyệt rủi ro')}",
-            0x2ECC71 if side == "LONG" else 0xE67E22,
-        )
-
-  # 6. Đóng vị thế chủ động theo tín hiệu đảo chiều từ AI
-  elif trader.position and is_approved and (
-      action in ("CLOSE", "CLOSE_LONG", "CLOSE_SHORT")
-      or (trader.position.side == "SHORT" and action == "OPEN_LONG")
-      or (trader.position.side == "LONG" and action == "OPEN_SHORT")
-  ):
-    closed_side = trader.position.side
-    entry_price = trader.position.entry_price
-    position_value = trader.position.value
-    close_reason = f"AI_EARLY_EXIT_{action}"
-    color = 0x2ECC71 if (price >= entry_price if closed_side == "LONG" else price <= entry_price) else 0xE74C3C
-
-    handle_trade_closing_and_evolution(
-        trader,
-        reflector,
-        closed_side,
-        entry_price,
-        price,
-        position_value,
-        close_reason,
-        color,
+    self.load_active_position()
+    self.notifier.send(
+        f"🚀 **Bot 6-Agent Đã Khởi Động Thành Công!** Chế độ: `{mode}`"
     )
 
+    while True:
+      try:
+        market_data = self.fetch_market_data()
+        if not market_data:
+          time.sleep(10)
+          continue
 
-def main() -> None:
-  fetcher = MarketDataFetcher(settings.exchange_id)
-  predictor = Predictor()
-  trader = PaperTrader(settings.initial_cash)
-  risk = RiskManager(
-      position_size_pct=settings.position_size_pct,
-      stop_loss_pct=settings.stop_loss_pct,
-      take_profit_pct=settings.take_profit_pct,
-      trailing_stop_pct=settings.trailing_stop_pct,
-      trailing_activation_pct=settings.trailing_activation_pct,
-  )
+        # Chỉ kích hoạt AI Team khi nến 5m mới mở cửa
+        if market_data["open_time"] != self.last_candle_time:
+          self.last_candle_time = market_data["open_time"]
 
-  # Khởi tạo đầy đủ 5 Agent
-  strategist = StrategistAgent()
-  operator = OperatorAgent()
-  supervisor = SupervisorAgent()
-  reflector = ReflectorAgent()
-  auditor = AuditorAgent()
+          # 1. Thu thập dữ liệu tình báo & luật hiện hành
+          sentiment_info = (
+              self.agent_team.sentiment_agent.analyze_market_sentiment()
+          )
+          rules = ReflectorAgent.load_rules()
 
-  campaign_end = datetime.now(timezone.utc) + timedelta(
-      days=settings.campaign_days
-  )
+          # 2. In Dashboard
+          self.print_dashboard(market_data, sentiment_info, rules)
 
-  current_rules = ReflectorAgent.load_rules()
-  print("=" * 75)
-  print(
-      "   CRYPTO AI 5-AGENT SELF-IMPROVING BOT (STRATEGIST - OPERATOR -"
-      " SUPERVISOR - REFLECTOR - AUDITOR)"
-  )
-  print(
-      f"   Cặp: {settings.symbol} | Khung: {settings.timeframe} | Phiên bản"
-      f" luật: v{current_rules.get('version', 1)}"
-  )
-  print(f"   Vốn khởi điểm: {settings.initial_cash:,.6f} USDT")
-  print(
-      f"   Chiến dịch: {settings.campaign_days} ngày, kết thúc vào"
-      f" {campaign_end.isoformat()}"
-  )
-  print("=" * 75)
+          pos = self.paper_trader.position
+          position_info = (
+              {
+                  "side": pos.side,
+                  "entry_price": pos.entry_price,
+                  "pnl_pct": pos.pnl_pct,
+                  "pnl_usdt": pos.pnl_usdt,
+                  "holding_candles": pos.holding_candles,
+              }
+              if pos
+              else {"side": "NONE", "entry_price": 0.0, "pnl_pct": 0.0}
+          )
 
-  if settings.discord_webhook_url:
-    send_message(
-        settings.discord_webhook_url,
-        "🚀 Multi-Agent Bot (5 Tác Tử Tự Tiến Hóa) Khởi Động Thành Công",
-        f"**Thị trường:** {settings.symbol} ({settings.exchange_id.upper()})\n"
-        f"**Phiên bản luật:** v{current_rules.get('version', 1)}\n"
-        "**Cơ chế:** Tự động sửa đổi chiến thuật ra/vào lệnh khi phát hiện"
-        " lỗi\n"
-        f"**Vốn:** {settings.initial_cash:,.6f} USDT | **Chiến dịch:**"
-        f" {settings.campaign_days} ngày",
-        0x3498DB,
-    )
+          # 3. OPERATOR AGENT đề xuất
+          proposal = self.agent_team.operator_agent.analyze(
+              symbol="BTC/USDT",
+              current_price=market_data["price"],
+              indicators=market_data,
+              position_info=position_info,
+              macro_directive="FLEXIBLE",
+          )
+          conf_pct = int(proposal.get("confidence", 0.8) * 100)
+          print(
+              f"🤖 [OPERATOR]   : Đề xuất -> {proposal.get('action')} (Độ tin"
+              f" cậy: {conf_pct}%)"
+          )
+          print(f"   Lập luận     : {proposal.get('reason')}")
 
-  while datetime.now(timezone.utc) < campaign_end:
-    try:
-      run_once(
-          fetcher,
-          predictor,
-          trader,
-          risk,
-          operator,
-          supervisor,
-          strategist,
-          reflector,
-      )
-    except Exception:
-      error_trace = traceback.format_exc()
-      logging.exception("Vòng lặp gặp ngoại lệ nghiêm trọng!")
+          # 4. SUPERVISOR AGENT kiểm duyệt rủi ro
+          past_lessons = ReflectorAgent.load_lessons(side=position_info["side"])
+          review = self.agent_team.supervisor_agent.review(
+              proposal=proposal,
+              indicators=market_data,
+              cash=self.paper_trader.cash,
+              position_info=position_info,
+              macro_directive="FLEXIBLE",
+              past_lessons=past_lessons,
+              sentiment_info=sentiment_info,
+          )
+          approved_icon = "✅ DUYỆT" if review.get("approved") else "❌ TỪ CHỐI"
+          print(
+              f"🛡️  [SUPERVISOR] : Quyết định -> {approved_icon} (Mức rủi ro:"
+              f" {review.get('risk_score')}/10)"
+          )
+          print(f"   Phản biện    : {review.get('feedback')}")
+          print("═" * 75)
 
-      report = auditor.inspect_error(error_trace)
-      severity = report.get("severity", "WARNING")
-      diagnosis = report.get("diagnosis", "Lỗi không xác định")
-      action_suggested = report.get(
-          "suggested_action", "Chờ vòng quét tiếp theo"
-      )
+          # 5. THỰC THI LỆNH
+          action = proposal.get("action")
+          if review.get("approved"):
+            if action in ("OPEN_LONG", "OPEN_SHORT") and pos is None:
+              side = "LONG" if action == "OPEN_LONG" else "SHORT"
+              if self.paper_trader.open_position(
+                  side, market_data["price"], cash_amount=70.0
+              ):
+                self.notifier.send(
+                    f"🟢 **MỞ VỊ THẾ {side}** BTC/USDT @`{market_data['price']:,.2f}`"
+                    " | Vốn: 70 USDT"
+                )
 
-      if settings.discord_webhook_url:
-        send_message(
-            settings.discord_webhook_url,
-            f"⚠️ [AUDITOR ALERT] Sự cố: {severity}",
-            f"**Chẩn đoán:** {diagnosis}\n**Đề xuất:** {action_suggested}",
-            0xE74C3C,
-        )
+            elif action == "CLOSE" and pos is not None:
+              summary = self.paper_trader.close_position(
+                  market_data["price"], exit_reason="AI_SIGNAL"
+              )
+              lesson = self.agent_team.reflector_agent.reflect(summary)
+              self.recent_closed_trades.append(summary)
+              print(f"💡 [BÀI HỌC VỪA RÚT RA]: {lesson}")
+              self.notifier.send(
+                  f"🔴 **ĐÓNG VỊ THẾ {summary['side']}** @"
+                  f" `{market_data['price']:,.2f}` | PnL:"
+                  f" `{summary['pnl_pct']:+.2f}%` ({summary['pnl_usdt']:+.4f}"
+                  f" USDT)\n> 💡 *Bài học: {lesson}*"
+              )
 
-    remaining_seconds = (
-        campaign_end - datetime.now(timezone.utc)
-    ).total_seconds()
-    if remaining_seconds > 0:
-      time.sleep(min(settings.loop_seconds, remaining_seconds))
+              # Đủ 3 lệnh thì Reflector tự tiến hóa bộ luật
+              if len(self.recent_closed_trades) >= 3:
+                self.agent_team.reflector_agent.auto_evolve_rules(
+                    self.recent_closed_trades
+                )
 
-  logging.info("Chiến dịch kết thúc. Tiền mặt cuối: %.6f USDT", trader.cash)
-  if settings.discord_webhook_url:
-    send_message(
-        settings.discord_webhook_url,
-        "🏁 Chiến dịch Paper Trading Đã Kết Thúc",
-        f"**Thời lượng:** {settings.campaign_days} ngày\n**Vốn cuối cùng:**"
-        f" {trader.cash:,.6f} USDT",
-        0x9B59B6,
-    )
+          self.save_active_position()
+
+        time.sleep(15)
+
+      except KeyboardInterrupt:
+        print("\nĐã nhận lệnh dừng bot. Tạm biệt!")
+        break
+      except Exception as e:
+        logging.error("Lỗi Exception ngoài vòng lặp: %s", e)
+        self.agent_team.auditor_agent.inspect_error(str(e))
+        time.sleep(20)
 
 
 if __name__ == "__main__":
-  try:
-    main()
-  except KeyboardInterrupt:
-    print("\nĐã nhận lệnh tắt bot từ bàn phím (Ctrl + C). Tạm dừng hệ thống.")
-    if settings.discord_webhook_url:
-      send_message(
-          settings.discord_webhook_url,
-          "⚠️ Bot Trading Đã Dừng",
-          "Tiến trình bot trên máy chủ đã được người dùng tắt chủ động.",
-          0x95A5A6,
-      )
-    print("Bot đã dừng.")
+  main = Main()
+  main.run()
