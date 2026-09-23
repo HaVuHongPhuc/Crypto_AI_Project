@@ -1,11 +1,8 @@
 """
-Hệ thống Đa Tác Tử (Multi-Agent System) hỗ trợ chuyển đổi Local / Cloud.
-1. StrategistAgent - Nhạc trưởng định hướng khung 1H
-2. OperatorAgent   - Chân ga Scalping nến 5m
-3. SupervisorAgent - Chân phanh duyệt lệnh & Phanh khẩn cấp tin tức
-4. ReflectorAgent  - Đúc rút bài học vĩnh cửu & Tiến hóa phả hệ v1 -> vN
-5. AuditorAgent    - SRE trực ban chẩn đoán sự cố (có inspect_error)
-6. AgentTeam       - Đóng gói toàn bộ đội ngũ tương thích với main.py
+Hệ thống Đa Tác Tử (Multi-Agent System) hỗ trợ chuyển đổi linh hoạt:
+- LLM_MODE = "GROQ"  : Ưu tiên Groq Cloud siêu tốc, miễn phí (tối ưu cho VPS)
+- LLM_MODE = "CLOUD" : Dùng Google Gemini, tự động chuyển sang Groq nếu Gemini lỗi
+- LLM_MODE = "LOCAL" : Chạy mô hình nội bộ qua Ollama
 """
 
 import os
@@ -26,29 +23,39 @@ if ENV_FILE.exists():
 MEMORY_FILE = BASE_DIR / "storage" / "memory.json"
 RULES_FILE = BASE_DIR / "storage" / "strategy_rules.json"
 
-LLM_MODE = os.getenv("LLM_MODE", "LOCAL").upper()
+# Đọc chế độ điều khiển: mặc định là GROQ
+LLM_MODE = os.getenv("LLM_MODE", "GROQ").upper()
 
-# 1. Khởi tạo Client theo LLM_MODE
-if LLM_MODE == "LOCAL":
-    LOCAL_BASE_URL = os.getenv("LOCAL_LLM_BASE_URL", "http://localhost:11434/v1")
-    LOCAL_MODEL = os.getenv("LOCAL_LLM_MODEL", "qwen2.5:7b")
-    LOCAL_API_KEY = os.getenv("LOCAL_LLM_API_KEY", "ollama")
-    local_client = OpenAI(api_key=LOCAL_API_KEY, base_url=LOCAL_BASE_URL, timeout=45.0)
-    cloud_gemini_client = None
-    cloud_groq_client = None
-else:
-    local_client = None
+# -------------------------------------------------------------
+# KHỞI TẠO CÁC CLIENT KẾT NỐI
+# -------------------------------------------------------------
+groq_client = None
+if os.getenv("GROQ_API_KEY"):
+    groq_client = OpenAI(
+        api_key=os.getenv("GROQ_API_KEY"),
+        base_url="https://api.groq.com/openai/v1",
+        timeout=15.0
+    )
+GROQ_MODEL = os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b")
+
+cloud_gemini_client = None
+gemini_key = os.getenv("GEMINI_API_KEY") or os.getenv("LLM_API_KEY")
+if gemini_key:
     cloud_gemini_client = OpenAI(
-        api_key=os.getenv("GEMINI_API_KEY") or os.getenv("LLM_API_KEY", ""),
+        api_key=gemini_key,
         base_url=os.getenv("LLM_BASE_URL", "https://generativelanguage.googleapis.com/v1beta/openai/"),
-        timeout=30.0
+        timeout=25.0
     )
-    GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
-    cloud_groq_client = (
-        OpenAI(api_key=os.getenv("GROQ_API_KEY"), base_url="https://api.groq.com/openai/v1", timeout=15.0)
-        if os.getenv("GROQ_API_KEY") else None
+GEMINI_MODEL = os.getenv("LLM_MODEL_NAME", "gemini-2.5-flash")
+
+local_client = None
+if LLM_MODE == "LOCAL":
+    local_client = OpenAI(
+        api_key=os.getenv("LOCAL_LLM_API_KEY", "ollama"),
+        base_url=os.getenv("LOCAL_LLM_BASE_URL", "http://localhost:11434/v1"),
+        timeout=45.0
     )
-    GROQ_MODEL = os.getenv("GROQ_FALLBACK_MODEL", "qwen/qwen3.8-27b")
+LOCAL_MODEL = os.getenv("LOCAL_LLM_MODEL", "qwen2.5:7b")
 
 DEFAULT_RULES = {
     "version": 1,
@@ -61,6 +68,7 @@ DEFAULT_RULES = {
 
 
 def _extract_json(text: str) -> dict:
+    """Trích xuất JSON an toàn từ phản hồi văn bản của LLM."""
     text = text.strip()
     json_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", text)
     clean_text = json_match.group(1) if json_match else text
@@ -75,9 +83,28 @@ def _extract_json(text: str) -> dict:
 
 
 def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
-    """Hàm gọi LLM dùng chung cho toàn bộ Agent (kể cả SentimentAgent)."""
-    time.sleep(0.3)
-    if LLM_MODE == "LOCAL":
+    """Bộ điều phối gọi LLM: Tự động chuyển tuyến theo LLM_MODE."""
+    time.sleep(0.15)
+
+    # 1. TUYẾN GROQ (Trực tiếp, nhanh nhất)
+    if LLM_MODE == "GROQ" and groq_client:
+        try:
+            res = groq_client.chat.completions.create(
+                model=GROQ_MODEL,
+                response_format={"type": "json_object"},
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                temperature=0.2,
+                max_tokens=350
+            )
+            return json.loads(res.choices[0].message.content)
+        except Exception as e:
+            logging.warning(f"⚠️ Groq gặp sự cố: {e}. Đang chuyển sang Gemini...")
+
+    # 2. TUYẾN LOCAL OLLAMA
+    elif LLM_MODE == "LOCAL" and local_client:
         try:
             res = local_client.chat.completions.create(
                 model=LOCAL_MODEL,
@@ -90,42 +117,62 @@ def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
             return _extract_json(res.choices[0].message.content)
         except Exception as e:
             logging.error(f"Lỗi gọi Local LLM ({LOCAL_MODEL}): {e}")
-            return {"error": str(e), "sentiment": "NEUTRAL", "panic_score": 5, "trading_advice": "NORMAL", "key_driver": "Local LLM Error"}
+            return {
+                "action": "HOLD",
+                "confidence": 0.5,
+                "reason": f"Local LLM Offline ({e})",
+                "approved": True,
+                "risk_score": 1,
+                "feedback": "HOLD an toàn"
+            }
 
-    # Chế độ Cloud (Gemini + Groq failover)
-    try:
-        res = cloud_gemini_client.chat.completions.create(
-            model=GEMINI_MODEL,
-            response_format={"type": "json_object"},
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
-            temperature=0.2,
-            max_tokens=300
-        )
-        return json.loads(res.choices[0].message.content)
-    except Exception as e:
-        logging.warning(f"⚠️ Google Gemini gặp sự cố: {str(e)[:70]}")
-
-    if cloud_groq_client:
+    # 3. TUYẾN GEMINI (Khi LLM_MODE=CLOUD hoặc khi Groq gặp lỗi)
+    if cloud_gemini_client:
         try:
-            logging.info(f">>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq ({GROQ_MODEL})...")
-            res = cloud_groq_client.chat.completions.create(
-                model=GROQ_MODEL,
+            res = cloud_gemini_client.chat.completions.create(
+                model=GEMINI_MODEL,
                 response_format={"type": "json_object"},
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
                 ],
                 temperature=0.2,
-                max_tokens=300
+                max_tokens=350
             )
             return json.loads(res.choices[0].message.content)
-        except Exception as ge:
-            logging.error(f"Lỗi cả Groq cứu hộ: {ge}")
+        except Exception as e:
+            logging.warning(f"⚠️ Gemini gặp sự cố: {str(e)[:70]}")
+            # Nếu chạy CLOUD nhưng Gemini lỗi, kích hoạt Groq cứu hộ
+            if groq_client:
+                try:
+                    res_groq = groq_client.chat.completions.create(
+                        model=GROQ_MODEL,
+                        response_format={"type": "json_object"},
+                        messages=[
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": user_prompt}
+                        ],
+                        temperature=0.2,
+                        max_tokens=350
+                    )
+                    return json.loads(res_groq.choices[0].message.content)
+                except Exception as ge:
+                    logging.error(f"Lỗi cả Groq cứu hộ: {ge}")
 
-    return {"error": "Tat ca LLM Cloud deu gap su co", "sentiment": "NEUTRAL", "panic_score": 5, "trading_advice": "NORMAL", "key_driver": "Cloud Error"}
+    # Giá trị an toàn trả về để bot không bị dừng nếu mất mạng hoàn toàn
+    return {
+        "action": "HOLD",
+        "confidence": 0.5,
+        "reason": "Mất kết nối toàn bộ LLM - Kích hoạt chế độ HOLD an toàn",
+        "approved": True,
+        "risk_score": 1,
+        "feedback": "HOLD tự động bảo vệ vốn.",
+        "directive": "FLEXIBLE",
+        "macro_bias": "SIDEWAY",
+        "sentiment": "NEUTRAL",
+        "panic_score": 3,
+        "key_driver": "Network Safe Mode"
+    }
 
 
 # -------------------------------------------------------------
@@ -245,7 +292,7 @@ Thẩm định đề xuất và trả về JSON.
 
 
 # -------------------------------------------------------------
-# 4. REFLECTOR AGENT (Lifelong Learning)
+# 4. REFLECTOR AGENT (Học tập & Tiến hóa)
 # -------------------------------------------------------------
 class ReflectorAgent:
     SYSTEM_PROMPT = """
@@ -407,13 +454,12 @@ class AuditorAgent:
         self.config = config
 
     def inspect_error(self, traceback_str: str) -> dict:
-        """Chẩn đoán lỗi khi bot gặp ngoại lệ bất thường."""
         user_prompt = f"Lỗi hệ thống:\n{traceback_str}\nPhân tích và trả về JSON."
         return _ask_llm(self.SYSTEM_PROMPT, user_prompt)
 
 
 # -------------------------------------------------------------
-# 6. AGENT TEAM (Đóng gói 6 Agent)
+# 6. AGENT TEAM (Đóng gói)
 # -------------------------------------------------------------
 class AgentTeam:
     def __init__(self, config=None):
@@ -424,11 +470,9 @@ class AgentTeam:
         self.reflector = ReflectorAgent(config)
         self.auditor = AuditorAgent(config)
 
-        # Import trễ tránh circular import
         from agents.sentiment_agent import SentimentAgent
         self.sentiment = SentimentAgent(config)
 
-        # Định danh tương thích
         self.strategist_agent = self.strategist
         self.operator_agent = self.operator
         self.supervisor_agent = self.supervisor
