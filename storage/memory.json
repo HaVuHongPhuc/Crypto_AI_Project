@@ -64,5 +64,21 @@
     "pnl_pct": -0.6797728251351682,
     "exit_reason": "AI_EARLY_EXIT_CLOSE",
     "lesson": "Cần tăng ngưỡng xác nhận tín hiệu AI để tránh thoát lệnh sớm sai lầm."
+  },
+  {
+    "id": 13,
+    "timestamp": "2026-09-23T17:50:30.402927+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.5948905681666394,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Tin tưởng tín hiệu thoát sớm của AI để bảo toàn lợi nhuận thay vì chờ đợi."
+  },
+  {
+    "id": 14,
+    "timestamp": "2026-09-23T20:01:10.020155+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.27590704887328465,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Tuân thủ tín hiệu thoát lệnh của AI để bảo toàn lợi nhuận và tránh rủi ro đảo chiều."
   }
 ]

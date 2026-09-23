@@ -1,9 +1,9 @@
 {
-  "version": 9,
-  "last_updated": "2026-09-23T14:11:25.302753+00:00",
-  "reason_for_update": "Loại bỏ cơ chế thoát lệnh sớm do AI, chỉ cho phép thoát khi thỏa mãn điều kiện kỹ thuật cứng.",
+  "version": 11,
+  "last_updated": "2026-09-23T20:01:14.146014+00:00",
+  "reason_for_update": "Vô hiệu hóa hoàn toàn can thiệp AI, ép buộc hệ thống tuân thủ kỷ luật kỹ thuật cứng để tối ưu hóa lợi nhuận.",
   "entry_rules": "OPEN_LONG khi EMA9 > EMA21, RSI > 50 và khung 1H là ONLY_LONG. OPEN_SHORT khi EMA9 < EMA21, RSI < 50 và khung 1H là ONLY_SHORT. Cấm vào lệnh nếu thiếu đồng thuận khung lớn.",
-  "exit_rules": "TUYỆT ĐỐI CẤM thoát lệnh dựa trên tín hiệu AI_EARLY_EXIT_CLOSE. Chỉ đóng lệnh khi nến đóng cửa hoàn toàn phía bên kia EMA21 VÀ RSI xác nhận đảo chiều (Long: RSI < 50, Short: RSI > 50). Giữ lệnh qua mọi biến động ngắn hạn.",
+  "exit_rules": "CẤM TUYỆT ĐỐI mọi can thiệp từ AI_EARLY_EXIT_CLOSE. Chỉ đóng lệnh khi nến đóng cửa hoàn toàn phía bên kia EMA21 VÀ RSI xác nhận đảo chiều (Long: RSI < 50, Short: RSI > 50). Giữ lệnh bất chấp biến động ngắn hạn.",
   "evolution_history": [
     {
       "version": 1,
@@ -47,6 +47,22 @@
       "flaw_identified": "Cơ chế AI_EARLY_EXIT_CLOSE gây thoát lệnh sai lầm, làm mất lợi nhuận và tạo lỗ không cần thiết.",
       "exit_rules": "Cấm thoát lệnh dựa trên biến động giá ngắn hạn. Chỉ đóng vị thế khi nến đóng cửa hoàn toàn phía bên kia EMA21. Bắt buộc RSI phải xác nhận đảo chiều (<50 với Long, >50 với Short).",
       "entry_rules": "OPEN_LONG khi EMA9 > EMA21 và RSI > 50. OPEN_SHORT khi EMA9 < EMA21 và RSI < 50. Yêu cầu xu hướng khung 1H đồng thuận."
+    },
+    {
+      "version": 9,
+      "archived_at": "2026-09-23T17:50:41.505233+00:00",
+      "reason": "Loại bỏ cơ chế thoát lệnh sớm do AI, chỉ cho phép thoát khi thỏa mãn điều kiện kỹ thuật cứng.",
+      "flaw_identified": "Cơ chế AI_EARLY_EXIT_CLOSE vẫn gây thoát lệnh sớm, làm mất lợi nhuận và tạo lỗ không cần thiết.",
+      "exit_rules": "TUYỆT ĐỐI CẤM thoát lệnh dựa trên tín hiệu AI_EARLY_EXIT_CLOSE. Chỉ đóng lệnh khi nến đóng cửa hoàn toàn phía bên kia EMA21 VÀ RSI xác nhận đảo chiều (Long: RSI < 50, Short: RSI > 50). Giữ lệnh qua mọi biến động ngắn hạn.",
+      "entry_rules": "OPEN_LONG khi EMA9 > EMA21, RSI > 50 và khung 1H là ONLY_LONG. OPEN_SHORT khi EMA9 < EMA21, RSI < 50 và khung 1H là ONLY_SHORT. Cấm vào lệnh nếu thiếu đồng thuận khung lớn."
+    },
+    {
+      "version": 10,
+      "archived_at": "2026-09-23T20:01:14.145886+00:00",
+      "reason": "Loại bỏ hoàn toàn cơ chế AI_EARLY_EXIT_CLOSE gây thoát lệnh sai, chỉ giữ lệnh khi kỹ thuật xác nhận.",
+      "flaw_identified": "Hệ thống vẫn bị AI_EARLY_EXIT_CLOSE can thiệp làm gián đoạn chiến lược lỳ đòn, gây mất lợi nhuận.",
+      "exit_rules": "TUYỆT ĐỐI CẤM thoát lệnh dựa trên tín hiệu AI_EARLY_EXIT_CLOSE. Chỉ đóng lệnh khi nến đóng cửa hoàn toàn phía bên kia EMA21 VÀ RSI xác nhận đảo chiều (Long: RSI < 50, Short: RSI > 50). Giữ lệnh qua mọi biến động ngắn hạn.",
+      "entry_rules": "OPEN_LONG khi EMA9 > EMA21, RSI > 50 và khung 1H là ONLY_LONG. OPEN_SHORT khi EMA9 < EMA21, RSI < 50 và khung 1H là ONLY_SHORT. Cấm vào lệnh nếu thiếu đồng thuận khung lớn."
     }
   ]
 }
