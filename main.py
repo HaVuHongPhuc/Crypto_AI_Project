@@ -5,12 +5,14 @@ import json
 import logging
 import os
 from pathlib import Path
+import threading
 import time
 import requests
 
 from agents.agent_team import AgentTeam, ReflectorAgent
 from config.settings import Settings
 from engine.paper_trader import PaperTrader
+from engine.ml_retrainer import MLRetrainer
 from notifiers.discord import DiscordNotifier
 
 # Thiết lập ghi log
@@ -41,7 +43,7 @@ class Main:
         # 4. Kênh thông báo Discord
         self.notifier = DiscordNotifier(self.config.discord_webhook_url)
 
-        # 5. Các biến quản lý trạng thái
+        # 5. Các biến quản lý trạng thái thị trường
         self.symbol = "BTCUSDT"
         self.last_candle_time = None
         self.last_1h_candle_time = None
@@ -50,6 +52,11 @@ class Main:
         self.current_macro_reason = "Khởi tạo hệ thống vĩ mô."
         self.recent_closed_trades = []
 
+        # 6. Bộ tự động Walk-Forward Retraining cho Machine Learning
+        self.ml_retrainer = MLRetrainer(symbol="BTCUSDT", interval="5m", lookback_candles=3000)
+        self.candle_counter = 0
+        self.is_retraining = False
+
     def load_active_position(self):
         """Khôi phục vị thế khi bot khởi động lại."""
         self.paper_trader.load_active_position()
@@ -57,6 +64,31 @@ class Main:
     def save_active_position(self):
         """Lưu vị thế hiện tại ra ổ cứng chống sập nguồn."""
         self.paper_trader.save_active_position()
+
+    def _async_retrain_job(self):
+        """Tiểu trình chạy ngầm: Tải 3,000 nến, huấn luyện Walk-Forward và Hot-Swap vào Operator."""
+        try:
+            self.is_retraining = True
+            logging.info("🧵 [THREAD NGẦM] Bắt đầu tự động tái huấn luyện Walk-Forward...")
+            result = self.ml_retrainer.retrain_model()
+            if result.get("success"):
+                # 1. Hot-Swap: Tải lại model mới vào bộ nhớ RAM của Operator
+                self.agent_team.operator_agent.reload_model()
+                
+                # 2. Thông báo báo cáo hiệu năng lên Discord
+                self.notifier.send(
+                    f"🧬 **[WALK-FORWARD RETRAINING] Tự Động Tái Huấn Luyện Thành Công!**\n"
+                    f"• Dữ liệu học: `3,000 nến 5m mới nhất từ Binance`\n"
+                    f"• OOS Accuracy: `{result['accuracy']}%` | OOS Precision: `{result['precision']}%` | F1: `{result.get('f1_score', 0)}%`\n"
+                    f"• Trạng thái: Đã Hot-Swap nạp trực tiếp vào OperatorAgent."
+                )
+                logging.info(f"✅ [HOT-SWAP THÀNH CÔNG] Đã cập nhật mô hình mới vào OperatorAgent (OOS Acc: {result['accuracy']}%)")
+            else:
+                logging.warning(f"Tự động retrain thất bại: {result.get('reason')}")
+        except Exception as e:
+            logging.error(f"Lỗi trong tiểu trình retrain ngầm: {e}")
+        finally:
+            self.is_retraining = False
 
     @staticmethod
     def _calc_ema(data: list, period: int) -> float:
@@ -225,7 +257,7 @@ class Main:
             f"🚀 **Bot 6-Agent Đã Khởi Động Thành Công!** Chế độ: `{mode}` | Vốn: `{self.paper_trader.total_equity:.2f} USDT`"
         )
 
-        # ⚡ BẮN NGAY BẢN TIN VĨ MÔ STRATEGIST KHI VỪA BẬT BOT
+        # Bắn ngay bản tin vĩ mô Strategist khi vừa khởi động
         init_market = self.fetch_market_data_5m()
         if init_market:
             self.update_macro_strategy(init_market["price"], force_send=True)
@@ -243,6 +275,12 @@ class Main:
                 # Chỉ kích hoạt AI Team khi nến 5m mới mở cửa
                 if market_data["open_time"] != self.last_candle_time:
                     self.last_candle_time = market_data["open_time"]
+                    self.candle_counter += 1
+
+                    # Tự động kích hoạt Walk-Forward Retraining ngầm mỗi 2,016 nến 5m (7 ngày)
+                    if self.candle_counter >= 2016 and not self.is_retraining:
+                        self.candle_counter = 0
+                        threading.Thread(target=self._async_retrain_job, daemon=True).start()
 
                     # 1. Thu thập tin tức & luật hiện hành
                     sentiment_info = (
@@ -266,7 +304,7 @@ class Main:
                         else {"side": "NONE", "entry_price": 0.0, "pnl_pct": 0.0}
                     )
 
-                    # 3. OPERATOR AGENT đề xuất (áp dụng chỉ thị 1H thực tế)
+                    # 3. OPERATOR AGENT đề xuất (tích hợp ML Probability + Quy tắc động)
                     proposal = self.agent_team.operator_agent.analyze(
                         symbol="BTC/USDT",
                         current_price=market_data["price"],
@@ -319,7 +357,7 @@ class Main:
                                     price=market_data["price"],
                                     capital=trade_capital,
                                     macro_directive=self.current_macro_directive,
-                                    rules_version=rules.get("version", 13),
+                                    rules_version=rules.get("version", 14),
                                     operator_reason=proposal.get("reason", "N/A"),
                                     supervisor_reason=review.get("feedback", "N/A"),
                                     total_equity=self.paper_trader.total_equity,

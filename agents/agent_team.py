@@ -5,7 +5,12 @@ Hệ thống Đa Tác Tử (Multi-Agent System) hỗ trợ:
    - Tier 2: Ollama Cloud gemma4:31b-cloud (Dự phòng 1 - Logic toán học chính xác)
    - Tier 3: Groq Cloud qwen/qwen3.8-27b (Chốt chặn an toàn siêu tốc 0.3s)
 2. Tự động học hỏi (Lifelong Learning) và tự động tiến hóa phả hệ bộ luật (v1 -> vN) 24/7
-3. Đồng bộ và cập nhật trực tiếp vào storage/strategy_rules.json mỗi khi có lệnh thua hoặc định kỳ 5 lệnh
+3. Đồng bộ hóa Machine Learning (model.pkl) trực tiếp vào logic ra quyết định của Operator
+4. ĐÃ VÁ LỖI TOÀN DIỆN:
+   - Tự động nạp Joblib/Pickle chống lỗi STACK_GLOBAL requires str.
+   - Sửa lỗi đảo ngược nhãn BUY/HOLD (khớp chuẩn classes_).
+   - Strategist phản xạ tức thì với 1H gãy nền EMA50.
+   - Supervisor không bị tin tức báo chí làm nhiễu lệnh SHORT thuận xu hướng.
 """
 
 import os
@@ -13,11 +18,20 @@ import json
 import time
 import logging
 import re
+import pickle
 import urllib.request
 from pathlib import Path
 from datetime import datetime, timezone
 from dotenv import load_dotenv
+import numpy as np
+import pandas as pd
 from openai import OpenAI
+
+# Hỗ trợ bộ nạp Scikit-Learn Joblib
+try:
+    import joblib
+except ImportError:
+    joblib = None
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 ENV_FILE = BASE_DIR / ".env"
@@ -26,6 +40,7 @@ if ENV_FILE.exists():
 
 MEMORY_FILE = BASE_DIR / "storage" / "memory.json"
 RULES_FILE = BASE_DIR / "storage" / "strategy_rules.json"
+MODEL_PATH = BASE_DIR / "models" / "model.pkl"
 
 logger = logging.getLogger("CryptoAI")
 
@@ -66,7 +81,7 @@ if os.getenv("GROQ_API_KEY"):
 GROQ_MODEL = os.getenv("GROQ_MODEL") or os.getenv("GROQ_FALLBACK_MODEL", "qwen/qwen3.8-27b")
 
 DEFAULT_RULES = {
-    "version": 11,
+    "version": 14,
     "last_updated": datetime.now(timezone.utc).isoformat(),
     "reason_for_update": "Khởi tạo bộ quy tắc chuẩn kỹ thuật Scalping 5m",
     "entry_rules": "OPEN_LONG khi EMA9 > EMA21, RSI > 50 và khung 1H là ONLY_LONG. OPEN_SHORT khi EMA9 < EMA21, RSI < 50 và khung 1H là ONLY_SHORT.",
@@ -117,21 +132,14 @@ def _extract_json(text: str) -> dict:
 
 
 def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
-    """
-    Cơ chế điều phối gọi LLM 3 tầng tự động Fallback (Waterfall):
-    Tier 1 (Ưu tiên): Google Gemini (gemini-3.1-flash-lite)
-    Tier 2 (Dự phòng 1): Ollama Cloud (gemma4:31b-cloud)
-    Tier 3 (Chốt chặn): Groq Cloud (qwen/qwen3.8-27b)
-    """
+    """Cơ chế điều phối gọi LLM 3 tầng tự động Fallback."""
     time.sleep(0.1)
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt}
     ]
 
-    # =========================================================
-    # TẦNG 1: GOOGLE GEMINI (FLASH LITE)
-    # =========================================================
+    # Tier 1: Gemini
     if cloud_gemini_client:
         try:
             res = cloud_gemini_client.chat.completions.create(
@@ -139,31 +147,27 @@ def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
                 response_format={"type": "json_object"},
                 messages=messages,
                 temperature=0.1,
-                max_tokens=500
+                max_tokens=5000
             )
             return _extract_json(res.choices[0].message.content)
         except Exception as e:
-            logger.warning(f"⚠️ [Tier 1 - Gemini] Lỗi/Timeout: {str(e)[:80]} ➔ Chuyển sang Tier 2 (Gemma 4 Cloud)...")
+            logger.warning(f"⚠️ [Tier 1 - Gemini] Lỗi/Timeout: {str(e)[:80]} ➔ Chuyển sang Tier 2...")
 
-    # =========================================================
-    # TẦNG 2: OLLAMA CLOUD (GEMMA 4 31B CLOUD)
-    # =========================================================
+    # Tier 2: Ollama Cloud
     if local_client:
         try:
             res = local_client.chat.completions.create(
                 model=LOCAL_MODEL,
                 messages=messages,
                 temperature=0.1,
-                max_tokens=500
+                max_tokens=5000
             )
             logger.info("🛡️ [Tier 2 - Gemma 4 Cloud] Đã phản hồi thay thế thành công!")
             return _extract_json(res.choices[0].message.content)
         except Exception as e:
-            logger.warning(f"⚠️ [Tier 2 - Gemma 4 Cloud] Lỗi/Timeout: {str(e)[:80]} ➔ Chuyển sang Tier 3 (Groq Cloud)...")
+            logger.warning(f"⚠️ [Tier 2 - Gemma 4 Cloud] Lỗi/Timeout: {str(e)[:80]} ➔ Chuyển sang Tier 3...")
 
-    # =========================================================
-    # TẦNG 3: GROQ CLOUD (CHỐT CHẶN AN TOÀN SIÊU TỐC)
-    # =========================================================
+    # Tier 3: Groq Cloud
     if groq_client:
         try:
             res = groq_client.chat.completions.create(
@@ -171,16 +175,13 @@ def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
                 response_format={"type": "json_object"},
                 messages=messages,
                 temperature=0.1,
-                max_tokens=500
+                max_tokens=5000
             )
             logger.info("⚡ [Tier 3 - Groq Cloud] Chốt chặn cuối cùng đã phản hồi thành công!")
             return _extract_json(res.choices[0].message.content)
         except Exception as e:
             logger.error(f"❌ [TẤT CẢ 3 TẦNG ĐỀU THẤT BẠI]: {e}")
 
-    # =========================================================
-    # CHẾ ĐỘ PHÒNG THỦ AN TOÀN TUYỆT ĐỐI (Khi mất mạng toàn bộ)
-    # =========================================================
     return {
         "action": "HOLD",
         "confidence": 0.5,
@@ -202,11 +203,13 @@ def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
 class StrategistAgent:
     SYSTEM_PROMPT = """
     You are the Senior Chief Strategist for a Crypto Quantitative Fund.
-    Analyze the 1-HOUR (1H) MACRO TREND. Dictate whether 5m Scalper is allowed to go LONG, SHORT, or BOTH.
-    RULES:
-    - "ONLY_LONG" : 1H Price > EMA50, EMA50 > EMA200, RSI_1H > 52.
-    - "ONLY_SHORT": 1H Price < EMA50, EMA50 < EMA200, RSI_1H < 48.
-    - "FLEXIBLE"  : Market is in 1H consolidation.
+    Analyze the 1-HOUR (1H) MACRO TREND to dictate 5m Scalper behavior:
+
+    CRITICAL RULES (Do NOT get stuck in FLEXIBLE waiting for the lagging EMA50/EMA200 cross!):
+    - "ONLY_LONG" : 1H Price > EMA50 AND RSI_1H > 52. (Bullish Momentum - Longs allowed).
+    - "ONLY_SHORT": 1H Price < EMA50 AND RSI_1H < 48. (Bearish Breakdown - Allow immediate Shorting even if EMA50 > EMA200!).
+    - "FLEXIBLE"  : ONLY when 1H Price is hovering tightly around EMA50 (+-0.2%) OR RSI_1H is in the neutral zone (48 to 52).
+
     JSON format:
     { "macro_bias": "BULLISH" | "BEARISH" | "SIDEWAY", "directive": "ONLY_LONG" | "ONLY_SHORT" | "FLEXIBLE", "reasoning": "Brief explanation" }
     """
@@ -219,24 +222,122 @@ class StrategistAgent:
 Thị trường: {symbol} | Giá: {current_price} USDT
 DỮ LIỆU 1H: RSI(14)={h1_ind.get('rsi_14', 'N/A')}, EMA50={h1_ind.get('ema_50', 'N/A')}, EMA200={h1_ind.get('ema_200', 'N/A')}.
 Vị trí giá: {'TRÊN' if current_price >= h1_ind.get('ema_50', current_price) else 'DƯỚI'} EMA50 1H.
+Quy tắc: Nếu Giá < EMA50 và RSI < 48, BẮT BUỘC chỉ thị là ONLY_SHORT để mở đường cho phe Bán.
 Ban hành chỉ thị xu hướng 1H dạng JSON.
 """
         return _ask_llm(self.SYSTEM_PROMPT, user_prompt)
 
 
 # -------------------------------------------------------------
-# 2. OPERATOR AGENT (5m)
+# 2. OPERATOR AGENT (5m - Tích hợp ML Engine chuẩn)
 # -------------------------------------------------------------
 class OperatorAgent:
     SYSTEM_PROMPT = """
     You are an Aggressive Scalping Trader on the 5m crypto timeframe.
-    Follow strictly the DYNAMIC STRATEGY RULES provided in the prompt.
+    You strictly combine technical indicators (EMA, RSI), DYNAMIC STRATEGY RULES, and MACHINE LEARNING (Random Forest) probability.
+    
+    GUIDELINES:
+    1. If ML BUY Probability > 65% and technicals align with rules -> Strong LONG.
+    2. If ML BUY Probability < 35% (meaning High Downside Probability) and EMA9 < EMA21, RSI < 45 -> Strong SHORT.
+    3. Respect 1H Macro Directive and current active rulebook.
+    
     Output ONLY valid JSON:
-    { "action": "OPEN_LONG" | "OPEN_SHORT" | "CLOSE" | "HOLD", "confidence": 0.60 to 0.95, "reason": "Direct technical trigger" }
+    { "action": "OPEN_LONG" | "OPEN_SHORT" | "CLOSE" | "HOLD", "confidence": 0.60 to 0.95, "reason": "Direct technical trigger + ML probability context" }
     """
 
     def __init__(self, config=None):
         self.config = config
+        self.model = None
+        self.load_ml_model()
+
+    def load_ml_model(self):
+        """Nạp file model.pkl vào bộ nhớ RAM (Hỗ trợ cả Joblib và Pickle)."""
+        if not MODEL_PATH.exists():
+            self.model = None
+            return
+
+        # 1. Ưu tiên nạp bằng joblib (chuẩn của train.py)
+        if joblib is not None:
+            try:
+                self.model = joblib.load(MODEL_PATH)
+                logger.info("🤖 [OPERATOR] Đã nạp thành công mô hình ML bằng joblib (model.pkl)")
+                return
+            except Exception:
+                pass
+
+        # 2. Dự phòng nạp bằng pickle
+        try:
+            with open(MODEL_PATH, "rb") as f:
+                self.model = pickle.load(f)
+            logger.info("🤖 [OPERATOR] Đã nạp thành công mô hình ML bằng pickle (model.pkl)")
+            return
+        except Exception as e:
+            logger.warning(f"Không thể nạp model.pkl: {e}")
+            self.model = None
+
+    def reload_model(self):
+        """Hot-Swap: Tải lại model mới vào RAM."""
+        logger.info("🔄 [HOT-SWAP] OperatorAgent đang nạp mô hình vừa được tái huấn luyện...")
+        self.load_ml_model()
+
+    def predict_ml_probability(self, indicators: dict) -> float:
+        """
+        Dự đoán xác suất TĂNG GIÁ (BUY) từ mô hình Random Forest.
+        Khớp chuẩn 7 cột của train.py và xử lý vị trí index của nhãn BUY trong classes_.
+        """
+        if not self.model:
+            return 0.5
+
+        try:
+            price = float(indicators.get("price", 1.0))
+            ema9 = float(indicators.get("ema_9", price))
+            ema21 = float(indicators.get("ema_21", price))
+            rsi14 = float(indicators.get("rsi_14", 50.0))
+            macd = float(indicators.get("macd", ema9 - ema21))
+            spread_pct = ((ema9 - ema21) / price) * 100.0
+
+            # 1. Feature Pool đầy đủ cho cả train.py (7 features) lẫn ml_retrainer.py
+            feature_pool = {
+                "rsi_14": rsi14,
+                "macd": macd,
+                "macd_signal": float(indicators.get("macd_signal", 0.0)),
+                "ema_9": ema9,
+                "ema_21": ema21,
+                "ema_spread_pct": spread_pct,
+                "ema_spread": spread_pct,
+                "volume_change": float(indicators.get("volume_change", 0.0)),
+                "vol_ratio": 1.0
+            }
+
+            # 2. Tạo DataFrame với các cột khớp chính xác model đã học
+            if hasattr(self.model, "feature_names_in_"):
+                expected_cols = list(self.model.feature_names_in_)
+                row = [feature_pool.get(col, 0.0) for col in expected_cols]
+                X = pd.DataFrame([row], columns=expected_cols)
+            else:
+                default_cols = ["rsi_14", "macd", "macd_signal", "ema_9", "ema_21", "ema_spread_pct", "volume_change"]
+                row = [feature_pool.get(col, 0.0) for col in default_cols]
+                X = pd.DataFrame([row], columns=default_cols)
+
+            # 3. FIX LỖI ĐẢO NGƯỢC NHÃN: Dò đúng vị trí của BUY trong model.classes_
+            probabilities = self.model.predict_proba(X)[0]
+            classes = list(getattr(self.model, "classes_", []))
+
+            if "BUY" in classes:
+                buy_idx = classes.index("BUY")
+            elif 1 in classes:
+                buy_idx = classes.index(1)
+            elif "1" in classes:
+                buy_idx = classes.index("1")
+            else:
+                buy_idx = 0
+
+            prob_buy = float(probabilities[buy_idx])
+            return round(prob_buy, 4)
+
+        except Exception as e:
+            logger.warning(f"Lỗi suy luận ML: {e}")
+            return 0.5
 
     def analyze(self, symbol: str, current_price: float, indicators: dict, position_info: dict = None, macro_directive: str = "FLEXIBLE") -> dict:
         if not position_info:
@@ -250,33 +351,44 @@ class OperatorAgent:
         rsi_state = "TRÊN 50 (BULLISH)" if rsi_val > 50 else "DƯỚI 50 (BEARISH)"
         ema_state = "EMA9 > EMA21 (TĂNG)" if ema9_val > ema21_val else "EMA9 < EMA21 (GIẢM)"
 
+        ml_prob = self.predict_ml_probability(indicators)
+        ml_bias = "BULLISH (TĂNG)" if ml_prob > 0.55 else ("BEARISH (GIẢM)" if ml_prob < 0.45 else "NEUTRAL (ĐI NGANG)")
+
         user_prompt = f"""
 Thị trường: {symbol} | Giá: {current_price} USDT | Chỉ thị 1H: [{macro_directive}]
-BỘ QUY TẮC HIỆN HÀNH (v{rules.get('version', 11)}):
+BỘ QUY TẮC HIỆN HÀNH (v{rules.get('version', 14)}):
 - Entry Rules: {rules.get('entry_rules')}
 - Exit Rules: {rules.get('exit_rules')}
 Vị thế: {position_info.get('side', 'NONE')} (PnL: {position_info.get('pnl_pct', 0.0):.2f}%)
 Kỹ thuật: RSI={rsi_val} ({rsi_state}), EMA9={ema9_val} vs EMA21={ema21_val} ({ema_state}).
+DỰ ĐOÁN MACHINE LEARNING (Random Forest): Xác suất TĂNG GIÁ = {ml_prob:.1%} [{ml_bias}].
 Hãy đưa ra quyết định dạng JSON (OPEN_LONG / OPEN_SHORT / CLOSE / HOLD).
 """
         return _ask_llm(self.SYSTEM_PROMPT, user_prompt)
 
 
 # -------------------------------------------------------------
-# 3. SUPERVISOR AGENT (Kiểm duyệt rủi ro)
+# 3. SUPERVISOR AGENT
 # -------------------------------------------------------------
 class SupervisorAgent:
     SYSTEM_PROMPT = """
-    Bạn là Giám đốc Quản trị Rủi ro (Supervisor Agent).
-    Phản biện đề xuất từ Operator Agent dựa trên an toàn vốn, CHỈ THỊ 1H, BÀI HỌC KINH NGHIỆM và TÌNH BÁO SENTIMENT.
-    QUY TẮC KIỂM DUYỆT:
+    Bạn là Giám đốc Quản trị Rủi ro (Supervisor Agent) của quỹ Scalping Crypto.
+    Nhiệm vụ: Phản biện đề xuất từ Operator Agent dựa trên an toàn vốn, CHỈ THỊ 1H và BÀI HỌC KINH NGHIỆM.
+
+    QUY TẮC THÉP (BẢO VỆ XU HƯỚNG & KHÔNG BỊ TRUYỀN THÔNG BÓP NGHẸT):
     1. HOLD/CLOSE: Luôn DUYỆT (approved = true, risk_score = 1).
-    2. OPEN_LONG/SHORT:
-       - TỪ CHỐI nếu black_swan_alert = true hoặc panic_score >= 8 hoặc trading_advice == "HALT_TRADING".
-       - TỪ CHỐI nếu Macro 1H xung đột (chỉ thị ONLY_SHORT cấm mở Long; ONLY_LONG cấm mở Short).
-       - TỪ CHỐI nếu lặp lại sai lầm trong BÀI HỌC KINH NGHIỆM.
+    2. VỀ TIN TỨC BÁO CHÍ (SENTIMENT):
+       - Báo chí Crypto luôn có độ trễ và thiên kiến dài hạn (thường xuyên đưa tin Bullish dù giá đang sập).
+       - CHỈ PHANH KHẨN CẤP khi black_swan_alert = true hoặc panic_score >= 7 hoặc trading_advice == "HALT_TRADING".
+       - Nếu panic_score < 7 (thị trường bình thường): TUYỆT ĐỐI CẤM dùng lý do "tâm lý thị trường Bullish/Bearish" để từ chối các đề xuất kỹ thuật hợp lệ từ Operator!
+    3. ĐÍNH CHÍNH KHÁI NIỆM "BẮT DAO RƠI":
+       - Khi nến 5m có xu hướng giảm rõ rệt (EMA9 < EMA21, RSI < 45), việc mở SHORT là THUẬN XU HƯỚNG GIẢM (Trend Following).
+       - TUYỆT ĐỐI KHÔNG coi lệnh SHORT này là "bắt dao rơi" để từ chối! ("Bắt dao rơi" chỉ xảy ra khi mở LONG lúc giá đang rơi).
+    4. NGUYÊN TẮC DUYỆT LỆNH SHORT:
+       - Nếu Operator đề xuất OPEN_SHORT khi kỹ thuật 5m xác nhận giảm (EMA9 < EMA21, RSI < 45) và chỉ thị 1H cho phép (FLEXIBLE hoặc ONLY_SHORT): BẮT BUỘC DUYỆT (approved = true, risk_score <= 3).
+
     JSON format:
-    { "approved": true | false, "risk_score": 1 to 10, "feedback": "Lý do duyệt hoặc từ chối" }
+    { "approved": true | false, "risk_score": 1 to 10, "feedback": "Lập luận phản biện rõ ràng" }
     """
 
     def __init__(self, config=None):
@@ -288,32 +400,57 @@ class SupervisorAgent:
         if action in ("HOLD", "CLOSE"):
             return {"approved": True, "risk_score": 1, "feedback": f"{action} tự động duyệt."}
 
-        if sentiment_info and (sentiment_info.get("black_swan_alert") or sentiment_info.get("panic_score", 0) >= 8 or sentiment_info.get("trading_advice") == "HALT_TRADING"):
+        # 1. Phanh khẩn cấp rủi ro cực đoan
+        if sentiment_info and (sentiment_info.get("black_swan_alert") or sentiment_info.get("panic_score", 0) >= 7 or sentiment_info.get("trading_advice") == "HALT_TRADING"):
             driver = sentiment_info.get("key_driver", "Rủi ro tin tức cực đoan")
             return {"approved": False, "risk_score": 10, "feedback": f"PHANH KHẨN CẤP: Từ chối {action} do rủi ro tin tức: {driver}"}
+
+        # 2. Ràng buộc cứng theo chỉ thị 1H
+        if macro_directive == "ONLY_SHORT" and action == "OPEN_LONG":
+            return {"approved": False, "risk_score": 9, "feedback": "Từ chối OPEN_LONG vì chỉ thị 1H là ONLY_SHORT."}
+        if macro_directive == "ONLY_LONG" and action == "OPEN_SHORT":
+            return {"approved": False, "risk_score": 9, "feedback": "Từ chối OPEN_SHORT vì chỉ thị 1H là ONLY_LONG."}
 
         if not position_info:
             position_info = {"side": "NONE"}
         if not past_lessons:
             past_lessons = ["Không có cảnh báo đặc biệt."]
         if not sentiment_info:
-            sentiment_info = {"sentiment": "NEUTRAL", "panic_score": 5, "key_driver": "Bình thường"}
+            sentiment_info = {"sentiment": "NEUTRAL", "panic_score": 3, "key_driver": "Bình thường"}
 
         lessons_str = "\n".join([f"- {l}" for l in past_lessons])
 
         user_prompt = f"""
-Đề xuất: {json.dumps(proposal, ensure_ascii=False)} | Chỉ thị 1H: [{macro_directive}]
-Vị thế hiện tại: {json.dumps(position_info, ensure_ascii=False)} | Vốn: {cash} USDT
+Đề xuất từ Operator: {json.dumps(proposal, ensure_ascii=False)} | Chỉ thị 1H: [{macro_directive}]
+Vị thế hiện tại: {json.dumps(position_info, ensure_ascii=False)} | Vốn khả dụng: {cash} USDT
+Kỹ thuật 5m: RSI={indicators.get('rsi_14')}, EMA9={indicators.get('ema_9')}, EMA21={indicators.get('ema_21')}
 Tình báo Tin tức: Tâm lý [{sentiment_info.get('sentiment')}], Điểm hoảng loạn [{sentiment_info.get('panic_score')}/10], Tin: {sentiment_info.get('key_driver')}
 BÀI HỌC KINH NGHIỆM ĐÃ LỌC:
 {lessons_str}
-Thẩm định đề xuất và trả về JSON.
+
+LƯU Ý NGHIÊM NGẶT ĐỂ TRÁNH BỎ LỠ CƠ HỘI:
+- Điểm hoảng loạn tin tức là {sentiment_info.get('panic_score')}/10 (< 7): TUYỆT ĐỐI KHÔNG dùng tâm lý báo chí để chặn đề xuất OPEN_SHORT/OPEN_LONG hợp lệ.
+- Mở SHORT khi EMA9 < EMA21 và RSI < 45 là ĐÁNH THUẬN XU HƯỚNG GIẢM, KHÔNG PHẢI bắt dao rơi. BẮT BUỘC DUYỆT nếu kỹ thuật hợp lệ!
+Thẩm định và trả về JSON.
 """
-        return _ask_llm(self.SYSTEM_PROMPT, user_prompt)
+        review_res = _ask_llm(self.SYSTEM_PROMPT, user_prompt)
+
+        # Python-level override guard
+        if action == "OPEN_SHORT" and not review_res.get("approved"):
+            feedback_text = str(review_res.get("feedback", "")).lower()
+            if ("dao rơi" in feedback_text or "bullish" in feedback_text or "tâm lý" in feedback_text) and sentiment_info.get("panic_score", 0) < 7:
+                logger.info("🛡️ [SUPERVISOR OVERRIDE] Can thiệp phê duyệt OPEN_SHORT thuận xu hướng.")
+                return {
+                    "approved": True,
+                    "risk_score": 3,
+                    "feedback": "Duyệt OPEN_SHORT thuận xu hướng kỹ thuật 5m (Đã bỏ qua thiên kiến tin tức báo chí)."
+                }
+
+        return review_res
 
 
 # -------------------------------------------------------------
-# 4. REFLECTOR AGENT (Tự học & Tự động tiến hóa bộ quy tắc 24/7)
+# 4. REFLECTOR AGENT
 # -------------------------------------------------------------
 class ReflectorAgent:
     SYSTEM_PROMPT = """
@@ -349,10 +486,8 @@ Hãy đúc rút 1 câu bài học quan trọng nhất cho hệ thống.
         res = _ask_llm(self.SYSTEM_PROMPT, user_prompt)
         lesson = res.get("lesson", f"Lệnh {trade_summary.get('side')} PnL: {trade_summary.get('pnl_pct'):+.2f}%")
         
-        # Lưu vào sổ cái bài học
         trade_id = self._save_to_memory(lesson, trade_summary)
 
-        # Kiểm tra điều kiện tự động kích hoạt tiến hóa
         pnl_pct = trade_summary.get("pnl_pct", 0.0)
         recent_trades = self._load_recent_memory(limit=10)
 
@@ -373,9 +508,8 @@ Hãy đúc rút 1 câu bài học quan trọng nhất cho hệ thống.
         return lesson
 
     def auto_evolve_rules(self, recent_trades: list = None) -> dict:
-        """Đọc phả hệ cũ, gọi LLM nâng cấp lên version mới và tự lưu đè file storage/strategy_rules.json."""
         current_data = self.load_full_registry()
-        current_ver = current_data.get("version", 11)
+        current_ver = current_data.get("version", 14)
         history = current_data.get("evolution_history", [])
 
         if not recent_trades:
@@ -501,7 +635,6 @@ Nhiệm vụ: Viết tiếp phiên bản v{current_ver + 1}, khắc phục đi�
 
     @staticmethod
     def load_lessons(side: str = None) -> list:
-        """Đã tối ưu: Ép token xuống mức tối thiểu (3 bài học lỗ + 2 gần nhất = tối đa 5 bài học)"""
         if not MEMORY_FILE.exists():
             return []
         try:
@@ -510,11 +643,9 @@ Nhiệm vụ: Viết tiếp phiên bản v{current_ver + 1}, khắc phục đi�
             if not data:
                 return []
 
-            # 1. Chỉ lấy tối đa 3 lệnh LỖ gần nhất (chặn lặp lại sai lầm)
             loss_trades = [d for d in data if d.get("pnl_pct", 0) < 0][-3:]
             critical_lessons = [f"[CẢNH BÁO LỖ #{d.get('id')} ({d.get('pnl_pct'):.2f}%)] {d.get('lesson')}" for d in loss_trades]
 
-            # 2. Chỉ lấy tối đa 2 lệnh mới nhất
             recent_trades = [d for d in data if side is None or d.get("side") == side][-2:]
             recent_lessons = [f"[GẦN ĐÂY #{d.get('id')}] {d.get('lesson')}" for d in recent_trades]
 
@@ -542,7 +673,7 @@ class AuditorAgent:
 
 
 # -------------------------------------------------------------
-# 6. AGENT TEAM (Đóng gói)
+# 6. AGENT TEAM (Đóng gói hoàn chỉnh)
 # -------------------------------------------------------------
 class AgentTeam:
     def __init__(self, config=None):
