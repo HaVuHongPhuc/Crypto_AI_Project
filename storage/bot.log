@@ -2504,3 +2504,291 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines
 2026-09-24 03:30:24,513 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 03:30:30,006 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 03:30:30,164 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 84312.520000, Vốn = 70.293799 USDT
+2026-09-24 04:28:08,021 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:28:10,134 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:28:10,151 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Visa khảo sát cho thấy tiềm năng tăng trưởng lớn cho stablecoin tại Mỹ
+2026-09-24 04:28:10,614 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:30:13,204 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:35:18,484 [INFO] Retrying request in 0.492653 seconds (retry 1 of 2)
+2026-09-24 04:35:19,368 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:40:10,364 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:45:15,387 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:45:17,722 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:45:17,727 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Visa khảo sát cho thấy triển vọng tích cực về việc áp dụng stablecoin tại Mỹ.
+2026-09-24 04:45:18,231 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:50:08,728 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:55:14,671 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:00:05,884 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:05:11,023 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 05:05:13,467 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:05:13,471 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC giảm truy tố, Visa thúc đẩy stablecoin, tâm lý tham lam
+2026-09-24 05:05:13,958 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:10:04,554 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:15:10,614 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:20:15,798 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 05:20:19,281 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:20:19,286 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC bỏ vụ án crypto, Visa thúc đẩy stablecoin, tâm lý tham lam.
+2026-09-24 05:20:19,786 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:25:10,315 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:30:02,700 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:35:08,655 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:40:13,543 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 05:40:15,828 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:40:15,835 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC bỏ vụ án, Visa thúc đẩy stablecoin, tâm lý tham lam
+2026-09-24 05:40:16,322 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:45:07,718 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:50:14,427 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 05:55:04,814 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:00:10,570 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 06:00:13,300 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:00:13,304 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC bỏ vụ án crypto, Visa thúc đẩy stablecoin, tâm lý tham lam
+2026-09-24 06:00:13,786 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:05:04,566 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:10:10,226 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:15:15,576 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 06:15:17,865 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:15:17,870 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC bỏ vụ án, Visa thúc đẩy stablecoin, tâm lý tham lam
+2026-09-24 06:15:18,460 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:20:08,816 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:25:14,402 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:30:06,032 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:35:11,162 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 06:35:13,456 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:35:13,462 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC giảm án, Visa hỗ trợ stablecoin, tâm lý tham lam
+2026-09-24 06:35:13,977 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:40:04,439 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:45:10,410 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:50:02,029 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:55:07,200 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 06:55:09,550 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 06:55:09,554 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC bỏ vụ án crypto, Visa thúc đẩy stablecoin, tâm lý tham lam
+2026-09-24 06:55:10,044 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:00:16,335 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:05:07,099 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:10:12,288 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 07:10:14,528 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:10:14,534 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC bỏ qua vụ án crypto, Visa thúc đẩy stablecoin
+2026-09-24 07:10:15,081 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:15:06,020 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:20:12,074 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:25:03,067 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:30:08,271 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 07:30:10,631 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:30:10,635 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC bỏ vụ án crypto, Visa thúc đẩy stablecoin, tâm lý tham lam
+2026-09-24 07:30:11,153 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:35:02,889 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:40:09,220 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:45:14,562 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 07:45:16,906 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:45:16,909 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: SEC bỏ vụ án, Visa thúc đẩy stablecoin, tâm lý tham lam
+2026-09-24 07:45:17,421 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:50:08,500 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 07:55:16,969 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:00:09,413 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:05:14,501 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 08:05:17,416 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:05:17,421 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường hưng phấn, tin tức pháp lý và cá nhân không gây sốc
+2026-09-24 08:05:18,146 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:10:09,925 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:15:16,486 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:20:06,845 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:25:12,135 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 08:25:14,590 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:25:14,594 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường hưng phấn, tin tức pháp lý và cá nhân không gây sốc
+2026-09-24 08:25:15,210 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:30:06,370 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:35:12,489 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:40:03,560 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:45:09,022 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 08:45:11,538 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:45:11,541 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường lạc quan, tin tức pháp lý và cá nhân không gây sốc
+2026-09-24 08:45:12,015 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:50:03,583 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 08:55:11,015 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:00:02,661 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:05:07,836 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 09:05:10,189 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:05:10,194 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường hưng phấn, tin tức pháp lý và cá nhân không gây sốc
+2026-09-24 09:05:10,711 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:10:02,053 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:15:08,061 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:20:12,925 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 09:20:15,244 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:20:15,247 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường ổn định, tin tức pháp lý và cá nhân không gây sốc
+2026-09-24 09:20:15,748 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:25:06,251 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:30:12,486 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:35:03,208 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:40:08,104 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 09:40:10,441 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:40:10,447 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường hưng phấn, tin tức pháp lý và cá nhân không gây sốc
+2026-09-24 09:40:11,009 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:45:02,069 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:50:45,690 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 09:55:05,600 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:00:12,580 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 10:00:14,941 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:00:14,945 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường ổn định, tin tức pháp lý và cá nhân không gây sốc hệ thống
+2026-09-24 10:00:15,433 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:05:08,194 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:10:14,336 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:15:04,870 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:15:05,600 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:15:05,634 [INFO] >>> [PAPER TRADER] Mở SHORT @ 84338.0 | Vốn: 70.0 USDT (Phí: -0.035 USDT)
+2026-09-24 10:20:04,313 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 10:20:06,652 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:20:06,655 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường ổn định, tin tức pháp lý và cá nhân không gây sốc
+2026-09-24 10:20:07,202 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:20:07,246 [INFO] >>> [PAPER TRADER] Đóng SHORT @ 84230.01 | PnL: +0.08% (+0.0546 USDT)
+2026-09-24 10:20:07,751 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:20:08,579 [INFO] ⚡ [AUTO-EVOLVE] Kích hoạt tiến hóa bộ luật: Định kỳ tối ưu sau mốc 10 lệnh giao dịch
+2026-09-24 10:20:10,293 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 10:20:10,294 [WARNING] ⚠️ Groq gặp sự cố: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}. Đang chuyển sang Gemini...
+2026-09-24 10:20:10,953 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 10:20:10,958 [WARNING] ⚠️ Gemini gặp sự cố: Error code: 404 - [{'error': {'code': 404, 'message': 'This model mode
+2026-09-24 10:20:12,070 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 10:20:12,075 [ERROR] Lỗi cả Groq cứu hộ: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}
+2026-09-24 10:20:12,098 [WARNING] ⚠️ LLM không sinh đủ cấu trúc rules mới, tiếp tục duy trì phiên bản hiện tại.
+2026-09-24 10:25:03,777 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:30:09,728 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:35:14,768 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 10:35:17,221 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:35:17,225 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường hưng phấn, tin SEC bỏ vụ án và Trump mua cổ phiếu.
+2026-09-24 10:35:17,785 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:40:08,544 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:40:09,645 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:40:09,732 [INFO] >>> [PAPER TRADER] Mở LONG @ 83954.01 | Vốn: 70.0 USDT (Phí: -0.035 USDT)
+2026-09-24 10:45:03,190 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:50:09,215 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:50:09,245 [INFO] >>> [PAPER TRADER] Đóng LONG @ 83929.01 | PnL: -0.08% (-0.0558 USDT)
+2026-09-24 10:50:09,742 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:50:09,766 [INFO] ⚡ [AUTO-EVOLVE] Kích hoạt tiến hóa bộ luật: Phản xạ sau lệnh cắt lỗ #16 (-0.08%)
+2026-09-24 10:50:10,974 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 10:50:10,976 [WARNING] ⚠️ Groq gặp sự cố: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}. Đang chuyển sang Gemini...
+2026-09-24 10:50:11,652 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 10:50:11,654 [WARNING] ⚠️ Gemini gặp sự cố: Error code: 404 - [{'error': {'code': 404, 'message': 'This model mode
+2026-09-24 10:50:12,720 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 10:50:12,723 [ERROR] Lỗi cả Groq cứu hộ: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}
+2026-09-24 10:50:12,749 [WARNING] ⚠️ LLM không sinh đủ cấu trúc rules mới, tiếp tục duy trì phiên bản hiện tại.
+2026-09-24 10:55:03,482 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 10:55:20,387 [INFO] Retrying request in 0.421635 seconds (retry 1 of 2)
+2026-09-24 10:55:21,418 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:55:21,426 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường hưng phấn, tin SEC bỏ vụ án và hoạt động giao dịch lớn bình thường.
+2026-09-24 10:55:22,026 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:55:22,799 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 10:55:22,845 [INFO] >>> [PAPER TRADER] Mở LONG @ 83907.6 | Vốn: 70.0 USDT (Phí: -0.035 USDT)
+2026-09-24 11:00:14,562 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:05:05,161 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:05:05,197 [INFO] >>> [PAPER TRADER] Đóng LONG @ 83874.01 | PnL: -0.09% (-0.0630 USDT)
+2026-09-24 11:05:05,672 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:05:05,710 [INFO] ⚡ [AUTO-EVOLVE] Kích hoạt tiến hóa bộ luật: Phản xạ sau lệnh cắt lỗ #17 (-0.09%)
+2026-09-24 11:05:06,911 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 11:05:06,914 [WARNING] ⚠️ Groq gặp sự cố: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}. Đang chuyển sang Gemini...
+2026-09-24 11:05:07,599 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 11:05:07,600 [WARNING] ⚠️ Gemini gặp sự cố: Error code: 404 - [{'error': {'code': 404, 'message': 'This model mode
+2026-09-24 11:05:08,653 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 11:05:08,654 [ERROR] Lỗi cả Groq cứu hộ: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}
+2026-09-24 11:05:08,660 [WARNING] ⚠️ LLM không sinh đủ cấu trúc rules mới, tiếp tục duy trì phiên bản hiện tại.
+2026-09-24 11:05:10,652 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 11:05:10,653 [WARNING] ⚠️ Groq gặp sự cố: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}. Đang chuyển sang Gemini...
+2026-09-24 11:05:10,993 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 11:05:10,997 [WARNING] ⚠️ Gemini gặp sự cố: Error code: 404 - [{'error': {'code': 404, 'message': 'This model mode
+2026-09-24 11:05:12,067 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 11:05:12,071 [ERROR] Lỗi cả Groq cứu hộ: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}
+2026-09-24 11:05:12,094 [WARNING] ⚠️ LLM không sinh đủ cấu trúc rules mới, tiếp tục duy trì phiên bản hiện tại.
+2026-09-24 11:10:03,022 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:10:03,867 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:10:03,883 [INFO] >>> [PAPER TRADER] Mở LONG @ 83934.01 | Vốn: 70.0 USDT (Phí: -0.035 USDT)
+2026-09-24 11:15:09,924 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 11:15:12,429 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:15:13,095 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường hưng phấn, tin tức pháp lý và cá nhân không gây sốc
+2026-09-24 11:15:13,665 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:15:14,056 [INFO] >>> [PAPER TRADER] Đóng LONG @ 83822.0 | PnL: -0.18% (-0.1283 USDT)
+2026-09-24 11:15:14,527 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:15:14,547 [INFO] ⚡ [AUTO-EVOLVE] Kích hoạt tiến hóa bộ luật: Phản xạ sau lệnh cắt lỗ #18 (-0.18%)
+2026-09-24 11:15:15,765 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 11:15:15,768 [WARNING] ⚠️ Groq gặp sự cố: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}. Đang chuyển sang Gemini...
+2026-09-24 11:15:16,517 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 11:15:16,519 [WARNING] ⚠️ Gemini gặp sự cố: Error code: 404 - [{'error': {'code': 404, 'message': 'This model mode
+2026-09-24 11:15:17,570 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-24 11:15:17,571 [ERROR] Lỗi cả Groq cứu hộ: Error code: 400 - {'error': {'message': "Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'json_validate_failed', 'failed_generation': 'max completion tokens reached before generating a valid document'}}
+2026-09-24 11:15:17,572 [WARNING] ⚠️ LLM không sinh đủ cấu trúc rules mới, tiếp tục duy trì phiên bản hiện tại.
+2026-09-24 11:40:28,503 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 11:40:34,414 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:40:34,430 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường duy trì sự lạc quan nhờ kỳ vọng chính trị và hoạt động giao dịch dự đoán tăng.
+2026-09-24 11:40:39,128 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:45:19,503 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:46:46,430 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 11:46:53,503 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:46:53,527 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường lạc quan nhờ tin tức chính trị và sự quan tâm từ các nhà lập pháp Mỹ.
+2026-09-24 11:46:57,339 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:50:06,540 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:50:10,673 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:50:10,689 [INFO] >>> [PAPER TRADER] Mở LONG @ 83799.99 | Vốn: 70.0 USDT (Phí: -0.035 USDT)
+2026-09-24 11:53:00,049 [INFO] >>> [PHỤC HỒI VỊ THẾ] Đã nạp lại vị thế LONG @ 83799.99 USDT
+2026-09-24 11:53:00,079 [INFO] >>> [PHỤC HỒI VỊ THẾ] Đã nạp lại vị thế LONG @ 83799.99 USDT
+2026-09-24 11:53:04,591 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:53:05,319 [INFO] 🧭 [STRATEGIST 1H] Phát chỉ thị mới: [FLEXIBLE]
+2026-09-24 11:53:05,321 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 11:53:10,380 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:53:10,389 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường duy trì sự lạc quan nhờ kỳ vọng chính sách và hoạt động giao dịch dự đoán tăng.
+2026-09-24 11:53:13,970 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:53:14,000 [INFO] >>> [PAPER TRADER] Đóng LONG @ 83850.97 | PnL: +0.01% (+0.0076 USDT)
+2026-09-24 11:53:16,700 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:53:16,781 [INFO] ⚡ [AUTO-EVOLVE] Kích hoạt tiến hóa bộ luật: Định kỳ tối ưu sau mốc 10 lệnh giao dịch
+2026-09-24 11:53:21,439 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 11:53:21,452 [INFO] 🎉 [TIẾN HÓA THÀNH CÔNG] Bộ luật đã tự động nâng cấp lên v13: Tối ưu hóa bộ lọc tín hiệu AI trong chế độ FLEXIBLE để loại bỏ nhiễu khi thị trường đi ngang, tránh tình trạng cắt lỗ liên tiếp do tín hiệu giả.
+2026-09-24 11:55:15,609 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:00:25,803 [INFO] Retrying request in 0.476132 seconds (retry 1 of 2)
+2026-09-24 12:00:30,127 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:00:30,788 [INFO] 🧭 [STRATEGIST 1H] Phát chỉ thị mới: [FLEXIBLE]
+2026-09-24 12:00:34,065 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:05:14,944 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:05:19,390 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:05:19,423 [INFO] >>> [PAPER TRADER] Mở LONG @ 84256.35 | Vốn: 30.0 USDT (Phí: -0.015 USDT)
+2026-09-24 12:10:03,196 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 12:10:07,485 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:10:07,492 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường lạc quan nhờ tiến bộ công nghệ và sự chú ý từ các nhà lập pháp Mỹ.
+2026-09-24 12:10:11,118 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:17:56,829 [INFO] Retrying request in 0.494561 seconds (retry 1 of 2)
+2026-09-24 12:18:51,036 [INFO] Retrying request in 0.995622 seconds (retry 2 of 2)
+2026-09-24 12:19:25,198 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:20:23,764 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:24:55,024 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:30:04,225 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 12:30:08,520 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:30:08,524 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường lạc quan nhờ tiến bộ công nghệ và sự chú ý từ các nhà lập pháp Mỹ.
+2026-09-24 12:30:12,817 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:35:08,767 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:40:06,387 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:55:48,773 [INFO] >>> [PHỤC HỒI VỊ THẾ] Đã nạp lại vị thế LONG @ 84256.35 USDT
+2026-09-24 12:55:48,805 [INFO] >>> [PHỤC HỒI VỊ THẾ] Đã nạp lại vị thế LONG @ 84256.35 USDT
+2026-09-24 12:58:13,137 [INFO] >>> [PHỤC HỒI VỊ THẾ] Đã nạp lại vị thế LONG @ 84256.35 USDT
+2026-09-24 12:58:13,166 [INFO] >>> [PHỤC HỒI VỊ THẾ] Đã nạp lại vị thế LONG @ 84256.35 USDT
+2026-09-24 12:58:30,573 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:58:31,298 [INFO] 🧭 [STRATEGIST 1H] Phát chỉ thị mới: [FLEXIBLE] | Quỹ: 99.90 USDT
+2026-09-24 12:58:31,298 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 12:58:36,565 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:58:36,569 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường lạc quan với sự phát triển công nghệ và kỳ vọng nới lỏng quy định từ SEC.
+2026-09-24 12:58:52,631 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 12:59:59,232 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:00:00,089 [INFO] 🧭 [STRATEGIST 1H] Phát chỉ thị mới: [FLEXIBLE] | Quỹ: 99.90 USDT
+2026-09-24 13:00:03,070 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:05:02,713 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:09:59,532 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-09-24 13:09:59,534 [INFO] Retrying request in 0.422734 seconds (retry 1 of 2)
+2026-09-24 13:10:03,167 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:14:59,255 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 13:15:03,364 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:15:03,369 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường lạc quan với sự phát triển công nghệ và các quy định stablecoin rõ ràng hơn.
+2026-09-24 13:15:06,452 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:20:04,401 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:40:10,166 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:40:11,114 [INFO] 🧭 [STRATEGIST 1H] Phát chỉ thị mới: [FLEXIBLE] | Quỹ: 100.07 USDT
+2026-09-24 13:40:11,586 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 13:40:15,873 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:40:15,878 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường lạc quan với sự phát triển công nghệ và kỳ vọng nới lỏng quy định từ SEC.
+2026-09-24 13:40:19,854 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:45:01,644 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:49:59,185 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 13:54:55,905 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"

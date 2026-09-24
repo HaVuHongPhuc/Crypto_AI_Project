@@ -80,5 +80,45 @@
     "pnl_pct": 0.27590704887328465,
     "exit_reason": "AI_EARLY_EXIT_CLOSE",
     "lesson": "Tuân thủ tín hiệu thoát lệnh của AI để bảo toàn lợi nhuận và tránh rủi ro đảo chiều."
+  },
+  {
+    "id": 15,
+    "timestamp": "2026-09-24T03:20:07.756457+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.0781083200929655,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tín hiệu AI hiệu quả với nhịp giảm ngắn, cần chốt lời nhanh khi biên độ hẹp."
+  },
+  {
+    "id": 16,
+    "timestamp": "2026-09-24T03:50:09.746406+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.07976331922680048,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tối ưu ngưỡng tín hiệu AI để tránh cắt lỗ sớm khi biến động giá rất nhỏ."
+  },
+  {
+    "id": 17,
+    "timestamp": "2026-09-24T04:05:05.676770+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.09001211451645745,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tín hiệu AI dễ gây lỗ nhỏ khi thị trường đi ngang, cần thêm bộ lọc xác nhận xu hướng."
+  },
+  {
+    "id": 18,
+    "timestamp": "2026-09-24T04:15:14.530487+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.18338335080141505,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tín hiệu AI dễ gây lỗ nhỏ khi thị trường đi ngang, cần thêm bộ lọc xác nhận xu hướng."
+  },
+  {
+    "id": 19,
+    "timestamp": "2026-09-24T04:53:16.711990+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.0108049117905574,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Cần tối ưu hóa điểm vào lệnh để gia tăng tỷ lệ lợi nhuận trên mỗi giao dịch."
   }
 ]

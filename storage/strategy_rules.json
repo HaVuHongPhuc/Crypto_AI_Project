@@ -1,9 +1,9 @@
 {
-  "version": 8,
-  "last_updated": "2026-09-23T21:09:21.421673+00:00",
-  "reason_for_update": "Tăng độ lỳ cho lệnh, loại bỏ chốt lời non, chỉ thoát khi EMA21 bị phá vỡ dứt khoát và RSI xác nhận đảo chiều.",
-  "entry_rules": "OPEN_LONG khi EMA9 > EMA21 và RSI > 50. OPEN_SHORT khi EMA9 < EMA21 và RSI < 50. Yêu cầu xu hướng khung 1H đồng thuận.",
-  "exit_rules": "Cấm thoát lệnh dựa trên biến động giá ngắn hạn. Chỉ đóng vị thế khi nến đóng cửa hoàn toàn phía bên kia EMA21. Bắt buộc RSI phải xác nhận đảo chiều (<50 với Long, >50 với Short).",
+  "version": 13,
+  "last_updated": "2026-09-24T04:53:21.447447+00:00",
+  "reason_for_update": "Tối ưu hóa bộ lọc tín hiệu AI trong chế độ FLEXIBLE để loại bỏ nhiễu khi thị trường đi ngang, tránh tình trạng cắt lỗ liên tiếp do tín hiệu giả.",
+  "entry_rules": "1. TREND MODE (70% vốn): Giữ nguyên quy tắc EMA9/21 và RSI. 2. FLEXIBLE MODE (30% vốn): Bắt buộc thêm bộ lọc xác nhận: Chỉ mở lệnh khi RSI 5m đã thoát khỏi vùng nhiễu (45-55) VÀ nến 5m đóng cửa vượt qua EMA9. Cấm tuyệt đối việc vào lệnh khi khoảng cách giữa EMA9 và EMA21 nhỏ hơn 0.05% giá trị tài sản (thị trường đi ngang biên độ hẹp).",
+  "exit_rules": "1. CHỐT LỜI: Giữ nguyên cơ chế chốt lời 0.8%-1.5% hoặc RSI 50. 2. CẮT LỖ: Vô hiệu hóa quyền đóng lệnh sớm của AI (AI_SIGNAL) nếu lệnh chưa đạt 5 phút giao dịch, trừ khi chạm Stop Loss cơ học 1.2% hoặc vi phạm cấu trúc EMA21. 3. KHIÊN BẢO VỆ: Duy trì Stop Loss cơ học 1.2% tuyệt đối.",
   "evolution_history": [
     {
       "version": 1,
@@ -39,6 +39,37 @@
       "version": 7,
       "reason": "Chuyển mốc hỗ trợ/kháng cự động chính từ EMA9 sang EMA21.",
       "flaw_identified": "Cần gia tăng thêm độ lỳ trong sóng biến động mạnh."
+    },
+    {
+      "version": 8,
+      "reason": "Tăng độ lỳ cho lệnh, loại bỏ chốt lời non, chỉ thoát khi EMA21 bị phá vỡ dứt khoát.",
+      "flaw_identified": "AI vẫn cố tìm lý do đóng lệnh sớm khi thấy nến đỏ ngắn hạn."
+    },
+    {
+      "version": 9,
+      "reason": "Giới hạn quyền đóng lệnh của LLM, bổ sung kiểm tra Trailing Stop cơ học.",
+      "flaw_identified": "Độ trễ suy luận của LLM làm trễ nhịp thoát lệnh khẩn cấp."
+    },
+    {
+      "version": 10,
+      "reason": "Tách biệt hoàn toàn tầng RiskManager cơ học 0ms khỏi quyết định của Agent.",
+      "flaw_identified": "Cần điều khoản cấm dứt điểm hành vi AI_EARLY_EXIT_CLOSE trong prompt."
+    },
+    {
+      "version": 11,
+      "archived_at": "2026-09-24T03:00:24.056571+00:00",
+      "reason": "Vô hiệu hóa hoàn toàn can thiệp AI, ép buộc hệ thống tuân thủ kỷ luật kỹ thuật cứng để tối ưu hóa lợi nhuận.",
+      "flaw_identified": "Quy tắc quá khắt khe khiến bot đứng ngoài (HOLD) liên tục khi 1H đi ngang (FLEXIBLE), bỏ lỡ các nhịp sóng hồi 5m.",
+      "entry_rules": "OPEN_LONG khi EMA9 > EMA21, RSI > 50 và khung 1H là ONLY_LONG. OPEN_SHORT khi EMA9 < EMA21, RSI < 50 và khung 1H là ONLY_SHORT.",
+      "exit_rules": "CẤM TUYỆT ĐỐI mọi can thiệp từ AI_EARLY_EXIT_CLOSE. Chỉ đóng lệnh khi nến đóng cửa hoàn toàn phía bên kia EMA21 VÀ RSI xác nhận đảo chiều (<50 với Long, >50 với Short)."
+    },
+    {
+      "version": 12,
+      "archived_at": "2026-09-24T04:53:21.447331+00:00",
+      "reason": "Kích hoạt cơ chế Dual-Mode: Vừa bám Trend khi 1H rõ ràng (70% vốn), vừa đánh Mean Reversion nới lỏng biên độ (RSI 35/65, 30% vốn) khi 1H là FLEXIBLE.",
+      "flaw_identified": "Tín hiệu AI (ML) quá nhạy cảm trong môi trường 1H FLEXIBLE, dẫn đến việc vào lệnh sớm khi chưa có xác nhận động lượng, gây ra các khoản lỗ nhỏ tích lũy.",
+      "entry_rules": "1. KHI 1H LÀ ONLY_LONG / ONLY_SHORT (Đánh theo Trend lớn - Đi 70% vốn):\n   - OPEN_LONG khi EMA9 > EMA21 và RSI > 48.\n   - OPEN_SHORT khi EMA9 < EMA21 và RSI < 52.\n\n2. KHI 1H LÀ FLEXIBLE (Đánh Sideway / Bắt sóng hồi - Thăm dò 30% vốn):\n   - CẤM mua đuổi theo EMA cắt nhau.\n   - MỞ LONG ĐẢO CHIỀU khi RSI 5m < 35 (bắt đáy hỗ trợ).\n   - MỞ SHORT ĐẢO CHIỀU khi RSI 5m > 65 (bán đỉnh kháng cự).\n   - MỞ THUẬN ĐÀ: Cho phép OPEN_LONG nếu EMA9 > EMA21, RSI 5m trong khoảng 52-62 VÀ mô hình ML dự báo BUY.",
+      "exit_rules": "1. CHỐT LỜI NHANH (Lệnh Sideway): Chủ động CLOSE khi lợi nhuận đạt từ +0.8% đến +1.5% HOẶC RSI 5m chạm lại trục cân bằng 50.\n2. CHỐT LỜI TREND: Giữ lệnh theo xu hướng, đóng khi nến 5m đóng cửa qua EMA9 (nếu lãi >0.5%) hoặc thủng EMA21.\n3. KHIÊN BẢO VỆ 0MS: Mọi vị thế đều được bảo vệ bởi Stop Loss cơ học -1.2% từ RiskManager."
     }
   ]
 }
