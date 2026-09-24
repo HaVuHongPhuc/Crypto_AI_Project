@@ -2289,3 +2289,7 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines
 2026-09-24 04:29:38,222 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin long liquidations tăng
 2026-09-24 04:29:39,047 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 04:30:13,003 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:33:43,894 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:33:48,830 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:33:48,834 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Sự kiện chung, không có tin xấu bất ngờ
+2026-09-24 04:33:49,637 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
