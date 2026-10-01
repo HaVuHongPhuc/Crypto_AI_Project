@@ -1,5 +1,9 @@
 """Vòng lặp điều hành chính 6-Agent Crypto Scalping (BTC/USDT 5m)."""
 
+# 1. Tắt toàn bộ cảnh báo của thư viện (đặc biệt là spam UserWarning joblib/sklearn trên Python 3.14)
+import warnings
+warnings.filterwarnings("ignore")
+
 from datetime import datetime, timezone
 import json
 import logging
@@ -52,7 +56,10 @@ class Main:
         self.current_macro_reason = "Khởi tạo hệ thống vĩ mô."
         self.recent_closed_trades = []
 
-        # 6. Bộ tự động Walk-Forward Retraining cho Machine Learning
+        # 6. Biến Cooldown chống FOMO sau Take Profit
+        self.cooldown_until_candle = 0
+
+        # 7. Bộ tự động Walk-Forward Retraining cho Machine Learning
         self.ml_retrainer = MLRetrainer(symbol="BTCUSDT", interval="5m", lookback_candles=3000)
         self.candle_counter = 0
         self.is_retraining = False
@@ -72,10 +79,7 @@ class Main:
             logging.info("🧵 [THREAD NGẦM] Bắt đầu tự động tái huấn luyện Walk-Forward...")
             result = self.ml_retrainer.retrain_model()
             if result.get("success"):
-                # 1. Hot-Swap: Tải lại model mới vào bộ nhớ RAM của Operator
                 self.agent_team.operator_agent.reload_model()
-                
-                # 2. Thông báo báo cáo hiệu năng lên Discord
                 self.notifier.send(
                     f"🧬 **[WALK-FORWARD RETRAINING] Tự Động Tái Huấn Luyện Thành Công!**\n"
                     f"• Dữ liệu học: `3,000 nến 5m mới nhất từ Binance`\n"
@@ -121,34 +125,47 @@ class Main:
         return round(100.0 - (100.0 / (1.0 + rs)), 2)
 
     def fetch_market_data_5m(self) -> dict:
-        """Lấy dữ liệu nến 5m từ Binance Public API."""
+        """Lấy dữ liệu nến 5m từ Binance Public API và tính toán đầy đủ các features cho ML."""
         url = f"https://api.binance.com/api/v3/klines?symbol={self.symbol}&interval=5m&limit=60"
         try:
             res = requests.get(url, timeout=10)
             if res.status_code != 200:
                 return {}
             klines = res.json()
-            if not klines or len(klines) < 30:
+            if not klines or len(klines) < 35:
                 return {}
 
             closes = [float(k[4]) for k in klines]
-            latest_candle = klines[-1]
-            current_price = float(latest_candle[4])
+            volumes = [float(k[5]) for k in klines]
+            current_price = closes[-1]
 
             ema9 = self._calc_ema(closes, 9)
             ema21 = self._calc_ema(closes, 21)
             rsi14 = self._calc_rsi(closes, 14)
 
-            if self.paper_trader.position:
-                self.paper_trader.update_position(current_price)
+            # Tính toán MACD & Signal Line (EMA9 của chuỗi MACD)
+            macd_series = []
+            for i in range(26, len(closes)):
+                sub_c = closes[: i + 1]
+                e12 = self._calc_ema(sub_c, 12)
+                e26 = self._calc_ema(sub_c, 26)
+                macd_series.append(e12 - e26)
+
+            macd_val = macd_series[-1] if macd_series else (ema9 - ema21)
+            macd_signal = self._calc_ema(macd_series, 9) if len(macd_series) >= 9 else 0.0
+
+            # Tính biến động volume
+            vol_change = ((volumes[-1] - volumes[-2]) / volumes[-2]) if len(volumes) >= 2 and volumes[-2] > 0 else 0.0
 
             return {
-                "open_time": latest_candle[0],
+                "open_time": klines[-1][0],
                 "price": current_price,
                 "rsi_14": rsi14,
                 "ema_9": round(ema9, 2),
                 "ema_21": round(ema21, 2),
-                "macd": round(ema9 - ema21, 4),
+                "macd": round(macd_val, 4),
+                "macd_signal": round(macd_signal, 4),
+                "volume_change": round(vol_change, 4),
                 "capital": round(self.paper_trader.cash, 2),
                 "available_cash": round(self.paper_trader.cash, 2),
                 "total_equity": round(self.paper_trader.total_equity, 2),
@@ -201,7 +218,6 @@ class Main:
             self.current_macro_bias = macro_res.get("macro_bias", "SIDEWAY")
             self.current_macro_reason = macro_res.get("reasoning", "Thị trường biến động hẹp.")
 
-            # Bắn Card Embed Strategist 1H lên Discord kèm số dư quỹ
             self.notifier.send_strategist_update(
                 directive=self.current_macro_directive,
                 macro_bias=self.current_macro_bias,
@@ -211,11 +227,43 @@ class Main:
             )
             logging.info(f"🧭 [STRATEGIST 1H] Phát chỉ thị mới: [{self.current_macro_directive}] | Quỹ: {self.paper_trader.total_equity:.2f} USDT")
 
+    def _handle_close_position(self, exit_price: float, exit_reason: str):
+        """Hàm chuẩn hóa quy trình đóng vị thế, thông báo và tự động tiến hóa."""
+        summary = self.paper_trader.close_position(exit_price, exit_reason=exit_reason)
+        if not summary:
+            return
+
+        # Kích hoạt Cooldown 2 nến (10 phút) nếu chốt lời để tránh FOMO đu đỉnh/đáy
+        if "TP" in exit_reason or "TAKE_PROFIT" in exit_reason:
+            self.cooldown_until_candle = self.candle_counter + 2
+            logging.info("⏸️ [COOLDOWN] Kích hoạt nghỉ 2 nến sau Take Profit để hạ nhiệt thị trường.")
+
+        # reflector.reflect() tự điều phối tiến hóa bộ luật khi thực sự cần thiết
+        lesson = self.agent_team.reflector_agent.reflect(summary)
+        self.recent_closed_trades.append(summary)
+        print(f"💡 [BÀI HỌC VỪA RÚT RA]: {lesson}")
+
+        self.notifier.send_trade_close(
+            exit_type=summary.get("exit_reason", exit_reason),
+            side=summary["side"],
+            symbol="BTC/USDT",
+            entry_price=summary["entry_price"],
+            exit_price=summary["exit_price"],
+            pnl_usdt=summary["pnl_usdt"],
+            pnl_pct=summary["pnl_pct"],
+            total_equity=summary.get("total_cash", self.paper_trader.total_equity),
+            cum_pnl_usdt=summary.get("cum_pnl_usdt", 0.0),
+            cum_pnl_pct=summary.get("cum_pnl_pct", 0.0),
+            reflector_lesson=lesson
+        )
+
+        self.save_active_position()
+
     def print_dashboard(self, market_data: dict, sentiment: dict, rules: dict):
         """In bảng điều khiển trực quan theo từng nến."""
         pos = self.paper_trader.position
         pos_str = (
-            f"{pos.side} @ {pos.entry_price:.2f} (PnL: {pos.pnl_pct:+.2f}%)"
+            f"{pos.side} @ {pos.entry_price:.2f} (PnL: {pos.pnl_pct:+.2f}%) [Nến: {pos.holding_candles}]"
             if pos
             else "TRỐNG"
         )
@@ -229,14 +277,14 @@ class Main:
             f" | Tổng tài sản: {total_eq:.2f} USDT (Khả dụng: {cash_avail:.2f} USDT)"
         )
         print(
-            f"   Tin tức: [{sentiment.get('sentiment', 'NEUTRAL')} (Panic:"
+            f"    Tin tức: [{sentiment.get('sentiment', 'NEUTRAL')} (Panic:"
             f" {sentiment.get('panic_score', 5)}/10)] | Bộ luật:"
             f" [v{rules.get('version', 1)}]"
         )
-        print(f"   Chỉ thị 1H: [{self.current_macro_directive}] ({self.current_macro_bias})")
-        print(f"   Vị thế: {pos_str}")
+        print(f"    Chỉ thị 1H: [{self.current_macro_directive}] ({self.current_macro_bias})")
+        print(f"    Vị thế: {pos_str}")
         print(
-            f"   Chỉ báo 5m: RSI(14)={market_data.get('rsi_14')} |"
+            f"    Chỉ báo 5m: RSI(14)={market_data.get('rsi_14')} |"
             f" EMA9={market_data.get('ema_9')} | EMA21={market_data.get('ema_21')}"
         )
         print("─" * 75)
@@ -257,7 +305,6 @@ class Main:
             f"🚀 **Bot 6-Agent Đã Khởi Động Thành Công!** Chế độ: `{mode}` | Vốn: `{self.paper_trader.total_equity:.2f} USDT`"
         )
 
-        # Bắn ngay bản tin vĩ mô Strategist khi vừa khởi động
         init_market = self.fetch_market_data_5m()
         if init_market:
             self.update_macro_strategy(init_market["price"], force_send=True)
@@ -269,28 +316,58 @@ class Main:
                     time.sleep(10)
                     continue
 
-                # Cập nhật chỉ đạo vĩ mô 1H (khi bước sang nến giờ mới)
-                self.update_macro_strategy(market_data["price"], force_send=False)
+                current_price = market_data["price"]
 
-                # Chỉ kích hoạt AI Team khi nến 5m mới mở cửa
+                # Cập nhật chỉ đạo vĩ mô 1H khi sang nến giờ mới
+                self.update_macro_strategy(current_price, force_send=False)
+
+                # Chỉ kích hoạt logic phân tích khi nến 5m mới xuất hiện
                 if market_data["open_time"] != self.last_candle_time:
                     self.last_candle_time = market_data["open_time"]
                     self.candle_counter += 1
 
-                    # Tự động kích hoạt Walk-Forward Retraining ngầm mỗi 2,016 nến 5m (7 ngày)
+                    # Cập nhật lãi/lỗ và số nến nắm giữ
+                    if self.paper_trader.position:
+                        self.paper_trader.update_position(current_price)
+
+                    # Kích hoạt Walk-Forward Retraining ngầm mỗi 2,016 nến (7 ngày)
                     if self.candle_counter >= 2016 and not self.is_retraining:
                         self.candle_counter = 0
                         threading.Thread(target=self._async_retrain_job, daemon=True).start()
 
-                    # 1. Thu thập tin tức & luật hiện hành
-                    sentiment_info = (
-                        self.agent_team.sentiment_agent.analyze_market_sentiment()
-                    )
+                    # 1. Thu thập dữ liệu tâm lý & bộ luật
+                    sentiment_info = self.agent_team.sentiment_agent.analyze_market_sentiment()
                     rules = ReflectorAgent.load_rules()
 
-                    # 2. In Dashboard
+                    # 2. In bảng điều khiển trực quan
                     self.print_dashboard(market_data, sentiment_info, rules)
 
+                    # =========================================================================
+                    # BƯỚC 1: KIỂM TRA THOÁT VỊ THẾ ĐỘC LẬP (0MS MECHANICAL & MACRO GUARD)
+                    # =========================================================================
+                    if self.paper_trader.position:
+                        # 1.1 Kiểm tra các chốt chặn cơ học (Hard Stop, Trailing Stop, RSI TP >= +0.35%, Gãy EMA21)
+                        should_mech_close, mech_reason = self.paper_trader.check_mechanical_exit(
+                            current_price=current_price,
+                            indicators=market_data
+                        )
+                        if should_mech_close:
+                            logging.info(f"🚨 [CƠ HỌC TỰ ĐỘNG THOÁT VỊ THẾ]: {mech_reason}")
+                            self._handle_close_position(current_price, exit_reason=mech_reason)
+                            continue
+
+                        # 1.2 Kiểm tra nếu Khung 1H đảo chiều ngược 100% với vị thế đang giữ
+                        curr_side = self.paper_trader.position.side
+                        if (curr_side == "LONG" and self.current_macro_directive == "ONLY_SHORT") or \
+                           (curr_side == "SHORT" and self.current_macro_directive == "ONLY_LONG"):
+                            macro_exit_reason = f"Đảo chiều xu hướng 1H sang [{self.current_macro_directive}]"
+                            logging.info(f"🚨 [CƯỠNG CHẾ ĐÓNG VỊ THẾ NGHỊCH XU HƯỚNG 1H]: {macro_exit_reason}")
+                            self._handle_close_position(current_price, exit_reason=macro_exit_reason)
+                            continue
+
+                    # =========================================================================
+                    # BƯỚC 2: AI TEAM PHÂN TÍCH VÀ ĐỀ XUẤT HÀNH ĐỘNG
+                    # =========================================================================
                     pos = self.paper_trader.position
                     position_info = (
                         {
@@ -304,94 +381,106 @@ class Main:
                         else {"side": "NONE", "entry_price": 0.0, "pnl_pct": 0.0}
                     )
 
-                    # 3. OPERATOR AGENT đề xuất (tích hợp ML Probability + Quy tắc động)
+                    # Operator đề xuất
                     proposal = self.agent_team.operator_agent.analyze(
                         symbol="BTC/USDT",
-                        current_price=market_data["price"],
+                        current_price=current_price,
                         indicators=market_data,
                         position_info=position_info,
                         macro_directive=self.current_macro_directive,
                     )
                     conf_pct = int(proposal.get("confidence", 0.8) * 100)
-                    print(
-                        f"🤖 [OPERATOR]   : Đề xuất -> {proposal.get('action')} (Độ tin"
-                        f" cậy: {conf_pct}%)"
-                    )
+                    action = proposal.get("action", "HOLD")
+                    print(f"🤖 [OPERATOR]   : Đề xuất -> {action} (Độ tin cậy: {conf_pct}%)")
                     print(f"   Lập luận     : {proposal.get('reason')}")
 
-                    # 4. SUPERVISOR AGENT kiểm duyệt rủi ro
-                    past_lessons = ReflectorAgent.load_lessons(side=position_info["side"])
-                    review = self.agent_team.supervisor_agent.review(
-                        proposal=proposal,
-                        indicators=market_data,
-                        cash=self.paper_trader.cash,
-                        position_info=position_info,
-                        macro_directive=self.current_macro_directive,
-                        past_lessons=past_lessons,
-                        sentiment_info=sentiment_info,
-                    )
-                    approved_icon = "✅ DUYỆT" if review.get("approved") else "❌ TỪ CHỐI"
-                    print(
-                        f"🛡️  [SUPERVISOR] : Quyết định -> {approved_icon} (Mức rủi ro:"
-                        f" {review.get('risk_score')}/10)"
-                    )
-                    print(f"   Phản biện    : {review.get('feedback')}")
-                    print("═" * 75)
+                    # =========================================================================
+                    # BƯỚC 3: XỬ LÝ LỆNH CLOSE TỪ AI OPERATOR (BẢO VỆ LỢI NHUẬN & CHẶN CHỐT NON)
+                    # =========================================================================
+                    if action == "CLOSE" and pos is not None:
+                        ema21_val = market_data.get("ema_21", current_price)
+                        # Kiểm tra xem cấu trúc kỹ thuật có thực sự bị phá vỡ không
+                        is_structural_break = (pos.side == "LONG" and current_price < ema21_val) or \
+                                              (pos.side == "SHORT" and current_price > ema21_val)
 
-                    # 5. THỰC THI LỆNH & GỬI DISCORD EMBED CHUẨN ĐỊNH DẠNG
-                    action = proposal.get("action")
-                    if review.get("approved"):
-                        if action in ("OPEN_LONG", "OPEN_SHORT") and pos is None:
-                            side = "LONG" if action == "OPEN_LONG" else "SHORT"
-                            
-                            # Phân bổ vốn: 70 USDT cho Trend (ONLY_LONG/SHORT), 30 USDT cho Sideway (FLEXIBLE)
-                            trade_capital = 70.0 if self.current_macro_directive in ("ONLY_LONG", "ONLY_SHORT") else 30.0
-
-                            if self.paper_trader.open_position(
-                                side, market_data["price"], cash_amount=trade_capital
-                            ):
-                                # Gửi Card Embed mở vị thế chi tiết [AI TEAM]
-                                self.notifier.send_trade_open(
-                                    side=side,
-                                    symbol="BTC/USDT",
-                                    price=market_data["price"],
-                                    capital=trade_capital,
-                                    macro_directive=self.current_macro_directive,
-                                    rules_version=rules.get("version", 14),
-                                    operator_reason=proposal.get("reason", "N/A"),
-                                    supervisor_reason=review.get("feedback", "N/A"),
-                                    total_equity=self.paper_trader.total_equity,
-                                    available_cash=self.paper_trader.cash
-                                )
-
-                        elif action == "CLOSE" and pos is not None:
-                            exit_label = "AI_EARLY_EXIT_CLOSE" if pos.holding_candles < 12 else "AI_SIGNAL"
-                            summary = self.paper_trader.close_position(
-                                market_data["price"], exit_reason=exit_label
+                        # Nếu đang có lãi nhưng quá mỏng (< 0.25%) và chưa bị gãy EMA21:
+                        # CHẶN KHÔNG ĐÓNG để tránh bị phí sàn nuốt sạch lợi nhuận
+                        if 0 < pos.pnl_pct < 0.25 and not is_structural_break:
+                            logging.info(
+                                f"🛡️ [CHẶN CHỐT NON]: PnL hiện tại ({pos.pnl_pct:+.2f}%) chưa đủ dày để bù phí sàn (yêu cầu >= +0.25%). "
+                                f"Cấu trúc EMA21 vẫn an toàn. Tiếp tục giữ vị thế!"
                             )
-                            lesson = self.agent_team.reflector_agent.reflect(summary)
-                            self.recent_closed_trades.append(summary)
-                            print(f"💡 [BÀI HỌC VỪA RÚT RA]: {lesson}")
+                            continue
 
-                            # Gửi Card Embed 🔔 [KẾT QUẢ GIAO DỊCH] chuẩn ảnh lịch sử
-                            self.notifier.send_trade_close(
-                                exit_type=summary.get("exit_reason", exit_label),
-                                side=summary["side"],
-                                symbol="BTC/USDT",
-                                entry_price=summary["entry_price"],
-                                exit_price=summary["exit_price"],
-                                pnl_usdt=summary["pnl_usdt"],
-                                pnl_pct=summary["pnl_pct"],
-                                total_equity=summary.get("total_cash", self.paper_trader.total_equity),
-                                cum_pnl_usdt=summary.get("cum_pnl_usdt", 0.0),
-                                cum_pnl_pct=summary.get("cum_pnl_pct", 0.0),
-                                reflector_lesson=lesson
+                        # Phân loại nhãn chính xác
+                        if pos.pnl_pct >= 0.25:
+                            exit_label = "AI_TAKE_PROFIT"
+                        elif pos.holding_candles < 12:
+                            exit_label = "AI_EARLY_EXIT_CLOSE"
+                        else:
+                            exit_label = "AI_TECHNICAL_CLOSE"
+
+                        logging.info(f"🔔 [OPERATOR YÊU CẦU ĐÓNG VỊ THẾ]: {exit_label} | Lý do: {proposal.get('reason')}")
+                        self._handle_close_position(current_price, exit_reason=exit_label)
+                        continue
+
+                    # =========================================================================
+                    # BƯỚC 4: XỬ LÝ LẬT VỊ THẾ (REVERSE POSITION GUARD)
+                    # =========================================================================
+                    # Nếu đang giữ LONG mà Operator muốn OPEN_SHORT (hoặc ngược lại): Đóng lệnh cũ trước!
+                    if pos is not None:
+                        if (pos.side == "LONG" and action == "OPEN_SHORT") or \
+                           (pos.side == "SHORT" and action == "OPEN_LONG"):
+                            flip_reason = f"Lật vị thế theo tín hiệu {action}"
+                            logging.info(f"🔄 [LẬT VỊ THẾ]: Đóng vị thế cũ {pos.side} trước khi xét mở mới!")
+                            self._handle_close_position(current_price, exit_reason=flip_reason)
+                            pos = None  # Đã giải phóng vị thế
+
+                    # =========================================================================
+                    # BƯỚC 5: SUPERVISOR KIỂM DUYỆT RỦI RO & MỞ VỊ THẾ MỚI (CHỈ KHI VÍ TRỐNG)
+                    # =========================================================================
+                    if pos is None and action in ("OPEN_LONG", "OPEN_SHORT"):
+                        # Kiểm tra xem có đang trong thời gian Cooldown hạ nhiệt sau chốt lời hay không
+                        if self.candle_counter < self.cooldown_until_candle:
+                            remain_candles = self.cooldown_until_candle - self.candle_counter
+                            print(f"🛡️  [COOLDOWN] Đang nghỉ hạ nhiệt sau Take Profit (còn {remain_candles} nến). Bỏ qua mở vị thế!")
+                            print("═" * 75)
+                        else:
+                            past_lessons = ReflectorAgent.load_lessons(side=action.replace("OPEN_", ""))
+                            review = self.agent_team.supervisor_agent.review(
+                                proposal=proposal,
+                                indicators=market_data,
+                                cash=self.paper_trader.cash,
+                                position_info={"side": "NONE", "entry_price": 0.0, "pnl_pct": 0.0},
+                                macro_directive=self.current_macro_directive,
+                                past_lessons=past_lessons,
+                                sentiment_info=sentiment_info,
                             )
+                            approved_icon = "✅ DUYỆT" if review.get("approved") else "❌ TỪ CHỐI"
+                            print(f"🛡️  [SUPERVISOR] : Quyết định -> {approved_icon} (Mức rủi ro: {review.get('risk_score')}/10)")
+                            print(f"   Phản biện    : {review.get('feedback')}")
+                            print("═" * 75)
 
-                            if len(self.recent_closed_trades) >= 3:
-                                self.agent_team.reflector_agent.auto_evolve_rules(
-                                    self.recent_closed_trades
-                                )
+                            if review.get("approved"):
+                                side = "LONG" if action == "OPEN_LONG" else "SHORT"
+                                trade_capital = 70.0 if self.current_macro_directive in ("ONLY_LONG", "ONLY_SHORT") else 30.0
+
+                                if self.paper_trader.open_position(side, current_price, cash_amount=trade_capital):
+                                    self.notifier.send_trade_open(
+                                        side=side,
+                                        symbol="BTC/USDT",
+                                        price=current_price,
+                                        capital=trade_capital,
+                                        macro_directive=self.current_macro_directive,
+                                        rules_version=rules.get("version", 1),
+                                        operator_reason=proposal.get("reason", "N/A"),
+                                        supervisor_reason=review.get("feedback", "N/A"),
+                                        total_equity=self.paper_trader.total_equity,
+                                        available_cash=self.paper_trader.cash
+                                    )
+                    else:
+                        print("🛡️  [SUPERVISOR] : Trạng thái -> DUY TRÌ VỊ THẾ / CHỜ ĐỢI TÍN HIỆU")
+                        print("═" * 75)
 
                     self.save_active_position()
 
