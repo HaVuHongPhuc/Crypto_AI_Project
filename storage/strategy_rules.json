@@ -1,9 +1,9 @@
 {
-  "version": 8,
-  "last_updated": "2026-10-01T03:42:39.024971+00:00",
-  "reason_for_update": "Nâng cấp v8 tập trung vào việc lọc nhiễu tại các vùng chuyển giao xu hướng bằng cách bổ sung bộ lọc 'Độ dốc EMA21 khung 1H' kết hợp với 'ATR-based Volatility Filter' để tránh vào lệnh khi thị trường thiếu biên độ dao động, giảm thiểu các lệnh bị quét Stop-loss do nhiễu ngắn hạn.",
-  "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.25% + RSI 5m > 60 (Long) hoặc < 40 (Short) + ADX(14) > 30. BẮT BUỘC: Độ dốc EMA21 khung 1H phải cùng chiều với lệnh với độ dốc > 0.04%. 2. VOLATILITY & VOLUME FILTER: Chỉ vào lệnh khi nến 5m có Volume > 1.5x trung bình 20 nến gần nhất VÀ ATR(14) khung 5m phải đang trong xu hướng tăng hoặc ổn định. 3. CẤM VÀO LỆNH: Nếu khoảng cách EMA9/EMA21 < 0.3% hoặc giá đang nằm trong vùng biên độ hẹp (tổng range 5 nến 5m gần nhất < 0.15%).",
-  "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21. 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 75 (Long) hoặc 25 (Short) để tối ưu hóa lợi nhuận. 3. Trailing Stop: Dời Stop-Loss về Entry + 0.15% phí ngay sau khi chốt 50% vị thế. 4. OperatorAgent: CLOSE lệnh ngay nếu nến 5m đóng cửa tạo mẫu hình nến đảo chiều mạnh (Pinbar/Engulfing) tại vùng quá mua/quá bán hoặc sau 10 nến 5m không đạt mục tiêu lợi nhuận tối thiểu 0.1% để bảo toàn vốn.",
+  "version": 9,
+  "last_updated": "2026-10-03T23:25:18.764067+00:00",
+  "reason_for_update": "Nâng cấp v9 tập trung vào việc giảm thiểu 'whipsaw' (quét lệnh) bằng cách tăng ngưỡng lọc biến động (ATR) và điều chỉnh logic thoát lệnh của AI để tránh đóng lệnh quá sớm trong các nhịp điều chỉnh kỹ thuật tạm thời.",
+  "entry_rules": "1. TREND MODE: Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.35% + RSI 5m > 65 (Long) hoặc < 35 (Short) + ADX(14) > 35. BẮT BUỘC: Độ dốc EMA21 khung 1H cùng chiều lệnh với độ dốc > 0.06%. 2. VOLATILITY & VOLUME FILTER: Chỉ vào lệnh khi nến 5m có Volume > 1.8x trung bình 20 nến gần nhất VÀ ATR(14) khung 5m đang trong xu hướng tăng rõ rệt. 3. CẤM VÀO LỆNH: Nếu khoảng cách EMA9/EMA21 < 0.4% hoặc giá nằm trong vùng biên độ hẹp (tổng range 5 nến 5m gần nhất < 0.2%).",
+  "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21. 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 80 (Long) hoặc 20 (Short). 3. Trailing Stop: Dời Stop-Loss về Entry + 0.2% phí sau khi chốt 50% vị thế. 4. OperatorAgent: Chỉ được phép CLOSE lệnh nếu nến 5m đóng cửa tạo mẫu hình đảo chiều mạnh (Pinbar/Engulfing) KÈM theo sự suy yếu của Volume (Volume < 0.8x trung bình 20 nến) hoặc sau 15 nến 5m không đạt mục tiêu lợi nhuận tối thiểu 0.15%.",
   "evolution_history": [
     {
       "version": 1,
@@ -60,6 +60,14 @@
       "flaw_identified": "Các lệnh 93, 94, 95 cho thấy hệ thống vẫn vào lệnh tại các vùng giá có độ biến động thấp (low volatility) hoặc vùng chuyển giao xu hướng nơi EMA21 bị cắt liên tục, dẫn đến việc bị quét Stop-loss do nhiễu thay vì xu hướng thực.",
       "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.22% + RSI 5m > 60 (Long) hoặc < 40 (Short) + ADX(14) > 30. BẮT BUỘC: Độ dốc EMA21 khung 1H phải cùng chiều với lệnh (hướng lên cho Long, hướng xuống cho Short) với độ dốc > 0.03%. 2. VOLUME FILTER: Chỉ vào lệnh khi nến 5m xác nhận có Volume > 1.3x trung bình 20 nến gần nhất. 3. CẤM VÀO LỆNH: Nếu khoảng cách EMA9/EMA21 < 0.25% hoặc giá đang nằm trong vùng biên độ hẹp của 5 nến 5m trước đó.",
       "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21. 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 70 (Long) hoặc 30 (Short). 3. Trailing Stop: Dời Stop-Loss về Entry + 0.1% phí ngay sau khi chốt 50% vị thế. 4. OperatorAgent: CLOSE lệnh ngay nếu nến 5m đóng cửa tạo mẫu hình nến đảo chiều (Pinbar/Engulfing) tại vùng quá mua/quá bán hoặc sau 12 nến 5m không đạt mục tiêu lợi nhuận để tối ưu hóa vòng quay vốn."
+    },
+    {
+      "version": 8,
+      "archived_at": "2026-10-03T23:25:18.763953+00:00",
+      "reason": "Nâng cấp v8 tập trung vào việc lọc nhiễu tại các vùng chuyển giao xu hướng bằng cách bổ sung bộ lọc 'Độ dốc EMA21 khung 1H' kết hợp với 'ATR-based Volatility Filter' để tránh vào lệnh khi thị trường thiếu biên độ dao động, giảm thiểu các lệnh bị quét Stop-loss do nhiễu ngắn hạn.",
+      "flaw_identified": "Các lệnh 96, 98 cho thấy AI_EARLY_EXIT đang quá nhạy cảm với các biến động nhiễu, dẫn đến việc thoát lệnh trước khi xu hướng chính kịp xác nhận, gây ra các khoản lỗ nhỏ tích lũy không cần thiết.",
+      "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.25% + RSI 5m > 60 (Long) hoặc < 40 (Short) + ADX(14) > 30. BẮT BUỘC: Độ dốc EMA21 khung 1H phải cùng chiều với lệnh với độ dốc > 0.04%. 2. VOLATILITY & VOLUME FILTER: Chỉ vào lệnh khi nến 5m có Volume > 1.5x trung bình 20 nến gần nhất VÀ ATR(14) khung 5m phải đang trong xu hướng tăng hoặc ổn định. 3. CẤM VÀO LỆNH: Nếu khoảng cách EMA9/EMA21 < 0.3% hoặc giá đang nằm trong vùng biên độ hẹp (tổng range 5 nến 5m gần nhất < 0.15%).",
+      "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21. 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 75 (Long) hoặc 25 (Short) để tối ưu hóa lợi nhuận. 3. Trailing Stop: Dời Stop-Loss về Entry + 0.15% phí ngay sau khi chốt 50% vị thế. 4. OperatorAgent: CLOSE lệnh ngay nếu nến 5m đóng cửa tạo mẫu hình nến đảo chiều mạnh (Pinbar/Engulfing) tại vùng quá mua/quá bán hoặc sau 10 nến 5m không đạt mục tiêu lợi nhuận tối thiểu 0.1% để bảo toàn vốn."
     }
   ]
 }

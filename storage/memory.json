@@ -728,5 +728,77 @@
     "pnl_pct": -0.16172950645098472,
     "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (83622.37 > 83525.72)",
     "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 96,
+    "timestamp": "2026-10-01T08:50:12.064475+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.09927566815151469,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng chưa đảo chiều."
+  },
+  {
+    "id": 97,
+    "timestamp": "2026-10-03T07:35:17.527606+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.05936310035984814,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84637.58 > 84617.07)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ đường EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 98,
+    "timestamp": "2026-10-03T08:10:20.005496+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.12292280950691667,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ sớm khi xu hướng chính chưa đảo chiều."
+  },
+  {
+    "id": 99,
+    "timestamp": "2026-10-03T08:25:36.455360+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.10674276442536952,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84590.01 < 84607.69)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ kỹ thuật để bảo toàn vốn khi xu hướng ngắn hạn đảo chiều."
+  },
+  {
+    "id": 100,
+    "timestamp": "2026-10-03T23:25:11.474754+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.11336222259109166,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84815.29 > 84778.71)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 101,
+    "timestamp": "2026-10-03T23:40:14.041563+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.06969887811438552,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84784.69 > 84773.63)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 102,
+    "timestamp": "2026-10-04T01:55:14.772831+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.07977329465879013,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84807.97 > 84783.47)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 103,
+    "timestamp": "2026-10-04T03:35:22.539812+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.14107530129220353,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84873.61 > 84816.01)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ đường EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 104,
+    "timestamp": "2026-10-04T05:10:12.056983+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.05731247913448083,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84835.16 > 84822.15)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
   }
 ]
