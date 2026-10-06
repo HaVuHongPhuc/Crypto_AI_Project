@@ -2,52 +2,62 @@
   {
     "timestamp": "2026-09-22T13:30:10.393682+00:00",
     "pnl_pct": -0.40134554104789383,
-    "lesson": "Cần tăng ngưỡng xác nhận xu hướng để tránh thoát lệnh sớm sai lầm."
+    "lesson": "Cần tăng ngưỡng xác nhận xu hướng để tránh thoát lệnh sớm sai lầm.",
+    "id": 1
   },
   {
     "timestamp": "2026-09-22T16:30:24.491185+00:00",
     "pnl_pct": -0.14003799739402575,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh đóng vị thế quá sớm khi xu hướng chưa đảo chiều."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh đóng vị thế quá sớm khi xu hướng chưa đảo chiều.",
+    "id": 2
   },
   {
     "timestamp": "2026-09-22T18:33:59.951425+00:00",
     "pnl_pct": -0.3141587776443206,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ quá sớm khi xu hướng chưa đảo chiều."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ quá sớm khi xu hướng chưa đảo chiều.",
+    "id": 3
   },
   {
     "timestamp": "2026-09-22T19:48:22.757901+00:00",
     "pnl_pct": -0.2293617453299241,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ sớm khi xu hướng vẫn còn tiềm năng."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ sớm khi xu hướng vẫn còn tiềm năng.",
+    "id": 4
   },
   {
     "timestamp": "2026-09-22T23:13:07.121131+00:00",
     "pnl_pct": -0.3465724496426278,
-    "lesson": "Cần kiên nhẫn chờ xác nhận xu hướng thay vì thoát lệnh quá sớm khi gặp biến động nhỏ."
+    "lesson": "Cần kiên nhẫn chờ xác nhận xu hướng thay vì thoát lệnh quá sớm khi gặp biến động nhỏ.",
+    "id": 5
   },
   {
     "timestamp": "2026-09-22T23:43:42.732257+00:00",
     "pnl_pct": -0.30321608391560695,
-    "lesson": "Cần tối ưu hóa thuật toán thoát lệnh để tránh đóng vị thế quá sớm khi chưa vi phạm xu hướng."
+    "lesson": "Cần tối ưu hóa thuật toán thoát lệnh để tránh đóng vị thế quá sớm khi chưa vi phạm xu hướng.",
+    "id": 6
   },
   {
     "timestamp": "2026-09-23T00:03:38.679676+00:00",
     "pnl_pct": 0.03200695684373646,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn.",
+    "id": 7
   },
   {
     "timestamp": "2026-09-23T01:53:20.433457+00:00",
     "pnl_pct": -0.29325035038786784,
-    "lesson": "Cần kiên nhẫn chờ đợi xác nhận xu hướng thay vì thoát lệnh sớm khi giá biến động nhẹ."
+    "lesson": "Cần kiên nhẫn chờ đợi xác nhận xu hướng thay vì thoát lệnh sớm khi giá biến động nhẹ.",
+    "id": 8
   },
   {
     "timestamp": "2026-09-23T05:30:37.556086+00:00",
     "pnl_pct": 0.3162446525609945,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn.",
+    "id": 9
   },
   {
     "timestamp": "2026-09-23T09:55:39.672322+00:00",
     "pnl_pct": 0.8022513984559191,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh chốt lời quá sớm khi xu hướng vẫn mạnh."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh chốt lời quá sớm khi xu hướng vẫn mạnh.",
+    "id": 10
   },
   {
     "id": 11,
@@ -67,6 +77,742 @@
   },
   {
     "id": 13,
+    "timestamp": "2026-09-23T17:50:30.402927+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.5948905681666394,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Tin tưởng tín hiệu thoát sớm của AI để bảo toàn lợi nhuận thay vì chờ đợi."
+  },
+  {
+    "id": 14,
+    "timestamp": "2026-09-23T20:01:10.020155+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.27590704887328465,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Tuân thủ tín hiệu thoát lệnh của AI để bảo toàn lợi nhuận và tránh rủi ro đảo chiều."
+  },
+  {
+    "id": 15,
+    "timestamp": "2026-09-24T03:20:07.756457+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.0781083200929655,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tín hiệu AI hiệu quả với nhịp giảm ngắn, cần chốt lời nhanh khi biên độ hẹp."
+  },
+  {
+    "id": 16,
+    "timestamp": "2026-09-24T03:50:09.746406+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.07976331922680048,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tối ưu ngưỡng tín hiệu AI để tránh cắt lỗ sớm khi biến động giá rất nhỏ."
+  },
+  {
+    "id": 17,
+    "timestamp": "2026-09-24T04:05:05.676770+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.09001211451645745,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tín hiệu AI dễ gây lỗ nhỏ khi thị trường đi ngang, cần thêm bộ lọc xác nhận xu hướng."
+  },
+  {
+    "id": 18,
+    "timestamp": "2026-09-24T04:15:14.530487+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.18338335080141505,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tín hiệu AI dễ gây lỗ nhỏ khi thị trường đi ngang, cần thêm bộ lọc xác nhận xu hướng."
+  },
+  {
+    "id": 19,
+    "timestamp": "2026-09-24T04:53:16.711990+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.0108049117905574,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Cần tối ưu hóa điểm vào lệnh để gia tăng tỷ lệ lợi nhuận trên mỗi giao dịch."
+  },
+  {
+    "id": 20,
+    "timestamp": "2026-09-24T08:50:18.657508+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.9935961039935974,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Cần kết hợp tín hiệu AI với phân tích xu hướng thị trường để tránh bắt dao rơi."
+  },
+  {
+    "id": 21,
+    "timestamp": "2026-09-24T13:00:44.965130+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.17940907214435414,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ và không để cảm xúc chi phối khi tín hiệu AI sai lệch."
+  },
+  {
+    "id": 22,
+    "timestamp": "2026-09-24T14:30:28.700123+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.7088007625178557,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tuân thủ tín hiệu AI để tối ưu điểm vào và chốt lời kỷ luật."
+  },
+  {
+    "id": 23,
+    "timestamp": "2026-09-24T15:05:21.787308+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.8849072582281579,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Kiểm tra lại độ trễ và điều kiện lọc tín hiệu AI để tránh vào lệnh sai xu hướng."
+  },
+  {
+    "id": 24,
+    "timestamp": "2026-09-24T15:25:23.880261+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.5174611426830917,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Kiểm tra lại điều kiện lọc tín hiệu AI để tránh Short khi xu hướng tăng mạnh."
+  },
+  {
+    "id": 25,
+    "timestamp": "2026-09-24T16:05:17.851936+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.27626854972244175,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Không giao dịch mù quáng theo AI; cần xác nhận thêm bằng hành động giá."
+  },
+  {
+    "id": 26,
+    "timestamp": "2026-09-24T16:17:07.795771+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.489453205158661,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Tuân thủ tín hiệu AI nhưng cần tối ưu hóa điểm chốt lời để tăng tỷ lệ lợi nhuận."
+  },
+  {
+    "id": 27,
+    "timestamp": "2026-09-24T21:25:23.752780+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.24753186286302367,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Cần kết hợp tín hiệu AI với phân tích xu hướng thị trường để tăng tỷ lệ thắng."
+  },
+  {
+    "id": 28,
+    "timestamp": "2026-09-25T07:50:24.122029+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.572854076973619,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (83985.19 < 83996.61)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ kỹ thuật khi nến đóng cửa dưới đường EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 29,
+    "timestamp": "2026-09-25T08:07:25.997586+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.19420646502532857,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84126.01 > 84023.53)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 30,
+    "timestamp": "2026-09-25T11:12:07.730433+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.3182782069608991,
+    "exit_reason": "Technical TP: RSI Overbought (79.4) & PnL (0.37%)",
+    "lesson": "Tuân thủ kỷ luật chốt lời khi RSI vào vùng quá mua giúp bảo toàn lợi nhuận hiệu quả."
+  },
+  {
+    "id": 31,
+    "timestamp": "2026-09-25T11:57:31.833143+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.3824637876255284,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84625.70 < 84750.20)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá gãy EMA21 để bảo toàn vốn trước các biến động bất lợi."
+  },
+  {
+    "id": 32,
+    "timestamp": "2026-09-25T14:06:51.280960+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.7821517240788078,
+    "exit_reason": "Technical TP: RSI Oversold (21.2) & PnL (0.83%)",
+    "lesson": "Chốt lời chủ động khi RSI vào vùng quá bán để bảo toàn lợi nhuận trong xu hướng ngắn hạn."
+  },
+  {
+    "id": 33,
+    "timestamp": "2026-09-25T15:16:21.203540+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.582004800747074,
+    "exit_reason": "AI_SIGNAL",
+    "lesson": "Luôn kết hợp tín hiệu AI với phân tích xu hướng thị trường để tránh bắt đỉnh sai nhịp."
+  },
+  {
+    "id": 34,
+    "timestamp": "2026-09-25T15:39:04.533853+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.08527025625065397,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Ưu tiên bảo toàn lợi nhuận nhỏ thay vì kỳ vọng quá mức vào các biến động thị trường rủi ro."
+  },
+  {
+    "id": 35,
+    "timestamp": "2026-09-25T16:11:50.370066+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.6074023345397888,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (83996.18 > 83807.06)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo vệ vốn."
+  },
+  {
+    "id": 36,
+    "timestamp": "2026-09-25T18:06:44.184718+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.21636579387689642,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa thuật toán thoát lệnh để tránh cắt lỗ sớm khi xu hướng chính vẫn đang tiếp diễn."
+  },
+  {
+    "id": 37,
+    "timestamp": "2026-09-25T19:32:00.409389+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.07536213471744659,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84007.30 > 83956.46)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ đường EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 38,
+    "timestamp": "2026-09-25T20:22:12.777030+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.07607555983383066,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng vẫn tiếp diễn."
+  },
+  {
+    "id": 39,
+    "timestamp": "2026-09-25T20:57:17.191796+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.25572076872707844,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng vẫn còn tiềm năng."
+  },
+  {
+    "id": 40,
+    "timestamp": "2026-09-26T00:36:41.736537+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.10906620944436264,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Chốt lời sớm giúp bảo toàn vốn và giảm thiểu rủi ro khi thị trường thiếu động lực bứt phá."
+  },
+  {
+    "id": 41,
+    "timestamp": "2026-09-26T00:47:02.431488+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.09288600718510909,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng chưa đảo chiều."
+  },
+  {
+    "id": 42,
+    "timestamp": "2026-09-26T01:06:49.796341+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.0483784054343933,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Tránh thoát lệnh quá sớm khi chưa đạt mục tiêu lợi nhuận kỳ vọng để tối ưu hóa tỷ lệ R:R."
+  },
+  {
+    "id": 43,
+    "timestamp": "2026-09-26T01:42:09.202708+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.23759959273822376,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84064.05 > 83974.14)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 44,
+    "timestamp": "2026-09-26T04:21:40.151841+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.16542716550982803,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84035.85 > 83996.74)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước các đợt sóng ngược."
+  },
+  {
+    "id": 45,
+    "timestamp": "2026-09-26T05:01:52.044713+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.11835734574318978,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng chính chưa đảo chiều."
+  },
+  {
+    "id": 46,
+    "timestamp": "2026-09-26T05:16:44.141366+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.094299267857138,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (83962.77 < 83973.12)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá gãy EMA21 để bảo toàn vốn trước các biến động bất lợi."
+  },
+  {
+    "id": 47,
+    "timestamp": "2026-09-26T05:32:04.697086+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.12199465425278598,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (83931.50 < 83964.04)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá đóng cửa dưới EMA21 để bảo toàn vốn trước rủi ro đảo chiều."
+  },
+  {
+    "id": 48,
+    "timestamp": "2026-09-26T07:22:38.733140+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.0013943719295072357,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng chốt lời của AI để tránh đóng lệnh quá sớm khi xu hướng vẫn tiếp diễn."
+  },
+  {
+    "id": 49,
+    "timestamp": "2026-09-26T08:37:10.398105+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.2545229647952862,
+    "exit_reason": "Technical TP: RSI Overbought (80.0) & PnL (0.30%)",
+    "lesson": "Tuân thủ kỷ luật chốt lời theo tín hiệu kỹ thuật giúp bảo toàn lợi nhuận trong thị trường biến động."
+  },
+  {
+    "id": 50,
+    "timestamp": "2026-09-26T09:22:39.245858+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.2976360165261897,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84014.00 < 84109.25)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi nến đóng cửa dưới EMA21 để bảo toàn vốn trước rủi ro đảo chiều."
+  },
+  {
+    "id": 51,
+    "timestamp": "2026-09-26T11:42:05.185465+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.029542376483375092,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh mất phí vô ích khi biến động thấp."
+  },
+  {
+    "id": 52,
+    "timestamp": "2026-09-26T12:07:17.972403+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.13079017725351585,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng chưa thực sự đảo chiều."
+  },
+  {
+    "id": 53,
+    "timestamp": "2026-09-26T17:15:20.306296+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.09735031894535336,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng vẫn tiếp diễn."
+  },
+  {
+    "id": 54,
+    "timestamp": "2026-09-26T18:20:10.293701+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.14024715423004425,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84084.01 < 84103.08)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ ngay khi nến đóng cửa vi phạm EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 55,
+    "timestamp": "2026-09-26T20:40:14.041480+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.1697980586764182,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (83982.06 < 84033.81)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá gãy EMA21 để bảo toàn vốn trước các biến động bất lợi."
+  },
+  {
+    "id": 56,
+    "timestamp": "2026-09-26T22:10:06.053251+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.17952264969745835,
+    "exit_reason": "AI_TAKE_PROFIT",
+    "lesson": "Tuân thủ kỷ luật chốt lời tự động giúp bảo toàn lợi nhuận và giảm thiểu rủi ro tâm lý."
+  },
+  {
+    "id": 57,
+    "timestamp": "2026-09-27T00:25:05.959180+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.09931182180119649,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84257.07 < 84324.76)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi nến đóng dưới EMA21 để bảo toàn vốn trước khi xu hướng đảo chiều."
+  },
+  {
+    "id": 58,
+    "timestamp": "2026-09-27T01:35:14.249743+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.1501821160056223,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84309.42 < 84332.66)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá gãy EMA21 để bảo toàn vốn trước khi xu hướng đảo chiều."
+  },
+  {
+    "id": 59,
+    "timestamp": "2026-09-27T03:25:14.018071+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.055316693433229785,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84404.27 < 84452.07)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ ngay khi nến đóng cửa vi phạm đường EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 60,
+    "timestamp": "2026-09-27T04:32:45.741656+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.14163364895254632,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84412.54 < 84436.18)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá đóng cửa dưới EMA21 để bảo toàn vốn trước rủi ro đảo chiều."
+  },
+  {
+    "id": 61,
+    "timestamp": "2026-09-27T05:42:11.811236+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.05938891169292013,
+    "exit_reason": "AI_TAKE_PROFIT",
+    "lesson": "Ưu tiên bảo toàn vốn và chốt lời từng phần để tối ưu hóa lợi nhuận trong các nhịp sóng ngắn."
+  },
+  {
+    "id": 62,
+    "timestamp": "2026-09-27T08:02:18.430499+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.16003873440425603,
+    "exit_reason": "AI_TAKE_PROFIT",
+    "lesson": "Tuân thủ kỷ luật chốt lời tự động giúp bảo toàn lợi nhuận và giảm thiểu rủi ro tâm lý."
+  },
+  {
+    "id": 63,
+    "timestamp": "2026-09-27T09:22:16.950124+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.15363217978221205,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84660.00 < 84700.12)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi nến đóng cửa dưới EMA21 để bảo toàn vốn trước rủi ro đảo chiều."
+  },
+  {
+    "id": 64,
+    "timestamp": "2026-09-27T10:17:49.499825+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.315357360875721,
+    "exit_reason": "Technical TP: RSI Overbought (86.9) & PnL (0.37%)",
+    "lesson": "Chốt lời chủ động khi RSI vào vùng quá mua giúp bảo toàn lợi nhuận hiệu quả."
+  },
+  {
+    "id": 65,
+    "timestamp": "2026-09-27T13:01:53.570232+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.2200860865929847,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84770.00 < 84916.61)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi nến đóng cửa dưới EMA21 để bảo toàn vốn trước rủi ro đảo chiều."
+  },
+  {
+    "id": 66,
+    "timestamp": "2026-09-27T13:41:47.886049+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.189577763662457,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng vẫn tiếp diễn."
+  },
+  {
+    "id": 67,
+    "timestamp": "2026-09-27T14:26:40.710998+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.30439341590926905,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84814.00 < 84903.12)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá gãy EMA21 để bảo toàn vốn trước khi xu hướng đảo chiều."
+  },
+  {
+    "id": 68,
+    "timestamp": "2026-09-27T19:04:22.727313+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.29161069257516525,
+    "exit_reason": "Technical TP: RSI Overbought (89.9) & PnL (0.34%)",
+    "lesson": "Chốt lời chủ động khi RSI vào vùng quá mua giúp bảo toàn lợi nhuận trong thị trường biến động."
+  },
+  {
+    "id": 69,
+    "timestamp": "2026-09-27T20:26:45.495423+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.16321926481001325,
+    "exit_reason": "AI_TECHNICAL_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh cắt lỗ quá sớm trong các nhịp điều chỉnh ngắn hạn."
+  },
+  {
+    "id": 70,
+    "timestamp": "2026-09-27T22:07:15.614775+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.34227009255323826,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84460.30 < 84612.32)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi nến đóng cửa dưới EMA21 để bảo toàn vốn trước rủi ro đảo chiều."
+  },
+  {
+    "id": 71,
+    "timestamp": "2026-09-27T23:51:45.872328+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.26367883339518,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84456.00 > 84383.91)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 72,
+    "timestamp": "2026-09-28T00:23:55.670178+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.2638759986888013,
+    "exit_reason": "Technical TP: RSI Overbought (74.0) & PnL (0.31%)",
+    "lesson": "Chốt lời chủ động khi RSI quá mua giúp bảo toàn lợi nhuận trong thị trường biến động."
+  },
+  {
+    "id": 73,
+    "timestamp": "2026-09-28T00:41:53.764585+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.7236261663329315,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84221.00 < 84444.62)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá đóng cửa dưới EMA21 để bảo toàn vốn trước rủi ro đảo chiều."
+  },
+  {
+    "id": 74,
+    "timestamp": "2026-09-28T00:57:05.080093+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.2415747752011358,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84358.00 < 84439.39)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá đóng cửa dưới EMA21 để bảo toàn vốn trước rủi ro đảo chiều."
+  },
+  {
+    "id": 75,
+    "timestamp": "2026-09-28T01:51:43.348200+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.5011409622442359,
+    "exit_reason": "Technical TP: RSI Oversold (24.7) & PnL (0.55%)",
+    "lesson": "Chốt lời chủ động khi RSI vào vùng quá bán giúp bảo toàn lợi nhuận trong thị trường biến động."
+  },
+  {
+    "id": 76,
+    "timestamp": "2026-09-28T03:32:12.219828+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.13756424453555263,
+    "exit_reason": "AI_TAKE_PROFIT",
+    "lesson": "Tuân thủ kỷ luật chốt lời tự động giúp bảo toàn lợi nhuận và giảm thiểu rủi ro tâm lý."
+  },
+  {
+    "id": 77,
+    "timestamp": "2026-09-28T04:59:59.276720+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.12889092608570957,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (83513.80 > 83472.91)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ đường EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 78,
+    "timestamp": "2026-09-28T05:39:38.562270+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.28426278690885665,
+    "exit_reason": "Technical TP: RSI Oversold (13.1) & PnL (0.33%)",
+    "lesson": "Chốt lời chủ động khi RSI quá bán giúp bảo toàn lợi nhuận trước khi thị trường đảo chiều."
+  },
+  {
+    "id": 79,
+    "timestamp": "2026-09-28T06:45:11.772729+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.04112168508287503,
+    "exit_reason": "AI_TAKE_PROFIT",
+    "lesson": "Chốt lời tự động giúp bảo toàn lợi nhuận nhỏ và giảm thiểu rủi ro đảo chiều bất ngờ."
+  },
+  {
+    "id": 80,
+    "timestamp": "2026-09-28T09:10:16.924035+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.5586141449841728,
+    "exit_reason": "Technical TP: RSI Oversold (27.8) & PnL (0.61%)",
+    "lesson": "Chốt lời chủ động khi RSI vào vùng quá bán giúp bảo toàn lợi nhuận hiệu quả trong thị trường biến động."
+  },
+  {
+    "id": 81,
+    "timestamp": "2026-09-28T10:40:18.853558+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.06013409143473655,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (82938.38 > 82827.91)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ ngay khi giá vi phạm đường EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 82,
+    "timestamp": "2026-09-28T15:40:13.404726+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.012724303095363636,
+    "exit_reason": "Trailing Stop hit (Đáy: 82812.56, Lãi còn: 0.04%)",
+    "lesson": "Nới rộng Trailing Stop để tránh bị quét sớm khi giá biến động ngắn hạn."
+  },
+  {
+    "id": 83,
+    "timestamp": "2026-09-29T03:30:16.932008+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.16799699492129333,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (83184.00 > 83050.16)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 84,
+    "timestamp": "2026-09-29T21:52:24.653940+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.05789068212979074,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng chưa đảo chiều."
+  },
+  {
+    "id": 85,
+    "timestamp": "2026-09-29T22:12:06.234210+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.06739292812150688,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (83596.00 > 83535.25)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 86,
+    "timestamp": "2026-09-30T03:17:28.233256+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.18608365228406124,
+    "exit_reason": "Time-based Exit: Ngâm vốn 36 nến không bứt phá",
+    "lesson": "Đừng để vốn bị chôn chân trong các vùng giá đi ngang thiếu động lực bứt phá."
+  },
+  {
+    "id": 87,
+    "timestamp": "2026-09-30T05:32:13.657410+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.31984109417560735,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (83400.01 > 83326.36)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 88,
+    "timestamp": "2026-09-30T12:37:08.626126+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.49372168980268727,
+    "exit_reason": "Technical TP: RSI Overbought (74.1) & PnL (0.54%)",
+    "lesson": "Chốt lời chủ động khi RSI quá mua giúp bảo toàn lợi nhuận và tránh rủi ro đảo chiều."
+  },
+  {
+    "id": 89,
+    "timestamp": "2026-09-30T13:12:34.999756+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.34422874053029334,
+    "exit_reason": "Technical TP: RSI Overbought (83.3) & PnL (0.39%)",
+    "lesson": "Chốt lời chủ động khi RSI vào vùng quá mua giúp bảo toàn lợi nhuận hiệu quả."
+  },
+  {
+    "id": 90,
+    "timestamp": "2026-09-30T21:57:19.440895+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.06807797038438665,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (83750.00 > 83740.17)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 91,
+    "timestamp": "2026-09-30T23:04:37.453441+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.18596148476097907,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (83684.01 < 83744.48)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá gãy EMA21 để bảo toàn vốn trước rủi ro đảo chiều."
+  },
+  {
+    "id": 92,
+    "timestamp": "2026-10-01T00:22:11.722318+00:00",
+    "side": "SHORT",
+    "pnl_pct": 0.2891963237504327,
+    "exit_reason": "AI_TAKE_PROFIT",
+    "lesson": "Tuân thủ kỷ luật chốt lời tự động giúp bảo toàn lợi nhuận và giảm thiểu rủi ro tâm lý."
+  },
+  {
+    "id": 93,
+    "timestamp": "2026-10-01T02:12:14.157471+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.1536055260590316,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (83618.00 > 83575.90)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước các đợt sóng tăng."
+  },
+  {
+    "id": 94,
+    "timestamp": "2026-10-01T03:32:11.280814+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.06046031736526459,
+    "exit_reason": "AI_TECHNICAL_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng lọc tín hiệu để tránh đóng lệnh quá sớm khi thị trường đi ngang."
+  },
+  {
+    "id": 95,
+    "timestamp": "2026-10-01T03:42:36.240124+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.16172950645098472,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (83622.37 > 83525.72)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 96,
+    "timestamp": "2026-10-01T08:50:12.064475+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.09927566815151469,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh cắt lỗ sớm khi xu hướng chưa đảo chiều."
+  },
+  {
+    "id": 97,
+    "timestamp": "2026-10-03T07:35:17.527606+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.05936310035984814,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84637.58 > 84617.07)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ đường EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 98,
+    "timestamp": "2026-10-03T08:10:20.005496+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.12292280950691667,
+    "exit_reason": "AI_EARLY_EXIT_CLOSE",
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ sớm khi xu hướng chính chưa đảo chiều."
+  },
+  {
+    "id": 99,
+    "timestamp": "2026-10-03T08:25:36.455360+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.10674276442536952,
+    "exit_reason": "Technical Stop: Nến gãy dưới EMA21 (84590.01 < 84607.69)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ kỹ thuật để bảo toàn vốn khi xu hướng ngắn hạn đảo chiều."
+  },
+  {
+    "id": 100,
+    "timestamp": "2026-10-03T23:25:11.474754+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.11336222259109166,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84815.29 > 84778.71)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 101,
+    "timestamp": "2026-10-03T23:40:14.041563+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.06969887811438552,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84784.69 > 84773.63)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 102,
+    "timestamp": "2026-10-04T01:55:14.772831+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.07977329465879013,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84807.97 > 84783.47)",
+    "lesson": "Tuân thủ kỷ luật cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 103,
+    "timestamp": "2026-10-04T03:35:22.539812+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.14107530129220353,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84873.61 > 84816.01)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ đường EMA21 để bảo toàn vốn."
+  },
+  {
+    "id": 104,
+    "timestamp": "2026-10-04T05:10:12.056983+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.05731247913448083,
+    "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84835.16 > 84822.15)",
+    "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 105,
     "timestamp": "2026-10-05T08:50:54.379458+00:00",
     "side": "LONG",
     "pnl_pct": 0.032330616417673194,
@@ -74,7 +820,7 @@
     "lesson": "Cần kiên nhẫn chờ đợi tín hiệu xác nhận mạnh hơn để tối ưu hóa tỷ lệ lợi nhuận trên rủi ro."
   },
   {
-    "id": 14,
+    "id": 106,
     "timestamp": "2026-10-05T11:05:24.138324+00:00",
     "side": "LONG",
     "pnl_pct": -0.3619546431886894,
@@ -82,7 +828,7 @@
     "lesson": "Cần kết hợp thêm xác nhận khối lượng hoặc cấu trúc thị trường để tránh tín hiệu giả từ chỉ báo."
   },
   {
-    "id": 15,
+    "id": 107,
     "timestamp": "2026-10-05T12:35:47.873668+00:00",
     "side": "LONG",
     "pnl_pct": -0.36803617287571894,
@@ -90,7 +836,7 @@
     "lesson": "Cần kết hợp thêm xác nhận khối lượng hoặc cấu trúc thị trường để tránh bẫy đảo chiều giả."
   },
   {
-    "id": 16,
+    "id": 108,
     "timestamp": "2026-10-05T13:35:53.841585+00:00",
     "side": "LONG",
     "pnl_pct": -0.19735700459543593,
@@ -98,7 +844,7 @@
     "lesson": "Cần kết hợp thêm xác nhận khối lượng hoặc cấu trúc thị trường để tránh bẫy đảo chiều giả."
   },
   {
-    "id": 17,
+    "id": 109,
     "timestamp": "2026-10-05T14:30:26.554126+00:00",
     "side": "LONG",
     "pnl_pct": -0.0010908022843022487,
@@ -106,7 +852,7 @@
     "lesson": "Cần tối ưu hóa khoảng cách Trailing Stop để bảo toàn lợi nhuận tốt hơn khi thị trường đảo chiều."
   },
   {
-    "id": 18,
+    "id": 110,
     "timestamp": "2026-10-06T09:27:33.818542+00:00",
     "side": "SHORT",
     "pnl_pct": -0.6073282707915586,

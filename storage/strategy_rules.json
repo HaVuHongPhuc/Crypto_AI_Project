@@ -1,44 +1,73 @@
 {
-  "version": 8,
-  "last_updated": "2026-09-23T19:44:03.958362+00:00",
-  "reason_for_update": "Tăng độ lỳ cho lệnh, loại bỏ chốt lời non, chỉ thoát khi EMA21 bị phá vỡ dứt khoát và RSI xác nhận đảo chiều.",
-  "entry_rules": "OPEN_LONG khi EMA9 > EMA21 và RSI > 50. OPEN_SHORT khi EMA9 < EMA21 và RSI < 50. Yêu cầu xu hướng khung 1H đồng thuận.",
-  "exit_rules": "Cấm thoát lệnh dựa trên biến động giá ngắn hạn. Chỉ đóng vị thế khi nến đóng cửa hoàn toàn phía bên kia EMA21. Bắt buộc RSI phải xác nhận đảo chiều (<50 với Long, >50 với Short).",
+  "version": 9,
+  "last_updated": "2026-10-03T23:25:18.764067+00:00",
+  "reason_for_update": "Nâng cấp v9 tập trung vào việc giảm thiểu 'whipsaw' (quét lệnh) bằng cách tăng ngưỡng lọc biến động (ATR) và điều chỉnh logic thoát lệnh của AI để tránh đóng lệnh quá sớm trong các nhịp điều chỉnh kỹ thuật tạm thời.",
+  "entry_rules": "1. TREND MODE: Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.35% + RSI 5m > 65 (Long) hoặc < 35 (Short) + ADX(14) > 35. BẮT BUỘC: Độ dốc EMA21 khung 1H cùng chiều lệnh với độ dốc > 0.06%. 2. VOLATILITY & VOLUME FILTER: Chỉ vào lệnh khi nến 5m có Volume > 1.8x trung bình 20 nến gần nhất VÀ ATR(14) khung 5m đang trong xu hướng tăng rõ rệt. 3. CẤM VÀO LỆNH: Nếu khoảng cách EMA9/EMA21 < 0.4% hoặc giá nằm trong vùng biên độ hẹp (tổng range 5 nến 5m gần nhất < 0.2%).",
+  "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21. 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 80 (Long) hoặc 20 (Short). 3. Trailing Stop: Dời Stop-Loss về Entry + 0.2% phí sau khi chốt 50% vị thế. 4. OperatorAgent: Chỉ được phép CLOSE lệnh nếu nến 5m đóng cửa tạo mẫu hình đảo chiều mạnh (Pinbar/Engulfing) KÈM theo sự suy yếu của Volume (Volume < 0.8x trung bình 20 nến) hoặc sau 15 nến 5m không đạt mục tiêu lợi nhuận tối thiểu 0.15%.",
   "evolution_history": [
     {
       "version": 1,
-      "reason": "Quy tắc khởi tạo chuẩn kỹ thuật EMA9/21 và RSI 50.",
-      "flaw_identified": "Chưa có chỉ thị khung 1H, dễ bị nhiễu sóng ngắn."
+      "archived_at": "2026-09-28T09:10:19.805209+00:00",
+      "reason": "Khởi tạo bộ quy tắc chuẩn kỹ thuật Scalping 5m với quyền thoát lệnh linh hoạt.",
+      "flaw_identified": "Các lệnh Short gần đây cho thấy sự nhạy cảm quá mức với EMA21 trong giai đoạn thị trường đi ngang, dẫn đến việc thoát lệnh sớm khi chưa đạt kỳ vọng lợi nhuận tối đa.",
+      "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 xác nhận + RSI 5m > 55 (Long) hoặc < 45 (Short). 2. FLEXIBLE MODE (30% vốn): RSI 5m thoát vùng nhiễu 45-55 VÀ nến 5m đóng cửa vượt qua EMA9. Cấm vào lệnh khi khoảng cách EMA9/EMA21 < 0.05%.",
+      "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2%. 2. Chốt lời chủ động khi RSI 5m > 70 (với Long) hoặc < 30 (với Short) khi có lãi. 3. Operator đề xuất CLOSE ngay khi nến 5m đóng cửa vi phạm EMA21 hoặc khi chỉ thị 1H đảo chiều ngược vị thế."
     },
     {
       "version": 2,
-      "reason": "Thêm yêu cầu đồng thuận 1H (ONLY_LONG / ONLY_SHORT) từ Strategist.",
-      "flaw_identified": "Thoát lệnh quá vội khi giá chạm nhẹ EMA9."
+      "archived_at": "2026-09-29T03:30:21.015135+00:00",
+      "reason": "Tối ưu hóa bộ lọc Entry để tránh nhiễu EMA và nâng cao hiệu suất chốt lời chủ động dựa trên biến động RSI.",
+      "flaw_identified": "Các lệnh Short gần đây (81, 83) bị cắt lỗ sớm do EMA21 bị vi phạm trong các nhịp hồi phục kỹ thuật ngắn hạn, cho thấy bộ lọc Entry chưa đủ chặt chẽ về độ dốc (slope) của xu hướng 1H.",
+      "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.08% + RSI 5m > 60 (Long) hoặc < 40 (Short). 2. FLEXIBLE MODE (30% vốn): RSI 5m thoát vùng 45-55 VÀ nến 5m đóng cửa vượt EMA9 VÀ độ dốc EMA9 (slope) phải cùng chiều với xu hướng 1H. Cấm vào lệnh khi khoảng cách EMA9/EMA21 < 0.08% để tránh vùng nhiễu.",
+      "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21 (cơ chế bảo vệ bất biến). 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 75 (Long) hoặc 25 (Short), phần còn lại dời Stop-Loss về Entry hoặc trailing theo EMA9. 3. OperatorAgent giữ quyền CLOSE ngay lập tức nếu cấu trúc nến 1H đảo chiều hoặc xuất hiện phân kỳ RSI 5m rõ rệt."
     },
     {
       "version": 3,
-      "reason": "Cải tiến quy tắc: Cho phép giá retest EMA9 mà không đóng lệnh.",
-      "flaw_identified": "Vẫn chốt lời non ở mức +0.05% do sợ mất lợi nhuận."
+      "archived_at": "2026-09-30T05:32:17.574923+00:00",
+      "reason": "Tối ưu hóa bộ lọc Entry để giảm thiểu các lệnh Short bị quét Stop-loss do nhiễu EMA21 trong giai đoạn thị trường hồi phục ngắn hạn, đồng thời cải thiện chiến lược Trailing Stop để giữ lệnh lâu hơn.",
+      "flaw_identified": "Các lệnh Short liên tiếp bị quét Stop-loss do EMA21 (v4) cho thấy bộ lọc Entry chưa đánh giá đúng sức mạnh của phe mua trong các nhịp hồi phục, dẫn đến việc vào lệnh ngược xu hướng cục bộ (local trend).",
+      "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.1% (tăng độ rộng để tránh nhiễu) + RSI 5m > 65 (Long) hoặc < 35 (Short). 2. FLEXIBLE MODE (30% vốn): RSI 5m thoát vùng 45-55 VÀ nến 5m đóng cửa vượt EMA9 VÀ độ dốc EMA9 (slope) phải cùng chiều xu hướng 1H. Cấm vào lệnh nếu khoảng cách EMA9/EMA21 < 0.1%. Bổ sung: Không vào lệnh Short nếu giá đang nằm trên EMA21 của khung 15m.",
+      "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21 (cơ chế bảo vệ bất biến). 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 75 (Long) hoặc 25 (Short), phần còn lại dời Stop-Loss về Entry + 0.05% phí giao dịch (Breakeven+) hoặc trailing theo EMA9 với độ trễ 1 nến. 3. OperatorAgent giữ quyền CLOSE ngay lập tức nếu cấu trúc nến 1H đảo chiều hoặc xuất hiện phân kỳ RSI 5m rõ rệt."
     },
     {
       "version": 4,
-      "reason": "Thiết lập mục tiêu lợi nhuận tối thiểu trước khi đóng.",
-      "flaw_identified": "Cắt lỗ sai khi thị trường rút chân tạo nến Pinbar."
+      "archived_at": "2026-09-30T21:57:28.929155+00:00",
+      "reason": "Tối ưu hóa bộ lọc Entry bằng cách thêm điều kiện xác nhận động lượng (Momentum Confirmation) và điều chỉnh chiến lược thoát lệnh để tránh bị quét Stop-loss do nhiễu ngắn hạn.",
+      "flaw_identified": "Các lệnh Short gần đây (87, 90) bị quét Stop-loss do vào lệnh khi xu hướng 1H chưa thực sự suy yếu (độ dốc EMA21 vẫn hướng lên), dẫn đến việc bị 'kẹp' trong các nhịp hồi phục kỹ thuật.",
+      "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.15% + RSI 5m > 65 (Long) hoặc < 35 (Short) + ADX(14) > 25 để xác nhận xu hướng mạnh. 2. FLEXIBLE MODE (30% vốn): RSI 5m thoát vùng 45-55 VÀ nến 5m đóng cửa vượt EMA9 VÀ độ dốc EMA9 cùng chiều xu hướng 1H. BỔ SUNG: Cấm vào lệnh nếu giá nằm trong vùng nhiễu (khoảng cách EMA9/EMA21 < 0.15%). Không vào lệnh Short nếu giá nằm trên EMA21 khung 15m. Thêm điều kiện: Chỉ vào lệnh nếu nến 5m gần nhất có thân nến (body) lớn hơn 1.5 lần trung bình 10 nến trước đó để xác nhận lực đẩy.",
+      "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21 (cơ chế bảo vệ bất biến). 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 70 (Long) hoặc 30 (Short) để hiện thực hóa lợi nhuận sớm, phần còn lại dời Stop-Loss về Entry + 0.05% phí giao dịch. 3. Trailing Stop: Sử dụng EMA9 làm đường chặn, nếu nến 5m đóng cửa ngược hướng vị thế so với EMA9, đóng 50% vị thế còn lại. 4. OperatorAgent giữ quyền CLOSE ngay lập tức nếu xuất hiện phân kỳ RSI 5m hoặc nến 1H đóng cửa tạo mẫu hình đảo chiều (Pinbar/Engulfing)."
     },
     {
       "version": 5,
-      "reason": "Yêu cầu nến đóng cửa hoàn toàn dưới EMA mới xét cắt.",
-      "flaw_identified": "Chưa kết hợp xung lực RSI khi thoát lệnh."
+      "archived_at": "2026-09-30T23:04:43.290633+00:00",
+      "reason": "Tối ưu hóa bộ lọc Entry bằng cách thêm điều kiện 'Độ dốc EMA21' để tránh bẫy giá đi ngang và điều chỉnh chiến lược thoát lệnh để tối ưu hóa lợi nhuận trong các nhịp sóng ngắn.",
+      "flaw_identified": "Các lệnh 90, 91 cho thấy hệ thống vẫn vào lệnh tại các vùng giá đi ngang (sideways) nơi EMA21 bị cắt liên tục, dẫn đến việc bị quét Stop-loss do nhiễu thay vì xu hướng thực.",
+      "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.15% + RSI 5m > 65 (Long) hoặc < 35 (Short) + ADX(14) > 25. BỔ SUNG: Độ dốc (slope) của EMA21 khung 15m phải cùng chiều với hướng lệnh. 2. FLEXIBLE MODE (30% vốn): RSI 5m thoát vùng 45-55 VÀ nến 5m đóng cửa vượt EMA9 VÀ độ dốc EMA9 cùng chiều xu hướng 1H. CẤM VÀO LỆNH: Nếu khoảng cách EMA9/EMA21 < 0.15% (vùng nhiễu) hoặc giá nằm trên EMA21 khung 15m (đối với Short). Yêu cầu nến 5m xác nhận lực đẩy (thân nến > 1.5x trung bình 10 nến).",
+      "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21. 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 75 (Long) hoặc 25 (Short) để tối ưu hóa lợi nhuận cực đại. 3. Trailing Stop: Dời Stop-Loss về Entry + 0.05% phí ngay sau khi chốt 50% vị thế. 4. OperatorAgent giữ quyền CLOSE ngay lập tức nếu xuất hiện phân kỳ RSI 5m, nến 1H đóng cửa tạo mẫu hình đảo chiều, hoặc sau 20 nến 5m không đạt mục tiêu lợi nhuận (Time-based Exit để tránh ngâm vốn)."
     },
     {
       "version": 6,
-      "reason": "Bổ sung điều kiện RSI gãy 50 khi đóng vị thế.",
-      "flaw_identified": "Chưa phân định rõ ranh giới giữa EMA9 và EMA21."
+      "archived_at": "2026-10-01T02:12:17.590171+00:00",
+      "reason": "Nâng cấp v6 tập trung vào việc lọc nhiễu tại các vùng chuyển giao xu hướng bằng cách kết hợp độ dốc EMA21 khung 15m với xác nhận khối lượng (Volume) để tránh các lệnh Short/Long bị quét Stop-loss do thiếu thanh khoản.",
+      "flaw_identified": "Các lệnh 90, 91, 93 cho thấy hệ thống vẫn vào lệnh tại các vùng giá đi ngang hoặc nhịp hồi phục cục bộ nơi EMA21 bị cắt liên tục, dẫn đến việc bị quét Stop-loss do nhiễu thay vì xu hướng thực.",
+      "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.18% + RSI 5m > 65 (Long) hoặc < 35 (Short) + ADX(14) > 28. BẮT BUỘC: Độ dốc EMA21 khung 15m phải > 0.05% (hướng lên cho Long, hướng xuống cho Short). 2. VOLUME FILTER: Chỉ vào lệnh khi nến 5m xác nhận có Volume > 1.2x trung bình 20 nến gần nhất. 3. CẤM VÀO LỆNH: Nếu khoảng cách EMA9/EMA21 < 0.2% hoặc giá đang nằm trong vùng biên độ hẹp của 3 nến 5m trước đó.",
+      "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21. 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 72 (Long) hoặc 28 (Short). 3. Trailing Stop: Dời Stop-Loss về Entry + 0.08% phí ngay sau khi chốt 50% vị thế. 4. OperatorAgent: CLOSE lệnh ngay nếu nến 5m đóng cửa tạo mẫu hình nến đảo chiều (Pinbar/Engulfing) tại vùng quá mua/quá bán hoặc sau 15 nến 5m không đạt mục tiêu lợi nhuận để tối ưu hóa vòng quay vốn."
     },
     {
       "version": 7,
-      "reason": "Chuyển mốc hỗ trợ/kháng cự động chính từ EMA9 sang EMA21.",
-      "flaw_identified": "Cần gia tăng thêm độ lỳ trong sóng biến động mạnh."
+      "archived_at": "2026-10-01T03:42:39.024855+00:00",
+      "reason": "Nâng cấp v7 tập trung vào việc lọc nhiễu tại các vùng chuyển giao xu hướng bằng cách bổ sung bộ lọc 'Độ dốc EMA21 khung 1H' để đảm bảo lệnh vào thuận theo xu hướng chủ đạo, tránh các lệnh Short/Long bị quét Stop-loss do nhiễu ngắn hạn.",
+      "flaw_identified": "Các lệnh 93, 94, 95 cho thấy hệ thống vẫn vào lệnh tại các vùng giá có độ biến động thấp (low volatility) hoặc vùng chuyển giao xu hướng nơi EMA21 bị cắt liên tục, dẫn đến việc bị quét Stop-loss do nhiễu thay vì xu hướng thực.",
+      "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.22% + RSI 5m > 60 (Long) hoặc < 40 (Short) + ADX(14) > 30. BẮT BUỘC: Độ dốc EMA21 khung 1H phải cùng chiều với lệnh (hướng lên cho Long, hướng xuống cho Short) với độ dốc > 0.03%. 2. VOLUME FILTER: Chỉ vào lệnh khi nến 5m xác nhận có Volume > 1.3x trung bình 20 nến gần nhất. 3. CẤM VÀO LỆNH: Nếu khoảng cách EMA9/EMA21 < 0.25% hoặc giá đang nằm trong vùng biên độ hẹp của 5 nến 5m trước đó.",
+      "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21. 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 70 (Long) hoặc 30 (Short). 3. Trailing Stop: Dời Stop-Loss về Entry + 0.1% phí ngay sau khi chốt 50% vị thế. 4. OperatorAgent: CLOSE lệnh ngay nếu nến 5m đóng cửa tạo mẫu hình nến đảo chiều (Pinbar/Engulfing) tại vùng quá mua/quá bán hoặc sau 12 nến 5m không đạt mục tiêu lợi nhuận để tối ưu hóa vòng quay vốn."
+    },
+    {
+      "version": 8,
+      "archived_at": "2026-10-03T23:25:18.763953+00:00",
+      "reason": "Nâng cấp v8 tập trung vào việc lọc nhiễu tại các vùng chuyển giao xu hướng bằng cách bổ sung bộ lọc 'Độ dốc EMA21 khung 1H' kết hợp với 'ATR-based Volatility Filter' để tránh vào lệnh khi thị trường thiếu biên độ dao động, giảm thiểu các lệnh bị quét Stop-loss do nhiễu ngắn hạn.",
+      "flaw_identified": "Các lệnh 96, 98 cho thấy AI_EARLY_EXIT đang quá nhạy cảm với các biến động nhiễu, dẫn đến việc thoát lệnh trước khi xu hướng chính kịp xác nhận, gây ra các khoản lỗ nhỏ tích lũy không cần thiết.",
+      "entry_rules": "1. TREND MODE (70% vốn): Khung 1H đồng thuận + EMA9/EMA21 phân kỳ > 0.25% + RSI 5m > 60 (Long) hoặc < 40 (Short) + ADX(14) > 30. BẮT BUỘC: Độ dốc EMA21 khung 1H phải cùng chiều với lệnh với độ dốc > 0.04%. 2. VOLATILITY & VOLUME FILTER: Chỉ vào lệnh khi nến 5m có Volume > 1.5x trung bình 20 nến gần nhất VÀ ATR(14) khung 5m phải đang trong xu hướng tăng hoặc ổn định. 3. CẤM VÀO LỆNH: Nếu khoảng cách EMA9/EMA21 < 0.3% hoặc giá đang nằm trong vùng biên độ hẹp (tổng range 5 nến 5m gần nhất < 0.15%).",
+      "exit_rules": "1. Hard Stop-Loss cơ học tại -1.2% hoặc khi nến 5m đóng cửa vi phạm EMA21. 2. Chốt lời chủ động: Chốt 50% vị thế khi RSI 5m chạm 75 (Long) hoặc 25 (Short) để tối ưu hóa lợi nhuận. 3. Trailing Stop: Dời Stop-Loss về Entry + 0.15% phí ngay sau khi chốt 50% vị thế. 4. OperatorAgent: CLOSE lệnh ngay nếu nến 5m đóng cửa tạo mẫu hình nến đảo chiều mạnh (Pinbar/Engulfing) tại vùng quá mua/quá bán hoặc sau 10 nến 5m không đạt mục tiêu lợi nhuận tối thiểu 0.1% để bảo toàn vốn."
     }
   ]
 }
