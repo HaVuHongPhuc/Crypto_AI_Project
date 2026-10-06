@@ -44,6 +44,10 @@ Random Forest hiện là pipeline độc lập. `main.py` chưa dùng Predictor,
 
 Giữ nguyên các file này nếu chưa chủ ý reset paper account. `test_system_flow.py` có gọi mạng và ghi trạng thái giao dịch; đừng chạy như smoke test thuần offline. `migrate_rules.py` ghi đè bộ luật hiện tại.
 
+## Thông báo Discord
+
+Khi có webhook, bot gửi embed cho lúc khởi động, chỉ thị Strategist khi có nến 1H đóng mới, giao dịch paper được mở/đóng và lần tiến hóa rules thành công. Thẻ mở lệnh gồm kiểm tra kỹ thuật, macro, sentiment, Operator/Supervisor, stake, phí và các mức SL/TP/trailing; thẻ đóng lệnh gồm PnL gộp/net, phí hai chiều, số dư sau đóng và PnL tích lũy. Pipeline Random Forest chưa nối vào `main.py`, vì vậy thông báo không bịa xác suất ML. Lỗi gửi Discord không làm thay đổi quyết định hoặc ledger; log chỉ ghi mã HTTP/loại lỗi, không in webhook URL.
+
 ## Giới hạn
 
 Paper trading không mô phỏng trượt giá, khớp lệnh, funding hoặc độ trễ như sàn. Stop/trailing kiểm tra theo giá được lấy mỗi vòng lặp nên không bảo đảm bắt được biến động xảy ra giữa hai lần lấy giá. Vị thế SHORT chỉ là mô phỏng kế toán; endpoint đang dùng là Binance spot public data. Cần đánh giá bằng backtest/dry-run đủ dài trước khi cân nhắc thay đổi bất kỳ cơ chế nào.

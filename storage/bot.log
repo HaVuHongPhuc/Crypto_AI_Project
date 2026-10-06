@@ -2562,3 +2562,26 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines
 2026-10-06 00:51:03,422 [INFO] Retrying request in 0.903356 seconds (retry 2 of 2)
 2026-10-06 00:51:21,552 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
 2026-10-06 00:55:45,293 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:27:30,416 [INFO] Khôi phục vị thế SHORT @ 85538.01000000
+2026-10-06 17:27:30,514 [INFO] Discord embed prepared: 🤖 Crypto AI • Paper trading đã khởi động | sections: Paper vốn / sizing • Risk controls • Discord
+2026-10-06 17:27:31,412 [INFO] Discord embed delivered (HTTP 204)
+2026-10-06 17:27:32,013 [INFO] Đóng paper SHORT @ 85971.99000000 | PnL: -0.4225 USDT (-0.607%)
+2026-10-06 17:27:33,795 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:27:33,819 [INFO] Discord embed prepared: 🔔 KẾT QUẢ PAPER TRADE • SHORT BTC/USDT | sections: Khối lượng / stake • PnL giao dịch • Phí hai chiều • Paper account sau đóng • Thời gian giữ / mã giao dịch • Bài học Reflector
+2026-10-06 17:27:34,720 [INFO] Discord embed delivered (HTTP 204)
+2026-10-06 17:30:36,019 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-06 17:30:39,908 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:30:39,910 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường duy trì sự lạc quan nhờ đổi mới công nghệ và token hóa tài sản thực.
+2026-10-06 17:30:40,237 [INFO] Discord embed prepared: 🧭 STRATEGIST 1H • BTC/USDT | sections: Xu hướng 1H • Chỉ thị • Giá đóng nến 1H • EMA50 / EMA200 • RSI 1H • Paper account • Chiến lược
+2026-10-06 17:30:41,040 [INFO] Discord embed delivered (HTTP 204)
+2026-10-06 17:30:47,288 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:35:53,660 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:35:57,354 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:35:57,474 [INFO] Mở paper LONG @ 85848.56000000 | stake 69.2660 | phí vào 0.034633
+2026-10-06 17:35:57,478 [INFO] Discord embed prepared: 🟢 AI TEAM • PAPER TRADE MỞ: LONG | sections: Cặp / vị thế • Giá paper khớp • Stake / khối lượng • Phí vào / cash khả dụng • Equity paper ước tính • Mốc quản trị rủi ro • Xác nhận kỹ thuật • Operator • Supervisor / sentiment • Mô hình ML
+2026-10-06 17:35:58,440 [INFO] Discord embed delivered (HTTP 204)
+2026-10-06 17:41:01,629 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-06 17:41:01,630 [INFO] Retrying request in 0.444353 seconds (retry 1 of 2)
+2026-10-06 17:41:02,727 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-06 17:41:02,820 [INFO] Retrying request in 0.783828 seconds (retry 2 of 2)
+2026-10-06 17:41:04,898 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"

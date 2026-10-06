@@ -104,5 +104,13 @@
     "pnl_pct": -0.0010908022843022487,
     "exit_reason": "TRAILING_STOP_LONG (Đỉnh: 86706.00 -> Bán: 86120.00)",
     "lesson": "Cần tối ưu hóa khoảng cách Trailing Stop để bảo toàn lợi nhuận tốt hơn khi thị trường đảo chiều."
+  },
+  {
+    "id": 18,
+    "timestamp": "2026-10-06T09:27:33.818542+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.6073282707915586,
+    "exit_reason": "TRAILING_STOP_SHORT (Đáy: 85026.49 -> Mua đóng: 85971.99)",
+    "lesson": "Cần tối ưu khoảng cách Trailing Stop để tránh bị quét lệnh khi thị trường biến động ngắn hạn."
   }
 ]

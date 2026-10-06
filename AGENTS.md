@@ -14,7 +14,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - train.py, models/predictor.py, models/model.pkl: pipeline Random Forest độc lập.
 - engine/paper_trader.py: ledger paper, phí hai chiều, lịch sử và phục hồi cash/vị thế.
 - engine/risk_manager.py: SL/TP/trailing LONG/SHORT; main gọi kiểm tra giá mỗi vòng.
-- notifiers/discord.py: Discord webhook.
+- notifiers/discord.py: Discord webhook; rich embeds for startup, closed 1H macro decisions, opened/closed paper trades, and rule evolution.
 - storage/: dữ liệu thị trường, luật, memory, vị thế, log và lịch sử giao dịch.
 - fetch_and_save_dataset.py: tải lịch sử và ghi CSV.
 - migrate_rules.py: ghi đè luật hiện hành bằng v8.
@@ -30,7 +30,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 4. SentimentAgent lấy Fear & Greed từ alternative.me và tối đa 6 tiêu đề Cointelegraph RSS, rồi nhờ LLM phân tích. Kết quả cache 900 giây.
 5. OperatorAgent nhận giá/chỉ báo/vị thế/luật và yêu cầu LLM trả OPEN_LONG, OPEN_SHORT, CLOSE hoặc HOLD.
 6. Supervisor xác thực action/schema/cash/confidence/macro/technical/sentiment rồi mới nhờ LLM duyệt lệnh mở. main kiểm tra lại hard invariants trước khi thay đổi portfolio.
-7. Stake là POSITION_SIZE_PCT của cash. RiskManager chạy mỗi vòng; EMA21/RSI đóng theo nến mới. Khi đóng, ledger và trades.csv được cập nhật sau phí; Reflector lưu bài học và có thể gửi Discord.
+7. Stake là POSITION_SIZE_PCT của cash. RiskManager chạy mỗi vòng; EMA21/RSI đóng theo nến mới. Khi đóng, ledger và trades.csv được cập nhật sau phí; Reflector lưu bài học. Discord gửi embed chi tiết sau khi ledger ghi nhận mở/đóng; macro chỉ gửi khi candle 1H đóng thay đổi.
 8. Vòng lặp ngủ theo LOOP_SECONDS; exception được log, đưa cho Auditor phân tích, rồi retry sau ít nhất 10 giây. Ctrl+C dừng bot và thả process lock.
 9. Chỉ giữ một vị thế. Đây là paper trading; main không gửi lệnh thật lên sàn.
 

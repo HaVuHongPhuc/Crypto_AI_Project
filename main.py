@@ -55,6 +55,7 @@ class Main:
             trailing_activation_pct=self.config.trailing_activation_pct,
         )
         self.last_candle_time = self._load_runtime_cursor()
+        self.last_macro_candle_time = None
         self.recent_closed_trades = []
         self._lock_handle = None
 
@@ -209,6 +210,7 @@ class Main:
                 "rsi_14": float(rsi),
                 "ema_50": float(ema50),
                 "ema_200": float(ema200),
+                "candle_time": int(candles["timestamp"].iloc[-1]),
             }
         except (requests.RequestException, ValueError, KeyError, TypeError, IndexError):
             logging.exception("Không lấy/tính được xu hướng 1H")
@@ -227,6 +229,146 @@ class Main:
         print(f"   5m RSI={market_data['rsi_14']:.2f} | EMA9={market_data['ema_9']:.2f} | EMA21={market_data['ema_21']:.2f}")
         print("─" * 75)
 
+    def _notify_macro(self, macro: dict, inputs: dict):
+        """Publish the 1h decision once per newly closed macro candle."""
+        candle_time = inputs.get("candle_time")
+        if candle_time is None or candle_time == self.last_macro_candle_time:
+            return
+        if not self.notifier.webhook_url:
+            self.last_macro_candle_time = candle_time
+            return
+        position = self.paper_trader.position
+        fields = [
+            {"name": "Xu hướng 1H", "value": macro.get("macro_bias", "UNKNOWN"), "inline": True},
+            {"name": "Chỉ thị", "value": macro.get("directive", "NO_TRADE"), "inline": True},
+            {
+                "name": "Giá đóng nến 1H",
+                "value": f"{inputs.get('close', 0):,.2f} USDT",
+                "inline": True,
+            },
+            {
+                "name": "EMA50 / EMA200",
+                "value": f"{inputs.get('ema_50', 0):,.2f} / {inputs.get('ema_200', 0):,.2f}",
+                "inline": True,
+            },
+            {"name": "RSI 1H", "value": f"{inputs.get('rsi_14', 0):.2f}", "inline": True},
+            {
+                "name": "Paper account",
+                "value": f"Cash khả dụng: {self.paper_trader.cash:,.2f} USDT\n"
+                         f"Vị thế: {position.side if position else 'TRỐNG'}",
+                "inline": True,
+            },
+            {"name": "Chiến lược", "value": macro.get("reasoning", "Không có giải thích."), "inline": False},
+        ]
+        delivered = self.notifier.send_embed(
+            title=f"🧭 STRATEGIST 1H • {self.symbol}",
+            description=f"**Chỉ thị vĩ mô: {macro.get('directive', 'NO_TRADE')}**",
+            color=0x3498DB if macro.get("macro_bias") == "BULLISH" else (
+                0xE74C3C if macro.get("macro_bias") == "BEARISH" else 0xF1C40F
+            ),
+            fields=fields,
+            footer="Tín hiệu chỉ dùng nến 1H đã đóng • Paper trading",
+        )
+        if delivered:
+            self.last_macro_candle_time = candle_time
+
+    def _notify_open_position(self, side: str, market_data: dict, macro: dict,
+                              proposal: dict, review: dict, sentiment: dict,
+                              rules: dict):
+        position = self.paper_trader.position
+        if position is None:
+            return
+        entry = position.entry_price
+        if side == "LONG":
+            stop_price = entry * (1 - self.config.stop_loss_pct)
+            target_price = entry * (1 + self.config.take_profit_pct)
+        else:
+            stop_price = entry * (1 + self.config.stop_loss_pct)
+            target_price = entry * (1 - self.config.take_profit_pct)
+        # Stake is collateral in the short simulation, not a purchased asset.
+        # Include the stake and net unrealized PnL so LONG and SHORT equity use
+        # the same accounting basis.
+        account_equity = (
+            self.paper_trader.cash + position.stake + position.pnl_usdt
+        )
+        fields = [
+            {"name": "Cặp / vị thế", "value": f"{self.symbol} • {side}", "inline": True},
+            {"name": "Giá paper khớp", "value": f"{entry:,.2f} USDT", "inline": True},
+            {
+                "name": "Stake / khối lượng",
+                "value": f"{position.stake:,.4f} USDT / {position.amount:.8f}",
+                "inline": True,
+            },
+            {
+                "name": "Phí vào / cash khả dụng",
+                "value": f"{position.entry_fee:.6f} USDT / {self.paper_trader.cash:,.4f} USDT",
+                "inline": True,
+            },
+            {
+                "name": "Equity paper ước tính",
+                "value": f"{account_equity:,.4f} USDT (cash + collateral + PnL tạm tính)",
+                "inline": True,
+            },
+            {
+                "name": "Mốc quản trị rủi ro",
+                "value": f"Stop-loss: {stop_price:,.2f} USDT ({self.config.stop_loss_pct:.2%})\n"
+                         f"Take-profit: {target_price:,.2f} USDT ({self.config.take_profit_pct:.2%})\n"
+                         f"Trailing: kích hoạt +{self.config.trailing_activation_pct:.2%}, "
+                         f"khoảng cách {self.config.trailing_stop_pct:.2%}",
+                "inline": False,
+            },
+            {
+                "name": "Xác nhận kỹ thuật",
+                "value": f"RSI {market_data['rsi_14']:.2f} • EMA9 {market_data['ema_9']:,.2f} • "
+                         f"EMA21 {market_data['ema_21']:,.2f}\n"
+                         f"Macro: {macro.get('directive', 'NO_TRADE')} • Rules v{rules.get('version', 1)}",
+                "inline": False,
+            },
+            {
+                "name": "Operator",
+                "value": f"Confidence: {proposal.get('confidence', 0):.0%}\n"
+                         f"{proposal.get('reason', 'Không có giải thích.')}",
+                "inline": False,
+            },
+            {
+                "name": "Supervisor / sentiment",
+                "value": f"Risk score: {review.get('risk_score', 'N/A')}/10 • "
+                         f"{review.get('feedback', 'Đã duyệt')}\n"
+                         f"{sentiment.get('sentiment', 'UNKNOWN')} • Panic "
+                         f"{sentiment.get('panic_score', 'N/A')}/10 • "
+                         f"{sentiment.get('key_driver', 'Không có tin nổi bật.')}",
+                "inline": False,
+            },
+            {
+                "name": "Mô hình ML",
+                "value": "Không tham gia quyết định trong main.py; pipeline ML hiện chạy độc lập.",
+                "inline": False,
+            },
+        ]
+        self.notifier.send_embed(
+            title=f"🟢 AI TEAM • PAPER TRADE MỞ: {side}",
+            description="Lệnh đã qua kiểm tra Python và được ghi vào paper ledger. Không gửi lệnh lên sàn.",
+            color=0x2ECC71 if side == "LONG" else 0xE67E22,
+            fields=fields,
+            footer="Giá mô phỏng theo ticker Binance • PnL chịu phí paper",
+        )
+
+    @staticmethod
+    def _exit_reason_label(reason: str) -> str:
+        labels = {
+            "STOP_LOSS_LONG": "Stop-loss LONG",
+            "STOP_LOSS_SHORT": "Stop-loss SHORT",
+            "TAKE_PROFIT_LONG": "Take-profit LONG",
+            "TAKE_PROFIT_SHORT": "Take-profit SHORT",
+            "EMA21_RSI_REVERSAL": "Nến đóng phá EMA21 và RSI xác nhận đảo chiều",
+            "AI_SIGNAL": "Tín hiệu thoát được xác nhận",
+        }
+        if reason.startswith("TRAILING_STOP_LONG"):
+            return "Trailing stop LONG • " + reason.partition("(")[2].rstrip(")")
+        if reason.startswith("TRAILING_STOP_SHORT"):
+            return "Trailing stop SHORT • " + reason.partition("(")[2].rstrip(")")
+        return labels.get(reason, reason.replace("_", " ").title())
+
     def _close_position(self, price: float, reason: str):
         summary = self.paper_trader.close_position(price, exit_reason=reason, symbol=self.symbol)
         if not summary:
@@ -237,15 +379,71 @@ class Main:
             lesson = self.agent_team.reflector_agent.reflect(summary)
         except Exception:
             logging.exception("Reflector không xử lý được trade đã đóng")
-        self.notifier.send(
-            f"🔴 Đóng {summary['side']} {self.symbol} @ {price:,.2f} | "
-            f"PnL sau phí: {summary['pnl_pct']:+.2f}% ({summary['pnl_usdt']:+.4f} USDT)\n"
-            f"Lý do: {reason} | Bài học: {lesson}"
+        total_fees = summary.get("entry_fee", 0.0) + summary.get("exit_fee", 0.0)
+        gross_pnl = summary["pnl_usdt"] + total_fees
+        initial_cash = self.paper_trader.initial_cash
+        account_pnl = summary["final_cash"] - initial_cash
+        account_pnl_pct = account_pnl / initial_cash * 100 if initial_cash else 0.0
+        self.notifier.send_embed(
+            title=f"🔔 KẾT QUẢ PAPER TRADE • {summary['side']} {self.symbol}",
+            description=f"**{self._exit_reason_label(reason)}**\n"
+                        f"Giá: {summary['entry_price']:,.2f} → {summary['exit_price']:,.2f} USDT",
+            color=0x2ECC71 if summary["pnl_usdt"] >= 0 else 0xE74C3C,
+            fields=[
+                {
+                    "name": "Khối lượng / stake",
+                    "value": f"{summary['amount']:.8f} {self.symbol.split('/')[0]} / "
+                             f"{summary['stake']:,.4f} USDT",
+                    "inline": True,
+                },
+                {
+                    "name": "PnL giao dịch",
+                    "value": f"Gross: {gross_pnl:+.6f} USDT\n"
+                             f"Net sau phí: {summary['pnl_usdt']:+.6f} USDT "
+                             f"({summary['pnl_pct']:+.3f}%)",
+                    "inline": True,
+                },
+                {
+                    "name": "Phí hai chiều",
+                    "value": f"Vào: {summary.get('entry_fee', 0):.6f} • "
+                             f"Ra: {summary.get('exit_fee', 0):.6f} • "
+                             f"Tổng: {total_fees:.6f} USDT",
+                    "inline": True,
+                },
+                {
+                    "name": "Paper account sau đóng",
+                    "value": f"Cash khả dụng: {summary['final_cash']:,.4f} USDT\n"
+                             f"Lãi/lỗ tích lũy so với vốn khởi tạo: "
+                             f"{account_pnl:+.6f} USDT ({account_pnl_pct:+.3f}%)",
+                    "inline": False,
+                },
+                {
+                    "name": "Thời gian giữ / mã giao dịch",
+                    "value": f"{summary.get('holding_candles', 0)} nến {self.timeframe} • "
+                             f"{summary.get('trade_id', 'N/A')[:12]}",
+                    "inline": True,
+                },
+                {"name": "Bài học Reflector", "value": lesson, "inline": False},
+            ],
+            footer="Paper trading • PnL đã trừ phí entry và exit",
         )
         if len(self.recent_closed_trades) >= 3:
             try:
-                self.agent_team.reflector_agent.auto_evolve_rules(self.recent_closed_trades[-3:])
+                previous_rules = ReflectorAgent.load_rules()
+                evolved = self.agent_team.reflector_agent.auto_evolve_rules(self.recent_closed_trades[-3:])
                 self.recent_closed_trades.clear()
+                if evolved.get("version", 0) > previous_rules.get("version", 0):
+                    self.notifier.send_embed(
+                        title=f"🧬 TIẾN HÓA CHIẾN LƯỢC • v{previous_rules.get('version', 1)} → v{evolved['version']}",
+                        description=evolved.get("reason_for_update", "Bộ quy tắc đã được cập nhật."),
+                        color=0x9B59B6,
+                        fields=[
+                            {"name": "Điểm yếu được xử lý", "value": evolved.get("flaw_identified", "Chưa nêu."), "inline": False},
+                            {"name": "Entry rules mới", "value": evolved.get("entry_rules", "Chưa nêu."), "inline": False},
+                            {"name": "Exit rules mới", "value": evolved.get("exit_rules", "Chưa nêu."), "inline": False},
+                        ],
+                        footer="Operator sẽ đọc bộ luật mới ở lần phân tích tiếp theo",
+                    )
             except Exception:
                 logging.exception("Không thể tiến hóa rules sau ba trade")
 
@@ -331,6 +529,8 @@ class Main:
         macro = self.agent_team.strategist_agent.analyze_macro(
             self.symbol, macro_inputs.get("close", float("nan")), macro_inputs
         )
+        if macro_inputs:
+            self._notify_macro(macro, macro_inputs)
         rules = ReflectorAgent.load_rules()
         self.print_dashboard(market_data, sentiment, rules, macro)
 
@@ -375,7 +575,10 @@ class Main:
             stake = self.risk_manager.position_value(self.paper_trader.cash)
             side = "LONG" if action == "OPEN_LONG" else "SHORT"
             if self.paper_trader.open_position(side, market_data["price"], cash_amount=stake):
-                self.notifier.send(f"🟢 Mở paper {side} {self.symbol} @ {market_data['price']:,.2f} | Stake: {stake:.2f} USDT")
+                self.paper_trader.update_position(market_data["price"])
+                self._notify_open_position(
+                    side, market_data, macro, proposal, review, sentiment, rules
+                )
         elif (review.get("approved") and action == "CLOSE"
               and self._has_strategy_exit(self.paper_trader.position, market_data)):
             self._close_position(market_data["price"], "AI_SIGNAL")
@@ -390,7 +593,18 @@ class Main:
         mode = self.config.llm_mode
         try:
             print(f"CRYPTO AI PAPER TRADER | {self.symbol} {self.timeframe} | LLM [{mode}]")
-            self.notifier.send(f"Bot paper trading khởi động: {self.symbol} {self.timeframe} ({mode})")
+            self.notifier.send_embed(
+                title="🤖 Crypto AI • Paper trading đã khởi động",
+                description=f"**{self.symbol} • {self.timeframe} • LLM {mode}**\n"
+                            "Dữ liệu thị trường từ Binance public API; bot không gửi lệnh thật.",
+                color=0x5865F2,
+                fields=[
+                    {"name": "Paper vốn / sizing", "value": f"{self.paper_trader.cash:,.2f} USDT cash • {self.config.position_size_pct:.1%}/lệnh", "inline": True},
+                    {"name": "Risk controls", "value": f"SL {self.config.stop_loss_pct:.2%} • TP {self.config.take_profit_pct:.2%} • Trailing {self.config.trailing_stop_pct:.2%}", "inline": True},
+                    {"name": "Discord", "value": "Thông báo chi tiết cho macro, mở lệnh, đóng lệnh và thay đổi rules.", "inline": False},
+                ],
+                footer="Paper simulation • Không đại diện cho khớp lệnh thực tế",
+            )
             while True:
                 try:
                     self.process_once()

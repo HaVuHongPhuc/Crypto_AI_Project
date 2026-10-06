@@ -1,18 +1,18 @@
 {
   "schema_version": 2,
-  "cash": 29.8121821028831,
+  "cash": 29.685441635847624,
   "position": {
-    "side": "SHORT",
-    "entry_price": 85538.01,
-    "amount": 0.0008128196735105307,
-    "entry_time": "2026-10-05T15:16:06.845629+00:00",
-    "pnl_pct": 0.1894401244692244,
-    "pnl_usdt": 0.13177788139295166,
-    "holding_candles": 21,
-    "stake": 69.56175824006054,
-    "entry_fee": 0.03478087912003027,
-    "extreme_price": 85026.49,
-    "last_candle_time": 1791219000000,
-    "trade_id": "1d7abe06232749738e9bb09a44d87552"
+    "side": "LONG",
+    "entry_price": 85848.56,
+    "amount": 0.0008064363277427442,
+    "entry_time": "2026-10-06T09:35:57.451003+00:00",
+    "pnl_pct": -0.009848189063978371,
+    "pnl_usdt": -0.006821449639142198,
+    "holding_candles": 2,
+    "stake": 69.26603048364446,
+    "entry_fee": 0.03463301524182223,
+    "extreme_price": 85951.27,
+    "last_candle_time": 1791279300000,
+    "trade_id": "de82f0b798db43058d78538051a9e589"
   }
 }
