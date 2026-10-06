@@ -100,30 +100,6 @@
 2026-09-20 22:32:21,758 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-20 22:32:22,244 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-20 22:33:28,164 [ERROR] Vòng lặp gặp ngoại lệ nghiêm trọng!
-Traceback (most recent call last):
-  File "C:\Users\havuh\AppData\Roaming\Python\Python314\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
-    return self._engine.get_loc(casted_key)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
-  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
-  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
-  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
-  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
-KeyError: 'timestamp'
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\havuh\OneDrive\Desktop\Crypto_AI\main.py", line 238, in main
-    run_once(fetcher, predictor, trader, risk, operator, supervisor)
-    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\havuh\OneDrive\Desktop\Crypto_AI\main.py", line 45, in run_once
-    current_candle_ts = int(candles["timestamp"].iloc[-1])
-                            ~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\havuh\AppData\Roaming\Python\Python314\site-packages\pandas\core\frame.py", line 4378, in __getitem__
-    indexer = self.columns.get_loc(key)
-  File "C:\Users\havuh\AppData\Roaming\Python\Python314\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
-    raise KeyError(key) from err
-KeyError: 'timestamp'
 2026-09-20 22:33:28,806 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-20 22:37:15,645 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-20 22:37:16,168 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -872,210 +848,8 @@ KeyError: 'timestamp'
 2026-09-22 17:31:23,275 [INFO] >>> [STRATEGIST 1H] Chỉ thị: FLEXIBLE | Xu hướng: BULLISH
 2026-09-22 17:31:25,821 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-22 17:35:53,158 [ERROR] Vòng lặp gặp ngoại lệ nghiêm trọng!
-Traceback (most recent call last):
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 905, in _error_catcher
-    yield
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1022, in _raw_read
-    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
-           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1005, in _fp_read
-    return self._fp.read(amt) if amt is not None else self._fp.read()
-           ~~~~~~~~~~~~~^^^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\http\client.py", line 494, in read
-    s = self.fp.read(amt)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\socket.py", line 729, in readinto
-    return self._sock.recv_into(b)
-           ~~~~~~~~~~~~~~~~~~~~^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1304, in recv_into
-    return self.read(nbytes, buffer)
-           ~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1138, in read
-    return self._sslobj.read(len, buffer)
-           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-TimeoutError: The read operation timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\models.py", line 937, in generate
-    yield from self.raw.stream(chunk_size, decode_content=True)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1267, in stream
-    data = self.read(amt=amt, decode_content=decode_content)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1110, in read
-    data = self._raw_read(amt)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1021, in _raw_read
-    with self._error_catcher():
-         ~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
-    self.gen.throw(value)
-    ~~~~~~~~~~~~~~^^^^^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 910, in _error_catcher
-    raise ReadTimeoutError(self._pool, None, "Read timed out.") from e  # type: ignore[arg-type]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.binance.com', port=443): Read timed out.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 600, in fetch
-    response = self.session.request(
-        method,
-    ...<6 lines>...
-        files=files
-    )
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 651, in request
-    resp = self.send(prep, **send_kwargs)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 827, in send
-    r.content
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\models.py", line 1042, in content
-    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
-                    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\models.py", line 943, in generate
-    raise ConnectionError(e)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Read timed out.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 473, in main
-    run_once(
-    ~~~~~~~~^
-        fetcher,
-        ^^^^^^^^
-    ...<6 lines>...
-        reflector,
-        ^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 199, in run_once
-    candles = fetcher.fetch_ohlcv(
-        settings.symbol, settings.timeframe, settings.candle_limit
-    )
-  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\data\fetcher.py", line 15, in fetch_ohlcv
-    rows = self.exchange.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 5054, in fetch_ohlcv
-    response = self.publicGetKlines(self.extend(request, params))
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\types.py", line 43, in unbound_method
-    return _self.request(self.path, self.api, self.method, params, config=self.config)
-           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 12502, in request
-    response = self.fetch2(path, api, method, params, headers, body, config)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5772, in fetch2
-    raise e
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5755, in fetch2
-    response = self.fetch(request['url'], request['method'], request['headers'], request['body'])
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 654, in fetch
-    raise RequestTimeout(details) from e
-ccxt.base.errors.RequestTimeout: binance GET https://api.binance.com/api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT
 2026-09-22 17:36:45,656 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-22 17:37:59,798 [ERROR] Vòng lặp gặp ngoại lệ nghiêm trọng!
-Traceback (most recent call last):
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
-    sock = connection.create_connection(
-        (self._dns_host, self.port),
-    ...<2 lines>...
-        socket_options=self.socket_options,
-    )
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
-    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
-               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\socket.py", line 989, in getaddrinfo
-    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-socket.gaierror: [Errno 11001] getaddrinfo failed
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
-    response = self._make_request(
-        conn,
-    ...<10 lines>...
-        **response_kw,
-    )
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
-    raise new_e
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
-    self._validate_conn(conn)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
-    conn.connect()
-    ~~~~~~~~~~~~^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connection.py", line 759, in connect
-    self.sock = sock = self._new_conn()
-                       ~~~~~~~~~~~~~~^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
-    raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.binance.com', port=443): Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\adapters.py", line 696, in send
-    resp = conn.urlopen(
-        method=request.method,
-    ...<9 lines>...
-        chunked=chunked,
-    )
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
-    retries = retries.increment(
-        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
-    )
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
-    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT (Caused by NameResolutionError("HTTPSConnection(host='api.binance.com', port=443): Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 600, in fetch
-    response = self.session.request(
-        method,
-    ...<6 lines>...
-        files=files
-    )
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 651, in request
-    resp = self.send(prep, **send_kwargs)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 784, in send
-    r = adapter.send(request, **kwargs)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\adapters.py", line 729, in send
-    raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT (Caused by NameResolutionError("HTTPSConnection(host='api.binance.com', port=443): Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 473, in main
-    run_once(
-    ~~~~~~~~^
-        fetcher,
-        ^^^^^^^^
-    ...<6 lines>...
-        reflector,
-        ^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 199, in run_once
-    candles = fetcher.fetch_ohlcv(
-        settings.symbol, settings.timeframe, settings.candle_limit
-    )
-  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\data\fetcher.py", line 15, in fetch_ohlcv
-    rows = self.exchange.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 5054, in fetch_ohlcv
-    response = self.publicGetKlines(self.extend(request, params))
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\types.py", line 43, in unbound_method
-    return _self.request(self.path, self.api, self.method, params, config=self.config)
-           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 12502, in request
-    response = self.fetch2(path, api, method, params, headers, body, config)
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5772, in fetch2
-    raise e
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5755, in fetch2
-    response = self.fetch(request['url'], request['method'], request['headers'], request['body'])
-  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 656, in fetch
-    raise NetworkError(details) from e
-ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT
 2026-09-22 17:38:43,621 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-22 17:40:35,587 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-22 17:42:19,927 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -2504,11 +2278,48 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines
 2026-09-24 03:30:24,513 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 03:30:30,006 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 03:30:30,164 [INFO] >>> [AI TEAM] MỞ VỊ THẾ SHORT: Giá = 84312.520000, Vốn = 70.293799 USDT
+2026-09-24 03:55:02,827 [ERROR] Lỗi Exception ngoài vòng lặp: cannot import name '_ask_llm' from 'agents.agent_team' (C:\Users\havuh\OneDrive\Desktop\Crypto_AI\agents\agent_team.py)
+2026-09-24 03:56:14,881 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 03:56:19,618 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 03:56:19,619 [ERROR] Lỗi gọi Local LLM (qwen2.5:7b): Error code: 404 - {'error': {'message': "model 'qwen2.5:7b' not found", 'type': 'not_found_error', 'param': None, 'code': None}}
+2026-09-24 03:56:19,619 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 5/10 | Lời khuyên: NORMAL | Sự kiện: Local LLM Error
+2026-09-24 03:56:19,927 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 03:56:19,928 [ERROR] Lỗi gọi Local LLM (qwen2.5:7b): Error code: 404 - {'error': {'message': "model 'qwen2.5:7b' not found", 'type': 'not_found_error', 'param': None, 'code': None}}
+2026-09-24 04:01:04,043 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:01:08,069 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 04:01:08,070 [ERROR] Lỗi gọi Local LLM (qwen2.5:7b): Error code: 404 - {'error': {'message': "model 'qwen2.5:7b' not found", 'type': 'not_found_error', 'param': None, 'code': None}}
+2026-09-24 04:01:08,070 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 5/10 | Lời khuyên: NORMAL | Sự kiện: Local LLM Error
+2026-09-24 04:01:08,375 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-09-24 04:01:08,375 [ERROR] Lỗi gọi Local LLM (qwen2.5:7b): Error code: 404 - {'error': {'message': "model 'qwen2.5:7b' not found", 'type': 'not_found_error', 'param': None, 'code': None}}
+2026-09-24 04:01:42,235 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:01:49,842 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:01:49,847 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin long liquidations tăng
+2026-09-24 04:01:50,660 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:01:52,696 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:05:18,012 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:10:17,491 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:10:19,512 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:19:21,705 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:19:33,984 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:19:33,993 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin long liquidations tăng cao
+2026-09-24 04:19:34,814 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:19:37,134 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:20:11,100 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:25:18,684 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 04:28:08,021 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
 2026-09-24 04:28:10,134 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 04:28:10,151 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Visa khảo sát cho thấy tiềm năng tăng trưởng lớn cho stablecoin tại Mỹ
 2026-09-24 04:28:10,614 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:29:33,465 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:29:38,217 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:29:38,222 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin long liquidations tăng
+2026-09-24 04:29:39,047 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:30:13,003 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 04:30:13,204 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:33:43,894 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-09-24 04:33:48,830 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-24 04:33:48,834 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Sự kiện chung, không có tin xấu bất ngờ
+2026-09-24 04:33:49,637 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 04:35:18,484 [INFO] Retrying request in 0.492653 seconds (retry 1 of 2)
 2026-09-24 04:35:19,368 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 04:40:10,364 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
@@ -11310,3 +11121,521 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines
 2026-10-04 23:20:11,820 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực từ chính sách Mỹ và sự phục hồi tài sản bị hack.
 2026-10-04 23:20:25,356 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
 2026-10-04 23:25:10,856 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 14:52:47,975 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 14:52:52,373 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 14:52:52,378 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự lạc quan từ các chuyên gia tài chính truyền thống.
+2026-10-05 14:52:57,710 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 14:53:02,441 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 14:53:02,539 [INFO] Mở paper LONG @ 86078.00000000 | stake 70.0000 | phí vào 0.035000
+2026-10-05 14:55:08,366 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:00:14,565 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:05:20,197 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:10:21,988 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 15:10:27,240 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:10:27,241 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự quan tâm từ tổ chức tài chính truyền thống.
+2026-10-05 15:10:31,014 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:15:36,968 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:20:42,053 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:25:43,787 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 15:25:48,919 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:25:48,920 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự quan tâm từ các tổ chức tài chính truyền thống.
+2026-10-05 15:25:50,953 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:30:55,946 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:36:01,061 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:41:02,583 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 15:41:07,947 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:41:07,948 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự quan tâm từ các tổ chức tài chính truyền thống.
+2026-10-05 15:41:11,759 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:45:16,052 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:50:23,537 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:55:28,989 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:00:30,562 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 16:00:37,119 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:00:37,120 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự lạc quan về chu kỳ Bitcoin mới.
+2026-10-05 16:00:40,249 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:05:46,599 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:10:52,213 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:15:53,867 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 16:16:00,350 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:16:00,351 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng tiền ETF Bitcoin ổn định và sự phát triển hạ tầng tài chính truyền thống.
+2026-10-05 16:16:03,575 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:20:09,009 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:25:14,579 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:30:20,338 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:35:21,924 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 16:35:27,257 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:35:27,303 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và sự phát triển hạ tầng tài chính truyền thống.
+2026-10-05 16:35:32,659 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:40:39,068 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:45:44,973 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:50:46,675 [INFO] Đóng paper LONG @ 86192.00000000 | PnL: +0.0226 USDT (+0.032%)
+2026-10-05 16:50:54,332 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:55:57,076 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 16:56:04,846 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:56:04,847 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và sự phát triển hạ tầng tài chính truyền thống.
+2026-10-05 16:56:07,679 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:00:13,680 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:05:22,118 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:10:26,911 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:15:28,488 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 17:15:33,484 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:15:33,484 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin ổn định và sự mở rộng hạ tầng tài chính truyền thống vào crypto.
+2026-10-05 17:15:35,257 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:20:54,239 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:26:03,194 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:30:09,377 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:35:10,992 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 17:35:31,050 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:35:31,051 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin ổn định và sự mở rộng hạ tầng tài chính truyền thống.
+2026-10-05 17:35:34,149 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:40:42,143 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:45:53,443 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:50:55,024 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 17:51:03,976 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:51:04,022 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin ổn định và sự mở rộng hạ tầng tài chính truyền thống.
+2026-10-05 17:51:15,381 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:55:22,139 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:00:28,385 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:05:33,132 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:10:34,820 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 18:10:38,554 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:10:38,599 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và sự mở rộng hạ tầng tài chính truyền thống.
+2026-10-05 18:10:41,062 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:15:54,032 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:21:00,971 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:26:02,549 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 18:26:08,753 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:26:08,799 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực bù đắp cho sự rút vốn của Ether ETF.
+2026-10-05 18:26:12,877 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:30:23,664 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:35:31,519 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:40:38,758 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:45:40,339 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 18:45:46,106 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:45:46,108 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực bù đắp cho sự rút vốn từ các quỹ ETF Ethereum.
+2026-10-05 18:45:49,866 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:50:54,541 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:56:03,674 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:56:07,432 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:56:07,483 [INFO] Mở paper LONG @ 86180.00000000 | stake 70.0158 | phí vào 0.035008
+2026-10-05 19:00:15,552 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:05:17,152 [INFO] Đóng paper LONG @ 85954.00000000 | PnL: -0.2534 USDT (-0.362%)
+2026-10-05 19:05:24,091 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:10:26,876 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 19:10:32,773 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:10:32,774 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực duy trì đà tăng trưởng thị trường ổn định
+2026-10-05 19:10:37,449 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:15:41,980 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:20:46,610 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:25:48,189 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 19:25:54,387 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:25:54,433 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực bù đắp cho sự rút vốn từ các quỹ ETF Ethereum.
+2026-10-05 19:26:00,414 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:31:08,464 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:31:10,612 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:31:10,711 [INFO] Mở paper LONG @ 86200.01000000 | stake 69.8384 | phí vào 0.034919
+2026-10-05 19:35:17,521 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:40:23,968 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:45:25,566 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 19:45:31,762 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:45:31,763 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực bù đắp cho sự rút vốn từ các quỹ Ether.
+2026-10-05 19:45:36,610 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:50:44,192 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:55:50,477 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:00:52,394 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 20:00:56,068 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:00:56,069 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và sự ổn định của thị trường dù Ether gặp áp lực bán.
+2026-10-05 20:00:59,965 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:06:04,714 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:10:10,626 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:15:16,896 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:20:18,553 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 20:20:26,373 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:20:26,374 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin ổn định, thị trường duy trì tâm lý tham lam tích cực.
+2026-10-05 20:20:29,655 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:25:36,285 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:30:42,095 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:35:43,747 [INFO] Đóng paper LONG @ 85968.71000000 | PnL: -0.2570 USDT (-0.368%)
+2026-10-05 20:35:47,826 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:35:53,218 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:35:53,264 [WARNING] ⚠️ Google Gemini gặp sự cố: Unterminated string starting at: line 5 column 17 (char 720)
+2026-10-05 20:35:53,264 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-10-05 20:35:53,521 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-10-05 20:35:53,569 [ERROR] Lỗi cả Groq cứu hộ: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-10-05 20:40:55,438 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 20:41:02,062 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:41:02,108 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và chiến lược tích lũy BTC từ các tổ chức doanh nghiệp.
+2026-10-05 20:41:06,207 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:45:14,306 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:50:19,562 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:55:40,494 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:00:41,957 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 21:00:46,808 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:00:46,809 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Các tổ chức tiếp tục chiến lược tích lũy Bitcoin và mở rộng hạ tầng thanh toán.
+2026-10-05 21:00:57,965 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:01:01,495 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:06:10,772 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:10:16,444 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:10:20,700 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:15:23,960 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 21:15:24,006 [INFO] Retrying request in 0.414890 seconds (retry 1 of 2)
+2026-10-05 21:15:33,670 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:15:38,980 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:20:40,682 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 21:21:02,291 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:21:02,292 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường duy trì tâm lý tham lam với dòng vốn tổ chức ổn định và tăng trưởng stablecoin.
+2026-10-05 21:21:08,803 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:21:16,162 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:21:16,215 [INFO] Mở paper LONG @ 86172.00000000 | stake 69.6585 | phí vào 0.034829
+2026-10-05 21:25:24,690 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:30:35,041 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:35:36,682 [INFO] Đóng paper LONG @ 86088.00000000 | PnL: -0.1375 USDT (-0.197%)
+2026-10-05 21:35:53,839 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:40:56,528 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 21:41:02,238 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:41:02,239 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý tham lam tích cực, các tổ chức tiếp tục chiến lược tích lũy Bitcoin dài hạn.
+2026-10-05 21:41:05,852 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:41:07,976 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:41:08,072 [INFO] Mở paper LONG @ 86034.84000000 | stake 69.5623 | phí vào 0.034781
+2026-10-05 21:45:15,221 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:50:22,144 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:55:29,898 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:00:31,537 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 22:00:36,997 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:00:36,998 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý tham lam tích cực nhờ chiến lược tích lũy Bitcoin của các tổ chức.
+2026-10-05 22:00:42,439 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:05:51,709 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:10:55,951 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:15:57,693 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 22:16:07,980 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:16:07,981 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý thị trường tích cực nhờ các tổ chức đẩy mạnh tích lũy Bitcoin.
+2026-10-05 22:16:09,933 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:20:14,297 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:25:18,923 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:30:20,450 [INFO] Đóng paper LONG @ 86120.00000000 | PnL: -0.0008 USDT (-0.001%)
+2026-10-05 22:30:26,507 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:35:29,247 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 22:35:46,278 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:35:46,280 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý tham lam tích cực nhờ chiến lược tích lũy Bitcoin từ các tổ chức doanh nghiệp.
+2026-10-05 22:35:53,586 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:40:59,618 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:41:08,325 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:45:11,117 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 22:45:11,203 [INFO] Retrying request in 0.490968 seconds (retry 1 of 2)
+2026-10-05 22:45:13,958 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:45:19,885 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:50:24,236 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:50:46,438 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:55:48,088 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 22:55:55,097 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:55:55,143 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý tham lam tích cực nhờ chiến lược tích lũy Bitcoin của các tổ chức.
+2026-10-05 22:55:59,854 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:56:03,497 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:01:06,585 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 23:01:06,631 [INFO] Retrying request in 0.463883 seconds (retry 1 of 2)
+2026-10-05 23:01:09,487 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:01:12,538 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:05:19,766 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:05:23,996 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:10:34,279 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:10:35,939 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 23:10:36,025 [INFO] Retrying request in 0.403178 seconds (retry 1 of 2)
+2026-10-05 23:10:40,188 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:15:41,826 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 23:15:46,716 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:15:46,717 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường duy trì tâm lý tham lam nhưng thiếu động lực bứt phá.
+2026-10-05 23:16:02,276 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:16:06,748 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:16:06,849 [INFO] Mở paper SHORT @ 85538.01000000 | stake 69.5618 | phí vào 0.034781
+2026-10-05 23:20:17,668 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:25:22,806 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 23:25:22,904 [INFO] Retrying request in 0.389487 seconds (retry 1 of 2)
+2026-10-05 23:25:25,772 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:30:57,268 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:35:58,898 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 23:36:03,884 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:36:03,885 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường duy trì tâm lý tham lam nhưng thiếu động lực bứt phá.
+2026-10-05 23:36:14,829 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:40:22,974 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:45:31,443 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:50:34,379 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 23:50:34,424 [INFO] Retrying request in 0.479427 seconds (retry 1 of 2)
+2026-10-05 23:50:38,120 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:55:40,222 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 23:55:44,678 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:55:44,724 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường duy trì tâm lý tham lam nhưng thiếu động lực bứt phá.
+2026-10-05 23:55:46,894 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:00:52,059 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:05:56,236 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:10:57,751 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-06 00:11:03,520 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:11:03,520 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường thiếu động lực bứt phá mạnh mẽ.
+2026-10-06 00:11:06,450 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:15:11,637 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:20:15,925 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:25:20,288 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:30:21,945 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-06 00:30:26,549 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:30:26,595 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường duy trì tâm lý tham lam nhưng thiếu động lực bứt phá.
+2026-10-06 00:30:29,584 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:35:35,452 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:40:40,913 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:45:42,537 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-06 00:45:50,132 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:45:50,133 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường duy trì tâm lý tham lam dù Bitcoin gặp khó khăn tại vùng kháng cự quan trọng.
+2026-10-06 00:45:56,843 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:51:01,504 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-06 00:51:01,505 [INFO] Retrying request in 0.426882 seconds (retry 1 of 2)
+2026-10-06 00:51:03,328 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-06 00:51:03,422 [INFO] Retrying request in 0.903356 seconds (retry 2 of 2)
+2026-10-06 00:51:21,552 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:55:45,293 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:27:30,416 [INFO] Khôi phục vị thế SHORT @ 85538.01000000
+2026-10-06 17:27:30,514 [INFO] Discord embed prepared: 🤖 Crypto AI • Paper trading đã khởi động | sections: Paper vốn / sizing • Risk controls • Discord
+2026-10-06 17:27:31,412 [INFO] Discord embed delivered (HTTP 204)
+2026-10-06 17:27:32,013 [INFO] Đóng paper SHORT @ 85971.99000000 | PnL: -0.4225 USDT (-0.607%)
+2026-10-06 17:27:33,795 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:27:33,819 [INFO] Discord embed prepared: 🔔 KẾT QUẢ PAPER TRADE • SHORT BTC/USDT | sections: Khối lượng / stake • PnL giao dịch • Phí hai chiều • Paper account sau đóng • Thời gian giữ / mã giao dịch • Bài học Reflector
+2026-10-06 17:27:34,720 [INFO] Discord embed delivered (HTTP 204)
+2026-10-06 17:30:36,019 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-06 17:30:39,908 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:30:39,910 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường duy trì sự lạc quan nhờ đổi mới công nghệ và token hóa tài sản thực.
+2026-10-06 17:30:40,237 [INFO] Discord embed prepared: 🧭 STRATEGIST 1H • BTC/USDT | sections: Xu hướng 1H • Chỉ thị • Giá đóng nến 1H • EMA50 / EMA200 • RSI 1H • Paper account • Chiến lược
+2026-10-06 17:30:41,040 [INFO] Discord embed delivered (HTTP 204)
+2026-10-06 17:30:47,288 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:35:53,660 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:35:57,354 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 17:35:57,474 [INFO] Mở paper LONG @ 85848.56000000 | stake 69.2660 | phí vào 0.034633
+2026-10-06 17:35:57,478 [INFO] Discord embed prepared: 🟢 AI TEAM • PAPER TRADE MỞ: LONG | sections: Cặp / vị thế • Giá paper khớp • Stake / khối lượng • Phí vào / cash khả dụng • Equity paper ước tính • Mốc quản trị rủi ro • Xác nhận kỹ thuật • Operator • Supervisor / sentiment • Mô hình ML
+2026-10-06 17:35:58,440 [INFO] Discord embed delivered (HTTP 204)
+2026-10-06 17:41:01,629 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-06 17:41:01,630 [INFO] Retrying request in 0.444353 seconds (retry 1 of 2)
+2026-10-06 17:41:02,727 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-06 17:41:02,820 [INFO] Retrying request in 0.783828 seconds (retry 2 of 2)
+2026-10-06 17:41:04,898 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "C:\Users\havuh\AppData\Roaming\Python\Python314\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+KeyError: 'timestamp'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The above exception was the direct cause of the following exception:
+The above exception was the direct cause of the following exception:
+The above exception was the direct cause of the following exception:
+The above exception was the direct cause of the following exception:
+The above exception was the direct cause of the following exception:
+The above exception was the direct cause of the following exception:
+  File "C:\Users\havuh\OneDrive\Desktop\Crypto_AI\main.py", line 238, in main
+    run_once(fetcher, predictor, trader, risk, operator, supervisor)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\havuh\OneDrive\Desktop\Crypto_AI\main.py", line 45, in run_once
+    current_candle_ts = int(candles["timestamp"].iloc[-1])
+                            ~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\havuh\AppData\Roaming\Python\Python314\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\havuh\AppData\Roaming\Python\Python314\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 905, in _error_catcher
+    yield
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1022, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1005, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\http\client.py", line 494, in read
+    s = self.fp.read(amt)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\socket.py", line 729, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1267, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1110, in read
+    data = self._raw_read(amt)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 1021, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\response.py", line 910, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.") from e  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.binance.com', port=443): Read timed out.
+During handling of the above exception, another exception occurred:
+During handling of the above exception, another exception occurred:
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 600, in fetch
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 600, in fetch
+    response = self.session.request(
+    response = self.session.request(
+        method,
+        method,
+    ...<6 lines>...
+    ...<6 lines>...
+    ...<6 lines>...
+    ...<6 lines>...
+        files=files
+        files=files
+    )
+    )
+    )
+    )
+    )
+    )
+    )
+    )
+    )
+    )
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 651, in request
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 827, in send
+    r.content
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\models.py", line 1042, in content
+    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
+                    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\models.py", line 943, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Read timed out.
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 473, in main
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 473, in main
+    run_once(
+    run_once(
+    ~~~~~~~~^
+    ~~~~~~~~^
+        fetcher,
+        fetcher,
+        ^^^^^^^^
+        ^^^^^^^^
+        reflector,
+        reflector,
+        ^^^^^^^^^^
+        ^^^^^^^^^^
+    ^
+    ^
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 199, in run_once
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\main.py", line 199, in run_once
+    candles = fetcher.fetch_ohlcv(
+    candles = fetcher.fetch_ohlcv(
+        settings.symbol, settings.timeframe, settings.candle_limit
+        settings.symbol, settings.timeframe, settings.candle_limit
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\data\fetcher.py", line 15, in fetch_ohlcv
+  File "C:\Users\HaPhuc\Documents\GitHub\Crypto_AI_Project\data\fetcher.py", line 15, in fetch_ohlcv
+    rows = self.exchange.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
+    rows = self.exchange.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 5054, in fetch_ohlcv
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 5054, in fetch_ohlcv
+    response = self.publicGetKlines(self.extend(request, params))
+    response = self.publicGetKlines(self.extend(request, params))
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\types.py", line 43, in unbound_method
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\types.py", line 43, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 12502, in request
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\binance.py", line 12502, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+    response = self.fetch2(path, api, method, params, headers, body, config)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5772, in fetch2
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5772, in fetch2
+    raise e
+    raise e
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5755, in fetch2
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 5755, in fetch2
+    response = self.fetch(request['url'], request['method'], request['headers'], request['body'])
+    response = self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 654, in fetch
+    raise RequestTimeout(details) from e
+ccxt.base.errors.RequestTimeout: binance GET https://api.binance.com/api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\socket.py", line 989, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='api.binance.com', port=443): Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT (Caused by NameResolutionError("HTTPSConnection(host='api.binance.com', port=443): Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\requests\adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT (Caused by NameResolutionError("HTTPSConnection(host='api.binance.com', port=443): Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+  File "C:\Users\HaPhuc\AppData\Local\Programs\Python\Python314\Lib\site-packages\ccxt\base\exchange.py", line 656, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines?interval=5m&limit=500&symbol=BTCUSDT

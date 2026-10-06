@@ -2,52 +2,62 @@
   {
     "timestamp": "2026-09-22T13:30:10.393682+00:00",
     "pnl_pct": -0.40134554104789383,
-    "lesson": "Cần tăng ngưỡng xác nhận xu hướng để tránh thoát lệnh sớm sai lầm."
+    "lesson": "Cần tăng ngưỡng xác nhận xu hướng để tránh thoát lệnh sớm sai lầm.",
+    "id": 1
   },
   {
     "timestamp": "2026-09-22T16:30:24.491185+00:00",
     "pnl_pct": -0.14003799739402575,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh đóng vị thế quá sớm khi xu hướng chưa đảo chiều."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh đóng vị thế quá sớm khi xu hướng chưa đảo chiều.",
+    "id": 2
   },
   {
     "timestamp": "2026-09-22T18:33:59.951425+00:00",
     "pnl_pct": -0.3141587776443206,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ quá sớm khi xu hướng chưa đảo chiều."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ quá sớm khi xu hướng chưa đảo chiều.",
+    "id": 3
   },
   {
     "timestamp": "2026-09-22T19:48:22.757901+00:00",
     "pnl_pct": -0.2293617453299241,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ sớm khi xu hướng vẫn còn tiềm năng."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh AI để tránh cắt lỗ sớm khi xu hướng vẫn còn tiềm năng.",
+    "id": 4
   },
   {
     "timestamp": "2026-09-22T23:13:07.121131+00:00",
     "pnl_pct": -0.3465724496426278,
-    "lesson": "Cần kiên nhẫn chờ xác nhận xu hướng thay vì thoát lệnh quá sớm khi gặp biến động nhỏ."
+    "lesson": "Cần kiên nhẫn chờ xác nhận xu hướng thay vì thoát lệnh quá sớm khi gặp biến động nhỏ.",
+    "id": 5
   },
   {
     "timestamp": "2026-09-22T23:43:42.732257+00:00",
     "pnl_pct": -0.30321608391560695,
-    "lesson": "Cần tối ưu hóa thuật toán thoát lệnh để tránh đóng vị thế quá sớm khi chưa vi phạm xu hướng."
+    "lesson": "Cần tối ưu hóa thuật toán thoát lệnh để tránh đóng vị thế quá sớm khi chưa vi phạm xu hướng.",
+    "id": 6
   },
   {
     "timestamp": "2026-09-23T00:03:38.679676+00:00",
     "pnl_pct": 0.03200695684373646,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn.",
+    "id": 7
   },
   {
     "timestamp": "2026-09-23T01:53:20.433457+00:00",
     "pnl_pct": -0.29325035038786784,
-    "lesson": "Cần kiên nhẫn chờ đợi xác nhận xu hướng thay vì thoát lệnh sớm khi giá biến động nhẹ."
+    "lesson": "Cần kiên nhẫn chờ đợi xác nhận xu hướng thay vì thoát lệnh sớm khi giá biến động nhẹ.",
+    "id": 8
   },
   {
     "timestamp": "2026-09-23T05:30:37.556086+00:00",
     "pnl_pct": 0.3162446525609945,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh để tránh chốt lời quá sớm khi xu hướng vẫn đang tiếp diễn.",
+    "id": 9
   },
   {
     "timestamp": "2026-09-23T09:55:39.672322+00:00",
     "pnl_pct": 0.8022513984559191,
-    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh chốt lời quá sớm khi xu hướng vẫn mạnh."
+    "lesson": "Cần tối ưu hóa ngưỡng thoát lệnh của AI để tránh chốt lời quá sớm khi xu hướng vẫn mạnh.",
+    "id": 10
   },
   {
     "id": 11,
@@ -800,5 +810,53 @@
     "pnl_pct": -0.05731247913448083,
     "exit_reason": "Technical Stop: Nến phá lên trên EMA21 (84835.16 > 84822.15)",
     "lesson": "Tuân thủ nghiêm ngặt điểm cắt lỗ khi giá phá vỡ EMA21 để bảo toàn vốn trước xu hướng đảo chiều."
+  },
+  {
+    "id": 105,
+    "timestamp": "2026-10-05T08:50:54.379458+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.032330616417673194,
+    "exit_reason": "EMA21_RSI_REVERSAL",
+    "lesson": "Cần kiên nhẫn chờ đợi tín hiệu xác nhận mạnh hơn để tối ưu hóa tỷ lệ lợi nhuận trên rủi ro."
+  },
+  {
+    "id": 106,
+    "timestamp": "2026-10-05T11:05:24.138324+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.3619546431886894,
+    "exit_reason": "EMA21_RSI_REVERSAL",
+    "lesson": "Cần kết hợp thêm xác nhận khối lượng hoặc cấu trúc thị trường để tránh tín hiệu giả từ chỉ báo."
+  },
+  {
+    "id": 107,
+    "timestamp": "2026-10-05T12:35:47.873668+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.36803617287571894,
+    "exit_reason": "EMA21_RSI_REVERSAL",
+    "lesson": "Cần kết hợp thêm xác nhận khối lượng hoặc cấu trúc thị trường để tránh bẫy đảo chiều giả."
+  },
+  {
+    "id": 108,
+    "timestamp": "2026-10-05T13:35:53.841585+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.19735700459543593,
+    "exit_reason": "EMA21_RSI_REVERSAL",
+    "lesson": "Cần kết hợp thêm xác nhận khối lượng hoặc cấu trúc thị trường để tránh bẫy đảo chiều giả."
+  },
+  {
+    "id": 109,
+    "timestamp": "2026-10-05T14:30:26.554126+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.0010908022843022487,
+    "exit_reason": "TRAILING_STOP_LONG (Đỉnh: 86706.00 -> Bán: 86120.00)",
+    "lesson": "Cần tối ưu hóa khoảng cách Trailing Stop để bảo toàn lợi nhuận tốt hơn khi thị trường đảo chiều."
+  },
+  {
+    "id": 110,
+    "timestamp": "2026-10-06T09:27:33.818542+00:00",
+    "side": "SHORT",
+    "pnl_pct": -0.6073282707915586,
+    "exit_reason": "TRAILING_STOP_SHORT (Đáy: 85026.49 -> Mua đóng: 85971.99)",
+    "lesson": "Cần tối ưu khoảng cách Trailing Stop để tránh bị quét lệnh khi thị trường biến động ngắn hạn."
   }
 ]

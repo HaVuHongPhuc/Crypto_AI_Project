@@ -1,6 +1,7 @@
 """Technical indicators and model features."""
 
 import pandas as pd
+import numpy as np
 
 FEATURE_COLUMNS = [
     "rsi_14",
@@ -14,7 +15,13 @@ FEATURE_COLUMNS = [
 
 
 def add_indicators(candles: pd.DataFrame) -> pd.DataFrame:
+    required = {"open", "high", "low", "close", "volume"}
+    missing = sorted(required.difference(candles.columns))
+    if missing:
+        raise ValueError(f"Thiếu cột OHLCV: {', '.join(missing)}")
     data = candles.copy()
+    for column in required:
+        data[column] = pd.to_numeric(data[column], errors="coerce")
     delta = data["close"].diff()
     gains = delta.clip(lower=0).rolling(14).mean()
     losses = (-delta.clip(upper=0)).rolling(14).mean()
@@ -32,7 +39,8 @@ def add_indicators(candles: pd.DataFrame) -> pd.DataFrame:
     data["ema_spread_pct"] = (data["ema_9"] - data["ema_21"]) / data["ema_21"]
     average_volume = data["volume"].rolling(20).mean()
     data["volume_change"] = data["volume"] / average_volume - 1
-    return data.dropna()
+    data = data.replace([np.inf, -np.inf], np.nan)
+    return data.dropna(subset=FEATURE_COLUMNS)
 
 
 def create_buy_labels(
@@ -42,7 +50,13 @@ def create_buy_labels(
     stop_loss_pct: float = 0.01,
 ) -> pd.Series:
     """Label BUY when take-profit is reached before stop-loss in future candles."""
+    if not isinstance(horizon, int) or horizon <= 0:
+        raise ValueError("horizon phải là số nguyên dương")
+    if not (0 < take_profit_pct < 1) or not (0 < stop_loss_pct < 1):
+        raise ValueError("take_profit_pct và stop_loss_pct phải nằm trong (0, 1)")
     labels = pd.Series("HOLD", index=candles.index, dtype="object")
+    if candles.empty:
+        return labels
     highs = candles["high"].to_numpy()
     lows = candles["low"].to_numpy()
     closes = candles["close"].to_numpy()
@@ -59,7 +73,7 @@ def create_buy_labels(
                 labels.iloc[index] = "BUY"
                 break
 
-    labels.iloc[-horizon:] = pd.NA
+    labels.iloc[max(0, len(candles) - horizon):] = pd.NA
     return labels
 
 
