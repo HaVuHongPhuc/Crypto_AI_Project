@@ -1,4 +1,4 @@
-"""Huấn luyện mô hình Random Forest từ tập dữ liệu lịch sử btc_15m.csv."""
+"""Train the BUY/HOLD model from the configured 5-minute history dataset."""
 
 import os
 
@@ -7,25 +7,28 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 
-from data.preprocessor import add_indicators
+from data.preprocessor import FEATURE_COLUMNS, add_indicators, create_buy_labels
 
 
-def create_labels(df: pd.DataFrame, future_candles: int = 4, threshold: float = 0.0035) -> pd.DataFrame:
-    """
-    Gán nhãn theo triển vọng lợi nhuận thực tế:
-    - Quét 4 cây nến tiếp theo (tương đương 20 phút trong khung 5m).
-    - Nếu mức giá cao nhất đạt mức tăng >= 0.35% (đủ bù trừ phí sàn và có lãi trên sóng ngắn) -> BUY.
-    - Ngược lại -> HOLD.
+def create_labels(
+    df: pd.DataFrame,
+    future_candles: int = 5,
+    threshold: float = 0.015,
+    stop_loss_pct: float = 0.01,
+) -> pd.DataFrame:
+    """Label BUY only when take-profit is hit before the stop in the horizon.
+
+    If TP and SL both occur in one OHLC candle, the shared labeler conservatively
+    treats the stop as first. The final horizon candles are excluded.
     """
     df = df.copy()
-
-    indexer = pd.api.indexers.FixedForwardWindowIndexer(window_size=future_candles)
-    future_high = df["high"].shift(-1).rolling(window=indexer).max()
-
-    df["future_return"] = (future_high - df["close"]) / df["close"]
-    df["label"] = df["future_return"].apply(lambda r: "BUY" if r >= threshold else "HOLD")
-
-    return df.dropna(subset=["future_return"]).reset_index(drop=True)
+    df["label"] = create_buy_labels(
+        df,
+        horizon=future_candles,
+        take_profit_pct=threshold,
+        stop_loss_pct=stop_loss_pct,
+    )
+    return df.dropna(subset=["label"]).reset_index(drop=True)
 
 
 def main():
@@ -39,31 +42,42 @@ def main():
     print("=" * 65)
     print(f"Đang đọc dữ liệu từ {dataset_path}...")
     df_raw = pd.read_csv(dataset_path)
+    required = {"timestamp", "open", "high", "low", "close", "volume"}
+    missing = sorted(required.difference(df_raw.columns))
+    if missing:
+        raise ValueError(f"Dataset thiếu cột OHLCV/timestamp: {', '.join(missing)}")
+    df_raw["timestamp"] = pd.to_numeric(df_raw["timestamp"], errors="coerce")
+    df_raw = (
+        df_raw.dropna(subset=["timestamp"])
+        .drop_duplicates(subset=["timestamp"])
+        .sort_values("timestamp")
+        .reset_index(drop=True)
+    )
+    if df_raw.empty:
+        raise ValueError("Dataset không có nến hợp lệ")
     print(f"Tổng số nến đọc được: {len(df_raw):,} cây nến.")
 
     print("Đang trích xuất chỉ báo kỹ thuật...")
     df_features = add_indicators(df_raw)
 
     print("Đang gán nhãn BUY/HOLD theo sóng giá...")
-    df_labeled = create_labels(df_features, future_candles=4, threshold=0.0035)
+    label_horizon = 5
+    df_labeled = create_labels(df_features, future_candles=label_horizon, threshold=0.015, stop_loss_pct=0.01)
 
-    feature_cols = [
-        "rsi_14",
-        "macd",
-        "macd_signal",
-        "ema_9",
-        "ema_21",
-        "ema_spread_pct",
-        "volume_change",
-    ]
+    feature_cols = FEATURE_COLUMNS
 
     X = df_labeled[feature_cols]
     y = df_labeled["label"]
 
     # Chia tập Train/Test theo dòng thời gian (80% học, 20% kiểm tra), KHÔNG shuffle
     split_idx = int(len(df_labeled) * 0.8)
-    X_train, X_test = X.iloc[:split_idx], X.iloc[split_idx:]
-    y_train, y_test = y.iloc[:split_idx], y.iloc[split_idx:]
+    # Purge the final label horizon from training so its future candles cannot
+    # overlap the first test candles.
+    train_end = split_idx - label_horizon
+    if train_end <= 0 or split_idx >= len(df_labeled):
+        raise ValueError("Dataset quá nhỏ để chia train/test theo thời gian an toàn")
+    X_train, X_test = X.iloc[:train_end], X.iloc[split_idx:]
+    y_train, y_test = y.iloc[:train_end], y.iloc[split_idx:]
 
     print("-" * 65)
     print("PHÂN BỔ TẬP DỮ LIỆU:")
@@ -82,6 +96,8 @@ def main():
         random_state=42,
         n_jobs=-1,
     )
+    if y_train.nunique() < 2:
+        raise ValueError("Tập train cần có cả nhãn BUY và HOLD")
     model.fit(X_train, y_train)
 
     y_pred = model.predict(X_test)

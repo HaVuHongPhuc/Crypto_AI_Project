@@ -2293,3 +2293,272 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/klines
 2026-09-24 04:33:48,830 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
 2026-09-24 04:33:48,834 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Sự kiện chung, không có tin xấu bất ngờ
 2026-09-24 04:33:49,637 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 14:52:47,975 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 14:52:52,373 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 14:52:52,378 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự lạc quan từ các chuyên gia tài chính truyền thống.
+2026-10-05 14:52:57,710 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 14:53:02,441 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 14:53:02,539 [INFO] Mở paper LONG @ 86078.00000000 | stake 70.0000 | phí vào 0.035000
+2026-10-05 14:55:08,366 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:00:14,565 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:05:20,197 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:10:21,988 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 15:10:27,240 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:10:27,241 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự quan tâm từ tổ chức tài chính truyền thống.
+2026-10-05 15:10:31,014 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:15:36,968 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:20:42,053 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:25:43,787 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 15:25:48,919 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:25:48,920 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự quan tâm từ các tổ chức tài chính truyền thống.
+2026-10-05 15:25:50,953 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:30:55,946 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:36:01,061 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:41:02,583 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 15:41:07,947 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:41:07,948 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự quan tâm từ các tổ chức tài chính truyền thống.
+2026-10-05 15:41:11,759 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:45:16,052 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:50:23,537 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 15:55:28,989 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:00:30,562 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 16:00:37,119 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:00:37,120 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tin tức tích cực về quy định và sự lạc quan về chu kỳ Bitcoin mới.
+2026-10-05 16:00:40,249 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:05:46,599 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:10:52,213 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:15:53,867 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 16:16:00,350 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:16:00,351 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng tiền ETF Bitcoin ổn định và sự phát triển hạ tầng tài chính truyền thống.
+2026-10-05 16:16:03,575 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:20:09,009 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:25:14,579 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:30:20,338 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:35:21,924 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 16:35:27,257 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:35:27,303 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và sự phát triển hạ tầng tài chính truyền thống.
+2026-10-05 16:35:32,659 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:40:39,068 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:45:44,973 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:50:46,675 [INFO] Đóng paper LONG @ 86192.00000000 | PnL: +0.0226 USDT (+0.032%)
+2026-10-05 16:50:54,332 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:55:57,076 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 16:56:04,846 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 16:56:04,847 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và sự phát triển hạ tầng tài chính truyền thống.
+2026-10-05 16:56:07,679 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:00:13,680 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:05:22,118 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:10:26,911 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:15:28,488 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 17:15:33,484 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:15:33,484 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin ổn định và sự mở rộng hạ tầng tài chính truyền thống vào crypto.
+2026-10-05 17:15:35,257 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:20:54,239 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:26:03,194 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:30:09,377 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:35:10,992 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 17:35:31,050 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:35:31,051 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin ổn định và sự mở rộng hạ tầng tài chính truyền thống.
+2026-10-05 17:35:34,149 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:40:42,143 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:45:53,443 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:50:55,024 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 17:51:03,976 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:51:04,022 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin ổn định và sự mở rộng hạ tầng tài chính truyền thống.
+2026-10-05 17:51:15,381 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 17:55:22,139 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:00:28,385 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:05:33,132 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:10:34,820 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 18:10:38,554 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:10:38,599 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và sự mở rộng hạ tầng tài chính truyền thống.
+2026-10-05 18:10:41,062 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:15:54,032 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:21:00,971 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:26:02,549 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 18:26:08,753 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:26:08,799 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực bù đắp cho sự rút vốn của Ether ETF.
+2026-10-05 18:26:12,877 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:30:23,664 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:35:31,519 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:40:38,758 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:45:40,339 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 18:45:46,106 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:45:46,108 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực bù đắp cho sự rút vốn từ các quỹ ETF Ethereum.
+2026-10-05 18:45:49,866 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:50:54,541 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:56:03,674 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:56:07,432 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 18:56:07,483 [INFO] Mở paper LONG @ 86180.00000000 | stake 70.0158 | phí vào 0.035008
+2026-10-05 19:00:15,552 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:05:17,152 [INFO] Đóng paper LONG @ 85954.00000000 | PnL: -0.2534 USDT (-0.362%)
+2026-10-05 19:05:24,091 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:10:26,876 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 19:10:32,773 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:10:32,774 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực duy trì đà tăng trưởng thị trường ổn định
+2026-10-05 19:10:37,449 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:15:41,980 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:20:46,610 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:25:48,189 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 19:25:54,387 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:25:54,433 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực bù đắp cho sự rút vốn từ các quỹ ETF Ethereum.
+2026-10-05 19:26:00,414 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:31:08,464 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:31:10,612 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:31:10,711 [INFO] Mở paper LONG @ 86200.01000000 | stake 69.8384 | phí vào 0.034919
+2026-10-05 19:35:17,521 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:40:23,968 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:45:25,566 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 19:45:31,762 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:45:31,763 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực bù đắp cho sự rút vốn từ các quỹ Ether.
+2026-10-05 19:45:36,610 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:50:44,192 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 19:55:50,477 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:00:52,394 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 20:00:56,068 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:00:56,069 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và sự ổn định của thị trường dù Ether gặp áp lực bán.
+2026-10-05 20:00:59,965 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:06:04,714 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:10:10,626 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:15:16,896 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:20:18,553 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 20:20:26,373 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:20:26,374 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin ổn định, thị trường duy trì tâm lý tham lam tích cực.
+2026-10-05 20:20:29,655 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:25:36,285 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:30:42,095 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:35:43,747 [INFO] Đóng paper LONG @ 85968.71000000 | PnL: -0.2570 USDT (-0.368%)
+2026-10-05 20:35:47,826 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:35:53,218 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:35:53,264 [WARNING] ⚠️ Google Gemini gặp sự cố: Unterminated string starting at: line 5 column 17 (char 720)
+2026-10-05 20:35:53,264 [INFO] >>> [FAILOVER CỨU HỘ] Đang chuyển sang Groq (qwen/qwen3.8-27b)...
+2026-10-05 20:35:53,521 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-10-05 20:35:53,569 [ERROR] Lỗi cả Groq cứu hộ: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-10-05 20:40:55,438 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 20:41:02,062 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:41:02,108 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Dòng vốn ETF Bitcoin tích cực và chiến lược tích lũy BTC từ các tổ chức doanh nghiệp.
+2026-10-05 20:41:06,207 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:45:14,306 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:50:19,562 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 20:55:40,494 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:00:41,957 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 21:00:46,808 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:00:46,809 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Các tổ chức tiếp tục chiến lược tích lũy Bitcoin và mở rộng hạ tầng thanh toán.
+2026-10-05 21:00:57,965 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:01:01,495 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:06:10,772 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:10:16,444 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:10:20,700 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:15:23,960 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 21:15:24,006 [INFO] Retrying request in 0.414890 seconds (retry 1 of 2)
+2026-10-05 21:15:33,670 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:15:38,980 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:20:40,682 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 21:21:02,291 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:21:02,292 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường duy trì tâm lý tham lam với dòng vốn tổ chức ổn định và tăng trưởng stablecoin.
+2026-10-05 21:21:08,803 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:21:16,162 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:21:16,215 [INFO] Mở paper LONG @ 86172.00000000 | stake 69.6585 | phí vào 0.034829
+2026-10-05 21:25:24,690 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:30:35,041 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:35:36,682 [INFO] Đóng paper LONG @ 86088.00000000 | PnL: -0.1375 USDT (-0.197%)
+2026-10-05 21:35:53,839 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:40:56,528 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 21:41:02,238 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:41:02,239 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý tham lam tích cực, các tổ chức tiếp tục chiến lược tích lũy Bitcoin dài hạn.
+2026-10-05 21:41:05,852 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:41:07,976 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:41:08,072 [INFO] Mở paper LONG @ 86034.84000000 | stake 69.5623 | phí vào 0.034781
+2026-10-05 21:45:15,221 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:50:22,144 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 21:55:29,898 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:00:31,537 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 22:00:36,997 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:00:36,998 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý tham lam tích cực nhờ chiến lược tích lũy Bitcoin của các tổ chức.
+2026-10-05 22:00:42,439 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:05:51,709 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:10:55,951 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:15:57,693 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 22:16:07,980 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:16:07,981 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý thị trường tích cực nhờ các tổ chức đẩy mạnh tích lũy Bitcoin.
+2026-10-05 22:16:09,933 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:20:14,297 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:25:18,923 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:30:20,450 [INFO] Đóng paper LONG @ 86120.00000000 | PnL: -0.0008 USDT (-0.001%)
+2026-10-05 22:30:26,507 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:35:29,247 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 22:35:46,278 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:35:46,280 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý tham lam tích cực nhờ chiến lược tích lũy Bitcoin từ các tổ chức doanh nghiệp.
+2026-10-05 22:35:53,586 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:40:59,618 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:41:08,325 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:45:11,117 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 22:45:11,203 [INFO] Retrying request in 0.490968 seconds (retry 1 of 2)
+2026-10-05 22:45:13,958 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:45:19,885 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:50:24,236 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:50:46,438 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:55:48,088 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 22:55:55,097 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:55:55,143 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 2/10 | Lời khuyên: NORMAL | Sự kiện: Tâm lý tham lam tích cực nhờ chiến lược tích lũy Bitcoin của các tổ chức.
+2026-10-05 22:55:59,854 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 22:56:03,497 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:01:06,585 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 23:01:06,631 [INFO] Retrying request in 0.463883 seconds (retry 1 of 2)
+2026-10-05 23:01:09,487 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:01:12,538 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:05:19,766 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:05:23,996 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:10:34,279 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:10:35,939 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 23:10:36,025 [INFO] Retrying request in 0.403178 seconds (retry 1 of 2)
+2026-10-05 23:10:40,188 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:15:41,826 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 23:15:46,716 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:15:46,717 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường duy trì tâm lý tham lam nhưng thiếu động lực bứt phá.
+2026-10-05 23:16:02,276 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:16:06,748 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:16:06,849 [INFO] Mở paper SHORT @ 85538.01000000 | stake 69.5618 | phí vào 0.034781
+2026-10-05 23:20:17,668 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:25:22,806 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 23:25:22,904 [INFO] Retrying request in 0.389487 seconds (retry 1 of 2)
+2026-10-05 23:25:25,772 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:30:57,268 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:35:58,898 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 23:36:03,884 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:36:03,885 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường duy trì tâm lý tham lam nhưng thiếu động lực bứt phá.
+2026-10-05 23:36:14,829 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:40:22,974 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:45:31,443 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:50:34,379 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-05 23:50:34,424 [INFO] Retrying request in 0.479427 seconds (retry 1 of 2)
+2026-10-05 23:50:38,120 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:55:40,222 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-05 23:55:44,678 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-05 23:55:44,724 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường duy trì tâm lý tham lam nhưng thiếu động lực bứt phá.
+2026-10-05 23:55:46,894 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:00:52,059 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:05:56,236 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:10:57,751 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-06 00:11:03,520 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:11:03,520 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường thiếu động lực bứt phá mạnh mẽ.
+2026-10-06 00:11:06,450 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:15:11,637 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:20:15,925 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:25:20,288 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:30:21,945 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-06 00:30:26,549 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:30:26,595 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: NEUTRAL | Hoảng loạn: 3/10 | Lời khuyên: CAUTION | Sự kiện: Bitcoin chững lại sau đà tăng, thị trường duy trì tâm lý tham lam nhưng thiếu động lực bứt phá.
+2026-10-06 00:30:29,584 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:35:35,452 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:40:40,913 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:45:42,537 [INFO] >>> [SENTIMENT AGENT] Đang quét tin tức thị trường mới nhất...
+2026-10-06 00:45:50,132 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:45:50,133 [INFO] >>> [SENTIMENT ĐÃ DUYỆT] Tâm lý: BULLISH | Hoảng loạn: 3/10 | Lời khuyên: NORMAL | Sự kiện: Thị trường duy trì tâm lý tham lam dù Bitcoin gặp khó khăn tại vùng kháng cự quan trọng.
+2026-10-06 00:45:56,843 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:51:01,504 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-06 00:51:01,505 [INFO] Retrying request in 0.426882 seconds (retry 1 of 2)
+2026-10-06 00:51:03,328 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-06 00:51:03,422 [INFO] Retrying request in 0.903356 seconds (retry 2 of 2)
+2026-10-06 00:51:21,552 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-10-06 00:55:45,293 [INFO] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"

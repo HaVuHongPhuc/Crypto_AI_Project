@@ -1,6 +1,7 @@
 """Position sizing, fixed Stop-loss/Take-profit, and dynamic Trailing Stop for LONG & SHORT."""
 
 from dataclasses import dataclass
+import math
 from typing import Any, Optional
 
 
@@ -12,7 +13,21 @@ class RiskManager:
   trailing_stop_pct: float = 0.008
   trailing_activation_pct: float = 0.01
 
+  def __post_init__(self):
+    if not math.isfinite(self.position_size_pct) or not 0 < self.position_size_pct <= 1:
+      raise ValueError("position_size_pct phải nằm trong (0, 1]")
+    for name in ("stop_loss_pct", "trailing_stop_pct", "trailing_activation_pct"):
+      value = getattr(self, name)
+      if not math.isfinite(value) or not 0 < value < 1:
+        raise ValueError(f"{name} phải nằm trong (0, 1)")
+    if self.take_profit_pct is not None and (
+        not math.isfinite(self.take_profit_pct) or not 0 < self.take_profit_pct < 1
+    ):
+      raise ValueError("take_profit_pct phải là None hoặc nằm trong (0, 1)")
+
   def position_value(self, cash: float) -> float:
+    if not math.isfinite(cash):
+      return 0.0
     return max(0.0, cash * self.position_size_pct)
 
   def should_exit(
@@ -52,10 +67,20 @@ class RiskManager:
       extreme = highest_price if highest_price is not None else entry
       is_obj = False
 
-    if entry <= 0 or current_price <= 0:
+    try:
+      entry = float(entry)
+      current_price = float(current_price)
+      extreme = float(extreme)
+    except (TypeError, ValueError):
       return None
+    if not math.isfinite(entry) or not math.isfinite(current_price) or entry <= 0 or current_price <= 0:
+      return None
+    if not math.isfinite(extreme) or extreme <= 0:
+      extreme = entry
 
-    pos_side = pos_side.upper()
+    pos_side = str(pos_side or "").upper()
+    if pos_side not in {"LONG", "SHORT"}:
+      return None
 
     # ------------------------------------------------------------------
     # 1. QUẢN TRỊ VỊ THẾ LONG
@@ -68,15 +93,6 @@ class RiskManager:
       peak = extreme
       max_gain_pct = (peak - entry) / entry
 
-      # Trailing Stop kích hoạt khi lãi >= 1% và giá rớt 0.8% từ đỉnh
-      if max_gain_pct >= self.trailing_activation_pct:
-        trailing_stop_price = peak * (1.0 - self.trailing_stop_pct)
-        if current_price <= trailing_stop_price:
-          return (
-              f"TRAILING_STOP_LONG (Đỉnh: {peak:.2f} -> Bán:"
-              f" {current_price:.2f})"
-          )
-
       # Cắt lỗ cứng (1%)
       if current_price <= entry * (1.0 - self.stop_loss_pct):
         return "STOP_LOSS_LONG"
@@ -86,6 +102,12 @@ class RiskManager:
           1.0 + self.take_profit_pct
       ):
         return "TAKE_PROFIT_LONG"
+
+      # Trailing Stop chỉ dùng mức đỉnh tốt nhất đã quan sát.
+      if max_gain_pct >= self.trailing_activation_pct:
+        trailing_stop_price = peak * (1.0 - self.trailing_stop_pct)
+        if current_price <= trailing_stop_price:
+          return f"TRAILING_STOP_LONG (Đỉnh: {peak:.2f} -> Bán: {current_price:.2f})"
 
     # ------------------------------------------------------------------
     # 2. QUẢN TRỊ VỊ THẾ SHORT
@@ -98,15 +120,6 @@ class RiskManager:
       trough = extreme
       max_gain_pct = (entry - trough) / entry
 
-      # Trailing Stop kích hoạt khi lãi >= 1% và giá tăng 0.8% từ đáy
-      if max_gain_pct >= self.trailing_activation_pct:
-        trailing_stop_price = trough * (1.0 + self.trailing_stop_pct)
-        if current_price >= trailing_stop_price:
-          return (
-              f"TRAILING_STOP_SHORT (Đáy: {trough:.2f} -> Mua đóng:"
-              f" {current_price:.2f})"
-          )
-
       # Cắt lỗ cứng (1%)
       if current_price >= entry * (1.0 + self.stop_loss_pct):
         return "STOP_LOSS_SHORT"
@@ -116,5 +129,10 @@ class RiskManager:
           1.0 - self.take_profit_pct
       ):
         return "TAKE_PROFIT_SHORT"
+
+      if max_gain_pct >= self.trailing_activation_pct:
+        trailing_stop_price = trough * (1.0 + self.trailing_stop_pct)
+        if current_price >= trailing_stop_price:
+          return f"TRAILING_STOP_SHORT (Đáy: {trough:.2f} -> Mua đóng: {current_price:.2f})"
 
     return None

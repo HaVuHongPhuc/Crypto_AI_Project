@@ -12,16 +12,15 @@ import os
 import json
 import time
 import logging
+import math
 import re
 from pathlib import Path
 from datetime import datetime, timezone
-from dotenv import load_dotenv
 from openai import OpenAI
+from config.env import load_project_env
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-ENV_FILE = BASE_DIR / ".env"
-if ENV_FILE.exists():
-    load_dotenv(dotenv_path=ENV_FILE, encoding="utf-8")
+load_project_env()
 
 MEMORY_FILE = BASE_DIR / "storage" / "memory.json"
 RULES_FILE = BASE_DIR / "storage" / "strategy_rules.json"
@@ -38,10 +37,14 @@ if LLM_MODE == "LOCAL":
     cloud_groq_client = None
 else:
     local_client = None
-    cloud_gemini_client = OpenAI(
-        api_key=os.getenv("GEMINI_API_KEY") or os.getenv("LLM_API_KEY", ""),
-        base_url=os.getenv("LLM_BASE_URL", "https://generativelanguage.googleapis.com/v1beta/openai/"),
-        timeout=30.0
+    gemini_api_key = os.getenv("GEMINI_API_KEY") or os.getenv("LLM_API_KEY", "")
+    cloud_gemini_client = (
+        OpenAI(
+            api_key=gemini_api_key,
+            base_url=os.getenv("LLM_BASE_URL", "https://generativelanguage.googleapis.com/v1beta/openai/"),
+            timeout=30.0,
+        )
+        if gemini_api_key else None
     )
     GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
     cloud_groq_client = (
@@ -94,6 +97,8 @@ def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
 
     # Chế độ Cloud (Gemini + Groq failover)
     try:
+        if cloud_gemini_client is None:
+            raise RuntimeError("Chưa cấu hình GEMINI_API_KEY hoặc LLM_API_KEY")
         res = cloud_gemini_client.chat.completions.create(
             model=GEMINI_MODEL,
             response_format={"type": "json_object"},
@@ -147,13 +152,22 @@ class StrategistAgent:
         self.config = config
 
     def analyze_macro(self, symbol: str, current_price: float, h1_ind: dict) -> dict:
-        user_prompt = f"""
-Thị trường: {symbol} | Giá: {current_price} USDT
-DỮ LIỆU 1H: RSI(14)={h1_ind.get('rsi_14', 'N/A')}, EMA50={h1_ind.get('ema_50', 'N/A')}, EMA200={h1_ind.get('ema_200', 'N/A')}.
-Vị trí giá: {'TRÊN' if current_price >= h1_ind.get('ema_50', current_price) else 'DƯỚI'} EMA50 1H.
-Ban hành chỉ thị xu hướng 1H dạng JSON.
-"""
-        return _ask_llm(self.SYSTEM_PROMPT, user_prompt)
+        """Issue a reproducible macro gate from completed 1h candles."""
+        try:
+            rsi = float(h1_ind["rsi_14"])
+            ema50 = float(h1_ind["ema_50"])
+            ema200 = float(h1_ind["ema_200"])
+            price = float(current_price)
+            if not all(math.isfinite(value) for value in (rsi, ema50, ema200, price)):
+                raise ValueError("macro values are not finite")
+        except (KeyError, TypeError, ValueError):
+            return {"macro_bias": "UNKNOWN", "directive": "NO_TRADE", "reasoning": "Thiếu dữ liệu 1H hợp lệ."}
+
+        if price > ema50 and ema50 > ema200 and rsi > 52:
+            return {"macro_bias": "BULLISH", "directive": "ONLY_LONG", "reasoning": f"{symbol}: giá/EMA và RSI 1H đồng thuận tăng."}
+        if price < ema50 and ema50 < ema200 and rsi < 48:
+            return {"macro_bias": "BEARISH", "directive": "ONLY_SHORT", "reasoning": f"{symbol}: giá/EMA và RSI 1H đồng thuận giảm."}
+        return {"macro_bias": "SIDEWAY", "directive": "FLEXIBLE", "reasoning": f"{symbol}: điều kiện xu hướng 1H chưa đồng thuận."}
 
 
 # -------------------------------------------------------------
@@ -191,7 +205,18 @@ Vị thế: {position_info.get('side', 'NONE')} (PnL: {position_info.get('pnl_pc
 Kỹ thuật: RSI={rsi_val} ({rsi_state}), EMA9={ema9_val} vs EMA21={ema21_val} ({ema_state}).
 Hãy đưa ra quyết định dạng JSON (OPEN_LONG / OPEN_SHORT / CLOSE / HOLD).
 """
-        return _ask_llm(self.SYSTEM_PROMPT, user_prompt)
+        result = _ask_llm(self.SYSTEM_PROMPT, user_prompt)
+        action = str(result.get("action", "HOLD")).upper() if isinstance(result, dict) else "HOLD"
+        if action not in {"OPEN_LONG", "OPEN_SHORT", "CLOSE", "HOLD"}:
+            action = "HOLD"
+        try:
+            confidence = float(result.get("confidence", 0.0))
+            if not (0.0 <= confidence <= 1.0) or confidence != confidence:
+                confidence = 0.0
+        except (TypeError, ValueError):
+            confidence = 0.0
+        reason = str(result.get("reason", result.get("error", "Không có phản hồi hợp lệ từ LLM"))) if isinstance(result, dict) else "Không có phản hồi hợp lệ từ LLM"
+        return {"action": action, "confidence": confidence, "reason": reason}
 
 
 # -------------------------------------------------------------
@@ -215,14 +240,73 @@ class SupervisorAgent:
         self.config = config
 
     def review(self, proposal: dict, indicators: dict, cash: float, position_info: dict = None, macro_directive: str = "FLEXIBLE", past_lessons: list = None, sentiment_info: dict = None) -> dict:
-        action = proposal.get("action", "HOLD")
+        action = str(proposal.get("action", "HOLD")).upper()
+
+        if action not in {"OPEN_LONG", "OPEN_SHORT", "CLOSE", "HOLD"}:
+            return {"approved": False, "risk_score": 10, "feedback": "Từ chối action không hợp lệ."}
 
         if action in ("HOLD", "CLOSE"):
+            if action == "CLOSE":
+                if not position_info or position_info.get("side") not in ("LONG", "SHORT"):
+                    return {"approved": False, "risk_score": 10, "feedback": "Không có vị thế để đóng."}
+                try:
+                    rsi = float(indicators["rsi_14"])
+                    ema21 = float(indicators["ema_21"])
+                    candle_close = float(indicators.get("candle_close", indicators.get("close")))
+                except (KeyError, TypeError, ValueError):
+                    return {"approved": False, "risk_score": 10, "feedback": "Thiếu dữ liệu xác nhận điều kiện thoát."}
+                side = position_info["side"]
+                reversal = (side == "LONG" and candle_close < ema21 and rsi < 50) or (
+                    side == "SHORT" and candle_close > ema21 and rsi > 50
+                )
+                if not reversal:
+                    return {"approved": False, "risk_score": 8, "feedback": "CLOSE chưa có xác nhận đảo chiều EMA21/RSI."}
             return {"approved": True, "risk_score": 1, "feedback": f"{action} tự động duyệt."}
 
-        if sentiment_info and (sentiment_info.get("black_swan_alert") or sentiment_info.get("panic_score", 0) >= 8 or sentiment_info.get("trading_advice") == "HALT_TRADING"):
+        if not position_info or position_info.get("side", "NONE") != "NONE":
+            return {"approved": False, "risk_score": 10, "feedback": "Chỉ được mở lệnh khi đang flat."}
+        if not isinstance(cash, (int, float)) or not math.isfinite(cash) or cash <= 0:
+            return {"approved": False, "risk_score": 10, "feedback": "Không đủ số dư khả dụng."}
+        try:
+            confidence = float(proposal.get("confidence", 0.0))
+        except (TypeError, ValueError):
+            confidence = 0.0
+        if not math.isfinite(confidence) or confidence < 0.60 or confidence > 1.0:
+            return {"approved": False, "risk_score": 8, "feedback": "Độ tin cậy thấp hoặc không hợp lệ."}
+
+        if not sentiment_info or sentiment_info.get("available") is not True or sentiment_info.get("error"):
+            return {"approved": False, "risk_score": 10, "feedback": "Không mở lệnh khi dữ liệu sentiment/LLM không khả dụng."}
+
+        try:
+            panic_score = float(sentiment_info["panic_score"])
+        except (TypeError, ValueError):
+            panic_score = 10.0
+        advice = str(sentiment_info.get("trading_advice", "")).upper()
+        black_swan = sentiment_info.get("black_swan_alert")
+        if (not 1 <= panic_score <= 10 or advice not in {"NORMAL", "CAUTION", "HALT_TRADING"}
+                or not isinstance(black_swan, bool)):
+            return {"approved": False, "risk_score": 10, "feedback": "Dữ liệu sentiment sai schema; từ chối mở lệnh."}
+        if black_swan or panic_score >= 8 or advice == "HALT_TRADING":
             driver = sentiment_info.get("key_driver", "Rủi ro tin tức cực đoan")
             return {"approved": False, "risk_score": 10, "feedback": f"PHANH KHẨN CẤP: Từ chối {action} do rủi ro tin tức: {driver}"}
+
+        if macro_directive not in {"ONLY_LONG", "ONLY_SHORT", "FLEXIBLE"}:
+            return {"approved": False, "risk_score": 10, "feedback": "Không có chỉ thị xu hướng 1H hợp lệ."}
+        if action == "OPEN_LONG" and macro_directive == "ONLY_SHORT":
+            return {"approved": False, "risk_score": 9, "feedback": "Từ chối Long vì trái xu hướng 1H."}
+        if action == "OPEN_SHORT" and macro_directive == "ONLY_LONG":
+            return {"approved": False, "risk_score": 9, "feedback": "Từ chối Short vì trái xu hướng 1H."}
+
+        try:
+            rsi = float(indicators["rsi_14"])
+            ema9 = float(indicators["ema_9"])
+            ema21 = float(indicators["ema_21"])
+        except (KeyError, TypeError, ValueError):
+            return {"approved": False, "risk_score": 10, "feedback": "Thiếu chỉ báo kỹ thuật để xác nhận lệnh."}
+        if action == "OPEN_LONG" and not (ema9 > ema21 and rsi > 50):
+            return {"approved": False, "risk_score": 8, "feedback": "Long không đạt điều kiện EMA9 > EMA21 và RSI > 50."}
+        if action == "OPEN_SHORT" and not (ema9 < ema21 and rsi < 50):
+            return {"approved": False, "risk_score": 8, "feedback": "Short không đạt điều kiện EMA9 < EMA21 và RSI < 50."}
 
         if not position_info:
             position_info = {"side": "NONE"}
@@ -241,7 +325,15 @@ BÀI HỌC KINH NGHIỆM ĐÃ LỌC:
 {lessons_str}
 Thẩm định đề xuất và trả về JSON.
 """
-        return _ask_llm(self.SYSTEM_PROMPT, user_prompt)
+        review = _ask_llm(self.SYSTEM_PROMPT, user_prompt)
+        if not isinstance(review, dict) or review.get("error") or review.get("approved") is not True:
+            feedback = review.get("feedback", review.get("error", "LLM không duyệt rõ ràng.")) if isinstance(review, dict) else "LLM không trả JSON hợp lệ."
+            return {"approved": False, "risk_score": 10, "feedback": str(feedback)}
+        try:
+            risk_score = int(review.get("risk_score", 5))
+        except (TypeError, ValueError):
+            risk_score = 5
+        return {"approved": True, "risk_score": min(10, max(1, risk_score)), "feedback": str(review.get("feedback", "Đã qua kiểm tra rủi ro."))}
 
 
 # -------------------------------------------------------------

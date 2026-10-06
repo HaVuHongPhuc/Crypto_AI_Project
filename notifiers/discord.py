@@ -14,7 +14,8 @@ class DiscordNotifier:
     if not self.webhook_url:
       return
     try:
-      requests.post(self.webhook_url, json={"content": message}, timeout=5)
+      response = requests.post(self.webhook_url, json={"content": message}, timeout=5)
+      response.raise_for_status()
     except Exception as e:
       logging.warning("Discord send failed: %s", e)
 
@@ -25,6 +26,7 @@ class DiscordNotifier:
         "embeds": [{"title": title, "description": description, "color": color}]
     }
     try:
-      requests.post(self.webhook_url, json=payload, timeout=5)
+      response = requests.post(self.webhook_url, json=payload, timeout=5)
+      response.raise_for_status()
     except Exception as e:
       logging.warning("Discord embed send failed: %s", e)

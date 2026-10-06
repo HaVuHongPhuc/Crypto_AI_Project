@@ -64,5 +64,45 @@
     "pnl_pct": -0.6797728251351682,
     "exit_reason": "AI_EARLY_EXIT_CLOSE",
     "lesson": "Cần tăng ngưỡng xác nhận tín hiệu AI để tránh thoát lệnh sớm sai lầm."
+  },
+  {
+    "id": 13,
+    "timestamp": "2026-10-05T08:50:54.379458+00:00",
+    "side": "LONG",
+    "pnl_pct": 0.032330616417673194,
+    "exit_reason": "EMA21_RSI_REVERSAL",
+    "lesson": "Cần kiên nhẫn chờ đợi tín hiệu xác nhận mạnh hơn để tối ưu hóa tỷ lệ lợi nhuận trên rủi ro."
+  },
+  {
+    "id": 14,
+    "timestamp": "2026-10-05T11:05:24.138324+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.3619546431886894,
+    "exit_reason": "EMA21_RSI_REVERSAL",
+    "lesson": "Cần kết hợp thêm xác nhận khối lượng hoặc cấu trúc thị trường để tránh tín hiệu giả từ chỉ báo."
+  },
+  {
+    "id": 15,
+    "timestamp": "2026-10-05T12:35:47.873668+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.36803617287571894,
+    "exit_reason": "EMA21_RSI_REVERSAL",
+    "lesson": "Cần kết hợp thêm xác nhận khối lượng hoặc cấu trúc thị trường để tránh bẫy đảo chiều giả."
+  },
+  {
+    "id": 16,
+    "timestamp": "2026-10-05T13:35:53.841585+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.19735700459543593,
+    "exit_reason": "EMA21_RSI_REVERSAL",
+    "lesson": "Cần kết hợp thêm xác nhận khối lượng hoặc cấu trúc thị trường để tránh bẫy đảo chiều giả."
+  },
+  {
+    "id": 17,
+    "timestamp": "2026-10-05T14:30:26.554126+00:00",
+    "side": "LONG",
+    "pnl_pct": -0.0010908022843022487,
+    "exit_reason": "TRAILING_STOP_LONG (Đỉnh: 86706.00 -> Bán: 86120.00)",
+    "lesson": "Cần tối ưu hóa khoảng cách Trailing Stop để bảo toàn lợi nhuận tốt hơn khi thị trường đảo chiều."
   }
 ]

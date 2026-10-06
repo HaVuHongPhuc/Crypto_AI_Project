@@ -40,6 +40,7 @@ class SentimentAgent:
         "trading_advice": "NORMAL",
         "fear_and_greed": 50,
         "fear_classification": "Neutral",
+        "available": False,
     }
 
   def _fetch_fear_and_greed(self) -> dict:
@@ -50,10 +51,11 @@ class SentimentAgent:
         return {
             "value": int(data.get("value", 50)),
             "classification": data.get("value_classification", "Neutral"),
+            "available": True,
         }
     except Exception:
       pass
-    return {"value": 50, "classification": "Neutral"}
+    return {"value": 50, "classification": "Neutral", "available": False}
 
   def _fetch_crypto_headlines(self, limit: int = 6) -> list:
     headlines = []
@@ -103,9 +105,12 @@ Hãy phân tích mức độ hoảng loạn, rủi ro tin xấu bất ngờ và 
 """
     result = _ask_llm(self.SYSTEM_PROMPT, user_prompt)
 
-    if isinstance(result, dict) and "sentiment" in result:
+    if isinstance(result, dict) and "sentiment" in result and "error" not in result:
       result["fear_and_greed"] = fng["value"]
       result["fear_classification"] = fng["classification"]
+      result["available"] = bool(fng.get("available"))
+      if not result["available"]:
+        result["error"] = "Fear & Greed API không khả dụng"
       self.cached_result = result
       self.last_fetch_time = current_time
 
@@ -119,4 +124,10 @@ Hãy phân tích mức độ hoảng loạn, rủi ro tin xấu bất ngờ và 
       )
       return result
 
+    self.cached_result = {
+        **self.cached_result,
+        "available": False,
+        "error": result.get("error", "Không nhận được phân tích sentiment hợp lệ") if isinstance(result, dict) else "Không nhận được phân tích sentiment hợp lệ",
+    }
+    self.last_fetch_time = current_time
     return self.cached_result

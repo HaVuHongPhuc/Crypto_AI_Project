@@ -1,1 +1,18 @@
-{}
+{
+  "schema_version": 2,
+  "cash": 29.8121821028831,
+  "position": {
+    "side": "SHORT",
+    "entry_price": 85538.01,
+    "amount": 0.0008128196735105307,
+    "entry_time": "2026-10-05T15:16:06.845629+00:00",
+    "pnl_pct": 0.1894401244692244,
+    "pnl_usdt": 0.13177788139295166,
+    "holding_candles": 21,
+    "stake": 69.56175824006054,
+    "entry_fee": 0.03478087912003027,
+    "extreme_price": 85026.49,
+    "last_candle_time": 1791219000000,
+    "trade_id": "1d7abe06232749738e9bb09a44d87552"
+  }
+}
