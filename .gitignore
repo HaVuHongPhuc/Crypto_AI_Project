@@ -4,3 +4,10 @@ __pycache__/
 *.py[cod]
 storage/.bot.lock
 
+# Local paper-trading runtime state and generated logs (keep on this machine)
+storage/active_position.json
+storage/bot.log
+storage/memory.json
+storage/runtime_state.json
+storage/trades.csv
+
