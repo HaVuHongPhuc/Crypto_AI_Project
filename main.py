@@ -17,6 +17,11 @@ from config.settings import Settings
 from data.preprocessor import add_indicators
 from engine.paper_trader import PaperTrader
 from engine.risk_manager import RiskManager
+from engine.strategy_policy import (
+    MAX_ENTRY_PANIC_SCORE,
+    MIN_ENTRY_CONFIDENCE,
+    entry_signal_rejection,
+)
 from notifiers.discord import DiscordNotifier
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -224,7 +229,7 @@ class Main:
         )
         print("\n" + "═" * 75)
         print(f"📊 [{datetime.now().astimezone().strftime('%H:%M:%S')}] {self.symbol}: {market_data['price']:,.2f} USDT | Cash: {market_data['capital']:.2f} USDT")
-        print(f"   Sentiment: {sentiment.get('sentiment', 'UNKNOWN')} (Panic: {sentiment.get('panic_score', 'N/A')}/10) | Rules v{rules.get('version', 1)} | Macro: {macro.get('directive', 'NO_TRADE')}")
+        print(f"   Sentiment: {sentiment.get('sentiment', 'UNKNOWN')} (Panic: {sentiment.get('panic_score', 'N/A')}/10) | Reflector notes v{rules.get('version', 1)} | Macro: {macro.get('directive', 'NO_TRADE')}")
         print(f"   Position: {pos_str}")
         print(f"   5m RSI={market_data['rsi_14']:.2f} | EMA9={market_data['ema_9']:.2f} | EMA21={market_data['ema_21']:.2f}")
         print("─" * 75)
@@ -321,7 +326,7 @@ class Main:
                 "name": "Xác nhận kỹ thuật",
                 "value": f"RSI {market_data['rsi_14']:.2f} • EMA9 {market_data['ema_9']:,.2f} • "
                          f"EMA21 {market_data['ema_21']:,.2f}\n"
-                         f"Macro: {macro.get('directive', 'NO_TRADE')} • Rules v{rules.get('version', 1)}",
+                         f"Macro: {macro.get('directive', 'NO_TRADE')} • Reflector notes v{rules.get('version', 1)}",
                 "inline": False,
             },
             {
@@ -434,15 +439,16 @@ class Main:
                 self.recent_closed_trades.clear()
                 if evolved.get("version", 0) > previous_rules.get("version", 0):
                     self.notifier.send_embed(
-                        title=f"🧬 TIẾN HÓA CHIẾN LƯỢC • v{previous_rules.get('version', 1)} → v{evolved['version']}",
-                        description=evolved.get("reason_for_update", "Bộ quy tắc đã được cập nhật."),
+                        title=f"🧠 REFLECTOR NOTES • v{previous_rules.get('version', 1)} → v{evolved['version']}",
+                        description=("Ghi chú do Reflector đề xuất; không tự thay đổi policy Python. "
+                                     + evolved.get("reason_for_update", "Không có giải thích.")),
                         color=0x9B59B6,
                         fields=[
                             {"name": "Điểm yếu được xử lý", "value": evolved.get("flaw_identified", "Chưa nêu."), "inline": False},
                             {"name": "Entry rules mới", "value": evolved.get("entry_rules", "Chưa nêu."), "inline": False},
                             {"name": "Exit rules mới", "value": evolved.get("exit_rules", "Chưa nêu."), "inline": False},
                         ],
-                        footer="Operator sẽ đọc bộ luật mới ở lần phân tích tiếp theo",
+                        footer="Chỉ tham khảo • hard gates và exits do Python thực thi",
                     )
             except Exception:
                 logging.exception("Không thể tiến hóa rules sau ba trade")
@@ -458,36 +464,19 @@ class Main:
             if isinstance(raw_confidence, bool) or isinstance(raw_panic, bool):
                 return "confidence hoặc panic_score sai kiểu dữ liệu"
             confidence = float(raw_confidence)
-            rsi = float(indicators["rsi_14"])
-            ema9 = float(indicators["ema_9"])
-            ema21 = float(indicators["ema_21"])
             panic = float(raw_panic)
         except (KeyError, TypeError, ValueError):
-            return "thiếu confidence, RSI/EMA hoặc panic_score hợp lệ"
-        if not all(math.isfinite(value) for value in (confidence, rsi, ema9, ema21, panic)):
+            return "thiếu confidence hoặc panic_score hợp lệ"
+        if not all(math.isfinite(value) for value in (confidence, panic)):
             return "có giá trị không hữu hạn"
-        if not 0.60 <= confidence <= 1.0 or sentiment.get("available") is not True or sentiment.get("error"):
+        if not MIN_ENTRY_CONFIDENCE <= confidence <= 1.0 or sentiment.get("available") is not True or sentiment.get("error"):
             return "confidence < 60% hoặc sentiment/Fear & Greed không khả dụng"
-        if panic >= 8 or not 1 <= panic <= 10 or sentiment.get("black_swan_alert") is not False:
+        if panic >= MAX_ENTRY_PANIC_SCORE or not 1 <= panic <= 10 or sentiment.get("black_swan_alert") is not False:
             return "panic >= 8, panic sai miền hoặc có cảnh báo black swan"
-        if sentiment.get("trading_advice") not in {"NORMAL", "CAUTION"}:
+        advice = str(sentiment.get("trading_advice", "")).upper()
+        if advice not in {"NORMAL", "CAUTION"}:
             return "sentiment yêu cầu HALT hoặc advice sai schema"
-        directive = macro.get("directive")
-        if directive not in {"ONLY_LONG", "ONLY_SHORT", "FLEXIBLE"}:
-            return "macro directive không hợp lệ/NO_TRADE"
-        if action == "OPEN_LONG":
-            if directive == "ONLY_SHORT":
-                return "macro ONLY_SHORT chặn LONG"
-            if not (ema9 > ema21 and rsi > 50):
-                return "LONG cần EMA9 > EMA21 và RSI > 50"
-            return None
-        if action == "OPEN_SHORT":
-            if directive == "ONLY_LONG":
-                return "macro ONLY_LONG chặn SHORT"
-            if not (ema9 < ema21 and rsi < 50):
-                return "SHORT cần EMA9 < EMA21 và RSI < 50"
-            return None
-        return "action không phải OPEN_LONG/OPEN_SHORT"
+        return entry_signal_rejection(action, macro.get("directive"), indicators)
 
     def _entry_is_allowed(self, action: str, proposal: dict, indicators: dict,
                           macro: dict, sentiment: dict) -> bool:
@@ -593,7 +582,7 @@ class Main:
             sentiment.get("sentiment", "UNKNOWN"),
             sentiment.get("panic_score", "N/A"),
             proposal.get("action", "HOLD"),
-            proposal.get("confidence", 0),
+            float(proposal.get("confidence", 0)) * 100.0,
             "approved" if review.get("approved") else "rejected",
         )
 

@@ -1,4 +1,4 @@
-"""Isolated logic checks: no exchange, LLM, Discord, or repository state writes."""
+"""Isolated checks: no exchange/LLM/Discord requests; writes only to temp dirs."""
 
 import sys
 import tempfile
@@ -12,14 +12,20 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from agents.agent_team import StrategistAgent
+from agents.agent_team import OperatorAgent, StrategistAgent, SupervisorAgent
 from data.preprocessor import create_buy_labels
 from engine.paper_trader import PaperTrader
 from engine.risk_manager import RiskManager
+from engine.strategy_policy import ENTRY_SHORT_RSI_MAX, entry_signal_rejection
 from models.predictor import Predictor
 
 
 class RuntimeLogicTests(unittest.TestCase):
+    def test_agent_prompts_initialize_with_shared_policy(self):
+        operator_prompt = " ".join(OperatorAgent.SYSTEM_PROMPT.split())
+        self.assertIn(f"RSI < {ENTRY_SHORT_RSI_MAX:g}", operator_prompt)
+        self.assertIn("panic_score >= 8", SupervisorAgent.SYSTEM_PROMPT)
+
     def test_macro_directive_uses_price_and_rsi_not_ema_cross(self):
         result = StrategistAgent().analyze_macro(
             "BTC/USDT",
@@ -56,6 +62,33 @@ class RuntimeLogicTests(unittest.TestCase):
         self.assertEqual(
             manager.should_exit(side="SHORT", entry_price=100.0, current_price=101.1),
             "STOP_LOSS_SHORT",
+        )
+
+    def test_shared_short_policy_allows_current_rsi_49_rule(self):
+        self.assertIsNone(
+            entry_signal_rejection(
+                "OPEN_SHORT",
+                "ONLY_SHORT",
+                {"rsi_14": 49.02, "ema_9": 99.0, "ema_21": 100.0},
+            )
+        )
+
+    def test_shared_policy_rejects_macro_conflict(self):
+        self.assertIsNotNone(
+            entry_signal_rejection(
+                "OPEN_SHORT",
+                "ONLY_LONG",
+                {"rsi_14": 40.0, "ema_9": 99.0, "ema_21": 100.0},
+            )
+        )
+
+    def test_shared_policy_rejects_non_finite_indicators(self):
+        self.assertIsNotNone(
+            entry_signal_rejection(
+                "OPEN_SHORT",
+                "ONLY_SHORT",
+                {"rsi_14": float("nan"), "ema_9": 99.0, "ema_21": 100.0},
+            )
         )
 
     def test_predictor_without_model_fails_closed_to_hold(self):
