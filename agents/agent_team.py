@@ -141,9 +141,10 @@ class StrategistAgent:
     You are the Senior Chief Strategist for a Crypto Quantitative Fund.
     Analyze the 1-HOUR (1H) MACRO TREND. Dictate whether 5m Scalper is allowed to go LONG, SHORT, or BOTH.
     RULES:
-    - "ONLY_LONG" : 1H Price > EMA50, EMA50 > EMA200, RSI_1H > 52.
-    - "ONLY_SHORT": 1H Price < EMA50, EMA50 < EMA200, RSI_1H < 48.
-    - "FLEXIBLE"  : Market is in 1H consolidation.
+    - "ONLY_LONG" : 1H Price > EMA50 and RSI_1H > 52.
+    - "ONLY_SHORT": 1H Price < EMA50 and RSI_1H < 48.
+    - EMA200 is context only; do not require an EMA50/EMA200 crossover.
+    - "FLEXIBLE"  : Price/RSI do not confirm the same direction.
     JSON format:
     { "macro_bias": "BULLISH" | "BEARISH" | "SIDEWAY", "directive": "ONLY_LONG" | "ONLY_SHORT" | "FLEXIBLE", "reasoning": "Brief explanation" }
     """
@@ -202,8 +203,11 @@ class OperatorAgent:
     and RSI > 50; SHORT requires an allowed 1h directive, EMA9 < EMA21 and
     RSI < 50. If those measurable conditions are met, do not HOLD solely
     because a rule mentions an unavailable indicator; explain that limitation.
+    Exits are managed by deterministic Python risk controls on each price update
+    and by the closed-candle EMA21/RSI exit rule. Do not propose CLOSE; choose
+    HOLD when there is no valid entry.
     Output ONLY valid JSON:
-    { "action": "OPEN_LONG" | "OPEN_SHORT" | "CLOSE" | "HOLD", "confidence": 0.60 to 0.95, "reason": "Direct technical trigger" }
+    { "action": "OPEN_LONG" | "OPEN_SHORT" | "HOLD", "confidence": 0.60 to 0.95, "reason": "Direct technical trigger" }
     """
 
     def __init__(self, config=None):
@@ -243,7 +247,10 @@ Hãy đưa ra quyết định dạng JSON (OPEN_LONG / OPEN_SHORT / CLOSE / HOLD
         if action not in {"OPEN_LONG", "OPEN_SHORT", "CLOSE", "HOLD"}:
             action = "HOLD"
         try:
-            confidence = float(result.get("confidence", 0.0))
+            raw_confidence = result.get("confidence", 0.0) if isinstance(result, dict) else 0.0
+            if isinstance(raw_confidence, bool):
+                raise ValueError("confidence must be numeric, not bool")
+            confidence = float(raw_confidence)
             if not (0.0 <= confidence <= 1.0) or confidence != confidence:
                 confidence = 0.0
         except (TypeError, ValueError):
@@ -260,7 +267,8 @@ class SupervisorAgent:
     Bạn là Giám đốc Quản trị Rủi ro (Supervisor Agent).
     Phản biện đề xuất từ Operator Agent dựa trên an toàn vốn, CHỈ THỊ 1H, BÀI HỌC KINH NGHIỆM và TÌNH BÁO SENTIMENT.
     QUY TẮC KIỂM DUYỆT:
-    1. HOLD/CLOSE: Luôn DUYỆT (approved = true, risk_score = 1).
+    1. HOLD: Luôn DUYỆT. CLOSE chỉ được duyệt khi có vị thế và nến đóng xác nhận
+       đảo chiều theo EMA21/RSI; trong luồng hiện tại Python tự xử lý điều kiện thoát.
     2. OPEN_LONG/SHORT:
        - TỪ CHỐI nếu black_swan_alert = true hoặc panic_score >= 8 hoặc trading_advice == "HALT_TRADING".
        - TỪ CHỐI nếu Macro 1H xung đột (chỉ thị ONLY_SHORT cấm mở Long; ONLY_LONG cấm mở Short).
@@ -304,7 +312,10 @@ class SupervisorAgent:
         if not isinstance(cash, (int, float)) or not math.isfinite(cash) or cash <= 0:
             return {"approved": False, "risk_score": 10, "feedback": "Không đủ số dư khả dụng."}
         try:
-            confidence = float(proposal.get("confidence", 0.0))
+            raw_confidence = proposal.get("confidence", 0.0)
+            if isinstance(raw_confidence, bool):
+                raise ValueError("confidence must be numeric, not bool")
+            confidence = float(raw_confidence)
         except (TypeError, ValueError):
             confidence = 0.0
         if not math.isfinite(confidence) or confidence < 0.60 or confidence > 1.0:
@@ -314,7 +325,10 @@ class SupervisorAgent:
             return {"approved": False, "risk_score": 10, "feedback": "Không mở lệnh khi dữ liệu sentiment/LLM không khả dụng."}
 
         try:
-            panic_score = float(sentiment_info["panic_score"])
+            raw_panic_score = sentiment_info["panic_score"]
+            if isinstance(raw_panic_score, bool):
+                raise ValueError("panic_score must be numeric, not bool")
+            panic_score = float(raw_panic_score)
         except (TypeError, ValueError):
             panic_score = 10.0
         advice = str(sentiment_info.get("trading_advice", "")).upper()

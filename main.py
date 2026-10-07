@@ -453,11 +453,15 @@ class Main:
         if self.paper_trader.position is not None or self.paper_trader.cash <= 0:
             return "đang có vị thế hoặc cash không dương"
         try:
-            confidence = float(proposal.get("confidence", 0))
+            raw_confidence = proposal.get("confidence", 0)
+            raw_panic = sentiment["panic_score"]
+            if isinstance(raw_confidence, bool) or isinstance(raw_panic, bool):
+                return "confidence hoặc panic_score sai kiểu dữ liệu"
+            confidence = float(raw_confidence)
             rsi = float(indicators["rsi_14"])
             ema9 = float(indicators["ema_9"])
             ema21 = float(indicators["ema_21"])
-            panic = float(sentiment["panic_score"])
+            panic = float(raw_panic)
         except (KeyError, TypeError, ValueError):
             return "thiếu confidence, RSI/EMA hoặc panic_score hợp lệ"
         if not all(math.isfinite(value) for value in (confidence, rsi, ema9, ema21, panic)):

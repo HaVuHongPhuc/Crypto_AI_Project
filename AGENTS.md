@@ -11,7 +11,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - agents/sentiment_agent.py: Fear & Greed, RSS và phân tích tâm lý.
 - config/env.py: nạp .env từ thư mục gốc bằng đường dẫn tuyệt đối; config/settings.py dùng chung loader và kiểm tra Settings.
 - data/fetcher.py, data/preprocessor.py: OHLCV, chỉ báo và nhãn.
-- train.py, models/predictor.py, models/model.pkl: pipeline Random Forest độc lập.
+- train.py, engine/ml_retrainer.py, models/predictor.py, models/model.pkl: pipeline Random Forest độc lập với main.
 - engine/paper_trader.py: ledger paper, phí hai chiều, lịch sử và phục hồi cash/vị thế.
 - engine/risk_manager.py: SL/TP/trailing LONG/SHORT; main gọi kiểm tra giá mỗi vòng.
 - notifiers/discord.py: Discord webhook; rich embeds for startup, closed 1H macro decisions, opened/closed paper trades, and rule evolution.
@@ -21,6 +21,8 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - summary.py, export_report.py, build_100_pages_book.py: tiện ích báo cáo.
 - check_gemini.py, test_llm.py: kiểm tra LLM riêng.
 - test_system_flow.py: script tích hợp có gọi mạng và sửa file trạng thái; không phải test chỉ đọc.
+- Các `test_*.py` hiện là script kiểm tra thủ công đời cũ, không phải test suite an toàn để chạy hàng loạt. `test_retrain_now.py` gọi Binance và ghi đè model; `test_all_discord.py` gửi nhiều tin thật qua webhook; `test_llm.py`, `test_ollama_groq.py` gọi LLM/mạng. Một số script như `test_agent_pipeline.py`, `test_full_system_integration.py`, `test_behavior_extremes.py` còn giả định Operator/ML/Discord có API hoặc hành vi cũ; không dùng kết quả của chúng để xác nhận runtime hiện tại.
+- `tests/test_runtime_logic.py` là kiểm tra logic cô lập bằng dữ liệu giả/thư mục tạm; chạy riêng file này, không chạy toàn bộ `test_*.py`.
 
 ## Luồng đang chạy trong main.py
 
@@ -28,7 +30,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 2. Mỗi vòng lấy ticker hiện tại để quản lý rủi ro, rồi tải OHLCV theo CANDLE_LIMIT. Bỏ kline cuối đang hình thành và tính các feature bằng add_indicators, khớp thứ tự feature model.
 3. Chỉ phân tích khi timestamp của nến đã đóng thay đổi. Giá ticker dùng để mô phỏng entry/exit; chỉ báo dùng nến đã đóng.
 4. SentimentAgent lấy Fear & Greed từ alternative.me và tối đa 6 tiêu đề Cointelegraph RSS, rồi nhờ LLM phân tích. Kết quả cache 900 giây.
-5. OperatorAgent nhận giá/chỉ báo/vị thế/luật và yêu cầu LLM trả OPEN_LONG, OPEN_SHORT, CLOSE hoặc HOLD.
+5. OperatorAgent nhận giá/chỉ báo/vị thế/luật và yêu cầu LLM trả OPEN_LONG, OPEN_SHORT hoặc HOLD. Thoát lệnh do Python xử lý theo SL/TP/trailing hoặc EMA21/RSI trên nến đóng; Supervisor giữ kiểm tra CLOSE phòng vệ nếu API được gọi trực tiếp.
 6. Supervisor xác thực action/schema/cash/confidence/macro/technical/sentiment rồi mới nhờ LLM duyệt lệnh mở. main kiểm tra lại hard invariants trước khi thay đổi portfolio.
 7. Stake là POSITION_SIZE_PCT của cash. RiskManager chạy mỗi vòng; EMA21/RSI đóng theo nến mới. Khi đóng, ledger và trades.csv được cập nhật sau phí; Reflector lưu bài học. Discord gửi embed chi tiết sau khi ledger ghi nhận mở/đóng; macro chỉ gửi khi candle 1H đóng thay đổi.
 8. Vòng lặp ngủ theo LOOP_SECONDS; exception được log, đưa cho Auditor phân tích, rồi retry sau ít nhất 10 giây. Ctrl+C dừng bot và thả process lock.
@@ -40,6 +42,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - main gọi RiskManager theo giá ticker mỗi vòng; đồng thời đóng theo EMA21/RSI khi nến mới đóng.
 - Random Forest/Predictor vẫn độc lập, chưa cấp tín hiệu cho main vì model chỉ phân lớp BUY/HOLD trong khi bot có LONG/SHORT.
 - strategy_rules.json cung cấp nguyên tắc cho LLM; entry EMA9/EMA21 và RSI còn được Supervisor kiểm tra bằng Python.
+- `strategy_rules.json` là luật chữ do Reflector tạo, không phải cấu hình thực thi. Runtime hiện không tính ADX, ATR, slope EMA hay range 5 nến; Operator phải bỏ qua điều kiện phụ đòi chỉ số chưa được truyền. Các ngưỡng khả dụng trong rules v9 vẫn có thể khiến LLM chọn HOLD, nhưng hard gate Python chỉ dùng EMA9/EMA21, RSI, macro, confidence và sentiment.
 - Supervisor từ chối action sai, lệnh ngược macro, thiếu cash, confidence thấp, sentiment thiếu hoặc sai schema.
 - AgentTeam có sáu agent; Auditor chạy khi vòng lặp gặp exception. Sentiment cache 15 phút.
 
@@ -58,8 +61,8 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - add_indicators tính RSI14 bằng rolling mean gains/losses; MACD=EMA12-EMA26, signal=EMA9(MACD), EMA9, EMA21, ema_spread_pct=(EMA9-EMA21)/EMA21, volume_change=volume/rolling_mean_20-1; cuối cùng dropna.
 - FEATURE_COLUMNS theo thứ tự: rsi_14, macd, macd_signal, ema_9, ema_21, ema_spread_pct, volume_change.
 - preprocessor.create_buy_labels là helper riêng: mặc định xem 5 nến kế tiếp; BUY nếu high chạm +1.5% trước low chạm -1%; nếu cùng nến chạm cả hai thì ưu tiên stop; hàng cuối thiếu horizon là NA.
-- train.py đọc storage/btc_5m.csv và dùng create_buy_labels: TP 1.5% trước SL 1% trong 5 nến. Chia theo thời gian 80/20, purge 5 mẫu giữa train/test. RandomForest: 250 cây, depth 8, min leaf 15, balanced, seed 42, n_jobs=-1; ghi đè models/model.pkl.
-- Predictor lấy feature row mới nhất, BUY nếu P(BUY) >= 0.55, còn lại HOLD; thiếu model thì HOLD. Model chỉ có BUY/HOLD, không short.
+- train.py và MLRetrainer dùng chung add_indicators, FEATURE_COLUMNS và create_buy_labels: TP 1.5% trước SL 1% trong 5 nến; split theo thời gian 80/20, purge 5 mẫu. Cả hai dùng RandomForest 250 cây, depth 8, min leaf 15, balanced, seed 42, n_jobs=-1; MLRetrainer lưu qua joblib để tương thích Predictor.
+- Predictor nạp model theo đường dẫn repo tuyệt đối, kiểm tra schema 7 feature và class BUY/HOLD; model thiếu/hỏng/không tương thích thì log và trả HOLD. BUY nếu P(BUY) >= 0.55, còn lại HOLD; không short.
 - README mô tả hiện tại cách train.py gán nhãn TP/SL.
 
 ## PaperTrader và persistence
@@ -80,6 +83,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - fetch_and_save_dataset.py gọi Binance, mặc định tải 35.000 nến 5m rồi ghi đè storage/btc_5m.csv.
 - test_system_flow.py gọi Binance, LLM, Fear & Greed/RSS và mở/đóng paper position, ghi active_position.json.
 - train.py ghi đè model.pkl.
+- engine/ml_retrainer.py gọi Binance và thay model.pkl sau khi sao lưu model cũ; không chạy nếu chưa được yêu cầu.
 - main.py chạy liên tục và có thể gửi Discord; chỉ chạy khi người dùng yêu cầu.
 - main.py kiểm tra hard SL/TP/trailing mỗi vòng, nhưng polling không bảo đảm bắt được spike ngắn hơn LOOP_SECONDS.
 - Mỗi nến 5m đã phân tích, main ghi action/confidence, macro, sentiment, supervisor và lý do HOLD/từ chối gate vào bot.log; dùng các dòng này để phân biệt không có setup với lỗi agent/API.
