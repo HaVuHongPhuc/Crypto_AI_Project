@@ -61,11 +61,12 @@ class PaperTrader:
             if not isinstance(state, dict):
                 raise ValueError("Ledger cần là JSON object")
             if not state:
-                return
+                raise ValueError("Ledger rỗng; từ chối khởi động để tránh reset paper account")
 
             if "position" in state or "schema_version" in state:
                 cash = state.get("cash")
-                if not isinstance(cash, (int, float)) or not math.isfinite(cash):
+                if (not isinstance(cash, (int, float)) or isinstance(cash, bool)
+                        or not math.isfinite(cash) or cash < 0):
                     raise ValueError("Ledger thiếu cash hợp lệ")
                 self.cash = float(cash)
                 position_data = state.get("position")
@@ -77,17 +78,54 @@ class PaperTrader:
                 if "side" in state and state.get("side") not in ("LONG", "SHORT"):
                     raise ValueError("Ledger có side không hợp lệ")
 
-            if isinstance(position_data, dict) and position_data.get("side") in ("LONG", "SHORT"):
+            if isinstance(position_data, dict):
+                side = str(position_data.get("side", "")).upper()
+                if side not in ("LONG", "SHORT"):
+                    raise ValueError("Ledger có position nhưng thiếu side LONG/SHORT hợp lệ")
                 allowed = ActivePosition.__dataclass_fields__
                 cleaned = {key: value for key, value in position_data.items() if key in allowed}
+                cleaned["side"] = side
                 cleaned.setdefault("stake", float(cleaned.get("amount", 0)) * float(cleaned.get("entry_price", 0)))
                 cleaned.setdefault("entry_fee", 0.0)
                 cleaned.setdefault("extreme_price", float(cleaned.get("entry_price", 0)))
+                cleaned.setdefault("pnl_pct", 0.0)
+                cleaned.setdefault("pnl_usdt", 0.0)
+                cleaned.setdefault("holding_candles", 0)
+                cleaned.setdefault("entry_time", datetime.now(timezone.utc).isoformat())
                 cleaned.setdefault("trade_id", uuid4().hex)
+
+                for key in ("entry_price", "amount", "stake", "entry_fee", "extreme_price", "pnl_pct", "pnl_usdt"):
+                    try:
+                        cleaned[key] = float(cleaned[key])
+                    except (TypeError, ValueError, KeyError) as exc:
+                        raise ValueError(f"Ledger có {key} không hợp lệ") from exc
+                    if not math.isfinite(cleaned[key]):
+                        raise ValueError(f"Ledger có {key} không hữu hạn")
+                if cleaned["stake"] <= 0:
+                    cleaned["stake"] = cleaned["entry_price"] * cleaned["amount"]
+                if cleaned["extreme_price"] <= 0:
+                    cleaned["extreme_price"] = cleaned["entry_price"]
+                if (cleaned["entry_price"] <= 0 or cleaned["amount"] <= 0 or cleaned["stake"] <= 0
+                        or cleaned["entry_fee"] < 0 or cleaned["entry_fee"] > cleaned["stake"]
+                        or cleaned["extreme_price"] <= 0):
+                    raise ValueError("Ledger có vị thế sai giá, khối lượng, stake hoặc phí")
+                try:
+                    holding_candles = int(cleaned["holding_candles"])
+                except (TypeError, ValueError) as exc:
+                    raise ValueError("Ledger có holding_candles không hợp lệ") from exc
+                if holding_candles < 0 or holding_candles != cleaned["holding_candles"]:
+                    raise ValueError("Ledger có holding_candles không hợp lệ")
+                cleaned["holding_candles"] = holding_candles
+                if cleaned.get("last_candle_time") is not None:
+                    try:
+                        cleaned["last_candle_time"] = int(cleaned["last_candle_time"])
+                    except (TypeError, ValueError) as exc:
+                        raise ValueError("Ledger có last_candle_time không hợp lệ") from exc
+                if not isinstance(cleaned.get("entry_time"), str):
+                    raise ValueError("Ledger có entry_time không hợp lệ")
+                if not isinstance(cleaned.get("trade_id"), str) or not cleaned["trade_id"]:
+                    cleaned["trade_id"] = uuid4().hex
                 self.position = ActivePosition(**cleaned)
-                if (not math.isfinite(self.position.entry_price) or self.position.entry_price <= 0
-                        or not math.isfinite(self.position.amount) or self.position.amount <= 0):
-                    raise ValueError("Ledger có vị thế sai giá hoặc khối lượng")
                 logging.info("Khôi phục vị thế %s @ %.8f", self.position.side, self.position.entry_price)
         except Exception as exc:
             logging.error("Không thể đọc ledger %s: %s", ACTIVE_POS_FILE, exc)

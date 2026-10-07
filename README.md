@@ -32,7 +32,7 @@ python train.py
 
 Các lệnh trên gọi Binance và ghi dữ liệu; `train.py` ghi đè `models/model.pkl`. Dataset dùng nhãn BUY khi TP 1.5% xảy ra trước SL 1% trong 5 nến kế tiếp; nếu cùng một nến chạm cả hai mức, gán theo hướng thận trọng là SL trước. Tập test giữ theo thời gian và có purge 5 mẫu giữa train/test để tránh chồng lấn horizon.
 
-Random Forest hiện là pipeline độc lập. `main.py` chưa dùng Predictor, vì vậy huấn luyện model chưa thay đổi quyết định của bot paper.
+Random Forest hiện là pipeline độc lập. `train.py` và `engine/ml_retrainer.py` dùng chung features/labels để tạo model tương thích với `models/predictor.py`; `main.py` chưa dùng Predictor, vì vậy huấn luyện model chưa thay đổi quyết định của bot paper. `MLRetrainer` gọi Binance và ghi đè `models/model.pkl` sau khi sao lưu model cũ.
 
 ## Lưu trạng thái
 

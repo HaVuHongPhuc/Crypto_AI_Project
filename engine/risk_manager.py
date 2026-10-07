@@ -97,7 +97,7 @@ class RiskManager:
       if current_price <= entry * (1.0 - self.stop_loss_pct):
         return "STOP_LOSS_LONG"
 
-      # Chốt lời cứng (3%)
+      # Chốt lời cứng theo take_profit_pct đã cấu hình.
       if self.take_profit_pct and current_price >= entry * (
           1.0 + self.take_profit_pct
       ):
@@ -124,7 +124,7 @@ class RiskManager:
       if current_price >= entry * (1.0 + self.stop_loss_pct):
         return "STOP_LOSS_SHORT"
 
-      # Chốt lời cứng (3%)
+      # Chốt lời cứng theo take_profit_pct đã cấu hình.
       if self.take_profit_pct and current_price <= entry * (
           1.0 - self.take_profit_pct
       ):

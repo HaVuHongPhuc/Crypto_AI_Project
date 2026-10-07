@@ -3,15 +3,16 @@ Module Walk-Forward Retraining cho mô hình Random Forest.
 Tự động lấy dữ liệu nến mới, tạo features, gán nhãn và tái huấn luyện định kỳ.
 """
 
-from datetime import datetime, timezone
+from datetime import datetime
 import logging
+import os
 from pathlib import Path
-import pickle
-import numpy as np
+import joblib
 import pandas as pd
 import requests
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, f1_score, classification_report
+from data.preprocessor import FEATURE_COLUMNS, add_indicators, create_buy_labels
 
 logger = logging.getLogger("CryptoAI")
 
@@ -58,41 +59,32 @@ class MLRetrainer:
             "close_time", "qav", "num_trades", "taker_base_vol", "taker_quote_vol", "ignore"
         ])
         for col in ["open", "high", "low", "close", "volume"]:
-            df[col] = df[col].astype(float)
-
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+        df["close_time"] = pd.to_numeric(df["close_time"], errors="coerce")
+        df = (
+            df.dropna(subset=["open", "high", "low", "close", "volume", "close_time"])
+            .drop_duplicates(subset=["open_time"])
+            .sort_values("open_time")
+            .reset_index(drop=True)
+        )
+        # Binance includes the currently forming candle in the latest batch.
+        if not df.empty:
+            df = df.iloc[:-1]
         return df.tail(self.lookback_candles).reset_index(drop=True)
 
     def generate_features_and_labels(self, df: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]:
-        """Tạo đặc trưng kỹ thuật đồng bộ với OperatorAgent và gán nhãn xu hướng."""
-        closes = df["close"]
-
-        # 1. Feature Engineering
-        df["ema_9"] = closes.ewm(span=9, adjust=False).mean()
-        df["ema_21"] = closes.ewm(span=21, adjust=False).mean()
-        df["ema_spread"] = (df["ema_9"] - df["ema_21"]) / df["close"] * 100.0
-
-        # RSI 14
-        delta = closes.diff()
-        gain = delta.clip(lower=0).rolling(14).mean()
-        loss = -delta.clip(upper=0).rolling(14).mean()
-        rs = gain / (loss + 1e-9)
-        df["rsi_14"] = 100.0 - (100.0 / (1.0 + rs))
-
-        # Khối lượng tương đối
-        df["vol_sma"] = df["volume"].rolling(20).mean()
-        df["vol_ratio"] = df["volume"] / (df["vol_sma"] + 1e-9)
-
-        # 2. Gán nhãn xu hướng (Biên độ 0.22% trong 3 nến = 15m)
-        # 1 (TĂNG): Đủ biên độ lợi nhuận scalping bù phí sàn
-        # 0: Sideway hoặc Giảm
-        future_return = (closes.shift(-3) - closes) / closes * 100.0
-        labels = (future_return > 0.22).astype(int)
-
-        feature_cols = ["ema_spread", "rsi_14", "vol_ratio"]
-        clean_df = df[feature_cols].copy()
-        valid_idx = clean_df.dropna().index.intersection(labels.dropna().index)
-
-        return clean_df.loc[valid_idx], labels.loc[valid_idx]
+        """Use the same features and labels as train.py and Predictor."""
+        features = add_indicators(df)
+        labels = create_buy_labels(
+            df,
+            horizon=5,
+            take_profit_pct=0.015,
+            stop_loss_pct=0.01,
+        )
+        valid_index = features.index.intersection(labels.dropna().index)
+        X = features.loc[valid_index, FEATURE_COLUMNS].reset_index(drop=True)
+        y = labels.loc[valid_index].reset_index(drop=True)
+        return X, y
 
     def retrain_model(self) -> dict:
         """Thực thi Walk-Forward Retraining."""
@@ -102,29 +94,37 @@ class MLRetrainer:
             return {"success": False, "reason": "Không đủ dữ liệu nến tải về từ sàn."}
 
         X, y = self.generate_features_and_labels(df)
-        print(f"📊 Đã tạo đặc trưng cho {len(X)} mẫu nến hợp lệ (Số mẫu TĂNG: {int(y.sum())} / {len(y)}).")
+        buy_count = int((y == "BUY").sum())
+        print(f"📊 Đã tạo đặc trưng cho {len(X)} mẫu nến hợp lệ (Số mẫu BUY: {buy_count} / {len(y)}).")
 
-        # Phân chia Walk-Forward theo trục thời gian (80% Train, 20% Out-of-Sample)
+        label_horizon = 5
+        # Chronological split; purge labels whose future horizon crosses the split.
         split_point = int(len(X) * 0.8)
-        X_train, X_test = X.iloc[:split_point], X.iloc[split_point:]
-        y_train, y_test = y.iloc[:split_point], y.iloc[split_point:]
+        train_end = split_point - label_horizon
+        if train_end <= 0 or split_point >= len(X):
+            return {"success": False, "reason": "Không đủ mẫu để chia train/test có purge."}
+        X_train, X_test = X.iloc[:train_end], X.iloc[split_point:]
+        y_train, y_test = y.iloc[:train_end], y.iloc[split_point:]
+        if y_train.nunique() < 2 or y_test.empty:
+            return {"success": False, "reason": "Tập train cần cả BUY/HOLD và tập test không được rỗng."}
 
-        # Huấn luyện Random Forest cân bằng trọng số
+        # Match train.py so every saved model has the Predictor feature schema.
         model = RandomForestClassifier(
-            n_estimators=150,
-            max_depth=6,
-            min_samples_split=15,
+            n_estimators=250,
+            max_depth=8,
+            min_samples_leaf=15,
             class_weight="balanced",  # Xử lý triệt để bẫy lệch mẫu
-            random_state=42
+            random_state=42,
+            n_jobs=-1,
         )
         model.fit(X_train, y_train)
 
         # Kiểm định ngoài mẫu (Out-of-Sample Validation)
         y_pred = model.predict(X_test)
         oos_acc = accuracy_score(y_test, y_pred)
-        oos_prec = precision_score(y_test, y_pred, zero_division=0)
-        oos_f1 = f1_score(y_test, y_pred, zero_division=0)
-        report = classification_report(y_test, y_pred, zero_division=0)
+        oos_prec = precision_score(y_test, y_pred, pos_label="BUY", zero_division=0)
+        oos_f1 = f1_score(y_test, y_pred, pos_label="BUY", zero_division=0)
+        report = classification_report(y_test, y_pred, labels=["BUY", "HOLD"], zero_division=0)
 
         # Trích xuất độ quan trọng của đặc trưng
         importance = dict(zip(X.columns, [round(float(v), 4) for v in model.feature_importances_]))
@@ -138,16 +138,15 @@ class MLRetrainer:
                 "precision": round(oos_prec * 100, 2),
             }
 
-        # Sao lưu mô hình cũ
+        # Write atomically with joblib so Predictor can read it reliably.
+        temp_path = MODEL_PATH.with_suffix(".pkl.tmp")
+        joblib.dump(model, temp_path)
         if MODEL_PATH.exists():
             ts = datetime.now().strftime("%Y%m%d_%H%M%S")
             backup_file = BACKUP_DIR / f"model_backup_{ts}.pkl"
-            MODEL_PATH.rename(backup_file)
+            MODEL_PATH.replace(backup_file)
             print(f"📦 Đã sao lưu mô hình cũ ra: {backup_file.name}")
-
-        # Lưu mô hình mới
-        with open(MODEL_PATH, "wb") as f:
-            pickle.dump(model, f)
+        os.replace(temp_path, MODEL_PATH)
 
         return {
             "success": True,
