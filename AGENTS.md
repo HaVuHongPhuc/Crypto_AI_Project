@@ -36,7 +36,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 
 ## Quan hệ giữa các module
 
-- main gọi Strategist với EMA50/EMA200 và RSI trên nến 1H đã đóng; thiếu dữ liệu thì directive NO_TRADE.
+- main gọi Strategist với EMA50/EMA200 và RSI trên nến 1H đã đóng; ONLY_LONG khi giá > EMA50 và RSI >52, ONLY_SHORT khi giá < EMA50 và RSI <48. EMA200 làm ngữ cảnh, không đợi giao cắt EMA50/EMA200 mới cho phép đổi chế độ. Thiếu dữ liệu thì NO_TRADE.
 - main gọi RiskManager theo giá ticker mỗi vòng; đồng thời đóng theo EMA21/RSI khi nến mới đóng.
 - Random Forest/Predictor vẫn độc lập, chưa cấp tín hiệu cho main vì model chỉ phân lớp BUY/HOLD trong khi bot có LONG/SHORT.
 - strategy_rules.json cung cấp nguyên tắc cho LLM; entry EMA9/EMA21 và RSI còn được Supervisor kiểm tra bằng Python.
@@ -82,6 +82,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - train.py ghi đè model.pkl.
 - main.py chạy liên tục và có thể gửi Discord; chỉ chạy khi người dùng yêu cầu.
 - main.py kiểm tra hard SL/TP/trailing mỗi vòng, nhưng polling không bảo đảm bắt được spike ngắn hơn LOOP_SECONDS.
+- Mỗi nến 5m đã phân tích, main ghi action/confidence, macro, sentiment, supervisor và lý do HOLD/từ chối gate vào bot.log; dùng các dòng này để phân biệt không có setup với lỗi agent/API.
 - .env.example là cấu hình mẫu không chứa khóa bí mật.
 - requirements.txt khai báo ccxt, pandas, python-dotenv, joblib, requests, scikit-learn, openai và python-docx.
 
