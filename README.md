@@ -19,7 +19,7 @@ Chỉnh `.env` để chọn local/cloud LLM và cấu hình paper account. Khôn
 python main.py
 ```
 
-Vòng lặp kiểm tra giá hiện tại khoảng mỗi 15 giây để quản lý lệnh đang mở. Chỉ báo và tín hiệu được tính trên nến đã đóng của timeframe. Entry mặc định cần Operator đề xuất, confidence ít nhất 0.60, EMA9/EMA21 và RSI đồng thuận, không ngược chỉ thị 1H, sentiment khả dụng và Supervisor duyệt. Nếu dữ liệu 1H hoặc sentiment lỗi thì bot không mở lệnh mới; lệnh đang mở vẫn được quản lý bằng giá mới nhất.
+Vòng lặp kiểm tra giá hiện tại khoảng mỗi 15 giây để quản lý lệnh đang mở. Chỉ báo và tín hiệu được tính trên nến đã đóng của timeframe. Macro 1H cho `ONLY_LONG` khi giá trên EMA50 và RSI14 > 52, `ONLY_SHORT` khi giá dưới EMA50 và RSI14 < 48; EMA200 chỉ là ngữ cảnh để tránh chờ giao cắt trễ. Entry vẫn cần Operator đề xuất với confidence ít nhất 0.60, EMA9/EMA21 và RSI đồng thuận, không ngược chỉ thị 1H, sentiment khả dụng và Supervisor duyệt. Nếu dữ liệu 1H hoặc sentiment lỗi thì bot không mở lệnh mới; lệnh đang mở vẫn được quản lý bằng giá mới nhất. Mỗi nến đã phân tích, `storage/bot.log` ghi action của Operator và lý do Supervisor/hard gate từ chối entry hoặc HOLD.
 
 Mặc định, vốn khởi tạo là 100 USDT, mỗi vị thế dùng 10% cash còn lại, phí mỗi chiều là 0.05%, stop-loss 1%, take-profit 2%, trailing stop cách đỉnh/đáy 0.8% sau khi lãi đạt 1%. Vị thế cũng đóng khi nến hoàn chỉnh phá EMA21 và RSI xác nhận đảo chiều. Các giá trị này cấu hình trong `.env` dưới dạng số thập phân (ví dụ 0.01 = 1%).
 

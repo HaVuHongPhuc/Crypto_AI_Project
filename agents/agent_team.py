@@ -163,11 +163,30 @@ class StrategistAgent:
         except (KeyError, TypeError, ValueError):
             return {"macro_bias": "UNKNOWN", "directive": "NO_TRADE", "reasoning": "Thiếu dữ liệu 1H hợp lệ."}
 
-        if price > ema50 and ema50 > ema200 and rsi > 52:
-            return {"macro_bias": "BULLISH", "directive": "ONLY_LONG", "reasoning": f"{symbol}: giá/EMA và RSI 1H đồng thuận tăng."}
-        if price < ema50 and ema50 < ema200 and rsi < 48:
-            return {"macro_bias": "BEARISH", "directive": "ONLY_SHORT", "reasoning": f"{symbol}: giá/EMA và RSI 1H đồng thuận giảm."}
-        return {"macro_bias": "SIDEWAY", "directive": "FLEXIBLE", "reasoning": f"{symbol}: điều kiện xu hướng 1H chưa đồng thuận."}
+        # EMA50/EMA200 crosses lag price action by many candles. Requiring a
+        # cross here kept the bot in FLEXIBLE through the selloff shown in the
+        # operator's Discord history, even with price far below EMA50 and RSI
+        # deeply bearish. Use price + RSI for the actionable regime; retain
+        # EMA200 as context instead of a late entry gate.
+        if price > ema50 and rsi > 52:
+            context = "EMA50 trên EMA200" if ema50 > ema200 else "EMA50 dưới EMA200 (xu hướng sớm)"
+            return {
+                "macro_bias": "BULLISH",
+                "directive": "ONLY_LONG",
+                "reasoning": f"{symbol}: giá trên EMA50 và RSI 1H > 52; {context}.",
+            }
+        if price < ema50 and rsi < 48:
+            context = "EMA50 dưới EMA200" if ema50 < ema200 else "EMA50 còn trên EMA200 (độ trễ của EMA)"
+            return {
+                "macro_bias": "BEARISH",
+                "directive": "ONLY_SHORT",
+                "reasoning": f"{symbol}: giá dưới EMA50 và RSI 1H < 48; {context}.",
+            }
+        return {
+            "macro_bias": "SIDEWAY",
+            "directive": "FLEXIBLE",
+            "reasoning": f"{symbol}: giá quanh EMA50 hoặc RSI chưa xác nhận hướng; EMA200 dùng làm bối cảnh.",
+        }
 
 
 # -------------------------------------------------------------
@@ -176,7 +195,13 @@ class StrategistAgent:
 class OperatorAgent:
     SYSTEM_PROMPT = """
     You are an Aggressive Scalping Trader on the 5m crypto timeframe.
-    Follow strictly the DYNAMIC STRATEGY RULES provided in the prompt.
+    Follow the DYNAMIC STRATEGY RULES provided in the prompt, but only evaluate
+    indicators actually supplied. Do not invent ADX, ATR, EMA slopes, 15m data,
+    candle patterns, or other metrics when they are absent. The Python hard
+    gate is authoritative: LONG requires an allowed 1h directive, EMA9 > EMA21
+    and RSI > 50; SHORT requires an allowed 1h directive, EMA9 < EMA21 and
+    RSI < 50. If those measurable conditions are met, do not HOLD solely
+    because a rule mentions an unavailable indicator; explain that limitation.
     Output ONLY valid JSON:
     { "action": "OPEN_LONG" | "OPEN_SHORT" | "CLOSE" | "HOLD", "confidence": 0.60 to 0.95, "reason": "Direct technical trigger" }
     """
@@ -192,6 +217,10 @@ class OperatorAgent:
         rsi_val = float(indicators.get("rsi_14", 50))
         ema9_val = float(indicators.get("ema_9", current_price))
         ema21_val = float(indicators.get("ema_21", current_price))
+        ema_spread = float(indicators.get("ema_spread_pct", 0.0))
+        macd = float(indicators.get("macd", 0.0))
+        macd_signal = float(indicators.get("macd_signal", 0.0))
+        volume_change = float(indicators.get("volume_change", 0.0))
 
         rsi_state = "TRÊN 50 (BULLISH)" if rsi_val > 50 else "DƯỚI 50 (BEARISH)"
         ema_state = "EMA9 > EMA21 (TĂNG)" if ema9_val > ema21_val else "EMA9 < EMA21 (GIẢM)"
@@ -202,7 +231,11 @@ BỘ QUY TẮC HIỆN HÀNH (v{rules.get('version', 1)}):
 - Entry Rules: {rules.get('entry_rules')}
 - Exit Rules: {rules.get('exit_rules')}
 Vị thế: {position_info.get('side', 'NONE')} (PnL: {position_info.get('pnl_pct', 0.0):.2f}%)
-Kỹ thuật: RSI={rsi_val} ({rsi_state}), EMA9={ema9_val} vs EMA21={ema21_val} ({ema_state}).
+Kỹ thuật khả dụng 5m: RSI14={rsi_val:.2f} ({rsi_state}), EMA9={ema9_val:.4f} vs EMA21={ema21_val:.4f} ({ema_state}),
+EMA spread={ema_spread:.5f}, MACD={macd:.5f}, MACD signal={macd_signal:.5f}, volume change={volume_change:.4f}.
+Hard gate Python: LONG cần EMA9 > EMA21 và RSI14 > 50, macro không ONLY_SHORT;
+SHORT cần EMA9 < EMA21 và RSI14 < 50, macro không ONLY_LONG. Confidence phải >= 0.60.
+Các chỉ báo không có trong danh sách trên không được xem là điều kiện bắt buộc.
 Hãy đưa ra quyết định dạng JSON (OPEN_LONG / OPEN_SHORT / CLOSE / HOLD).
 """
         result = _ask_llm(self.SYSTEM_PROMPT, user_prompt)
@@ -234,6 +267,9 @@ class SupervisorAgent:
        - TỪ CHỐI nếu lặp lại sai lầm trong BÀI HỌC KINH NGHIỆM.
     JSON format:
     { "approved": true | false, "risk_score": 1 to 10, "feedback": "Lý do duyệt hoặc từ chối" }
+    Python đã kiểm tra cash, chỉ thị macro, EMA/RSI và schema sentiment trước bước này.
+    Không từ chối chỉ vì một rule nhắc chỉ báo không được cung cấp (ví dụ ADX/ATR/slope).
+    Nếu directive là ONLY_SHORT thì đó là xác nhận macro cho phe short; không đòi thêm EMA50 < EMA200.
     """
 
     def __init__(self, config=None):
@@ -349,6 +385,10 @@ class ReflectorAgent:
     You are an AI Quantitative Strategy Optimizer managing a lifelong evolutionary strategy tree.
     Analyze recent trades alongside the FULL HISTORICAL EVOLUTION TREE (v1 -> vN).
     CRITICAL: Never regress into flaws already resolved in prior versions.
+    Chỉ tạo entry/exit rules bằng dữ liệu hệ thống hiện có: giá, RSI14, EMA9, EMA21,
+    EMA spread, MACD, MACD signal, volume_change; macro có EMA50, EMA200 và RSI14.
+    Không yêu cầu ADX, ATR, EMA slope, timeframe 15m, mẫu hình nến hoặc dữ liệu khác
+    cho tới khi runtime thực sự tính và truyền các chỉ số đó cho agent.
     JSON format:
     {
       "reason_for_update": "Lý do nâng cấp bộ luật ngắn gọn",

@@ -447,10 +447,11 @@ class Main:
             except Exception:
                 logging.exception("Không thể tiến hóa rules sau ba trade")
 
-    def _entry_is_allowed(self, action: str, proposal: dict, indicators: dict, macro: dict, sentiment: dict) -> bool:
-        """Repeat the hard entry invariants at the portfolio mutation boundary."""
+    def _entry_gate_reason(self, action: str, proposal: dict, indicators: dict,
+                           macro: dict, sentiment: dict) -> str | None:
+        """Explain a hard entry rejection at the portfolio mutation boundary."""
         if self.paper_trader.position is not None or self.paper_trader.cash <= 0:
-            return False
+            return "đang có vị thế hoặc cash không dương"
         try:
             confidence = float(proposal.get("confidence", 0))
             rsi = float(indicators["rsi_14"])
@@ -458,23 +459,36 @@ class Main:
             ema21 = float(indicators["ema_21"])
             panic = float(sentiment["panic_score"])
         except (KeyError, TypeError, ValueError):
-            return False
+            return "thiếu confidence, RSI/EMA hoặc panic_score hợp lệ"
         if not all(math.isfinite(value) for value in (confidence, rsi, ema9, ema21, panic)):
-            return False
+            return "có giá trị không hữu hạn"
         if not 0.60 <= confidence <= 1.0 or sentiment.get("available") is not True or sentiment.get("error"):
-            return False
+            return "confidence < 60% hoặc sentiment/Fear & Greed không khả dụng"
         if panic >= 8 or not 1 <= panic <= 10 or sentiment.get("black_swan_alert") is not False:
-            return False
+            return "panic >= 8, panic sai miền hoặc có cảnh báo black swan"
         if sentiment.get("trading_advice") not in {"NORMAL", "CAUTION"}:
-            return False
+            return "sentiment yêu cầu HALT hoặc advice sai schema"
         directive = macro.get("directive")
         if directive not in {"ONLY_LONG", "ONLY_SHORT", "FLEXIBLE"}:
-            return False
+            return "macro directive không hợp lệ/NO_TRADE"
         if action == "OPEN_LONG":
-            return directive != "ONLY_SHORT" and ema9 > ema21 and rsi > 50
+            if directive == "ONLY_SHORT":
+                return "macro ONLY_SHORT chặn LONG"
+            if not (ema9 > ema21 and rsi > 50):
+                return "LONG cần EMA9 > EMA21 và RSI > 50"
+            return None
         if action == "OPEN_SHORT":
-            return directive != "ONLY_LONG" and ema9 < ema21 and rsi < 50
-        return False
+            if directive == "ONLY_LONG":
+                return "macro ONLY_LONG chặn SHORT"
+            if not (ema9 < ema21 and rsi < 50):
+                return "SHORT cần EMA9 < EMA21 và RSI < 50"
+            return None
+        return "action không phải OPEN_LONG/OPEN_SHORT"
+
+    def _entry_is_allowed(self, action: str, proposal: dict, indicators: dict,
+                          macro: dict, sentiment: dict) -> bool:
+        """Boolean compatibility wrapper for the hard entry gate."""
+        return self._entry_gate_reason(action, proposal, indicators, macro, sentiment) is None
 
     @staticmethod
     def _has_strategy_exit(position, market_data: dict) -> bool:
@@ -564,24 +578,49 @@ class Main:
         )
         print(f"🤖 Operator: {proposal.get('action')} ({proposal.get('confidence', 0):.0%}) — {proposal.get('reason')}")
         print(f"🛡️ Supervisor: {'DUYỆT' if review.get('approved') else 'TỪ CHỐI'} — {review.get('feedback')}")
+        logging.info(
+            "Candle decision | candle=%s macro=%s rsi=%.2f ema9=%.2f ema21=%.2f "
+            "sentiment=%s panic=%s operator=%s confidence=%.0f%% supervisor=%s",
+            candle_time,
+            macro.get("directive", "NO_TRADE"),
+            market_data.get("rsi_14", float("nan")),
+            market_data.get("ema_9", float("nan")),
+            market_data.get("ema_21", float("nan")),
+            sentiment.get("sentiment", "UNKNOWN"),
+            sentiment.get("panic_score", "N/A"),
+            proposal.get("action", "HOLD"),
+            proposal.get("confidence", 0),
+            "approved" if review.get("approved") else "rejected",
+        )
 
         # Persist the decision cursor before mutating the portfolio, preventing
         # a restart from replaying an already evaluated candle and duplicating it.
         if not self._save_runtime_cursor(candle_time):
             return True
         action = proposal.get("action")
-        if (review.get("approved") and action in ("OPEN_LONG", "OPEN_SHORT")
-                and self._entry_is_allowed(action, proposal, market_data, macro, sentiment)):
-            stake = self.risk_manager.position_value(self.paper_trader.cash)
-            side = "LONG" if action == "OPEN_LONG" else "SHORT"
-            if self.paper_trader.open_position(side, market_data["price"], cash_amount=stake):
-                self.paper_trader.update_position(market_data["price"])
-                self._notify_open_position(
-                    side, market_data, macro, proposal, review, sentiment, rules
-                )
-        elif (review.get("approved") and action == "CLOSE"
-              and self._has_strategy_exit(self.paper_trader.position, market_data)):
-            self._close_position(market_data["price"], "AI_SIGNAL")
+        if action in ("OPEN_LONG", "OPEN_SHORT") and not review.get("approved"):
+            logging.info("No entry: Supervisor rejected %s: %s", action, review.get("feedback", "no reason"))
+        elif action in ("OPEN_LONG", "OPEN_SHORT"):
+            gate_reason = self._entry_gate_reason(action, proposal, market_data, macro, sentiment)
+            if gate_reason:
+                logging.info("No entry: hard gate rejected %s: %s", action, gate_reason)
+            else:
+                stake = self.risk_manager.position_value(self.paper_trader.cash)
+                side = "LONG" if action == "OPEN_LONG" else "SHORT"
+                if self.paper_trader.open_position(side, market_data["price"], cash_amount=stake):
+                    self.paper_trader.update_position(market_data["price"])
+                    self._notify_open_position(
+                        side, market_data, macro, proposal, review, sentiment, rules
+                    )
+                else:
+                    logging.warning("No entry: PaperTrader could not open %s", side)
+        elif action == "HOLD":
+            logging.info("No entry: Operator chose HOLD: %s", proposal.get("reason", "no reason"))
+        elif action == "CLOSE":
+            if review.get("approved") and self._has_strategy_exit(self.paper_trader.position, market_data):
+                self._close_position(market_data["price"], "AI_SIGNAL")
+            else:
+                logging.info("No close: CLOSE did not pass approval/EMA21-RSI exit condition")
 
         self.paper_trader.save_active_position()
         self._save_runtime_cursor(candle_time)
@@ -592,6 +631,7 @@ class Main:
             raise RuntimeError("Bot paper đang chạy ở một process khác (storage/.bot.lock).")
         mode = self.config.llm_mode
         try:
+            logging.info("Bot workspace: %s", BASE_DIR)
             print(f"CRYPTO AI PAPER TRADER | {self.symbol} {self.timeframe} | LLM [{mode}]")
             self.notifier.send_embed(
                 title="🤖 Crypto AI • Paper trading đã khởi động",
