@@ -13,7 +13,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - data/fetcher.py, data/preprocessor.py: OHLCV, chỉ báo và nhãn.
 - train.py, engine/ml_retrainer.py, models/predictor.py, models/model.pkl: pipeline Random Forest độc lập với main.
 - engine/paper_trader.py: ledger paper, phí hai chiều, lịch sử và phục hồi cash/vị thế.
-- engine/risk_manager.py: SL/TP/trailing LONG/SHORT; main gọi kiểm tra giá mỗi vòng.
+- engine/risk_manager.py, engine/strategy_policy.py: SL/TP/trailing LONG/SHORT và ngưỡng entry/macro dùng chung; main gọi risk mỗi vòng.
 - notifiers/discord.py: Discord webhook; rich embeds for startup, closed 1H macro decisions, opened/closed paper trades, and rule evolution.
 - storage/: dữ liệu thị trường, luật, memory, vị thế, log và lịch sử giao dịch.
 - fetch_and_save_dataset.py: tải lịch sử và ghi CSV.
@@ -41,8 +41,8 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - main gọi Strategist với EMA50/EMA200 và RSI trên nến 1H đã đóng; ONLY_LONG khi giá > EMA50 và RSI >52, ONLY_SHORT khi giá < EMA50 và RSI <48. EMA200 làm ngữ cảnh, không đợi giao cắt EMA50/EMA200 mới cho phép đổi chế độ. Thiếu dữ liệu thì NO_TRADE.
 - main gọi RiskManager theo giá ticker mỗi vòng; đồng thời đóng theo EMA21/RSI khi nến mới đóng.
 - Random Forest/Predictor vẫn độc lập, chưa cấp tín hiệu cho main vì model chỉ phân lớp BUY/HOLD trong khi bot có LONG/SHORT.
-- strategy_rules.json cung cấp nguyên tắc cho LLM; entry EMA9/EMA21 và RSI còn được Supervisor kiểm tra bằng Python.
-- `strategy_rules.json` là luật chữ do Reflector tạo, không phải cấu hình thực thi. Runtime hiện không tính ADX, ATR, slope EMA hay range 5 nến; Operator phải bỏ qua điều kiện phụ đòi chỉ số chưa được truyền. Các ngưỡng khả dụng trong rules v9 vẫn có thể khiến LLM chọn HOLD, nhưng hard gate Python chỉ dùng EMA9/EMA21, RSI, macro, confidence và sentiment.
+- `engine/strategy_policy.py` là nguồn ngưỡng entry/macro dùng chung cho Strategist, Supervisor và cổng thực thi trong main; confidence tối thiểu và panic tối đa cũng được lấy từ policy này.
+- `strategy_rules.json` là ghi chú chữ do Reflector tự tiến hóa, không phải cấu hình thực thi và không đưa vào Operator prompt. ADX, ATR, EMA slopes, volume ratio, nến mẫu và range filters trong rules lịch sử chưa được tính/enforce; không được mô tả như luật đang chạy.
 - Supervisor từ chối action sai, lệnh ngược macro, thiếu cash, confidence thấp, sentiment thiếu hoặc sai schema.
 - AgentTeam có sáu agent; Auditor chạy khi vòng lặp gặp exception. Sentiment cache 15 phút.
 
@@ -74,7 +74,7 @@ Repo là bot paper trading BTC/USDT dùng dữ liệu Binance, LLM nhiều tác 
 - runtime_state.json lưu nến cuối đã xử lý để tránh lặp quyết định sau restart.
 - recent_closed_trades nằm trong RAM; Reflector evolve sau mỗi batch ba lệnh đóng trong phiên rồi xóa batch đã gửi.
 - Reflector thêm lesson vào memory.json khi đóng. Khi có <=20 lesson, load_lessons trả toàn bộ; nhiều hơn thì lấy tối đa 10 khoản lỗ nặng nhất và 15 bài gần đây khớp side hoặc NONE, rồi bỏ trùng.
-- auto_evolve_rules nhờ LLM tạo entry/exit rules; nếu có cả hai trường thì tăng version và lưu phả hệ strategy_rules.json. Operator đọc luật mỗi lần phân tích.
+- auto_evolve_rules nhờ LLM tạo ghi chú entry/exit; nếu có cả hai trường thì tăng version và lưu phả hệ strategy_rules.json. Ghi chú không thay đổi policy Python; Operator chỉ nhận policy kỹ thuật có thể thực thi.
 
 ## Tác dụng phụ và dữ liệu cần giữ
 

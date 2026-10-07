@@ -18,6 +18,15 @@ from pathlib import Path
 from datetime import datetime, timezone
 from openai import OpenAI
 from config.env import load_project_env
+from engine.strategy_policy import (
+    ENTRY_LONG_RSI_MIN,
+    ENTRY_SHORT_RSI_MAX,
+    MACRO_LONG_RSI_MIN,
+    MACRO_SHORT_RSI_MAX,
+    MAX_ENTRY_PANIC_SCORE,
+    MIN_ENTRY_CONFIDENCE,
+    entry_signal_rejection,
+)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_project_env()
@@ -137,16 +146,16 @@ def _ask_llm(system_prompt: str, user_prompt: str) -> dict:
 # 1. STRATEGIST AGENT (1H)
 # -------------------------------------------------------------
 class StrategistAgent:
-    SYSTEM_PROMPT = """
+    SYSTEM_PROMPT = f"""
     You are the Senior Chief Strategist for a Crypto Quantitative Fund.
     Analyze the 1-HOUR (1H) MACRO TREND. Dictate whether 5m Scalper is allowed to go LONG, SHORT, or BOTH.
     RULES:
-    - "ONLY_LONG" : 1H Price > EMA50 and RSI_1H > 52.
-    - "ONLY_SHORT": 1H Price < EMA50 and RSI_1H < 48.
+    - "ONLY_LONG" : 1H Price > EMA50 and RSI_1H > {MACRO_LONG_RSI_MIN:g}.
+    - "ONLY_SHORT": 1H Price < EMA50 and RSI_1H < {MACRO_SHORT_RSI_MAX:g}.
     - EMA200 is context only; do not require an EMA50/EMA200 crossover.
     - "FLEXIBLE"  : Price/RSI do not confirm the same direction.
     JSON format:
-    { "macro_bias": "BULLISH" | "BEARISH" | "SIDEWAY", "directive": "ONLY_LONG" | "ONLY_SHORT" | "FLEXIBLE", "reasoning": "Brief explanation" }
+    {{ "macro_bias": "BULLISH" | "BEARISH" | "SIDEWAY", "directive": "ONLY_LONG" | "ONLY_SHORT" | "FLEXIBLE", "reasoning": "Brief explanation" }}
     """
 
     def __init__(self, config=None):
@@ -169,19 +178,19 @@ class StrategistAgent:
         # operator's Discord history, even with price far below EMA50 and RSI
         # deeply bearish. Use price + RSI for the actionable regime; retain
         # EMA200 as context instead of a late entry gate.
-        if price > ema50 and rsi > 52:
+        if price > ema50 and rsi > MACRO_LONG_RSI_MIN:
             context = "EMA50 trên EMA200" if ema50 > ema200 else "EMA50 dưới EMA200 (xu hướng sớm)"
             return {
                 "macro_bias": "BULLISH",
                 "directive": "ONLY_LONG",
-                "reasoning": f"{symbol}: giá trên EMA50 và RSI 1H > 52; {context}.",
+                "reasoning": f"{symbol}: giá trên EMA50 và RSI 1H > {MACRO_LONG_RSI_MIN:g}; {context}.",
             }
-        if price < ema50 and rsi < 48:
+        if price < ema50 and rsi < MACRO_SHORT_RSI_MAX:
             context = "EMA50 dưới EMA200" if ema50 < ema200 else "EMA50 còn trên EMA200 (độ trễ của EMA)"
             return {
                 "macro_bias": "BEARISH",
                 "directive": "ONLY_SHORT",
-                "reasoning": f"{symbol}: giá dưới EMA50 và RSI 1H < 48; {context}.",
+                "reasoning": f"{symbol}: giá dưới EMA50 và RSI 1H < {MACRO_SHORT_RSI_MAX:g}; {context}.",
             }
         return {
             "macro_bias": "SIDEWAY",
@@ -194,20 +203,21 @@ class StrategistAgent:
 # 2. OPERATOR AGENT (5m)
 # -------------------------------------------------------------
 class OperatorAgent:
-    SYSTEM_PROMPT = """
-    You are an Aggressive Scalping Trader on the 5m crypto timeframe.
-    Follow the DYNAMIC STRATEGY RULES provided in the prompt, but only evaluate
-    indicators actually supplied. Do not invent ADX, ATR, EMA slopes, 15m data,
-    candle patterns, or other metrics when they are absent. The Python hard
-    gate is authoritative: LONG requires an allowed 1h directive, EMA9 > EMA21
-    and RSI > 50; SHORT requires an allowed 1h directive, EMA9 < EMA21 and
-    RSI < 50. If those measurable conditions are met, do not HOLD solely
-    because a rule mentions an unavailable indicator; explain that limitation.
+    SYSTEM_PROMPT = f"""
+    You are a disciplined 5m technical analyst for a paper-trading system.
+    The Python hard gate is the only executable entry policy: LONG requires
+    an allowed 1h directive, EMA9 > EMA21 and RSI > {ENTRY_LONG_RSI_MIN:g};
+    SHORT requires an allowed 1h directive, EMA9 < EMA21 and RSI <
+    {ENTRY_SHORT_RSI_MAX:g}. Minimum confidence is {MIN_ENTRY_CONFIDENCE:.0%}.
+    If flat and one side satisfies these available conditions, propose that
+    side unless supplied data conflicts. Do not add thresholds from learned
+    text rules. Ignore indicators that were not supplied.
+    If a position is already open, choose HOLD; Python owns all exits.
     Exits are managed by deterministic Python risk controls on each price update
     and by the closed-candle EMA21/RSI exit rule. Do not propose CLOSE; choose
     HOLD when there is no valid entry.
     Output ONLY valid JSON:
-    { "action": "OPEN_LONG" | "OPEN_SHORT" | "HOLD", "confidence": 0.60 to 0.95, "reason": "Direct technical trigger" }
+    {{ "action": "OPEN_LONG" | "OPEN_SHORT" | "HOLD", "confidence": 0.60 to 0.95, "reason": "Direct technical trigger" }}
     """
 
     def __init__(self, config=None):
@@ -217,7 +227,6 @@ class OperatorAgent:
         if not position_info:
             position_info = {"side": "NONE", "entry_price": 0.0, "pnl_pct": 0.0}
 
-        rules = ReflectorAgent.load_rules()
         rsi_val = float(indicators.get("rsi_14", 50))
         ema9_val = float(indicators.get("ema_9", current_price))
         ema21_val = float(indicators.get("ema_21", current_price))
@@ -226,25 +235,27 @@ class OperatorAgent:
         macd_signal = float(indicators.get("macd_signal", 0.0))
         volume_change = float(indicators.get("volume_change", 0.0))
 
-        rsi_state = "TRÊN 50 (BULLISH)" if rsi_val > 50 else "DƯỚI 50 (BEARISH)"
+        rsi_state = (
+            f"TRÊN {ENTRY_LONG_RSI_MIN:g} (BULLISH)"
+            if rsi_val > ENTRY_LONG_RSI_MIN
+            else f"DƯỚI {ENTRY_SHORT_RSI_MAX:g} (BEARISH)"
+        )
         ema_state = "EMA9 > EMA21 (TĂNG)" if ema9_val > ema21_val else "EMA9 < EMA21 (GIẢM)"
 
         user_prompt = f"""
 Thị trường: {symbol} | Giá: {current_price} USDT | Chỉ thị 1H: [{macro_directive}]
-BỘ QUY TẮC HIỆN HÀNH (v{rules.get('version', 1)}):
-- Entry Rules: {rules.get('entry_rules')}
-- Exit Rules: {rules.get('exit_rules')}
 Vị thế: {position_info.get('side', 'NONE')} (PnL: {position_info.get('pnl_pct', 0.0):.2f}%)
 Kỹ thuật khả dụng 5m: RSI14={rsi_val:.2f} ({rsi_state}), EMA9={ema9_val:.4f} vs EMA21={ema21_val:.4f} ({ema_state}),
 EMA spread={ema_spread:.5f}, MACD={macd:.5f}, MACD signal={macd_signal:.5f}, volume change={volume_change:.4f}.
-Hard gate Python: LONG cần EMA9 > EMA21 và RSI14 > 50, macro không ONLY_SHORT;
-SHORT cần EMA9 < EMA21 và RSI14 < 50, macro không ONLY_LONG. Confidence phải >= 0.60.
-Các chỉ báo không có trong danh sách trên không được xem là điều kiện bắt buộc.
-Hãy đưa ra quyết định dạng JSON (OPEN_LONG / OPEN_SHORT / CLOSE / HOLD).
+Policy Python (nguồn luật duy nhất): LONG cần EMA9 > EMA21, RSI14 > {ENTRY_LONG_RSI_MIN:g}, macro không ONLY_SHORT;
+SHORT cần EMA9 < EMA21, RSI14 < {ENTRY_SHORT_RSI_MAX:g}, macro không ONLY_LONG.
+Không tự áp thêm ngưỡng entry/exit từ bài học hoặc rules tiến hóa. Nếu vị thế đang mở, chọn HOLD;
+SL/TP/trailing và EMA21/RSI exit do Python thực thi.
+Trả JSON với action OPEN_LONG / OPEN_SHORT / HOLD.
 """
         result = _ask_llm(self.SYSTEM_PROMPT, user_prompt)
         action = str(result.get("action", "HOLD")).upper() if isinstance(result, dict) else "HOLD"
-        if action not in {"OPEN_LONG", "OPEN_SHORT", "CLOSE", "HOLD"}:
+        if action not in {"OPEN_LONG", "OPEN_SHORT", "HOLD"}:
             action = "HOLD"
         try:
             raw_confidence = result.get("confidence", 0.0) if isinstance(result, dict) else 0.0
@@ -263,18 +274,19 @@ Hãy đưa ra quyết định dạng JSON (OPEN_LONG / OPEN_SHORT / CLOSE / HOLD
 # 3. SUPERVISOR AGENT (Kiểm duyệt rủi ro)
 # -------------------------------------------------------------
 class SupervisorAgent:
-    SYSTEM_PROMPT = """
+    SYSTEM_PROMPT = f"""
     Bạn là Giám đốc Quản trị Rủi ro (Supervisor Agent).
     Phản biện đề xuất từ Operator Agent dựa trên an toàn vốn, CHỈ THỊ 1H, BÀI HỌC KINH NGHIỆM và TÌNH BÁO SENTIMENT.
     QUY TẮC KIỂM DUYỆT:
     1. HOLD: Luôn DUYỆT. CLOSE chỉ được duyệt khi có vị thế và nến đóng xác nhận
        đảo chiều theo EMA21/RSI; trong luồng hiện tại Python tự xử lý điều kiện thoát.
     2. OPEN_LONG/SHORT:
-       - TỪ CHỐI nếu black_swan_alert = true hoặc panic_score >= 8 hoặc trading_advice == "HALT_TRADING".
+       - TỪ CHỐI nếu black_swan_alert = true hoặc panic_score >= {MAX_ENTRY_PANIC_SCORE:g} hoặc trading_advice == "HALT_TRADING".
        - TỪ CHỐI nếu Macro 1H xung đột (chỉ thị ONLY_SHORT cấm mở Long; ONLY_LONG cấm mở Short).
-       - TỪ CHỐI nếu lặp lại sai lầm trong BÀI HỌC KINH NGHIỆM.
+       - Bài học Reflector chỉ là ngữ cảnh. Không biến ngưỡng chữ trong bài học thành gate mới;
+         chỉ từ chối khi dữ liệu được cung cấp xác nhận rõ một rủi ro cụ thể đã lặp lại.
     JSON format:
-    { "approved": true | false, "risk_score": 1 to 10, "feedback": "Lý do duyệt hoặc từ chối" }
+    {{ "approved": true | false, "risk_score": 1 to 10, "feedback": "Lý do duyệt hoặc từ chối" }}
     Python đã kiểm tra cash, chỉ thị macro, EMA/RSI và schema sentiment trước bước này.
     Không từ chối chỉ vì một rule nhắc chỉ báo không được cung cấp (ví dụ ADX/ATR/slope).
     Nếu directive là ONLY_SHORT thì đó là xác nhận macro cho phe short; không đòi thêm EMA50 < EMA200.
@@ -318,7 +330,7 @@ class SupervisorAgent:
             confidence = float(raw_confidence)
         except (TypeError, ValueError):
             confidence = 0.0
-        if not math.isfinite(confidence) or confidence < 0.60 or confidence > 1.0:
+        if not math.isfinite(confidence) or confidence < MIN_ENTRY_CONFIDENCE or confidence > 1.0:
             return {"approved": False, "risk_score": 8, "feedback": "Độ tin cậy thấp hoặc không hợp lệ."}
 
         if not sentiment_info or sentiment_info.get("available") is not True or sentiment_info.get("error"):
@@ -336,27 +348,13 @@ class SupervisorAgent:
         if (not 1 <= panic_score <= 10 or advice not in {"NORMAL", "CAUTION", "HALT_TRADING"}
                 or not isinstance(black_swan, bool)):
             return {"approved": False, "risk_score": 10, "feedback": "Dữ liệu sentiment sai schema; từ chối mở lệnh."}
-        if black_swan or panic_score >= 8 or advice == "HALT_TRADING":
+        if black_swan or panic_score >= MAX_ENTRY_PANIC_SCORE or advice == "HALT_TRADING":
             driver = sentiment_info.get("key_driver", "Rủi ro tin tức cực đoan")
             return {"approved": False, "risk_score": 10, "feedback": f"PHANH KHẨN CẤP: Từ chối {action} do rủi ro tin tức: {driver}"}
 
-        if macro_directive not in {"ONLY_LONG", "ONLY_SHORT", "FLEXIBLE"}:
-            return {"approved": False, "risk_score": 10, "feedback": "Không có chỉ thị xu hướng 1H hợp lệ."}
-        if action == "OPEN_LONG" and macro_directive == "ONLY_SHORT":
-            return {"approved": False, "risk_score": 9, "feedback": "Từ chối Long vì trái xu hướng 1H."}
-        if action == "OPEN_SHORT" and macro_directive == "ONLY_LONG":
-            return {"approved": False, "risk_score": 9, "feedback": "Từ chối Short vì trái xu hướng 1H."}
-
-        try:
-            rsi = float(indicators["rsi_14"])
-            ema9 = float(indicators["ema_9"])
-            ema21 = float(indicators["ema_21"])
-        except (KeyError, TypeError, ValueError):
-            return {"approved": False, "risk_score": 10, "feedback": "Thiếu chỉ báo kỹ thuật để xác nhận lệnh."}
-        if action == "OPEN_LONG" and not (ema9 > ema21 and rsi > 50):
-            return {"approved": False, "risk_score": 8, "feedback": "Long không đạt điều kiện EMA9 > EMA21 và RSI > 50."}
-        if action == "OPEN_SHORT" and not (ema9 < ema21 and rsi < 50):
-            return {"approved": False, "risk_score": 8, "feedback": "Short không đạt điều kiện EMA9 < EMA21 và RSI < 50."}
+        policy_error = entry_signal_rejection(action, macro_directive, indicators)
+        if policy_error:
+            return {"approved": False, "risk_score": 8, "feedback": policy_error}
 
         if not position_info:
             position_info = {"side": "NONE"}
